@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Lập trình web với Python (5)
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2011/03/lap-trinh-web-voi-python-5.html" rel="bookmark" title="Permalink to Lập trình web với Python (5)">Lập trình web với Python (5)</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Bẵng một thời gian, chúng ta lại quay lại với loạt bài Lập trình web với Python. Trong kỳ này, chúng ta sẽ bàn đến mô hình FastCGI (FCGI).</p>
+<p>Cái tên FCGI khiến người ta liên tưởng đến mô hình CGI như đã trình bày trong kỳ trước. Nhưng, thật tế là FCGI là một mô hình rất khác so với CGI.</p>
+<p>Các ứng dụng FCGI là các ứng dụng <strong>bền</strong>, tức là một tiến trình FCGI có thể phục vụ nhiều yêu cầu chứ không phải chỉ một yêu cầu như ứng dụng CGI. Do đó, các ứng dụng FCGI có thể sử dụng các biến có phạm vi ứng dụng (application-scoped variable, tương đương với các biến toàn cục, global variable), tồn tại qua nhiều yêu cầu.</p>
+<p>Xét ví dụ một chương trình web hiển thị số lần truy cập vào trang.</p>
+<blockquote>
+<ul class="simple">
+<li>Với mô hình <strong>CGI</strong>, khi có yêu cầu gửi đến, máy chủ web (web server, httpd) sẽ tạo một tiến trình khác, chạy chương trình CGI, chương trình này khởi tạo biến đếm với giá trị 0, tăng nó lên 1, và hiển thị số 1 rồi tiến trình kết thúc. Khi có yêu cầu thứ hai đến, máy chủ lại tạo một tiến trình khác, chạy chương trình CGI, chương trình này khởi tạo biến đếm với giá trị 0, tăng nó lên 1, và hiển thị số 1, và kết thúc tiến trình. Như vậy, vì mỗi yêu cầu được một tiến trình riêng phục vụ nên chúng ta sẽ cần phải lưu biến đếm vào một tài nguyên ngoài (ví dụ như tập tin, hoặc cơ sở dữ liệu), và các tiến trình truy cập vào cùng tài nguyên này.</li>
+<li>Với mô hình <strong>FCGI</strong>, một tiến trình FCGI sẽ được chạy trước. Chương trình này được gọi là một <strong>FCGI server</strong>. Chương trình này khởi tạo biến đếm với giá trị 0 và bước vào một vòng lập vô tận để nhận yêu cầu. Trình duyệt gửi yêu cầu đến máy chủ web. Khi này máy chủ web sẽ chuyển yêu cầu này đến ứng dụng FCGI đã được chạy trước đó. Như vậy, máy chủ web đóng vai trò là một <strong>FCGI client</strong>. Ở phía FCGI server, yêu cầu được chấp nhận (accept), biến đếm được tăng lên thành 1, kết quả trả về lại cho httpd, và FCGI server quay lại vòng lập nhận yêu cầu. Máy chủ web trả lại kết quả cho trình duyệt. Khi có yêu cầu kế tiếp, máy chủ httpd lại chuyển yêu cầu đó cho cùng FCGI server. Yêu cầu này được chấp nhận, biến đếm được tăng thành 2 vì đang trong cùng một tiến trình, kết quả trả về lại cho httpd và tiếp tục như đã bàn.</li>
+</ul>
+</blockquote>
+<p>Vì mô hình hoạt động của FCGI khác với CGI nên việc trao đổi giữa FCGI client và FCGI server (giữa httpd và ứng dụng FCGI) không thể sử dụng cùng một giao thức đơn giản như ứng dụng CGI nữa. Việc này đòi hỏi một giao thức riêng cho FCGI.</p>
+<p>Mô hình hoạt động đơn giản của FCGI được miêu tả trong hình dưới.</p>
+<img alt="" src="/static/web-programming/fcgi/overview_lifecycle.png" />
+<p>Ngoài lợi ích về tốc độ (do không phải tạo tiến trình mới để phục vụ mỗi yêu cầu, và khả năng chia sẻ tài nguyên thông qua biến có phạm vi ứng dụng), các ứng dụng FCGI còn có thể được triển khai trên hệ thống khác với hệ thống máy chủ web, giúp cho việc phân bổ tài nguyên giữa httpd và FCGI server được hiệu quả hơn. FCGI hỗ trợ hai cách giao tiếp là thông qua <strong>stream pipe</strong>, và thông qua <strong>socket</strong>. Cách giao tiếp stream pipe tương tự như việc gửi và nhận dữ liệu qua <strong>stdin</strong>, và <strong>stdout</strong>. Cách giao tiếp này được sử dụng cho các ứng dụng FCGI triển khai trên cùng hệ thống với httpd. Cách giao tiếp socket sử dụng một kết nối TCP để đóng gói và gửi dữ liệu của <strong>env-vars</strong>, <strong>stdin</strong>, <strong>stdout</strong>, và <strong>stderr</strong> tới ứng dụng FCGI. Điều này cho phép ứng dụng FCGI được triển khai trên một hệ thống khác, và httpd sẽ liên lạc với ứng dụng này dựa vào kết nối mạng TCP. Do đó, việc tối ưu tài nguyên hệ thống có thể được thực hiện dễ dàng hơn so với ứng dụng CGI. Đối với ứng dụng FCGI, FCGI server có thể được chạy trong chế độ đa tiến trình, hoặc đa tiểu trình đều được. FCGI server có thể được chạy trên một máy 8 lõi, trong khi httpd chạy trên một máy khác đơn nhân. FCGI server phục vụ các dữ liệu động, trong khi httpd phục vụ các dữ liệu tĩnh như hình ảnh, trang web tĩnh.</p>
+<p>Chúng ta vừa xem qua mô hình hoạt động của FCGI. Đi sâu hơn vào cấu trúc từng ứng dụng FCGI thì dúng ta có ba phần chính sau:</p>
+<blockquote>
+<ul class="simple">
+<li>Mã khởi tạo</li>
+<li>Vòng lặp nhận yêu cầu</li>
+<li>Xử lý yêu cầu và trả kết quả</li>
+</ul>
+</blockquote>
+<p>Trong ví dụ về ứng dụng hiển thị số lượt truy cập, mã khởi tạo là việc khởi tạo biến đếm toàn cụ với giá trị 0.</p>
+<p>Vòng lặp nhận yêu cầu thường là một vòng lặp vô hạn, tương tự như:</p>
+<div class="highlight"><pre><span></span><span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+  <span class="n">fcgi_accept</span><span class="p">()</span>
+  <span class="c1"># xử lý yêu cầu như CGI</span>
+</pre></div>
+<p>Trong khi yêu cầu được chấp nhận, thì dữ liệu nhập cũng được tách ra thành <strong>env-vars</strong>, <strong>stdin</strong>, <strong>stdout</strong>, và <strong>stderr</strong>. Điều này khiến cho việc xử lý yêu cầu của một ứng dụng FCGI không khác bao nhiêu so với việc xử lý của một ứng dụng CGI. Tất cả đều được thực hiện trên các biến môi trường, và các luồng chuẩn. Điều khác biệt đó là sau khi xử lý xong yêu cầu thì ứng dụng FCGI lại quay lại vòng lặp nhận yêu cầu mà không chấm dứt tiến trình như một ứng dụng CGI.</p>
+<p>Vì không phải chấm dứt tiến trình sau mỗi yêu cầu nên các tiến trình FCGI có thể được &quot;sử dụng lại&quot;. Một ứng dụng FCGI có thể được khởi tạo trước, với 10 tiến trình chẳng hạn, và đặt trong một bể (pool) tiến trình sẵn sàng. Khi có yêu cầu đến, thì máy chủ web có thể ngay lập tức lấy ra một tiến trình từ bể này, và gửi thông tin đến nó. Khi kết thúc xử lý yêu cầu, máy chủ web lại đưa tiến trình này vào bể. Việc khởi tạo trước tiết kiệm được thời gian khởi tạo ban đầu, nhưng sẽ chiếm bộ nhớ, ngay cả khi chưa có yêu cầu nào được nhận.</p>
+<p>Sau đây là mô hình chi tiết của một ứng dụng FCGI.</p>
+<img alt="" src="/static/web-programming/fcgi/detailed_lifecycle.png" />
+<p>Hẹn gặp các bạn vào bài tới. Chúng ta sẽ viết thử một ứng dụng FCGI đơn giản với mô-đun <strong>fcgi</strong> của <strong>Allan Saddi</strong>.</p>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2011-03-24T10:39:00+07:00"><i class="fa fa-calendar"></i> Thu 24 March 2011</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nguyen-thanh-nam.html" rel="author">Nguyễn Thành Nam</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/web.html" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">web</a>
+            <a href="../../tag/tutorial.html" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">tutorial</a>
+            <a href="../../tag/fcgi.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">fcgi</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,841 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+<head>
+
+<link rel="STYLESHEET" href="tut.css" type="text/css" />
+
+<link rel="SHORTCUT ICON" href="../icons/pyfav.png" type="image/png" />
+
+<link rel="start" href="../index.html" title="Chỉ mục tài liệu Python" />
+
+<link rel="first" href="tut.html" title="Bài chỉ dẫn Python" />
+
+<link rel="contents" href="node2.html" title="Mục lục" />
+
+<link rel="index" href="node19.html" title="Chỉ mục" />
+
+<link rel="last" href="about.html" title="Về tài liệu này..." />
+
+<link rel="help" href="about.html" title="Về tài liệu này..." />
+
+<link rel="next" href="node7.html" />
+
+<link rel="prev" href="node5.html" />
+
+<link rel="parent" href="tut.html" />
+
+<link rel="next" href="node7.html" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="aesop" content="information" />
+
+<title>4. Bàn thêm về luồng điều khiển </title>
+
+</head>
+
+<body>
+
+<div class="navigation">
+
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="3. Giới thiệu sơ về Python" href="node5.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="5. Cấu trúc dữ liệu" href="node7.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node5.html">3. Giới thiệu sơ về Python</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node7.html">5. Cấu trúc dữ liệu</a>
+
+</div>
+
+<hr /></div>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<div class="online-navigation">
+
+<!--Table of Child-Links-->
+
+<a name="CHILD_LINKS"><strong>Mục con</strong></a>
+
+<ul class="ChildLinks">
+
+<li><a href="node6.html#SECTION006100000000000000000">4.1 <tt class="keyword">if</tt> câu lệnh</a>
+
+</li><li><a href="node6.html#SECTION006200000000000000000">4.2 <tt class="keyword">for</tt> câu lệnh</a>
+
+</li><li><a href="node6.html#SECTION006300000000000000000">4.3 <tt class="function">range()</tt> hàm</a>
+
+</li><li><a href="node6.html#SECTION006400000000000000000">4.4 <tt class="keyword">break</tt> và <tt class="keyword">continue</tt> câu lệnh, và
+         <tt class="keyword">else</tt> vế lặp</a>
+
+</li><li><a href="node6.html#SECTION006500000000000000000">4.5 <tt class="keyword">pass</tt> câu lệnh</a>
+
+</li><li><a href="node6.html#SECTION006600000000000000000">4.6 Định nghĩa hàm</a>
+
+</li><li><a href="node6.html#SECTION006700000000000000000">4.7 Bàn thêm về định nghĩa hàm</a>
+
+<ul>
+
+<li><a href="node6.html#SECTION006710000000000000000">4.7.1 Giá trị thông số mặc định</a>
+
+</li><li><a href="node6.html#SECTION006720000000000000000">4.7.2 Thông số từ khóa</a>
+
+</li><li><a href="node6.html#SECTION006730000000000000000">4.7.3 Danh sách thông số bất kỳ</a>
+
+</li><li><a href="node6.html#SECTION006740000000000000000">4.7.4 Tháo danh sách thông số</a>
+
+</li><li><a href="node6.html#SECTION006750000000000000000">4.7.5 Dạng lambda</a>
+
+</li><li><a href="node6.html#SECTION006760000000000000000">4.7.6 Chuỗi tài liệu</a>
+
+</li></ul></li></ul>
+
+<!--End of Table of Child-Links-->
+
+</div>
+
+<hr />
+
+<h1><a name="SECTION006000000000000000000"></a><a name="moreControl"></a>
+
+<br />
+4. Bàn thêm về luồng điều khiển 
+</h1>
+
+<p>
+Ngoài câu lệnh <tt class="keyword">while</tt> vừa giới thiệu, Python có các câu lệnh điều khiển luồng từ các ngôn ngữ khác, với chút sửa đổi.
+
+</p><p>
+
+<h1><a name="SECTION006100000000000000000"></a><a name="if"></a>
+
+<br />
+4.1 <tt class="keyword">if</tt> câu lệnh 
+</h1>
+
+</p><p>
+Có lẽ loại câu lệnh biết đến nhiều nhất là câu lệnh
+<tt class="keyword">if</tt> . Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; x = int(raw_input("Please enter an integer: "))
+&gt;&gt;&gt; if x &lt; 0:
+...      x = 0
+...      print 'Negative changed to zero'
+... elif x == 0:
+...      print 'Zero'
+... elif x == 1:
+...      print 'Single'
+... else:
+...      print 'More'
+...
+</pre></div>
+
+</p><p>
+Có thể không có hoặc có nhiều phần <tt class="keyword">elif</tt> , và phần
+<tt class="keyword">else</tt> là không bắt buộc. Từ khóa `<tt class="keyword">elif</tt>' là viết tắt của `else if', và dùng để tránh thụt vào quá nhiều. Dãy 
+<tt class="keyword">if</tt> ... <tt class="keyword">elif</tt> ... <tt class="keyword">elif</tt> ... dùng thay cho câu lệnh <tt class="keyword">switch</tt> hay
+<tt class="keyword">case</tt> tìm thấy trong các ngôn ngữ khác.
+
+</p><p>
+
+<h1><a name="SECTION006200000000000000000"></a><a name="for"></a>
+
+<br />
+4.2 <tt class="keyword">for</tt> câu lệnh 
+</h1>
+
+</p><p>
+  <tt class="keyword">for</tt><a id="l2h-4" xml:id="l2h-4"></a> trong Python khác một chút với C hoặc Pascal. Thay vì lặp qua một dãy số (như trong Pascal), hoặc cho phép người dùng tự định nghĩa bước lặp và điều kiện dừng (như C), câu lệnh
+<tt class="keyword">for</tt><a id="l2h-5" xml:id="l2h-5"></a> của Python lặp qua các phần tử của một dãy bất kỳ (một danh sách, hoặc một chuỗi), theo thứ tự mà chúng xuất hiện trong dãy. Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; # Measure some strings:
+... a = ['cat', 'window', 'defenestrate']
+&gt;&gt;&gt; for x in a:
+...     print x, len(x)
+... 
+cat 3
+window 6
+defenestrate 12
+</pre></div>
+
+</p><p>
+Rất nguy hiểm nếu bạn sửa đổi dãy trong khi bạn đang lặp qua nó. Nếu bạn cần sửa đổi một danh sách khi đang lặp (ví dụ như để nhân đôi các phần tử nào đó) bạn sẽ cần phải lặp qua một bản sao của nó. Cách viết cắt miếng làm cho việc này đơn giản:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; for x in a[:]: # make a slice copy of the entire list
+...    if len(x) &gt; 6: a.insert(0, x)
+... 
+&gt;&gt;&gt; a
+['defenestrate', 'cat', 'window', 'defenestrate']
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION006300000000000000000"></a><a name="range"></a>
+
+<br />
+4.3 <tt class="function">range()</tt> hàm 
+</h1>
+
+</p><p>
+Nếu bạn cần lặp qua một dãy số, hàm có sẵn <tt class="function">range()</tt> trở nên tiện dụng. Nó tạo ra danh sách chứa các dãy số học:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; range(10)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+</pre></div>
+
+</p><p>
+Điềm dừng được chỉ định không bao giờ là một phần của danh sách tạo ra;
+<code>range(10)</code> tạo danh sách 10 giá trị, là những chỉ mục hợp lệ cho các phần tử của một dãy có độ dài 10. Bạn cũng có thể tạo dãy bắt đầu từ một số khác, hoặc chỉ rõ mức tiến khác (ngay cả mức lùi; đôi khi nó còn được gọi là `bước', `step'):
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; range(5, 10)
+[5, 6, 7, 8, 9]
+&gt;&gt;&gt; range(0, 10, 3)
+[0, 3, 6, 9]
+&gt;&gt;&gt; range(-10, -100, -30)
+[-10, -40, -70]
+</pre></div>
+
+</p><p>
+Để lặp qua các chỉ mục của một dãy, gộp
+<tt class="function">range()</tt> và <tt class="function">len()</tt> như sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; a = ['Mary', 'had', 'a', 'little', 'lamb']
+&gt;&gt;&gt; for i in range(len(a)):
+...     print i, a[i]
+... 
+0 Mary
+1 had
+2 a
+3 little
+4 lamb
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION006400000000000000000"></a><a name="break"></a>
+
+<br />
+4.4 <tt class="keyword">break</tt> và <tt class="keyword">continue</tt> câu lệnh, và
+         <tt class="keyword">else</tt> vế lặp
+         
+</h1>
+
+</p><p>
+  <tt class="keyword">break</tt> , như trong C, nhảy ra khỏi phạm vòng lặp <tt class="keyword">for</tt> hay <tt class="keyword">while</tt> nhỏ nhất chứa nó.
+
+</p><p>
+  <tt class="keyword">continue</tt> , cũng được mượn từ C, tiếp tục lần lặp kế của vòng lặp.
+
+</p><p>
+Các câu lệnh lặp có thể có vế <code>else</code> ; nó được thực thi khi vòng lặp kết thúc vì danh sách lặp đã cạn (với
+<tt class="keyword">for</tt>) hoặc khi điều kiện là sai (với
+<tt class="keyword">while</tt>), và không được thực thi khi vòng lặp kết thúc bởi câu lệnh
+<tt class="keyword">break</tt> . Ví dụ vòng lặp sau tìm các số nguyên tố:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; for n in range(2, 10):
+...     for x in range(2, n):
+...         if n % x == 0:
+...             print n, 'equals', x, '*', n/x
+...             break
+...     else:
+...         # loop fell through without finding a factor
+...         print n, 'is a prime number'
+... 
+2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+5 is a prime number
+6 equals 2 * 3
+7 is a prime number
+8 equals 2 * 4
+9 equals 3 * 3
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION006500000000000000000"></a><a name="pass"></a>
+
+<br />
+4.5 <tt class="keyword">pass</tt> câu lệnh 
+</h1>
+
+</p><p>
+  <tt class="keyword">pass</tt> không làm gì cả. Nó có thể được dùng khi cú pháp cần một câu lệnh nhưng chương trình không cần tác vụ nào. Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; while True:
+...       pass # Busy-wait for keyboard interrupt
+...
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION006600000000000000000"></a><a name="functions"></a>
+
+<br />
+4.6 Định nghĩa hàm 
+</h1>
+
+</p><p>
+Chúng ta có thể tạo một hàm in ra dãy Fibonacci:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; def fib(n):    # write Fibonacci series up to n
+...     """Print a Fibonacci series up to n."""
+...     a, b = 0, 1
+...     while b &lt; n:
+...         print b,
+...         a, b = b, a+b
+... 
+&gt;&gt;&gt; # Now call the function we just defined:
+... fib(2000)
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
+</pre></div>
+
+</p><p>
+Từ khóa <tt class="keyword">def</tt> khai báo một <em>định nghĩa</em> hàm <em> </em>. Nó phải được theo sau bởi tên hàm, và một danh sách các thông số chính quy trong ngoặc đơn. Các câu lệnh tạo nên thân hàm bắt đầu từ dòng kế tiếp, và bắt buộc phải được thụt vào. Câu lệnh đầu tiên của thân hàm có thể là một chuỗi; chuỗi này là <a id="l2h-6" xml:id="l2h-6"></a>chuỗi tài liệu, hoặc <i class="dfn">docstring</i>của hàm.<a id="l2h-7" xml:id="l2h-7"></a>
+
+</p><p>
+Có những công cụ sử dụng docstrings để tự động sinh tài liệu trực tuyến hoặc để in, hoặc cho phép người dùng duyệt mã một cách tương tác; việc thêm docstrings vào mã rất được khuyến khích, cho nên bạn hãy tạo thói quen tốt đó cho mình.
+
+</p><p>
+  <em>Việc thực thi</em> một hàm tạo ra một bảng ký hiệu mới dùng cho các biến cục bộ của hàm. Chính xác hơn, mọi phép gán biến trong một hàm chứa giá trị vào bảng ký hiệu cục bộ; và các tham chiếu biến sẽ trước hết tìm trong bảng ký hiệu cục bộ rồi trong bảng ký hiệu toàn cục, và trong bảng các tên có sẵn. Do đó, các biến toàn cục không thể được gán giá trị trực tiếp trong một hàm (trừ khi được đặt trong câu lệnh <tt class="keyword">global</tt> ), mặc dù chúng có thể dược tham chiếu tới.
+
+</p><p>
+Thông số thật sự của một lệnh gọi hàm được tạo ra trong bảng ký hiệu cục bộ của hàm được gọi khi nó được gọi; do đó các thông số được truyền theo <em>truyền theo giá trị (call by value)</em> (mà
+<em>giá trị</em> luôn là một <em>tham chiếu đối tượng</em>, không phải là giá trị của đối tượng).<a name="tex2html2" href="#foot1815"><sup>4.1</sup></a> Khi một hàm gọi một hàm khác, một bảng ký hiệu cục bộ được tạo ra cho lệnh gọi đó.
+
+</p><p>
+Một định nghĩa hàm tạo tên hàm trong bảng ký hiệu hiện tại. Giá trị của tên hàm có một kiểu được nhận ra bởi trình thông dịch là hàm do người dùng định nghĩa. Giá trị này có thể được gán vào một tên khác và sau đó có thể được sử dụng như một hàm. Đây là một cách đổi tên tổng quát:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; fib
+&lt;function fib at 10042ed0&gt;
+&gt;&gt;&gt; f = fib
+&gt;&gt;&gt; f(100)
+1 1 2 3 5 8 13 21 34 55 89
+</pre></div>
+
+</p><p>
+Bạn có thể nói rằng <code>fib</code> không phải là một hàm (function) mà là một thủ tục (procedure). Trong Python, cũng như C, thủ tục chẳng qua là hàm không có giá trị trả về. Thật sự, nói rõ hơn một chút, thủ tục cũng trả về giá trị mặc dù là một giá trị vô nghĩa. Giá trị này được gọi là <code>None</code> (nó là một tên có sẵn).  In ra giá trị <code>None</code> thường bị trình thông dịch bỏ qua nếu nó là giá trị duy nhất được in ra. Bạn có thể thấy nó nếu bạn muốn:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; print fib(0)
+None
+</pre></div>
+
+</p><p>
+Bạn cũng có thể dễ dàng viết một hàm trả về một danh sách các số của dãy Fibonacci thay vì in nó ra:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; def fib2(n): # return Fibonacci series up to n
+...     """Return a list containing the Fibonacci series up to n."""
+...     result = []
+...     a, b = 0, 1
+...     while b &lt; n:
+...         result.append(b)    # see below
+...         a, b = b, a+b
+...     return result
+... 
+&gt;&gt;&gt; f100 = fib2(100)    # call it
+&gt;&gt;&gt; f100                # write the result
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+</pre></div>
+
+</p><p>
+Ví dụ này cho thấy một vài tính năng mới của Python:
+
+</p><p>
+
+<ul>
+
+<li>  <tt class="keyword">return</tt> trả về với một giá trị từ một hàm.
+<tt class="keyword">return</tt> không có thông số biểu thức đi kèm trả về <code>None</code>. Rớt ra khỏi một thủ tục cũng trả về <code>None</code>của hàm.
+
+<p>
+
+</p></li>
+
+<li>Câu lệnh <code>result.append(b)</code> gọi một <em>phương thức</em> của đối tượng danh sách. <code>result</code>. Một phương thức là một hàm `thuộc về' một đối tượng và có tên <code>obj.methodname</code>, với <code>obj</code> là một đối tượng nào đó (có thể là một biểu thức), và <code>methodname</code> là tên của một phương thức được định nghĩa bởi kiểu của đối tượng. Các kiểu khác nhau định nghĩa các phương thức khác nhau. Phương thức của các kiểu khác nhau có thể có cùng tên mà không dẫn đến sự khó hiểu. (Bạn có thể định nghĩa kiểu đối tượng và phương thức cho riêng bạn, dùng <em>lớp</em>, như sẽ được bàn đến ở các chương sau.) Phương thức <tt class="method">append()</tt> dùng trong ví dụ này được định nghĩa cho các đối tượng danh sách; nó thêm một phần tử mới vào cuối danh sách. Trong ví dụ này, nó tương đương với "<tt class="samp">result = result + [b]</tt>", nhưng hiệu quả hơn.
+
+<p>
+
+</p></li>
+
+</ul>
+
+</p><p>
+
+<h1><a name="SECTION006700000000000000000"></a><a name="defining"></a>
+
+<br />
+4.7 Bàn thêm về định nghĩa hàm 
+</h1>
+
+</p><p>
+Bạn cũng có thể định nghĩa các hàm với số lượng thông số thay đổi. Có ba dạng, và chúng có thể được dùng chung với nhau.
+
+</p><p>
+
+<h2><a name="SECTION006710000000000000000"></a><a name="defaultArgs"></a>
+
+<br />
+4.7.1 Giá trị thông số mặc định 
+</h2>
+
+</p><p>
+Dạng hữu dụng nhất là để chỉ định một giá trị mặc định cho một hoặc nhiều thông số. Dạng này tạo một hàm có thể được gọi với ít thông số hơn là nó được định nghĩa để nhận. Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+def ask_ok(prompt, retries=4, complaint='Yes or no, please!'):
+    while True:
+        ok = raw_input(prompt)
+        if ok in ('y', 'ye', 'yes'): return True
+        if ok in ('n', 'no', 'nop', 'nope'): return False
+        retries = retries - 1
+        if retries &lt; 0: raise IOError, 'refusenik user'
+        print complaint
+</pre></div>
+
+</p><p>
+Hàm này có thể được gọi như sau:
+<code>ask_ok('Do you really want to quit?')</code> hoặc như sau:
+<code>ask_ok('OK to overwrite the file?', 2)</code>của hàm.
+
+</p><p>
+Ví dụ này giới thiệu từ khóa <tt class="keyword">in</tt> . Nó kiểm tra xem một dãy có chứa một giá trị nào đó không.
+
+</p><p>
+Các giá trị mặc định được định giá tại nơi hàm được định nghĩa trong phạm vi <em>định nghĩa (defining scope)</em> , do đó
+
+</p><p>
+
+<div class="verbatim"><pre>
+i = 5
+
+def f(arg=i):
+    print arg
+
+i = 6
+f()
+</pre></div>
+
+</p><p>
+sẽ in <code>5</code>của hàm.
+
+</p><p>
+
+<strong>Cảnh báo quan trọng:</strong>  Giá trị mặc định chỉ được định giá một lần. Điểm này quan trọng khi mặc định là một giá trị khả biến như danh sách, từ điển hoặc các đối tượng của hầu hết mọi lớp. Ví dụ, hàm sau gộp các thông số truyền vào nó từ các lời gọi sau đó:
+
+</p><p>
+
+<div class="verbatim"><pre>
+def f(a, L=[]):
+    L.append(a)
+    return L
+
+print f(1)
+print f(2)
+print f(3)
+</pre></div>
+
+</p><p>
+Sẽ in ra
+
+</p><p>
+
+<div class="verbatim"><pre>
+[1]
+[1, 2]
+[1, 2, 3]
+</pre></div>
+
+</p><p>
+Nếu bạn không muốn mặc định được dùng chung trong các lời gọi sau, bạn có thể viết một hàm như thế này:
+
+</p><p>
+
+<div class="verbatim"><pre>
+def f(a, L=None):
+    if L is None:
+        L = []
+    L.append(a)
+    return L
+</pre></div>
+
+</p><p>
+
+<h2><a name="SECTION006720000000000000000"></a><a name="keywordArgs"></a>
+
+<br />
+4.7.2 Thông số từ khóa 
+</h2>
+
+</p><p>
+Các hàm cũng có thể được gọi theo thông số từ khóa (keyword argument) theo dạng "<tt class="samp"><var>keyword</var> = <var>value</var></tt>". Ví dụ, hàm sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+def parrot(voltage, state='a stiff', action='voom', type='Norwegian Blue'):
+    print "-- This parrot wouldn't", action,
+    print "if you put", voltage, "volts through it."
+    print "-- Lovely plumage, the", type
+    print "-- It's", state, "!"
+</pre></div>
+
+</p><p>
+có thể được gọi theo bất kỳ cách nào:
+
+</p><p>
+
+<div class="verbatim"><pre>
+parrot(1000)
+parrot(action = 'VOOOOOM', voltage = 1000000)
+parrot('a thousand', state = 'pushing up the daisies')
+parrot('a million', 'bereft of life', 'jump')
+</pre></div>
+
+</p><p>
+nhưng những lời gọi sau đều không hợp lệ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+parrot()                     # required argument missing
+parrot(voltage=5.0, 'dead')  # non-keyword argument following keyword
+parrot(110, voltage=220)     # duplicate value for argument
+parrot(actor='John Cleese')  # unknown keyword
+</pre></div>
+
+</p><p>
+Nói chung, một danh sách thông số phải có bất kỳ thông số vị trí (positional argument) theo sau bởi bất kỳ thông số từ khóa, các từ khóa phải được chọn từ tên thông số chính quy. Các thông số chính quy không nhất thiết phải có giá trị mặc định. Không thông số nào có thể nhận một giá trị nhiều hơn một lần -- tên thông số chính quy tương ứng với thông số vị trí không thể được dùng làm từ khóa trong cùng một lời gọi. Sau đây là một ví dụ sai vì giới hạn này:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; def function(a):
+...     pass
+... 
+&gt;&gt;&gt; function(0, a=0)
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in ?
+TypeError: function() got multiple values for keyword argument 'a'
+</pre></div>
+
+</p><p>
+Khi thông số chính quy cuối có dạng <code>**<var>name</var></code> , nó nhận một <a class="ulink" href="../lib/typesmapping.html">từ điển (dictionary)</a>
+chứa tất cả các thông số từ khóa trừ những từ khóa tương ứng với thông số chính quy. Điểm này có thể được dùng chung với một thông số chính quy ở dạng
+<code>*<var>name</var></code> (bàn đến trong mục con sau) và nhận một bộ (tuple) chứa các thông số vị trí sau danh sách thông số chính quy. (<code>*<var>name</var></code> bắt buộc phải xuất hiện trước <code>**<var>name</var></code>.) Ví dụ, nếu ta định nghĩa một hàm như sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+def cheeseshop(kind, *arguments, **keywords):
+    print "-- Do you have any", kind, '?'
+    print "-- I'm sorry, we're all out of", kind
+    for arg in arguments: print arg
+    print '-'*40
+    keys = keywords.keys()
+    keys.sort()
+    for kw in keys: print kw, ':', keywords[kw]
+</pre></div>
+
+</p><p>
+Nó có thể được gọi như vậy:
+
+</p><p>
+
+<div class="verbatim"><pre>
+cheeseshop('Limburger', "It's very runny, sir.",
+           "It's really very, VERY runny, sir.",
+           client='John Cleese',
+           shopkeeper='Michael Palin',
+           sketch='Cheese Shop Sketch')
+</pre></div>
+
+</p><p>
+và dĩ nhiên nó sẽ in ra:
+
+</p><p>
+
+<div class="verbatim"><pre>
+-- Do you have any Limburger ?
+-- I'm sorry, we're all out of Limburger
+It's very runny, sir.
+It's really very, VERY runny, sir.
+----------------------------------------
+client : John Cleese
+shopkeeper : Michael Palin
+sketch : Cheese Shop Sketch
+</pre></div>
+
+</p><p>
+Lưu ý rằng phương thức <tt class="method">sort()</tt> của danh sách các tên thông số từ khóa được gọi trước khi in nội dung của từ điển <code>keywords</code>
+; nếu điều này không được thực hiện, thứ tự các thông số được in ra không xác định.
+
+</p><p>
+
+<h2><a name="SECTION006730000000000000000"></a><a name="arbitraryArgs"></a>
+
+<br />
+4.7.3 Danh sách thông số bất kỳ 
+</h2>
+
+</p><p>
+Cuối cùng, một lựa chọn ít dùng nhất để chỉ định rằng một hàm có thể được gọi với bất kỳ số thông số. Các thông số này sẽ được gói và trong một bộ. Trước các thông số không xác định, không hoặc nhiều hơn các thông số chính quy có thể có mặt.
+
+</p><p>
+
+<div class="verbatim"><pre>
+def fprintf(file, format, *args):
+    file.write(format % args)
+</pre></div>
+
+</p><p>
+
+<h2><a name="SECTION006740000000000000000"></a><a name="unpacking-arguments"></a>
+
+<br />
+4.7.4 Tháo danh sách thông số 
+</h2>
+
+</p><p>
+Trường hợp ngược xảy ra khi các thông số đã nằm trong một danh sách hoặc một bộ nhưng cần được tháo ra cho lời gọi hàm cần những thông số vị trí riêng. Ví dụ, hàm có sẵn <tt class="function">range()</tt>
+cần nhận các thông số riêng <var>start</var> và <var>stop</var> . Nếu chúng không được cung cấp riêng lẻ, viết lệnh gọi hàm với toán tử 
+<code>*</code>để tháo các thông số này ra khỏi một danh sách hoặc bộ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; range(3, 6)             # normal call with separate arguments
+[3, 4, 5]
+&gt;&gt;&gt; args = [3, 6]
+&gt;&gt;&gt; range(*args)            # call with arguments unpacked from a list
+[3, 4, 5]
+</pre></div>
+
+</p><p>
+Theo cùng một kiểu, từ điển có thể cung cấp các thông số từ khóa với toán tử
+<code>**</code>:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; def parrot(voltage, state='a stiff', action='voom'):
+...     print "-- This parrot wouldn't", action,
+...     print "if you put", voltage, "volts through it.",
+...     print "E's", state, "!"
+...
+&gt;&gt;&gt; d = {"voltage": "four million", "state": "bleedin' demised", "action": "VOOM"}
+&gt;&gt;&gt; parrot(**d)
+-- This parrot wouldn't VOOM if you put four million volts through it. E's bleedin' demised !
+</pre></div>
+
+</p><p>
+
+<h2><a name="SECTION006750000000000000000"></a><a name="lambda"></a>
+
+<br />
+4.7.5 Dạng lambda 
+</h2>
+
+</p><p>
+Theo yêu cầu chung, một vài tính năng thường thấy trong các ngôn ngữ lập trình hàm như Lisp đã được thêm vào Python. Với từ khóa
+<tt class="keyword">lambda</tt> , các hàm vô danh (anonymous function) có thể được tạo ra. Đây là một hàm trả vè tổng của hai thông số: "<tt class="samp">lambda a, b: a+b</tt>". Dạng lambda có thể được dùng ở bất kỳ nơi nào cần đối tượng hàm. Cú pháp của chúng giới hạn ở một biểu duy nhất. Về ý nghĩa, chúng chỉ là một cách viết gọn của một định nghĩa hàm bình thường. Giống như các định nghĩa hàm lồng nhau, dạng lambda có thể tham chiếu các biến từ phạm vi chứa nó:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; def make_incrementor(n):
+...     return lambda x: x + n
+...
+&gt;&gt;&gt; f = make_incrementor(42)
+&gt;&gt;&gt; f(0)
+42
+&gt;&gt;&gt; f(1)
+43
+</pre></div>
+
+</p><p>
+
+<h2><a name="SECTION006760000000000000000"></a><a name="docstrings"></a>
+
+<br />
+4.7.6 Chuỗi tài liệu 
+</h2>
+
+</p><p>
+Có những quy luật đang hình thành về nội dung và định dạng của các chuỗi tài liệu.
+<a id="l2h-8" xml:id="l2h-8"></a>
+
+</p><p>
+Dòng đầu tiên cần phải luôn luôn là một tóm tắt ngắn, xúc tích về mục đích của đối tượng. Để dễ hiểu, nó không nên chỉ ra cụ thể tên hoặc kiểu của đối tượng vì chúng có thể có ở hình thức khác (từ khi tên là một động từ diễn tả hoạt động của hàm). Dòng này cần bắt đầu bằng một chữ hoa và kết thúc bằng một dấu chấm.
+
+</p><p>
+Nếu có nhiều dòng trong chuỗi tài liệu, dòng thứ hai nên là một dòng trống, rõ ràng phân biệt tóm tắt và phần còn lại. Các dòng sau nên là một hoặc nhiều đoạn hướng dẫn về cách gọi, các hiệu ứng phụ, v.v...
+
+</p><p>
+Bộ phân tích ngữ pháp Python không lọc thụt hàng từ các chuỗi đa dòng (multi-line string literal) trong Python, so nên các công cụ xử lý tài liệu cần phải lọc thụt hàng nếu cần. Việc này được làm theo một cách chung. Dòng không trống đầu tiên <em>sau</em> dòng đầu tiên của chuỗi xác định mức thụt vào cho toàn bộ chuỗi tài liệu. (Ta không thể dùng dòng đầu tiên vì nó thường nằm kế dấu nháy đầu chuỗi cho nên mức thụt vào của nó không được xác định trong cách viết chuỗi.) Khoảng trắng ``tương đương'' với mức thụt vào này được bò khỏi mỗi đầu dòng trong chuỗi. Không nên có các dòng thụt vào ít hơn, nhưng nếu gặp phải, toàn bộ khoảng trắng đầu của chúng nên được bỏ đi. Tính tương đương của khoảng trắng cần được kiểm tra sau khi mở rộng tab (thông thường thành 8 khoảng trắng).
+
+</p><p>
+Đâu là ví dụ của một docstring đa dòng:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; def my_function():
+...     """Do nothing, but document it.
+... 
+...     No, really, it doesn't do anything.
+...     """
+...     pass
+... 
+&gt;&gt;&gt; print my_function.__doc__
+Do nothing, but document it.
+
+    No, really, it doesn't do anything.
+</pre></div>
+
+</p><p>
+
+<br /><hr /><h4>Ghi chú</h4>
+
+<dl>
+
+<dt><a name="foot1815">... đối tượng).</a><a href="node6.html#tex2html2"><sup>4.1</sup></a></dt>
+
+<dd>
+         Thật ra, <em>gọi theo tham chiếu đối tượng (call by object reference)</em> có thể là một diễn giải tốt hơn, vì nếu một đối tượng khả đổi được truyền vào, nơi gọi sẽ nhận được các thay đổi do nơi được gọi tạo ra (ví dụ như các phần tử được thêm vào danh sách).
+
+
+</dd>
+
+</dl>
+
+<div class="navigation">
+
+<div class="online-navigation">
+
+<p></p><hr />
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="3. Giới thiệu sơ về Python" href="node5.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="5. Cấu trúc dữ liệu" href="node7.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node5.html">3. Giới thiệu sơ về Python</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node7.html">5. Cấu trúc dữ liệu</a>
+
+</div>
+
+</div>
+
+<hr />
+
+<span class="release-info">Phiên bản 2.5, tài liệu được cập nhật ngày 19, tháng 09, năm 2006.</span>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<address>
+Xem <i><a href="about.html">Về tài liệu này...</a></i> về cách đề nghị thay đổi.
+</address>
+
+</p></body>
+
+</html>
+

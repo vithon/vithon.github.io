@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  "Efficient arrays" có nhanh hơn list?
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2010/01/efficient-arrays-co-nhanh-hon-list.html" rel="bookmark" title="Permalink to &#34;Efficient arrays&#34; có nhanh hơn list?">&quot;Efficient arrays&quot; có nhanh hơn list?</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <div class="section" id="gioi-thieu-ve-efficient-arrays">
+<h2>1. Giới thiệu về &quot;Efficient arrays&quot;</h2>
+<p>Kiểu dữ liệu list có thể chứa đựng bất kỳ cái gì thuộc bất kỳ cấu trúc nào. Khái niệm về list (hay danh sách) trong Python gần gũi với ý niệm về cái túi (a bag). Một bag có thể chứa bánh kẹo, hoa quả, quần áo... Điểm khác biệt là list thì có thứ tự, các phần tử được truy cập qua một index duy nhất.</p>
+<p>Về điểm này list khác với khái niệm về array - hay mảng trong các ngôn ngữ thông thường khác. Chẳng hạn trong VB.NET một array là một danh sách có thứ tự các phần tử có cùng cấu trúc. Bạn luôn luôn phải chỉ rõ kiểu của phần tử trong mỗi array qua khai báo <strong>array of type</strong>.</p>
+<p>Chính vì list có thể chứa bất kỳ phần tử thuộc bất kỳ cấu trúc nào mà một số thao tác phụ thuộc vào cấu trúc dữ liệu trên mỗi phần tử có thể chậm đi đáng kể. Hay một số thao tác thông thường có sẵn trong các ngôn ngữ khác đã không được triển khai trong Python do kiểu dữ liệu có thể khác nhau giữa các phần tử. Chẳng hạn việc sắp xếp một danh sách sẽ chậm đi do phải xác định chính xác kiểu dữ liệu của mỗi phần tử khi so sánh. Việc đọc một list từ file text hoặc từ một string sẽ không được triển khai bằng các hàm built-in.</p>
+<p>Python hỗ trợ bạn tạo ra các list hiệu quả và chặt chẽ hơn bằng khái niệm <strong>&quot;Efficient arrays&quot;</strong> có trong thư viện array. Tuy nhiên module này chỉ hỗ trợ kiểu dữ liệu số và ký tự. Bạn không thể dùng các &quot;Efficient arrays&quot; cho các string hay boolean.</p>
+<p>Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">array</span> <span class="kn">import</span> <span class="n">array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="go">array(&#39;I&#39;, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+<span class="go">array(&#39;u&#39;, &#39;hello&#39;)</span>
+</pre></div>
+<p>Ví dụ 1 khai báo một <strong>mảng</strong> (hay array) các số nguyên <strong>unsiged int</strong> chứa các giá trị từ 0 đến 9. 'I' gọi là <strong>type code</strong> - một giá trị quy định kiểu của mỗi item trong mảng. Đoạn mã phía sau đó khai báo một array của các ký tự unicode. Dưới đây là danh sách các <strong>type code</strong> được hỗ trợ trong Python 3.1:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="23%" />
+<col width="28%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Type code</th>
+<th class="head">C Type</th>
+<th class="head">Python Type</th>
+<th class="head">Minimum size in bytes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">b</tt></td>
+<td>signed char</td>
+<td>int</td>
+<td>1</td>
+</tr>
+<tr><td><tt class="docutils literal">B</tt></td>
+<td>unsigned char</td>
+<td>int</td>
+<td>1</td>
+</tr>
+<tr><td><tt class="docutils literal">u</tt></td>
+<td>Py_UNICODE</td>
+<td>Unicode character</td>
+<td>2</td>
+</tr>
+<tr><td><tt class="docutils literal">h</tt></td>
+<td>signed short</td>
+<td>int</td>
+<td>2</td>
+</tr>
+<tr><td><tt class="docutils literal">H</tt></td>
+<td>unsigned short</td>
+<td>int</td>
+<td>2</td>
+</tr>
+<tr><td><tt class="docutils literal">i</tt></td>
+<td>signed int</td>
+<td>int</td>
+<td>2</td>
+</tr>
+<tr><td><tt class="docutils literal">I</tt></td>
+<td>unsigned int</td>
+<td>int</td>
+<td>2</td>
+</tr>
+<tr><td><tt class="docutils literal">l</tt></td>
+<td>signed long</td>
+<td>int</td>
+<td>4</td>
+</tr>
+<tr><td><tt class="docutils literal">L</tt></td>
+<td>unsigned long</td>
+<td>int</td>
+<td>4</td>
+</tr>
+<tr><td><tt class="docutils literal">f</tt></td>
+<td>float</td>
+<td>float</td>
+<td>4</td>
+</tr>
+<tr><td><tt class="docutils literal">d</tt></td>
+<td>double</td>
+<td>float</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>Như trong tài liệu Python viết. Kích thước thực sự của một số type code như 'i', 'I', 'l', 'L' phụ thuộc vào kiến trúc máy tính triển khai python (thông thường là sự khác biệt giữa kiến trúc 32 bit và 64 bit - xem thêm: <a class="reference external" href="http://en.wikipedia.org/wiki/Integer_%28computer_science%29">Integer - computer science</a>). Kiểu của mỗi phần tử trong mảng chính xác là kiểu của ngôn ngữ C tương ứng trong bảng, vì vậy kích thước của mảng luôn có thể xác định chính xác. Điều này khác với list. Khi nhận được một list rất khó để xác định chính xác kích thước bộ nhớ của nó. Module array có các hàm <strong>buffer_info()</strong> và <strong>itemsize</strong> cho phép thực hiện điều này. Hàm buffer_info() cho kết quả một tuple chứa địa chỉ bộ nhớ và số phần tử của mảng. Hàm itemsize cho biết kích thước của mỗi phần tử theo byte. Để tính kích thước bộ nhớ mà python cấp phát cho mảng dùng biểu thức: <strong>x.buffer_info()[1] * x.itemsize</strong>. Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s2">&quot;python&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">itemsize</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">buffer_info</span><span class="p">()</span>
+<span class="go">(29756264, 6)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">buffer_info</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">itemsize</span>
+<span class="go">12</span>
+</pre></div>
+<p>Các mảng quy định rõ kiểu giá trị nó chứa, vì vậy không thể lưu các giá trị vượt phạm vi cho phép hoặc các giá trị không đúng kiểu. Python báo lỗi khi xảy ra sự kiện này:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="p">])</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;interactive input&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">OverflowError</span>: <span class="n">python int too large to convert to C unsigned long</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="p">[])</span>
+<span class="go">array(&#39;I&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">])</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;interactive input&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">an integer is required</span>
+</pre></div>
+<p>Trong python 3.* type code 'c' không còn được sử dụng do từ Python 3.0 trở đi kiểu dữ liệu string luôn luôn là unicode.</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">])</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;interactive input&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">ValueError</span>: <span class="n">bad typecode (must be b, B, u, h, H, i, I, l, L, f or d)</span>
+</pre></div>
+<p>Type code 'u' cũng sẽ khác nhau về kích thước trên các hệ điều hành khác nhau, khi chúng triển khai UCS2 (2 byte) hoặc UCS4 (4 byte). Để biết máy bạn dùng UCS mấy gõ lệnh sau:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">maxunicode</span>
+<span class="go">65535</span>
+</pre></div>
+<p>Đó là UCS2, trên hệ thống mà Python được compile với UCS4 kết quả phải lớn hơn.</p>
+<p>Module <tt class="docutils literal">array</tt> có hầu hết các phương thức tương tự <tt class="docutils literal">list</tt>:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="p">[]))</span>
+<span class="go">[&#39;__add__&#39;, &#39;__class__&#39;, &#39;__contains__&#39;, &#39;__copy__&#39;, &#39;__deepcopy__&#39;, &#39;__delattr__&#39;, &#39;__delitem__&#39;,</span>
+<span class="go">&#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getitem__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;,</span>
+<span class="go">&#39;__iadd__&#39;, &#39;__imul__&#39;, &#39;__init__&#39;, &#39;__iter__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__mul__&#39;, &#39;__ne__&#39;,</span>
+<span class="go">&#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__rmul__&#39;, &#39;__setattr__&#39;, &#39;__setitem__&#39;,</span>
+<span class="go">&#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;append&#39;, &#39;buffer_info&#39;, &#39;byteswap&#39;, &#39;count&#39;, &#39;extend&#39;,</span>
+<span class="go">&#39;fromfile&#39;, &#39;fromlist&#39;, &#39;fromstring&#39;, &#39;fromunicode&#39;, &#39;index&#39;, &#39;insert&#39;, &#39;itemsize&#39;, &#39;pop&#39;, &#39;remove&#39;,</span>
+<span class="go">&#39;reverse&#39;, &#39;tofile&#39;, &#39;tolist&#39;, &#39;tostring&#39;, &#39;tounicode&#39;, &#39;typecode&#39;]</span>
+</pre></div>
+<p>Trong danh sách trên ta thấy <tt class="docutils literal">array</tt> <em>không có</em> phương thức <strong>sort</strong> giống như <tt class="docutils literal">list</tt>. Để sắp xếp các array, bạn có thể dùng hàm <strong>sorted</strong>. Hàm <strong>sorted</strong> là hàm built-in, khác với <strong>list.sort</strong> nó tạo ra list mới và không thay đổi list gốc.</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">array</span> <span class="kn">import</span> <span class="n">array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">example</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">10</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+<span class="go">[2.302585092994046, 2.718281828459045, 3.141592653589793]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="n">reverse</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="go">[3.141592653589793, 2.718281828459045, 2.302585092994046]</span>
+</pre></div>
+</div>
+<div class="section" id="efficient-arrays-nhanh-hon-list-nhu-nao">
+<h2>2. &quot;Efficient arrays&quot; nhanh hơn list như nào?</h2>
+<p>Trong phần này chúng ta sẽ thực hiện một số kiểm tra performance giữa array và list trên một số thao tác điển hình. Chỉ một số thao tác được kiểm tra, kết quả thời gian có thể khác nhau với các phiên bản Python, hay các cấu hình máy khác. Tuy nhiên tôi cố gắng đặt các kiểm tra trong cùng một tập các điều kiện thí nghiệm, và chỉ xem xét tương quan giữa các con số nhằm rút ra một kết luận nào đó.</p>
+<p>Đầu tiên là sắp xếp - thao tác cơ bản đặc trưng cho một list.</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;a.sort()&quot;</span><span class="p">,</span> <span class="s2">&quot;import random;a=list(range(10**4)); </span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">random.shuffle(a)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">0.05681145858943637</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sorted(a)&quot;</span><span class="p">,</span> <span class="s2">&quot;import random;a=list(range(10**4)); </span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">random.shuffle(a)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">0.7554756694498792</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sorted(a)&quot;</span><span class="p">,</span> <span class="s2">&quot;import random,array;a=array.array(&#39;L&#39;, range(10**4));</span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">random.shuffle(a)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">0.8100354453472391</span>
+</pre></div>
+<p>Ví dụ trên so sánh thời gian thực hiện của list.sort, sorted trên list, và sorted trên array khi sắp xếp mảng số nguyên 32 bit có 10 ngàn item. Chúng ta thấy thậm chí việc sắp xếp trên mảng bằng hàm sorted chậm hơn nhiều so với trên list.sort trong trường hợp này. Test này được thực hiện trên Python 3.1 với máy Pentium Dual Core 1.7MHz. Trên các phiên bản Python 2.x bạn chỉ cần viết <strong>a = range(10**4)</strong> thay vì <strong>a = list(range(10**4))</strong> Tiếp tục khảo sát với số phần tử đến 100 ngàn, 1 triệu, 10 triệu phần tử:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;a.sort()&quot;</span><span class="p">,</span> <span class="s2">&quot;import random;a=range(10**5);random.shuffle(a)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">1.0628812891800408</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sorted(a)&quot;</span><span class="p">,</span> <span class="s2">&quot;import random;a=range(10**5);random.shuffle(a)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">13.890136599318794</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sorted(a)&quot;</span><span class="p">,</span> <span class="s2">&quot;import random,array;a=array.array(&#39;L&#39;, range(10**5));</span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">random.shuffle(a)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">14.082001048258462</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;a.sort()&quot;</span><span class="p">,</span> <span class="s2">&quot;import random;a=range(10**6);random.shuffle(a)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">1.8611051722955381</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sorted(a)&quot;</span><span class="p">,</span> <span class="s2">&quot;import random;a=range(10**6);random.shuffle(a)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">1.9412927927796773</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sorted(a)&quot;</span><span class="p">,</span> <span class="s2">&quot;import random,array;a=array.array(&#39;L&#39;, range(10**6));</span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">random.shuffle(a)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">2.2266062190747107</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;a.sort()&quot;</span><span class="p">,</span> <span class="s2">&quot;import random;a=range(10**7);random.shuffle(a)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">25.894550537010218</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sorted(a)&quot;</span><span class="p">,</span> <span class="s2">&quot;import random;a=range(10**7);random.shuffle(a)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">26.986440155994387</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sorted(a)&quot;</span><span class="p">,</span> <span class="s2">&quot;import random,array;a=array.array(&#39;L&#39;, range(10**7));</span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">random.shuffle(a)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">30.602503383151088</span>
+</pre></div>
+<p>Hàm <strong>sort</strong> của list là <strong>in-place</strong> vì vậy nó nhanh hơn <strong>sorted</strong> do không phải thực hiện các thao tác cấp phát bộ nhớ để tạo list mới như <strong>sorted</strong>. Nó nhanh hơn đáng kể khi số phần tử là nhỏ. Trong test trên đây là khoảng 13 lần với 10 ngàn item và 100 ngàn item. Số các thao tác cấp phát bộ nhớ tăng tuyến tính theo số phần tử, trong khi số các phép so sánh tăng theo n*logn (hoặc nếu tốt hơn n*loglogn). Vì vậy khi tăng số lượng các item thì số các phép so sánh tăng nhanh hơn số các thao tác cấp phát bộ nhớ. Ở trên 1 triệu phần tử các phép toán so sánh chiếm đa số thời gian xử lý. Ta có thể thấy thời gian thực thi ở các hàm là tương đương nhau. Trên mức 10 triệu phần tử sự khác biệt không còn đáng kể nữa.</p>
+<p>Hàm <strong>sorted</strong> thực thi trên array thường sẽ chậm hơn trên list trong sai khác thời gian tương đối nhỏ. Nguyên nhân có thể được giải thích là do sorted không tạo ra một array mà luôn luôn tạo ra một list. Rõ ràng <strong>sorted</strong> trên một array nhưng trả lại list sẽ chậm hơn khi sorted trên list trả lại list. Các Efficient arrays muốn nhanh hơn list thực sự cần một sort của riêng chúng.</p>
+<p>Chuyển qua các thao tác khác với list. Chẳng hạn với hàm sum một list các số nguyên</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sum(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;x=range(1000)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="go">0.60629310370359235</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sum(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;import array; x = array.array(&#39;d&#39;, range(1000))&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="go">0.74805731663627739</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sum(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;x=range(10000)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="go">0.60768722812650822</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sum(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;import array; x = array.array(&#39;d&#39;, range(10000))&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="go">0.75720026176844613</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sum(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;x=range(10**5)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">1.1360591999478515</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sum(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;import array; x = array.array(&#39;d&#39;, range(10**5))&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">0.73434230670147826</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sum(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;x=range(10**6)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">1.9724225132735</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sum(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;import array; x = array.array(&#39;d&#39;, range(10**6))&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">0.73678350503251977</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sum(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;x=range(10**7)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">20.701364808722474</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;sum(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;import array; x = array.array(&#39;d&#39;, range(10**7))&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">7.399070781130149</span>
+</pre></div>
+<p>Hàm sum với array chậm hơn khi số phần tử nhỏ và càng ngày càng nhanh hơn khi số phần tử lớn hơn. Test sau đây cũng chỉ ra join các string là nhanh hơn hàm tounicode của array.</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="nb">chr</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">90</span><span class="p">)))</span><span class="o">.</span><span class="n">tounicode</span><span class="p">()</span>
+<span class="go">&#39;ABCDEFGHIJKLMNOPQRSTUVWXY&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">chr</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">90</span><span class="p">)))</span>
+<span class="go">&#39;ABCDEFGHIJKLMNOPQRSTUVWXY&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;array.array(&#39;u&#39;, map(chr, range(65, 90))).tounicode()&quot;</span><span class="p">,</span> <span class="s2">&quot;import array&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="go">14.721977927611988</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;&#39;&#39;.join(map(chr, range(65, 90)))&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="go">8.788942485645748</span>
+</pre></div>
+<p>Để loại bỏ các phần tử trùng nhau của một list từ python 2.4 trở đi bạn có thể dùng lệnh <strong>L = list(set(L))</strong>. Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
+<span class="go">[1, 2, 3, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
+<span class="go">array(&#39;L&#39;, [1, 2, 3])</span>
+</pre></div>
+<p>Ví dụ sau so sánh thời gian loại trùng của array và list sử dụng cú pháp này:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;array(&#39;L&#39;, set(x))&quot;</span><span class="p">,</span> <span class="s2">&quot;from array import array; </span><span class="se">\</span>
+<span class="gp">... </span><span class="s2"> x = array(&#39;L&#39;, range(10**5))&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">0.3053085107321749</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;list(set(x))&quot;</span><span class="p">,</span> <span class="s2">&quot;x = range(10**5)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">0.25598173543039593</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;array(&#39;L&#39;, set(x))&quot;</span><span class="p">,</span> <span class="s2">&quot;from array import array; </span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">x = array(&#39;L&#39;, range(10**6))&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">3.901955860623275</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;list(set(x))&quot;</span><span class="p">,</span> <span class="s2">&quot;x = range(10**6)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">2.275834090902208</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;array(&#39;L&#39;, set(x))&quot;</span><span class="p">,</span> <span class="s2">&quot;from array import array; </span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">x = array(&#39;L&#39;, range(10**7))&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">3.823739795026995</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;list(set(x))&quot;</span><span class="p">,</span> <span class="s2">&quot;x = range(10**7)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">2.216846163641094</span>
+</pre></div>
+<p>Như vậy sử dụng array sẽ không hiệu quả bằng list trong tình huống này.</p>
+<p>Việc đảo ngược một list cũng luôn luôn nhanh hơn đảo ngược một array. Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;x.reverse()&quot;</span><span class="p">,</span> <span class="s2">&quot;x = range(10**7)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">0.30343171366575916</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;x.reverse()&quot;</span><span class="p">,</span> <span class="s2">&quot;import array; x = array.array(&#39;L&#39;, range(10**7))&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">4.0138636612646224</span>
+</pre></div>
+<p>Trên python 3.* bạn phải viết x = list(range(10**7)) do hàm range trong python 3.* trả về iterator chứ không phải list.</p>
+<p>Với phép toán nhân list lại chậm hơn array. Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;100000*x&quot;</span><span class="p">,</span> <span class="s2">&quot;from array import array; </span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">x=array(&#39;u&#39;, u&#39;hello world&#39;)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">0.077855393644313153</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;100000*x&quot;</span><span class="p">,</span> <span class="s2">&quot;x=list(u&#39;hello world&#39;)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">0.20222266310884152</span>
+</pre></div>
+<p>Dùng array sẽ kỳ hiệu quả hơn trong phép cộng:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;x + y&quot;</span><span class="p">,</span> <span class="s2">&quot;from array import array;</span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">x=array(&#39;L&#39;, range(10*7));y=x[:]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">0.00019484576660033781</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;x + y&quot;</span><span class="p">,</span> <span class="s2">&quot;x=range(10*7);y=x[:]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">0.0005318282637745142</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;x + y&quot;</span><span class="p">,</span> <span class="s2">&quot;from array import array;</span><span class="se">\</span>
+<span class="gp">... </span><span class="s2">x=array(&#39;L&#39;, range(1000));y=x[:]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="go">2.354171564954413</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;x + y&quot;</span><span class="p">,</span> <span class="s2">&quot;x=range(1000);y=x[:]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">()</span>
+<span class="go">20.363064586337714</span>
+</pre></div>
+<p>Như vậy là không phải lúc nào array cũng nhanh hơn list. Ít nhất là trong thao tác đảo ngược mảng và sắp xếp. Trong hầu hết các tính toán với danh sách kích thước nhỏ, dùng list sẽ tiện và nhanh hơn.</p>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2010-01-16T16:20:00+07:00"><i class="fa fa-calendar"></i> Sat 16 January 2010</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/pham-thi-minh-hoai.html" rel="author">Phạm Thị Minh Hoài</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/list.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">list</a>
+            <a href="../../tag/python-array.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">python array</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

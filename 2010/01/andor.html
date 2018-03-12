@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  ..and..or..
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2010/01/andor.html" rel="bookmark" title="Permalink to ..and..or..">..and..or..</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Trong bài viết trước về <strong>Phần tử không</strong> tôi có nói về việc cần phải cẩn thận khi dùng phép toán có tương tác giữa phần tử không và <strong>None</strong>. Trong bài này tôi trình bày một ví dụ nhỏ minh họa rõ hơn một vấn đề mà nhiều bạn mới học có thể gặp phải. Đó là phép toán rút gọn <strong>..and..or..</strong> khi có sự tham gia của <strong>None</strong>.</p>
+<p>Cấu trúc <strong>if.. else</strong> và phép gán giá trị theo điều kiện trong python:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">somevalue</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">othervalue</span>
+</pre></div>
+<p>Có thể được viết trên một dòng:</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">condition</span> <span class="ow">and</span> <span class="n">somevalue</span> <span class="ow">or</span> <span class="n">othervalue</span>
+</pre></div>
+<p>Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="o">*</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="s2">&quot;OK&quot;</span> <span class="ow">or</span> <span class="s2">&quot;DUREX&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">&#39;OK&#39;</span>
+</pre></div>
+<p>Thực tế có nhiều bạn thích cách viết này. Vì nó gọn hơn và <em>mang tính python</em> hơn. Tuy nhiên hãy cẩn thận khi sử dụng cấu trúc này. Chẳng hạn trong cấu trúc:</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">condition</span> <span class="ow">and</span> <span class="n">func1</span><span class="p">()</span> <span class="ow">or</span> <span class="n">func2</span><span class="p">()</span>
+</pre></div>
+<p>Hàm <strong>func1()</strong> và <strong>func2()</strong> có thể có giá trị <strong>None</strong>, khi đó kết quả kỳ vọng có thể không như bạn mong muốn. Xét ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func1</span><span class="p">():</span>
+    <span class="k">return</span> <span class="bp">None</span>
+
+<span class="k">def</span> <span class="nf">func2</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;some value&quot;</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">func1</span><span class="p">()</span> <span class="ow">or</span> <span class="n">func2</span><span class="p">()</span>
+<span class="k">print</span> <span class="n">x</span>
+</pre></div>
+<p>Kết quả:</p>
+<pre class="literal-block">
+some value
+</pre>
+<p>Biểu thức logic là <strong>True</strong> song vì <strong>func1() == None</strong> nên <strong>x = True and None or func2()</strong> = <strong>&quot;some value&quot;</strong></p>
+<p>Vì vậy hãy cẩn thận khi dùng cấu trúc <strong>..and..or..</strong> trừ khi bạn biết rõ các giá trị tham gia biểu thức này luôn luôn khác <strong>None</strong>.</p>
+<p>Từ phiên bản 2.5 trở đi Python hỗ trợ cấu trúc:</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">TrueValue</span> <span class="k">if</span> <span class="n">Condition</span> <span class="k">else</span> <span class="n">FalseValue</span>
+</pre></div>
+<p>Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;OK&quot;</span> <span class="k">if</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span> <span class="k">else</span> <span class="s2">&quot;DUREX&quot;</span>
+</pre></div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2010-01-02T16:25:00+07:00"><i class="fa fa-calendar"></i> Sat 02 January 2010</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/pham-thi-minh-hoai.html" rel="author">Phạm Thị Minh Hoài</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/ngon-ngu.html" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">ngôn ngữ</a>
+            <a href="../../tag/none.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">None</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

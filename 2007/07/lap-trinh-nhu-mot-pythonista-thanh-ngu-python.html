@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Lập trình như một Pythonista: Thành ngữ Python
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2007/07/lap-trinh-nhu-mot-pythonista-thanh-ngu-python.html" rel="bookmark" title="Permalink to Lập trình như một Pythonista: Thành ngữ Python">Lập trình như một Pythonista: Thành ngữ Python</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Bản lược dịch của bài nói chuyện &quot;Code Like a Pythonista: Idiomatic Python&quot; do David Goodger trình bày tại PyCon 2007 và OSCON 2007.</p>
+<p>Ngày 26 tháng 07 năm 2007, David Goodger gửi bài nói chuyện <a class="reference external" href="http://python.net/~goodger/projects/pycon/2007/idiomatic/">Code Like a Pythonista: Idiomatic Python</a> mà ông đã trình bày ở PyCon 2007 và OSCON 2007 lên trang nhà. Đây là bài lược dịch những ý chính.</p>
+<p>Trước khi vào bài, xin được giới thiệu qua về hai từ mà chúng ta hay gặp là <strong>pythonista</strong> và <strong>pythoneer</strong>. <em>Pythonista</em> chỉ một người theo đuổi ngôn ngữ Python cuồng nhiệt, như là một cổ động viên bóng đá trung thành. <em>Pythoneer</em> chỉ một người luôn đi đầu và nắm bắt những điểm mới của ngôn ngữ Python, như là nhà khoa học tiên phong trong lĩnh vực của họ. Thông thường, hai từ này đều dùng để chỉ một người rất yêu thích Python, và có thể được hoán chuyển.</p>
+<div class="section" id="kieu-lap-trinh-de-doc-la-quan-trong">
+<h2>Kiểu lập trình: Dễ đọc là quan trọng</h2>
+<blockquote>
+<p>Programs must be written for people to read, and only incidentally for machines to execute.</p>
+<p class="attribution">&mdash;Abelson &amp; Sussman, <em>Structure and Interpretation of Computer Programs</em></p>
+</blockquote>
+<p>Tạm dịch: Chương trình phải được viết ra để cho người đọc, và chỉ là sự trùng hợp để cho máy thực thi.</p>
+</div>
+<div class="section" id="khoang-trang">
+<h2>Khoảng trắng</h2>
+<ul class="simple">
+<li>Bốn (4) khoảng trắng ở mỗi nấc thụt vào</li>
+<li>Không dùng tab</li>
+<li>Không bao giờ lẫn lộn tab và khoảng trắng</li>
+<li>Cách một dòng giữa các hàm</li>
+<li>Cách hai dòng giữa các lớp</li>
+<li>Chừa một khoảng trắng sau dấu phẩy <tt class="docutils literal">,</tt> trong từ điển, danh sách, bộ, danh sách tham số, và sau dấu hai chấm <tt class="docutils literal">:</tt> trong từ điển nhưng không phải trước nó</li>
+<li>Chừa một khoảng trắng trước và sau phép gán và so sánh (trừ khi trong danh sách tham số)</li>
+<li>Không chừa khoảng trắng trong ngoặc tròn, hoặc ngay trước các danh sách tham số</li>
+<li>Không chừa khoảng trắng trong các chuỗi tài liệu</li>
+</ul>
+</div>
+<div class="section" id="cach-dat-ten">
+<h2>Cách đặt tên</h2>
+<ul class="simple">
+<li><tt class="docutils literal">joined_lower</tt> cho hàm, phương thức và thuộc tính</li>
+<li><tt class="docutils literal">joined_lower</tt> hoặc <tt class="docutils literal">ALL_CAPS</tt> cho hằng</li>
+<li><tt class="docutils literal">CapWords</tt> cho lớp</li>
+<li><tt class="docutils literal">camelCase</tt> chỉ dùng để hợp với những thói quen đã có</li>
+<li>Với các thuộc tính: <tt class="docutils literal">public</tt>, <tt class="docutils literal">_internal</tt>, và <tt class="docutils literal">__private</tt> nhưng hạn chế dùng kiểu <tt class="docutils literal">__private</tt></li>
+</ul>
+</div>
+<div class="section" id="nhung-cau-lenh-ghep">
+<h2>Những câu lệnh ghép</h2>
+<p>Tốt:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">&#39;blah&#39;</span><span class="p">:</span>
+    <span class="n">do_something</span><span class="p">()</span>
+<span class="n">do_one</span><span class="p">()</span>
+<span class="n">do_two</span><span class="p">()</span>
+<span class="n">do_three</span><span class="p">()</span>
+</pre></div>
+<p>Xấu:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">&#39;blah&#39;</span><span class="p">:</span> <span class="n">do_something</span><span class="p">()</span>
+<span class="n">do_one</span><span class="p">();</span> <span class="n">do_two</span><span class="p">();</span> <span class="n">do_three</span><span class="p">()</span>
+</pre></div>
+<p>Việc thiếu thụt vào ở mã &quot;Xấu&quot; <em>che mất</em> câu lệnh <tt class="docutils literal">if</tt>. Sử dụng nhiều câu lệnh trên cùng một dòng là mang tội lớn.</p>
+</div>
+<div class="section" id="hoan-doi-gia-tri">
+<h2>Hoán đổi giá trị</h2>
+<p>Trong các ngôn ngữ khác:</p>
+<div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+</pre></div>
+<p>Trong Python:</p>
+<div class="highlight"><pre><span></span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+</pre></div>
+</div>
+<div class="section" id="dau-tuong-tac">
+<h2>Dấu <tt class="docutils literal">_</tt> tương tác</h2>
+<p>Đây là một chức năng thật sự hữu dụng mà ít người biết.</p>
+<p>Trong môi trường thông dịch tương tác, khi bạn định giá một biểu thức hoặc gọi một hàm, kết quả sẽ được gán vào một tên tạm, <tt class="docutils literal">_</tt> (dấu gạch chân).</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span>
+<span class="go">2</span>
+</pre></div>
+<p><tt class="docutils literal">_</tt> chứa biểu thức <em>được in</em> cuối cùng. Khi kết quả là <tt class="docutils literal">None</tt>, không có gì được in ra nên <tt class="docutils literal">_</tt> không thay đổi. Dấu gạch chân chỉ có tác dụng trong môi trường tương tác, không có tác dụng trong một mô-đun.</p>
+</div>
+<div class="section" id="tao-chuoi-tu-cac-chuoi-con">
+<h2>Tạo chuỗi từ các chuỗi con</h2>
+<p>Dùng:</p>
+<div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+</pre></div>
+<p>Không dùng:</p>
+<div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="n">s</span>
+</pre></div>
+<p>Trường hợp hay gặp khi danh sách có nhiều hơn một phần từ:</p>
+<div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="s1">&#39;Choose&#39;</span><span class="p">,</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">colors</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;or&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+<p>In ra:</p>
+<pre class="literal-block">
+Choose red, blue, green or yellow
+</pre>
+</div>
+<div class="section" id="dung-in-khi-co-the">
+<h2>Dùng <tt class="docutils literal">in</tt> khi có thể</h2>
+<p>Tốt:</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">key</span>
+</pre></div>
+<ul class="simple">
+<li><tt class="docutils literal">in</tt> thường là nhanh hơn</li>
+<li>có thể dùng được với danh sách, bộ, từ điển, và tập hợp</li>
+</ul>
+<p>Xấu:</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">print</span> <span class="n">key</span>
+</pre></div>
+<p>Chỉ dùng được cho các đối tượng có phương thức <tt class="docutils literal">keys()</tt>.</p>
+<p>Nhưng sẽ cần dùng <tt class="docutils literal">keys()</tt> khi sửa đổi từ điển:</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">d</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</pre></div>
+<p>vì <tt class="docutils literal">keys()</tt> tạo ra một danh sách các khóa riêng để lặp. Nếu không, bạn sẽ gặp phải lỗi <tt class="docutils literal">RuntimeError</tt> vì từ điển bị thay đổi trong khi lặp.</p>
+<p>Để thống nhất, hãy dùng <tt class="docutils literal">key in dict</tt> thay vì <tt class="docutils literal">dict.has_key(key)</tt>.</p>
+</div>
+<div class="section" id="phuong-thuc-get-cua-tu-dien">
+<h2>Phương thức <tt class="docutils literal">get()</tt> của từ điển</h2>
+<p>Chúng ta thường khởi tạo các phần tử từ điển trước khi dùng. Đây là cách không hay:</p>
+<div class="highlight"><pre><span></span><span class="n">navs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">equity</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">portfolio</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">navs</span><span class="p">:</span>
+        <span class="n">navs</span><span class="p">[</span><span class="n">portfolio</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">navs</span><span class="p">[</span><span class="n">portfolio</span><span class="p">]</span> <span class="o">+=</span> <span class="n">position</span> <span class="o">*</span> <span class="n">prices</span><span class="p">[</span><span class="n">equity</span><span class="p">]</span>
+</pre></div>
+<p>Dùng <tt class="docutils literal">dict.get(key, default)</tt> sẽ tránh được việc kiểm tra:</p>
+<div class="highlight"><pre><span></span><span class="n">navs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">equity</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">navs</span><span class="p">[</span><span class="n">portfolio</span><span class="p">]</span> <span class="o">=</span> <span class="n">navs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">position</span> <span class="o">*</span> <span class="n">prices</span><span class="p">[</span><span class="n">equity</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="phuong-thuc-setdefault-cua-tu-dien">
+<h2>Phương thức <tt class="docutils literal">setdefault()</tt> của từ điển</h2>
+<p>Cách dở để khởi tạo một từ điển:</p>
+<div class="highlight"><pre><span></span><span class="n">equities</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">equity</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">portfolio</span> <span class="ow">in</span> <span class="n">equities</span><span class="p">:</span>
+        <span class="n">equities</span><span class="p">[</span><span class="n">portfolio</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">equity</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">equities</span><span class="p">[</span><span class="n">portfolio</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">equity</span><span class="p">]</span>
+</pre></div>
+<p>Dùng <tt class="docutils literal">dict.setdefault(key, default)</tt> nhanh gọn hơn nhiều:</p>
+<div class="highlight"><pre><span></span><span class="n">equities</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">equity</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">equities</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">equity</span><span class="p">)</span>
+</pre></div>
+<p><tt class="docutils literal">dict.setdefault()</tt> tương đương với <em>lấy, hoặc thiết lập rồi lấy</em>. Nó rất hiệu quả nếu khóa từ điển cần nhiều thời gian để tính, hoặc vì nó dài nên khó nhập. Tuy nhiên giá trị <em>default</em> luôn luôn được tính cho dù có cần dùng hay không.</p>
+<p>Phương thức <tt class="docutils literal">setdefault()</tt> cũng có thể được dùng riêng vì hiệu quả phụ của nó:</p>
+<div class="highlight"><pre><span></span><span class="n">navs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">equity</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">navs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">navs</span><span class="p">[</span><span class="n">portfolio</span><span class="p">]</span> <span class="o">+=</span> <span class="n">position</span> <span class="o">*</span> <span class="n">prices</span><span class="p">[</span><span class="n">equity</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="defaultdict">
+<h2><tt class="docutils literal">defaultdict</tt></h2>
+<p>Trong Python 2.5, <tt class="docutils literal">defaultdict</tt> là một phần của mô-đun <tt class="docutils literal">collections</tt>. Nó giống như từ điển thường nhưng với hai đặc điểm khác:</p>
+<ul class="simple">
+<li>Nó nhận một tham số là một hàm nhà máy mặc định (default factory functions) và</li>
+<li>Khi khóa không thể tìm thấy trong từ điển, hàm này sẽ được gọi và kết quả trả về sẽ được dùng để khởi tạo khóa đó</li>
+</ul>
+<p>Đây là ví dụ trước, mà mỗi phần tử trong từ điển là một danh sách rỗng, nhưng dùng <tt class="docutils literal">defaultdict</tt>:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="n">equities</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">equity</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">equities</span><span class="p">[</span><span class="n">portfolio</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">equity</span><span class="p">)</span>
+</pre></div>
+<p>Trong ví dụ này, hàm nhà máy mặc định là <tt class="docutils literal">list</tt>. Để tạo từ điển giá trị mặc định là 0 thì dùng <tt class="docutils literal">int</tt>:</p>
+<div class="highlight"><pre><span></span><span class="n">navs</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">portfolio</span><span class="p">,</span> <span class="n">equity</span><span class="p">,</span> <span class="n">position</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">navs</span><span class="p">[</span><span class="n">portfolio</span><span class="p">]</span> <span class="o">+=</span> <span class="n">position</span> <span class="o">*</span> <span class="n">prices</span><span class="p">[</span><span class="n">equity</span><span class="p">]</span>
+</pre></div>
+<p>Vì khóa mới luôn được tạo nên bạn sẽ không gặp <tt class="docutils literal">KeyError</tt> với <tt class="docutils literal">defaultdict</tt>. Bạn phải dùng <tt class="docutils literal">in</tt> để kiểm tra xem một khóa đã có trong từ điển hay chưa.</p>
+</div>
+<div class="section" id="kiem-tra-gia-tri-dung">
+<h2>Kiểm tra giá trị đúng</h2>
+<div class="highlight"><pre><span></span><span class="c1"># dùng:           # không dùng:</span>
+<span class="k">if</span> <span class="n">x</span><span class="p">:</span>             <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="k">pass</span>              <span class="k">pass</span>
+</pre></div>
+<p>Nếu là một danh sách:</p>
+<div class="highlight"><pre><span></span><span class="c1"># dùng:           # không dùng:</span>
+<span class="k">if</span> <span class="n">items</span><span class="p">:</span>         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">pass</span>              <span class="k">pass</span>
+
+                  <span class="c1"># and definitely not this:</span>
+                  <span class="k">if</span> <span class="n">items</span> <span class="o">!=</span> <span class="p">[]:</span>
+                      <span class="k">pass</span>
+</pre></div>
+<p>Để điều khiển giá trị đúng của các trường hợp của một lớp người dùng định nghĩa, sử dụng các phương thức đặc biệt <tt class="docutils literal">__nonzero__</tt> hoặc <tt class="docutils literal">__len__</tt>. Dùng <tt class="docutils literal">__len__</tt> nếu lớp đó là một lớp chứa (container) có chiều dài:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyContainer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return my length.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+<p>Nếu lớp đó không phải là một lớp chứa thì dùng <tt class="docutils literal">__nonzero__</tt>:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="fm">__nonzero__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return my truth value (True or False).&quot;&quot;&quot;</span>
+        <span class="c1"># This could be arbitrarily complex:</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+<p>Trong Python 3.0, <tt class="docutils literal">__nonzero__</tt> được đổi tên thành <tt class="docutils literal">__bool__</tt> để đồng nhất với kiểu <tt class="docutils literal">bool</tt> có sẵn. Thêm dòng sau vào lớp của bạn cho nó tương hợp hơn:</p>
+<div class="highlight"><pre><span></span><span class="n">__bool__</span> <span class="o">=</span> <span class="fm">__nonzero__</span>
+</pre></div>
+</div>
+<div class="section" id="chi-muc-va-phan-tu">
+<h2>Chỉ mục và phần tử</h2>
+<p>Dùng <tt class="docutils literal">enumerate()</tt> để lặp:</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span>
+
+<span class="c1"># thay vì:              # thay vì:</span>
+<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>               <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)):</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>          <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">print</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span>
+    <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+<p><tt class="docutils literal">enumerate()</tt> trả về một bộ lặp (iterator) (một bộ sinh, generator, là một kiểu bộ lặp):</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="go">&lt;enumerate object at 0xb73ee0f4&gt;</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+<span class="go">(0, &#39;zero&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+<span class="go">(1, &#39;one&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+<span class="go">(2, &#39;two&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+<span class="go">(3, &#39;three&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="err">  File &quot;&quot;, line 1, in ?</span>
+<span class="x">StopIteration</span>
+</pre></div>
+</div>
+<div class="section" id="cac-ngon-ngu-khac-co-bien">
+<h2>Các ngôn ngữ khác có <em>biến</em></h2>
+<p>Trong các ngôn ngữ khác, gán vào một biến là đưa giá trị vào một hộp.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="64%" />
+<col width="36%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">int a = 1;</tt></td>
+<td><img alt="a1box" src="/static/idiomatic-python/a1box.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Hộp <tt class="docutils literal">a</tt> bây giờ chứa một số nguyên 1.</p>
+<p>Gán một giá trị khác vào cùng biến đó sẽ thay thế những gì đã có trong hộp.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="57%" />
+<col width="43%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">a = 2;</tt></td>
+<td><img alt="a2box" src="/static/idiomatic-python/a2box.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Gán một biến vào một biến khác sẽ tạo một bản sao của giá trị trong hộp này và đặt nó vào hộp mới.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="26%" />
+<col width="26%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">int b = a;</tt></td>
+<td><img alt="b2box" src="/static/idiomatic-python/b2box.png" /></td>
+<td><img alt="a2box" src="/static/idiomatic-python/a2box.png" /></td>
+</tr>
+</tbody>
+</table>
+<p><tt class="docutils literal">b</tt> là một hộp mới, có giá trị là bản sao của số nguyên 2. Trong khi hộp <tt class="docutils literal">a</tt> có một bản sao riêng.</p>
+</div>
+<div class="section" id="python-co-ten">
+<h2>Python có <em>tên</em></h2>
+<p>Trong Python, <em>tên</em> hoặc <em>định danh</em> giống như thẻ tên gắn vào một đối tượng.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="55%" />
+<col width="45%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">a = 1</tt></td>
+<td><img alt="a1tag" src="/static/idiomatic-python/a1tag.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Ở đây, số nguyên 1 được gắn một thẻ tên <tt class="docutils literal">a</tt>.</p>
+<p>Nếu chúng ta gán lại vào <tt class="docutils literal">a</tt>, chúng ta chỉ chuyển thẻ <tt class="docutils literal">a</tt> vào một đối tượng khác.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="36%" />
+<col width="20%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">a = 2</tt></td>
+<td><img alt="a2tag" src="/static/idiomatic-python/a2tag.png" /></td>
+<td><img alt="1" src="/static/idiomatic-python/1.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Giờ đây tên <tt class="docutils literal">a</tt> được gắn vào số nguyên 2. Số nguyên 1 có thể vẫn còn tồn tại nhưng nó không còn thẻ tên <tt class="docutils literal">a</tt>.</p>
+<p>Nếu chúng ta gán một tên vào một tên khác, chúng ta chỉ là gắn một thẻ tên khác vào đối tượng đã có.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">b = a</tt></td>
+<td><img alt="ab2tag" src="/static/idiomatic-python/ab2tag.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Tên <tt class="docutils literal">b</tt> chỉ là một thẻ tên thứ hai được gắn vào cùng một đối tượng như thẻ tên <tt class="docutils literal">a</tt>.</p>
+<p>Trong Python, <em>biến</em> là những thẻ tên, không phải là những hộp được đánh tên.</p>
+</div>
+<div class="section" id="gop-danh-sach-list-comprehension-hay-listcomp">
+<h2>Gộp danh sách (list comprehension, hay listcomp)</h2>
+<p>Thông thường:</p>
+<div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">condition</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+        <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fn</span><span class="p">(</span><span class="n">item</span><span class="p">))</span>
+</pre></div>
+<p>Với listcomp:</p>
+<div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">fn</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">a_list</span>
+            <span class="k">if</span> <span class="n">condition</span><span class="p">(</span><span class="n">item</span><span class="p">)]</span>
+</pre></div>
+<p>Listcomp rõ ràng và xúc tích. Listcomp có thể chứa nhiều vòng <tt class="docutils literal">for</tt> hoặc câu lệnh <tt class="docutils literal">if</tt> nhưng nếu nhiều hơn 2 hay 3 thì tốt nhất là nên dùng cách thông thường. Ví dụ danh sách bình phương của các số lẻ từ 0 tới 9:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">n</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
+<span class="go">[1, 9, 25, 49, 81]</span>
+</pre></div>
+</div>
+<div class="section" id="bieu-thuc-bo-sinh-generator-expression-genexp">
+<h2>Biểu thức bộ sinh (generator expression, genexp)</h2>
+<p>Để tính tổng bình phương từ 1 đến 100 ta có thể dùng vòng lặp <tt class="docutils literal">for</tt>:</p>
+<div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">num</span> <span class="o">*</span> <span class="n">num</span>
+</pre></div>
+<p>Hoặc dùng hàm <tt class="docutils literal">sum()</tt> với listcomp:</p>
+<div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">num</span> <span class="o">*</span> <span class="n">num</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)])</span>
+</pre></div>
+<p>Hoặc <tt class="docutils literal">sum()</tt> với genexp:</p>
+<div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">num</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">))</span>
+</pre></div>
+<p>Biểu thức bộ sinh giống như gộp danh sách nhưng nó <em>lười</em> (lazy). Listcomp tạo danh sách ngay lập tức, còn genexp tạo từng giá trị một. Khi chúng ta không cần một danh sách mà chỉ cần từng giá trị của danh sách đó, genext rất hữu dụng. Ví dụ như để tính tổng bình phương từ 1 tới 1000000000, chúng ta sẽ dùng hết bộ nhớ nếu ta dùng listcomp, nhưng với genexp thì chuyện này có thể được thực hiện (mặc dù hơi lâu):</p>
+<div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">num</span>
+            <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000000000</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="section" id="sap-xep-voi-dsu">
+<h2>Sắp xếp với DSU</h2>
+<p>DSU là Decorate-Sort-Undecorate (trang hoàng, sắp xếp, khử trang hoàng).</p>
+<p>Thay vì tạo một hàm so sánh riêng, ta có thể tạo một danh sách tạm sẽ được sắp xếp. Ví dụ để sắp xếp một danh sách các chuỗi theo thứ tự chữ cái thường của chúng:</p>
+<div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">=</span> <span class="s2">&quot;Mot Hai Ba&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="c1"># a_list = [&quot;Mot&quot;, &quot;Hai&quot;, &quot;Ba&quot;]</span>
+
+<span class="c1"># Decorate:</span>
+<span class="n">to_sort</span> <span class="o">=</span> <span class="p">[(</span><span class="n">lower</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+           <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">]</span>
+<span class="c1"># to_sort = [(&quot;mot&quot;, &quot;Mot&quot;), (&quot;hai&quot;, &quot;Hai&quot;), (&quot;ba&quot;, &quot;Ba&quot;)]</span>
+
+<span class="c1"># Sort:</span>
+<span class="n">to_sort</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="c1"># to_sort = [(&quot;ba&quot;, &quot;Ba&quot;), (&quot;hai&quot;, &quot;Hai&quot;), (&quot;mot&quot;, &quot;Mot&quot;)]</span>
+
+<span class="c1"># Undecorate:</span>
+<span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">to_sort</span><span class="p">]</span>
+<span class="c1"># a_list = [&quot;Ba&quot;, &quot;Hai&quot;, &quot;Mot&quot;]</span>
+</pre></div>
+<p>Đây là sự đổi chác giữa bộ nhớ và thời gian. Đơn giản và nhanh hơn, nhưng tốn bộ nhớ hơn vì chúng ta cần tạo một danh sách mới.</p>
+</div>
+<div class="section" id="bo-sinh-generator">
+<h2>Bộ sinh (generator)</h2>
+<p>Chúng ta đã gặp biểu thức bộ sinh. Chúng ta cũng có thể tạo những bộ sinh phức tạp riêng như là những hàm:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_range_generator</span><span class="p">(</span><span class="n">stop</span><span class="p">):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">stop</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">value</span>
+        <span class="n">value</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">my_range_generator</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">do_something</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+<p>Từ khóa <tt class="docutils literal">yield</tt> biến một hàm thành một bộ sinh. Khi bạn gọi một hàm bộ sinh (generator function), thay vì thực thi mã ngay lập tức, Python trả về một đối tượng bộ sinh (generator object), cũng là một bộ lặp vì nó có phương thức <tt class="docutils literal">next()</tt>. Vòng <tt class="docutils literal">for</tt> gọi phương thức <tt class="docutils literal">next()</tt> của bộ lặp cho đến khi biệt lệ <tt class="docutils literal">StopIteration</tt> được nâng. Bạn có thể tự nâng <tt class="docutils literal">StopIteration</tt> hoặc nó sẽ được nâng khi đến cuối bộ sinh.</p>
+<p>Vòng <tt class="docutils literal">for</tt> có một vế <tt class="docutils literal">else</tt> sẽ được thực thi khi mà bộ lặp chạy xong, nhưng không được thực thi khi thoát khỏi bằng câu lệnh <tt class="docutils literal">break</tt>. Ví dụ nếu chúng ta muốn kiểm tra xem điều kiện nào đó có thỏa với một phần tử bất kỳ của một dãy:</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">condition</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Condition not satisfied.&#39;</span><span class="p">)</span>
+</pre></div>
+<p>Ví dụ để lọc các dòng trắng khỏi bộ đọc CSV hoặc các phần tử của một danh sách:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">filter_rows</span><span class="p">(</span><span class="n">row_iterator</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">row_iterator</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">row</span>
+
+<span class="n">data_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">irows</span> <span class="o">=</span> <span class="n">filter_rows</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">data_file</span><span class="p">))</span>
+</pre></div>
+<p>Hoặc đọc từng dòng từ tập tin văn bản:</p>
+<div class="highlight"><pre><span></span><span class="n">datafile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;datafile&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">datafile</span><span class="p">:</span>
+    <span class="n">do_something</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+<p>Điều này làm được là vì các đối tượng tập tin hỗ trợ phương thức <tt class="docutils literal">next()</tt> y như các bộ lặp khác: danh sách, bộ, từ điển (cho các khóa của nó), và các bộ sinh.</p>
+<p>Một điều cần lưu ý là bạn không thể dùng lẫn lộn <tt class="docutils literal">next()</tt> và <tt class="docutils literal">read()</tt> ở các đối tượng tập tin trừ khi bạn dùng Python 2.5 trở lên.</p>
+</div>
+<div class="section" id="eafp-v-s-lbyl">
+<h2>EAFP v.s. LBYL</h2>
+<p>Easier to Ask Forgiveness than Permission: Dễ xin sự tha thứ hơn là sự cho phép. Ý là cứ làm đi và tìm sự tha thứ sau nếu làm sai, còn hơn là tìm sự cho phép trước khi làm.</p>
+<p>Look Before You Leap: Nhìn trước khi nhảy. Ý là phải xem xét hết các trường hợp có thể xảy ra trước khi làm.</p>
+<p>Thông thường EAFP được ưa chuộng hơn.</p>
+<p>Ví dụ như để ép kiểu một biến thành kiểu chuỗi, ta có thể gói đoạn mã trong một câu lệnh <tt class="docutils literal">try</tt> thay vì dùng <tt class="docutils literal">isinstance()</tt>. Và thông thường thì bạn sẽ nhận ra giải pháp tổng quát hơn là nếu bạn cố tìm ra mọi trường hợp có thể.</p>
+<div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="o">...</span>
+</pre></div>
+<p>Luôn luôn chỉ rõ kiểu biệt lệ! Không bao giờ dùng vế <tt class="docutils literal">except</tt> đơn giản vì nó sẽ chụp luôn cả những biệt lệ không lường trước, làm cho mã của bạn khó gỡ rối.</p>
+</div>
+<div class="section" id="khong-dung-from-module-import">
+<h2>Không dùng <tt class="docutils literal">from module import *</tt></h2>
+<p>Thay vào đó, tham chiếu tới tên qua tên mô-đun:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">module</span>
+<span class="n">module</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+<p>Hoặc dùng tên mô-đun ngắn:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">long_module_name</span> <span class="kn">as</span> <span class="nn">mod</span>
+<span class="n">mod</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+<p>Hoặc tự nhập vào các tên bạn cần:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">module</span> <span class="kn">import</span> <span class="n">name</span>
+<span class="n">name</span>
+</pre></div>
+</div>
+<div class="section" id="mo-dun-va-kich-ban">
+<h2>Mô-đun và kịch bản</h2>
+<p>Để vừa tạo một mô-đun và một kịch bản chạy được:</p>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># script code here</span>
+</pre></div>
+<p>Trừ trường hợp rất cần thiết, bạn không nên đặt mã thực thi ở mức cao nhất mà hãy đặt chúng ở trong các hàm, các lớp, hoặc các phương thức rồi dùng nó trong <tt class="docutils literal">if __name__ == '__main__'</tt>.</p>
+</div>
+<div class="section" id="cau-truc-mo-dun">
+<h2>Cấu trúc mô-đun</h2>
+<p>Một mô-đun nên có cấu trúc như sau:</p>
+<div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;module docstring&quot;&quot;&quot;</span>
+
+<span class="c1"># imports</span>
+<span class="c1"># constants</span>
+<span class="c1"># exception classes</span>
+<span class="c1"># interface functions</span>
+<span class="c1"># classes</span>
+<span class="c1"># internal functions &amp; classes</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+    <span class="o">...</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">main</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="goi">
+<h2>Gói</h2>
+<pre class="literal-block">
+package/
+    __init__.py    # &lt;-- Lưu ý
+    module1.py
+    subpackage/
+        __init__.py
+        module2.py
+</pre>
+<ul class="simple">
+<li>Dùng để quản lý dự án</li>
+<li>Giảm các mục trong đường dẫn nạp (load-path)</li>
+<li>Giảm xung đột tên</li>
+</ul>
+<p>Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">package.module1</span>
+<span class="kn">from</span> <span class="nn">packages.subpackage</span> <span class="kn">import</span> <span class="n">module2</span>
+<span class="kn">from</span> <span class="nn">packages.subpackage.module2</span> <span class="kn">import</span> <span class="n">name</span>
+</pre></div>
+<p>Trong Python 2.5 chúng ta có nhập tuyệt đối (absolute import) và nhập tương đối (relative import):</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
+</pre></div>
+</div>
+<div class="section" id="don-gian-tot-hon-phuc-tap">
+<h2>Đơn giản tốt hơn phức tạp</h2>
+<blockquote>
+<p>Debugging is twice as hard as writing the code in the first place.
+Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.</p>
+<p class="attribution">&mdash;Brian W. Kernighan, cùng tác giả của <em>The C Programming Language</em> và là chữ <tt class="docutils literal">K</tt> trong <tt class="docutils literal">AWK</tt></p>
+</blockquote>
+<p>Tạm dịch: Gỡ rối khó gấp hai lần viết mã. Cho nên, nếu bạn viết mã lanh lợi nhất có thể, thì bạn, theo định nghĩa, không đủ thông minh để gỡ rối. Nói một cách khác, hãy giữ cho chương trình của bạn đơn giản.</p>
+</div>
+<div class="section" id="dung-sang-tao-lai-banh-xe">
+<h2>Đừng sáng tạo lại bánh xe</h2>
+<p>Trước khi viết mã, hãy:</p>
+<ul class="simple">
+<li>Xem qua thư viện chuẩn của Python</li>
+<li>Xem qua chỉ mục các gói Python (còn được biết đến là <em>Cửa hàng phô mai</em>, Cheese Shop)</li>
+<li>Tìm qua mạng</li>
+</ul>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2007-07-27T21:57:00+07:00"><i class="fa fa-calendar"></i> Fri 27 July 2007</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nguyen-thanh-nam.html" rel="author">Nguyễn Thành Nam</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/convention.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">convention</a>
+            <a href="../../tag/idiom.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">idiom</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

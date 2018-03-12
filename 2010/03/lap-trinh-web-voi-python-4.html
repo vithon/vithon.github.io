@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Lập trình web với Python (4)
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2010/03/lap-trinh-web-voi-python-4.html" rel="bookmark" title="Permalink to Lập trình web với Python (4)">Lập trình web với Python (4)</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Trong kỳ này, chúng ta sẽ xem xét một chương trình CGI có xử lý dữ liệu nhập.</p>
+<p>Ở kỳ trước, chúng ta đã biết cấu trúc chung của một chương trình CGI. Chương trình CGI mà chúng ta dùng làm ví dụ không thật sự hữu dụng vì chúng chỉ xuất giá trị ngẫu nhiên.</p>
+<p>Một chương trình CGI hữu dụng thường sẽ nhận dữ liệu nhập qua các mẫu đơn (form), xử lý các dữ liệu này, và trả về kết quả.</p>
+<p>Các dữ liệu nhập được truyền đến ứng dụng web ở dạng bộ 2 (khóa, giá trị) (key-value pair). Ví dụ nếu chúng ta điền vào một mẫu đơn có trường nhập tên là <strong>name</strong> và giá trị của nó là <strong>Nguyễn Việt Nam</strong> thì khóa sẽ là <strong>name</strong> và giá trị là <strong>Nguyễn Việt Nam</strong>. Thông thường có hai phương thức truyền dữ liệu đến ứng dụng web là GET và POST.</p>
+<p>Trong phương thức <strong>GET</strong>, các bộ 2 (khóa, giá trị) này sẽ được truyền qua URL. Với ví dụ ở trên, URL sẽ có dạng <strong>http://host/path?name=Nguyễn+Việt+Nam</strong>. Bạn đọc sẽ chú ý các điểm quan trọng sau:</p>
+<ol class="arabic simple">
+<li>Đi ngay phía sau đường dẫn đến ứng dụng CGI là một dấu chấm hỏi (<strong>?</strong>). Ký tự này dùng để thông báo phần phía sau là dữ liệu nhập.</li>
+<li>Phân cách giữa khóa và giá trị của dữ liệu nhập là dấu bằng (<strong>=</strong>).</li>
+<li>Khóa và giá trị được chuyển mã theo dạng phù hợp. Chúng ta thấy rằng ký tự khoảng trắng được chuyển thành ký tự cộng (<strong>+</strong>). Việc chuyển mã này nhằm làm cho URL không chứa các ký tự đặc biệt có thể gây nhầm lẫn.</li>
+<li>Không được nêu rõ trong ví dụ là ký tự phân cách các bộ 2 (khóa, giá trị) là ký tự và (<strong>&amp;</strong>).</li>
+</ol>
+<p>Trong phương thức <strong>POST</strong>, các bộ 2 (khóa, giá trị) được truyền trong nội dung yêu cầu HTTP, và không hiện rõ cho người dùng.</p>
+<p>Hãy thử nghiệm với chương trình ví dụ sau (đặt tên nó là <strong>fp.py</strong>):</p>
+<div class="highlight"><pre><span></span><span class="ch">#!c:/python26/python</span>
+
+<span class="k">print</span> <span class="s2">&quot;Content-Type: text/html&quot;</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s2">&quot;&quot;&quot;&lt;html&gt;</span>
+<span class="s2">      &lt;head&gt;</span>
+<span class="s2">              &lt;title&gt;CGI form processing&lt;/title&gt;</span>
+<span class="s2">      &lt;/head&gt;</span>
+<span class="s2">      &lt;body&gt;</span>
+<span class="s2">              &lt;fieldset&gt;</span>
+<span class="s2">                      &lt;legend&gt;Number guessing game&lt;/legend&gt;</span>
+<span class="s2">                      &lt;form method=&quot;POST&quot;&gt;</span>
+<span class="s2">                              &lt;label for=&quot;number&quot;&gt;Enter a number&lt;/label&gt;</span>
+<span class="s2">                              &lt;input type=&quot;text&quot; name=&quot;number&quot; value=&quot;&quot; /&gt;</span>
+<span class="s2">                              &lt;input type=&quot;submit&quot; /&gt;</span>
+<span class="s2">                      &lt;/form&gt;</span>
+<span class="s2">              &lt;/fieldset&gt;</span>
+<span class="s2">      &lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+<p>Kết quả mà chúng ta nhận được là một mẫu đơn như hình:</p>
+<img alt="" src="/static/web-programming/cgi/form1.png" />
+<p>Một số điểm quan trọng trong chương trình này là sự sử dụng các thẻ liên quan đến mẫu đơn.</p>
+<ol class="arabic simple">
+<li>Trước hết là thẻ <strong>form</strong> dùng để thông báo sự bắt đầu của một mẫu đơn. Các thuộc tính (attribute) thông thường của thẻ này gồm <strong>method</strong> và <strong>action</strong>.<ol class="arabic">
+<li>Thuộc tính <strong>method</strong> xác định phương thức truyền dữ liệu. Chúng ta có thể sử dụng <tt class="docutils literal">GET</tt> hoặc <tt class="docutils literal">POST</tt>.</li>
+<li>Thuộc tính <strong>action</strong> xác định đường dẫn đến chương trình CGI sẽ xử lý mẫu đơn này. Nếu không xác định thì chính địa chỉ hiện tại sẽ được dùng.</li>
+</ol>
+</li>
+<li>Thẻ <strong>input</strong> xác định một trường nhập. Thẻ này có các thuộc tính chính là <strong>type</strong>, <strong>name</strong>, và <strong>value</strong>.<ol class="arabic">
+<li>Thuộc tính <strong>type</strong> xác định kiểu nhập là một ô nhập (text box), một nút nhấn (button), một nút chọn (radio button), hoặc một tập tin (file). Ở ví dụ này chúng ta xác định một ô nhập với kiểu <strong>text</strong>.</li>
+<li>Thuộc tính <strong>name</strong> xác định khóa của bộ 2. Trong ví dụ này khóa nhập là <strong>number</strong>.</li>
+<li>Thuộc tính <strong>value</strong> xác định giá trị khởi đầu của trường nhập này. Chúng ta để trống.</li>
+</ol>
+</li>
+<li>Thẻ <strong>input</strong> với thuộc tính <strong>type</strong> là <strong>submit</strong> sẽ tạo một nút nhấn. Nút nhấn này đặc biệt vì nó sẽ gửi các giá trị chúng ta nhập vào mẫu đơn đến chương trình CGI.</li>
+</ol>
+<p>Thông tin chi tiết về các thẻ HTML có thể được xem thêm từ các tài liệu từ <a class="reference external" href="http://www.w3c.org">W3C</a>.</p>
+<p>Chương trình này cũng chỉ là in ra một mẫu đơn nhưng chúng ta đã có thể nhấn nút để gửi mẫu đơn đó đi.</p>
+<p>Chúng ta sẽ sửa nó để in lại những gì đã nhận từ trình duyệt.</p>
+<div class="highlight"><pre><span></span><span class="ch">#!c:/python26/python</span>
+
+<span class="kn">import</span> <span class="nn">cgi</span>
+
+<span class="k">print</span> <span class="s2">&quot;Content-Type: text/html&quot;</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s2">&quot;&quot;&quot;&lt;html&gt;</span>
+<span class="s2">      &lt;head&gt;</span>
+<span class="s2">              &lt;title&gt;CGI form processing&lt;/title&gt;</span>
+<span class="s2">      &lt;/head&gt;</span>
+<span class="s2">      &lt;body&gt;</span>
+<span class="s2">              &lt;fieldset&gt;</span>
+<span class="s2">                      &lt;legend&gt;Number guessing game&lt;/legend&gt;</span>
+<span class="s2">                      &lt;form method=&quot;POST&quot;&gt;</span>
+<span class="s2">                              &lt;label for=&quot;number&quot;&gt;Enter a number&lt;/label&gt;</span>
+<span class="s2">                              &lt;input type=&quot;text&quot; name=&quot;number&quot; value=&quot;&quot; /&gt;</span>
+<span class="s2">                              &lt;input type=&quot;submit&quot; /&gt;</span>
+<span class="s2">                      &lt;/form&gt;</span>
+<span class="s2">              &lt;/fieldset&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">form</span> <span class="o">=</span> <span class="n">cgi</span><span class="o">.</span><span class="n">FieldStorage</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">):</span>
+      <span class="k">print</span> <span class="s2">&quot;&quot;&quot;You have entered: </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">form</span><span class="o">.</span><span class="n">getfirst</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s2">&quot;&quot;&quot;&lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+<p>Điều đầu tiên chúng ta nhận ra là sự sử dụng mô-đun <strong>cgi</strong>. Mô-đun này cho phép chúng ta tạo một đối tượng <strong>FieldStorage</strong>. Đối tượng FieldStorage chứa các bộ 2 (khóa, giá trị) chúng ta nhận được từ trình duyệt trong một cấu trúc như kiểu từ điển. Do đó chúng ta có thể dùng phương thức <strong>has_key</strong> để kiểm tra sự tồn tại của khóa tương ứng. Để lấy giá trị từ FieldStorage ta có thể dùng <strong>form['number'].value</strong> hoặc gọi các hàm như <strong>getvalue</strong>, <strong>getfirst</strong>, hay <strong>getlist</strong>. Các hàm này được đề cập đến một cách chi tiết trong bộ tài liệu sử dụng Python.</p>
+<p>Nếu tinh ý, chúng ta sẽ thấy rằng khi dữ liệu nhập chứa các thẻ HTML hợp lệ thì kết quả xuất ra sẽ hiển thị cả những thẻ HTML này. Ví dụ khi ta nhập <strong>Nguyễn &lt;b&gt;Việt&lt;/b&gt; Nam</strong>.</p>
+<img alt="" src="/static/web-programming/cgi/form2.png" />
+<p>Điều này có thể là đúng theo ý định, hoặc cũng thể nằm ngoài mong muốn. Chúng ta gọi đây là các lỗi <a class="reference external" href="http://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">kịch bản chéo trang (Cross Site Scripting, XSS)</a>. Cách khắc phục là trước khi hiển thị các chuỗi không nằm trong kiểm soát của chương trình (ví dụ như dữ liệu nhập, dữ liệu xuất từ hệ thống khác, v.v...), chúng ta sẽ cần chuyển mã các ký tự đặc biệt. Mô-đun <tt class="docutils literal">cgi</tt> cung cấp hàm <strong>escape</strong> để làm việc này. Mã nguồn mới sẽ gói <strong>getfirst</strong> trong <strong>cgi.escape</strong> như sau:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!c:/python26/python</span>
+
+<span class="kn">import</span> <span class="nn">cgi</span>
+
+<span class="k">print</span> <span class="s2">&quot;Content-Type: text/html&quot;</span>
+<span class="k">print</span>
+
+<span class="k">print</span> <span class="s2">&quot;&quot;&quot;&lt;html&gt;</span>
+<span class="s2">      &lt;head&gt;</span>
+<span class="s2">              &lt;title&gt;CGI form processing&lt;/title&gt;</span>
+<span class="s2">      &lt;/head&gt;</span>
+<span class="s2">      &lt;body&gt;</span>
+<span class="s2">              &lt;fieldset&gt;</span>
+<span class="s2">                      &lt;legend&gt;Number guessing game&lt;/legend&gt;</span>
+<span class="s2">                      &lt;form method=&quot;POST&quot;&gt;</span>
+<span class="s2">                              &lt;label for=&quot;number&quot;&gt;Enter a number&lt;/label&gt;</span>
+<span class="s2">                              &lt;input type=&quot;text&quot; name=&quot;number&quot; value=&quot;&quot; /&gt;</span>
+<span class="s2">                              &lt;input type=&quot;submit&quot; /&gt;</span>
+<span class="s2">                      &lt;/form&gt;</span>
+<span class="s2">              &lt;/fieldset&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">form</span> <span class="o">=</span> <span class="n">cgi</span><span class="o">.</span><span class="n">FieldStorage</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">):</span>
+      <span class="k">print</span> <span class="s2">&quot;&quot;&quot;You have entered: </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">cgi</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span> \
+                      <span class="n">form</span><span class="o">.</span><span class="n">getfirst</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">),</span> <span class="bp">True</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s2">&quot;&quot;&quot;&lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+<p>Giờ đây, chuỗi được xuất ra sẽ giống hệt với chuỗi nhập.</p>
+<img alt="" src="/static/web-programming/cgi/form3.png" />
+<p>Chúng ta cũng có thể thử với phương thức GET bằng cách nhập thẳng URL <strong>http://localhost/cgi-bin/fp.py?number=Nguyễn+&lt;b&gt;Việt&lt;/b&gt;+Nam</strong>. Chúng ta cũng sẽ nhận được kết quả tương tự.</p>
+<p>Vậy là qua hai phần chúng ta đã tìm hiểu về cách hoạt động của một chương trình CGI. Điểm mạnh của giao thức CGI là tính đơn giản và an toàn cao vì mỗi yêu cầu được một tiến trình riêng xử lý. Cũng chính vì mô hình đơn giản như vậy nên CGI gặp phải nhiều cản trở trong việc phát triển. Cản trở đầu tiên là chương trình CGI phải tự xử lý trạng thái giữa các yêu cầu kế tiếp nhau, hay còn gọi là phiên làm việc (session). Cản trở thứ hai là chương trình CGI sẽ phải được thiết kế đặc biệt nếu muốn sử dụng các biến có phạm vi toàn ứng dụng (application scope). Cuối cùng, chương trình CGI chạy chậm hơn và tốn tài nguyên hơn vì mỗi yêu cầu phải được xử lý riêng.</p>
+<p>Trong các phần tới, chúng ta sẽ xem qua cách hoạt động của những công nghệ tiên tiến, giải quyết được các điểm yếu của giao thức CGI.</p>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2010-03-10T05:46:00+07:00"><i class="fa fa-calendar"></i> Wed 10 March 2010</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nguyen-thanh-nam.html" rel="author">Nguyễn Thành Nam</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/web.html" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">web</a>
+            <a href="../../tag/cgi.html" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">cgi</a>
+            <a href="../../tag/security.html" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">security</a>
+            <a href="../../tag/http-method.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">http method</a>
+            <a href="../../tag/form.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">form</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

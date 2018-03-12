@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Phỏng vấn: Tìm các từ cùng bộ ký tự
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2015/03/phong-van-tim-cac-tu-cung-bo-ky-tu.html" rel="bookmark" title="Permalink to Phỏng vấn: Tìm các từ cùng bộ ký tự">Phỏng vấn: Tìm các từ cùng bộ ký tự</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <div class="section" id="cau-hoi">
+<h2>Câu hỏi</h2>
+<p>Cho một quyển từ điển <strong>D</strong>, và một từ <strong>W</strong> trong từ điển, yêu cầu xuất ra tất cả các từ có trong từ điển với cùng bộ ký tự như từ <strong>W</strong>.</p>
+<p>Ví dụ từ <strong>mary</strong> có bộ ký tự là một chữ <strong>m</strong>, một chữ <strong>a</strong>, một chữ <strong>r</strong> và một chữ <strong>y</strong>, từ <strong>army</strong> cũng có cùng bộ ký tự như vậy.</p>
+</div>
+<div class="section" id="phan-tich">
+<h2>Phân tích</h2>
+<p>Mối quan hệ giữa từ, và bộ ký tự là <strong>1-n</strong>, tức là một từ sẽ có một bộ ký tự, nhưng một bộ ký tự có thể có nhiều từ. Do đó, cách giải bài này là thể hiện mối quan hệ giữa từ và bộ ký tự của nó.</p>
+<p>Với mỗi từ <strong>X</strong> trong từ điển, ta sẽ tìm ra bộ ký tự <strong>K</strong> tương ứng của từ đó, và lưu <strong>X</strong> vào danh sách các từ có bộ ký tự <strong>K</strong>. Để trả lời câu hỏi, ta chỉ việc in ra danh sách các từ có bộ ký tự tương ứng với <strong>W</strong>.</p>
+<p>Độ phức tạp thực thi của cách giải này là <strong>O(1)</strong> với <strong>O(n)</strong> bước xử lý trước (preprocessing), và tốn <strong>O(n)</strong> bộ nhớ.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="k">def</span> <span class="nf">get_alphabet</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+        <span class="n">count</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># vì kiểu dict là khả biến, nên ta phải</span>
+    <span class="c1"># chuyển &quot;count&quot; thành kiểu string để</span>
+    <span class="c1"># có thể dùng làm khóa trong một dict khác</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">count</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%c%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">count</span><span class="p">[</span><span class="n">k</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+<span class="k">assert</span><span class="p">(</span><span class="n">get_alphabet</span><span class="p">(</span><span class="s1">&#39;aaabb&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;a3b2&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+    <span class="n">alpha_to_words</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">D</span><span class="p">:</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">get_alphabet</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="n">alpha_to_words</span><span class="p">[</span><span class="n">alpha</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">alpha_to_words</span><span class="p">[</span><span class="n">get_alphabet</span><span class="p">(</span><span class="n">W</span><span class="p">)]</span>
+
+<span class="k">assert</span><span class="p">(</span><span class="n">solve</span><span class="p">([</span><span class="s1">&#39;mary&#39;</span><span class="p">,</span> <span class="s1">&#39;army&#39;</span><span class="p">,</span> <span class="s1">&#39;vithon&#39;</span><span class="p">],</span> <span class="s1">&#39;mary&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;mary&#39;</span><span class="p">,</span> <span class="s1">&#39;army&#39;</span><span class="p">])</span>
+</pre></div>
+<p>Cách giải trên sẽ áp dụng tốt nếu ta cần trả lời cho một loạt các từ <strong>W</strong> bởi vì ta chỉ tốn thời gian xử lý trước một lần, và sau đó có thể truy vấn <strong>alpha_to_words</strong> cho mỗi từ <strong>W</strong> sau đó. Tuy nhiên, nếu ta chỉ cần trả lời câu hỏi cho duy nhất một từ <strong>W</strong> thì việc tốn thêm <strong>O(n)</strong> bộ nhớ cho <strong>alpha_to_words</strong> là không cần thiết. Trong trường hợp đó, ta chỉ việc xét từng từ trong <strong>D</strong>, nếu nó có cùng bộ ký tự như <strong>W</strong> thì ta xuất nó ra ngay.</p>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2015-03-16T02:05:00+07:00"><i class="fa fa-calendar"></i> Mon 16 March 2015</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nguyen-thanh-nam.html" rel="author">Nguyễn Thành Nam</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/interview.html" data-toggle="tooltip"
+      class="label label-default"
+      title="10 articles with this tag">interview</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

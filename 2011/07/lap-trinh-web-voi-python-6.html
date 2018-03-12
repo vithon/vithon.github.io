@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Lập trình web với Python (6)
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2011/07/lap-trinh-web-voi-python-6.html" rel="bookmark" title="Permalink to Lập trình web với Python (6)">Lập trình web với Python (6)</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Phần trước chúng ta đã xem xét mô hình hoạt động của một ứng dụng FCGI. Trong phần này chúng ta sẽ viết thử một chương trình FCGI như đã đề cập.</p>
+<p>Trước tiên, chúng ta sẽ cần cài đặt thư viện <strong>flup</strong> của tác giả Allan Saddi. Làm việc này khá đơn giản, chúng ta chỉ việc tải tập tin <strong>ez_setup.py</strong> từ địa chỉ <a class="reference external" href="http://peak.telecommunity.com/dist/ez_setup.py">http://peak.telecommunity.com/dist/ez_setup.py</a> về một nơi nào đó trên máy, ví dụ như <strong>C:Python26Scripts</strong>. Sau đó chúng ta sẽ gọi lệnh ở màn hình DOS như sau:</p>
+<pre class="literal-block">
+C:\&gt;c:\Python26\scripts\ez_setup.py flup
+</pre>
+<p>Gói <strong>flup</strong> sẽ được cài đặt trong <strong>C:Python26libsite-packages</strong>.</p>
+<p>Ở bước 2, chúng ta sẽ tải về tập tin <a class="reference external" href="http://www.fastcgi.com/dist/mod_fastcgi-2.4.6-AP22.dll">http://www.fastcgi.com/dist/mod_fastcgi-2.4.6-AP22.dll</a>, đổi tên nó thành <strong>mod_fastcgi.dll</strong> và đặt nó trong <strong>C:Program FilesApache Software FoundationApache2.2modules</strong>.</p>
+<p>Kế tiếp bước 3, chúng ta sẽ cần cấu hình <strong>Apache</strong> thành một <strong>FCGI client</strong>. Chúng ta cần sửa tập tin <strong>httpd.conf</strong> để thêm vào các dòng sau ở dưới cùng:</p>
+<pre class="literal-block">
+LoadModule fastcgi_module modules/mod_fastcgi.dll
+Alias &quot;/fcgi-bin/hello.py&quot; &quot;C:/Program Files/Apache Software Foundation/Apache2.2/fcgi-bin/hello.py&quot;
+&lt;Directory &quot;C:/Program Files/Apache Software Foundation/Apache2.2/fcgi-bin/&quot;&gt;
+  Order allow,deny
+  Allow from all
+&lt;/Directory&gt;
+FastCgiExternalServer &quot;C:/Program Files/Apache Software Foundation/Apache2.2/fcgi-bin/hello.py&quot; -host localhost:8888
+</pre>
+<p>Dòng <strong>LoadModule</strong> bảo <strong>Apache</strong> nạp mô-đun <strong>mod_fastcgi</strong> mà chúng ta vừa làm ở bước 2. Dòng <strong>Alias</strong> cho <strong>Apache</strong> biết rằng mọi yêu cầu đến đường dẫn (URI) <strong>/fcgi-bin/hello.py</strong> thật chất là đến tập tin <strong>C:/Program Files/Apache Software Foundation/Apache2.2/fcgi-bin/hello.py</strong>. Chúng ta cần dòng này bởi vì <strong>hello.py</strong> sẽ được tạo ở ngoài <strong>DocumentRoot</strong>. Cũng chính vì thư mục <strong>fcgi-bin</strong> không nằm trong <strong>DocumentRoot</strong> nên chúng ta cũng cần lệnh <strong>Directory</strong> để cho phép <strong>Apache</strong> phục vụ những yêu cầu truy cập vào thư mục đó. Và cuối cùng lệnh <strong>FastCgiExternalServer</strong> bảo <strong>Apache</strong> rằng tập tin <strong>hello.py</strong> thật chất là một ứng dụng FCGI đã được chạy sẵn tại địa chỉ <strong>localhost</strong> ở cổng <strong>8888</strong>. Chính câu lệnh này sẽ chuyển <strong>Apache</strong> thành một <strong>FCGI client</strong>, chuyển tiếp yêu cầu từ trình duyệt đến <strong>FCGI server</strong> do chúng ta phát triển. Vì chúng ta đang cài đặt trên Windows nên chúng ta chỉ có một lựa chọn là sử dụng FCGI theo chế độ trao đổi qua socket, do đó chúng ta phải dùng <strong>FastCgiExternalServer</strong>.</p>
+<p>Bước 4 là tạo tập tin <strong>hello.py</strong> trong thư mục <strong>C:/Program Files/Apache Software Foundation/Apache2.2/fcgi-bin</strong>. Nếu chưa có thư mục này, bạn đọc hãy tự tạo ra nó. Tập tin <strong>hello.py</strong> sẽ có nội dung như sau:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!C:\Python26\python.exe</span>
+<span class="kn">from</span> <span class="nn">flup.server</span> <span class="kn">import</span> <span class="n">fcgi</span>
+
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">class</span> <span class="nc">HelloApp</span><span class="p">(</span><span class="n">fcgi</span><span class="o">.</span><span class="n">WSGIServer</span><span class="p">):</span>
+
+      <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">):</span>
+              <span class="k">global</span> <span class="n">count</span>
+              <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+              <span class="n">req</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Content-Type: text/plain</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+              <span class="n">req</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+              <span class="n">req</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Hello World </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">count</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+      <span class="n">HelloApp</span><span class="p">(</span><span class="n">application</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">bindAddress</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">))</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+<p>Trước hết, chúng ta nhập mô-đun <strong>flup.server.fcgi</strong>. Kế tiếp chúng ta khai báo một biến đếm tên <strong>count</strong> với giá trị khởi tạo là <strong>0</strong>. Sau đó chúng ta khai báo ứng dụng của chúng ta bằng cách định nghĩa lớp <strong>HelloApp</strong> kế thừa lớp <strong>WSGIServer</strong> trong mô-đun <strong>flup.server.fcgi</strong>. <strong>HelloApp</strong> sẽ định nghĩa lại hàm <strong>handler</strong> để xử lý các yêu cầu nhận được.</p>
+<p>Hàm <strong>handler</strong> nhận vào một tham số đó là đối tượng <strong>req</strong> chứa thông tin về các biến môi trường, các dòng dữ liệu chuẩn như <strong>stdin</strong>, <strong>stdout</strong>. Chúng ta sẽ cộng một vào biến đếm toàn cục, và xuất giá trị này ra lại cho trình duyệt. Như một ứng dụng CGI (FCGI) thông thường, trước hết chúng ta cần phải xác định kiểu dữ liệu trả về thông qua <strong>Content-Type</strong>, theo sau bởi một dòng trống đánh dấu sự chấm dứt các đầu đề (header) và bắt đầu của nội dung, và cuối cùng là nội dung.</p>
+<p>Hai dòng lệnh cuối chỉ đơn giản là chạy ứng dụng FCGI này ở địa chỉ <strong>localhost</strong> và cổng <strong>8888</strong>.</p>
+<p>Để kiểm tra, chúng ta sẽ cần thực hiện ba việc: chạy ứng dụng <strong>hello.py</strong>, chạy <strong>Apache</strong>, và dùng trình duyệt xem trang <strong>http://localhost/fcgi-bin/hello.py</strong>. Để chạy ứng dụng <strong>hello.py</strong> chúng ta chỉ cần nhập lệnh sau ở màn hình DOS:</p>
+<pre class="literal-block">
+c:\Program Files\Apache Software Foundation\Apache2.2\fcgi-bin&gt;python hello.py
+</pre>
+<p>Khi dùng trình duyệt vào xem trang web như trên thì chúng ta sẽ nhận được hình sau:</p>
+<img alt="" src="/static/web-programming/fcgi/hello1.png" />
+<p>Nếu làm tươi trình duyệt thì chúng ta sẽ thấy giá trị đếm tăng lên:</p>
+<img alt="" src="/static/web-programming/fcgi/hello2.png" />
+<p>Như vậy chứng tỏ rằng các yêu cầu đều được phục vụ bởi một tiến trình duy nhất. Đây chính là lợi điểm của FCGI so với CGI.</p>
+<p>Trong bài sau, chúng ta sẽ xem xét cách phát triển ứng dụng web với WSGI.</p>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2011-07-01T10:05:00+07:00"><i class="fa fa-calendar"></i> Fri 01 July 2011</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nguyen-thanh-nam.html" rel="author">Nguyễn Thành Nam</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/python.html" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">python</a>
+            <a href="../../tag/web.html" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">web</a>
+            <a href="../../tag/tutorial.html" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">tutorial</a>
+            <a href="../../tag/fcgi.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">fcgi</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

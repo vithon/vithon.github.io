@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Lập trình web với Python (3)
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2010/01/lap-trinh-web-voi-python-3.html" rel="bookmark" title="Permalink to Lập trình web với Python (3)">Lập trình web với Python (3)</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Sau khi đã cài đặt máy chủ web, và Python ở hai bài trước, trong bài này chúng ta sẽ bước vào thế giới lập trình web với mô hình đơn giản nhất, mô hình CGI.</p>
+<p>CGI là viết tắt của Common Gateway Interface, dịch chính xác là giao tiếp cổng chung. Giao thức này được sinh ra để chuẩn hóa (hay xác định rõ) cách thức một máy chủ web giao phó việc tạo trang web cho các ứng dụng console (các ứng dụng nhận dữ liệu từ bộ nhập chuẩn và xuất ra bộ xuất chuẩn). Các ứng dụng này được gọi là các ứng dụng CGI, hay kịch bản CGI vì chúng thường được viết bằng ngôn ngữ kịch bản, mặc dù chúng cũng có thể được viết bằng các ngôn ngữ khác như C, Java.</p>
+<div class="section" id="mo-hinh-hoat-dong">
+<h2>Mô hình hoạt động</h2>
+<p>Thông thường, một máy chủ web nhận yêu cầu từ máy khách và tìm kiếm trên hệ thống xem có tập tin mà máy khách cần truy xuất hay không. Nếu có thì máy chủ web sẽ xuất nội dung của tập tin này cho máy khách.</p>
+<p>Trong giao thức CGI, máy chủ web nhận yêu cầu từ máy khách, tìm kiếm trên hệ thống xem có ứng dụng CGI đó không. Nếu có thì máy chủ web sẽ thực thi ứng dụng CGI, chuyển toàn bộ yêu cầu đến ứng dụng thông qua các biến môi trường và bộ nhập chuẩn. Ứng dụng CGI sẽ xử lý yêu cầu rồi gửi trả thông tin cho máy chủ web qua bộ xuất chuẩn. Máy chủ web sẽ nhận thông tin từ bộ xuất chuẩn của ứng dụng CGI để xuất trả lại cho máy khách. Mô hình hoạt động của giao thức CGI được miêu tả trong hình sau.</p>
+<img alt="" src="/static/web-programming/cgi/cgi-model.png" />
+</div>
+<div class="section" id="hello-world">
+<h2>Hello World</h2>
+<p>Để hiểu rõ hơn cách hoạt động, chúng ta sẽ tạo một tập tin <strong>helloworld.py</strong> trong thư mục <strong>C:\Program Files\Apache Software Foundation\Apache2.2\cgi-bin</strong> với nội dung như sau:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!c:/python26/python</span>
+
+<span class="k">print</span> <span class="s2">&quot;Content-Type: text/html&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;Hello world.&quot;</span>
+</pre></div>
+<p>Trước khi giải thích từng dòng lệnh, chúng ta sẽ xem xem kết quả đạt được là gì. Chúng ta sẽ dùng trình duyệt để vào trang <strong>http://localhost/cgi-bin/helloworld.py</strong>. Dĩ nhiên chúng ta cũng phải đảm bảo rằng máy chủ Apache đang chạy. Và đây là hình mà chúng ta nhận được.</p>
+<img alt="" src="/static/web-programming/cgi/helloworld.png" />
+</div>
+<div class="section" id="cac-yeu-to-chinh-cua-chuong-trinh-cgi">
+<h2>Các yếu tố chính của chương trình CGI</h2>
+<p>Như thế, chương trình CGI đầu tiên đã thực thi hoàn chỉnh. Hãy quay lại xem các yếu tố căn bản của một chương trình CGI viết bằng ngôn ngữ Python.</p>
+<p>Dòng đầu tiên được gọi là dòng <strong>shebang</strong> với hai ký tự đặc biệt <strong>#!</strong>. Phần đi ngay sau hai ký tự này là đường dẫn tuyệt đối đến trình thông dịch Python trên hệ thống. Dòng này nói cho máy chủ web biết rằng tập tin này cần được đọc bởi trình thông dịch Python.</p>
+<p>Dòng lệnh <tt class="docutils literal">print</tt> thứ nhất cung cấp một đầu mục (header) cho máy chủ web. Đầu mục này là <strong>Content-Type</strong> với nội dung là <strong>text/html</strong>. Đây là đầu mục bắt buộc trong giao thức HTTP, do đó các ứng dụng CGI thông thường phải cung cấp đầu mục này.</p>
+<p>Dòng lệnh in thứ hai (in ra một dòng trống) báo hiệu sự kết thúc của các đầu mục, và những gì theo sau sẽ là dữ liệu nội dung. Dòng lệnh này là bắt buộc.</p>
+<p>Dòng lệnh in thứ ba xuất nội dung chính, là chuỗi <strong>Hello world.</strong>.</p>
+<p>Các dòng lệnh này là những yếu tố chính cấu tạo nên một chương trình CGI viết bằng ngôn ngữ Python. Điểm quan trọng nhất mà chúng ta cần lưu ý là việc xuất dữ liệu thông qua bộ xuất chuẩn (stdout), và định dạng của dữ liệu cần xuất (đầu mục, dòng trống, nội dung).</p>
+</div>
+<div class="section" id="them-vao-cac-the-html">
+<h2>Thêm vào các thẻ HTML</h2>
+<p>Chương trình của chúng ta khá buồn tẻ vì chúng ta khai báo <strong>Content-Type</strong> là <strong>text/html</strong> nhưng chúng ta không dùng thẻ HTML. Chúng ta hãy sửa lại chương trình như sau:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!c:/python26/python</span>
+
+<span class="k">print</span> <span class="s2">&quot;Content-Type: text/html&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;&quot;&quot;&lt;html&gt;</span>
+<span class="s2">      &lt;head&gt;</span>
+<span class="s2">              &lt;title&gt;Python!&lt;/title&gt;</span>
+<span class="s2">      &lt;/head&gt;</span>
+<span class="s2">      &lt;body&gt;</span>
+<span class="s2">              &lt;font size=&quot;+3&quot;&gt;H&lt;/font&gt;ello &lt;font color=&quot;red&quot;&gt;HTML&lt;/font&gt;.</span>
+<span class="s2">      &lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;&quot;&quot;&quot;</span>
+</pre></div>
+<p>Quay lại trình duyệt và làm tươi (F5, hay Ctrl-R), chúng ta sẽ thấy hình như sau:</p>
+<img alt="" src="/static/web-programming/cgi/hellohtml.png" />
+</div>
+<div class="section" id="content-type-la-quan-trong">
+<h2>Content-Type là quan trọng</h2>
+<p>Những gì chúng ta vừa thực hiện là thay đổi nội dung mà chúng ta xuất ra bộ xuất chuẩn.</p>
+<p>Bây giờ, giữ cùng nội dung đấy, nhưng chúng ta thay đổi đầu mục <strong>Content-Type</strong> thành <strong>text/plain</strong>.</p>
+<div class="highlight"><pre><span></span><span class="ch">#!c:/python26/python</span>
+
+<span class="k">print</span> <span class="s2">&quot;Content-Type: text/plain&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;&quot;&quot;&lt;html&gt;</span>
+<span class="s2">      &lt;head&gt;</span>
+<span class="s2">              &lt;title&gt;Python!&lt;/title&gt;</span>
+<span class="s2">      &lt;/head&gt;</span>
+<span class="s2">      &lt;body&gt;</span>
+<span class="s2">              &lt;font size=&quot;+3&quot;&gt;H&lt;/font&gt;ello &lt;font color=&quot;red&quot;&gt;HTML&lt;/font&gt;.</span>
+<span class="s2">      &lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;&quot;&quot;&quot;</span>
+</pre></div>
+<p>Thử xem trang này với các trình duyệt <strong>chuẩn</strong> ví dụ Opera, hoặc Firefox thì chúng ta sẽ nhận được hình tương tự như sau:</p>
+<img alt="" src="/static/web-programming/cgi/hellohtmlplain.png" />
+<p>Thay vì xử lý những thẻ HTML một cách đặc biệt thì trình duyệt đã không làm như vậy. Và đây là cách làm đúng bởi vì chúng ta nói cho trình duyệt biết rằng nội dung của chúng ta là ở dạng văn bản thường (plaintext) thông qua đầu mục <strong>Content-Type</strong> như trên. Trình duyệt IE không tuân theo chuẩn HTTP một cách triệt để nên vẫn sẽ hiển thị nội dung của chúng ta dưới dạng một trang HTML.</p>
+</div>
+<div class="section" id="mot-it-du-lieu-dong">
+<h2>Một ít dữ liệu động</h2>
+<p>Mục đích của chương trình CGI là xử lý và xuất dữ liệu nên sẽ là vô ích nếu chương trình CGI của chúng ta chỉ xuất các trang web tĩnh. Chúng ta sẽ sửa lại chương trình một chút như sau:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!c:/python26/python</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="n">actions</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;rocks&quot;</span><span class="p">,</span> <span class="s2">&quot;rules&quot;</span><span class="p">,</span> <span class="s2">&quot;kicks butt&quot;</span><span class="p">,</span> <span class="s2">&quot;constricts camel&quot;</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="s2">&quot;Content-Type: text/html&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;&quot;</span>
+<span class="k">print</span> <span class="s2">&quot;&quot;&quot;&lt;html&gt;</span>
+<span class="s2">      &lt;head&gt;</span>
+<span class="s2">              &lt;title&gt;Python!&lt;/title&gt;</span>
+<span class="s2">      &lt;/head&gt;</span>
+<span class="s2">      &lt;body&gt;</span>
+<span class="s2">              Python </span><span class="si">%s</span><span class="s2">.</span>
+<span class="s2">      &lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;&quot;&quot;&quot;</span> <span class="o">%</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span>
+</pre></div>
+<p>Trong chương trình này, chúng ta sử dụng mô-đun <strong>random</strong> và hàm <strong>choice</strong> để chọn một hành động ngẫu nhiên. Khi làm tươi trình duyệt, chúng ta có thể gặp các hình tương tự như sau.</p>
+<img alt="" src="/static/web-programming/cgi/dynamic1.png" />
+<img alt="" src="/static/web-programming/cgi/dynamic2.png" />
+</div>
+<div class="section" id="tom-tat">
+<h2>Tóm tắt</h2>
+<p>Trong kỳ này chúng ta đã được giới thiệu về mô hình hoạt động của giao thức CGI, các yếu tố quan trọng trong một chương trình CGI viết bằng ngôn ngữ Python, một ít kiến thức về giao thức HTTP, và sự đa dạng của thế giới trình duyệt web. Ở kỳ sau chúng ta sẽ tìm hiểu cách nhận dữ liệu từ máy khách qua URL và mẫu đơn (form).</p>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2010-01-28T09:52:00+07:00"><i class="fa fa-calendar"></i> Thu 28 January 2010</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nguyen-thanh-nam.html" rel="author">Nguyễn Thành Nam</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/cgi.html" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">cgi</a>
+            <a href="../../tag/http.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">http</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

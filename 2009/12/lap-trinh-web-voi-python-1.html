@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Lập trình web với Python (1)
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2009/12/lap-trinh-web-voi-python-1.html" rel="bookmark" title="Permalink to Lập trình web với Python (1)">Lập trình web với Python (1)</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Trong loạt bài lập trình web với Python, tôi sẽ hướng dẫn bạn đọc những thao tác cơ bản từ việc cài đặt, cấu hình, cho đến lập trình, hoàn thành một ứng dụng web đơn giản. Qua quá trình đó, bạn đọc sẽ được giới thiệu về kỹ thuật CGI, đến FastCGI và cuối cùng là WSGI.</p>
+<div class="section" id="cai-dat-may-chu-web-apache">
+<h2>Cài đặt máy chủ web Apache</h2>
+<p>Để lập trình web, chúng ta cần một máy chủ phục vụ web. Máy chủ <a class="reference external" href="http://httpd.apache.org/">Apache HTTP</a> là một trong những phần mềm máy chủ web phổ dụng trên Internet. Chúng ta sẽ cần tải bản cài đặt phần mềm này về. Tôi sẽ sử dụng phiên bản 2.2.14 (<tt class="docutils literal"><span class="pre">apache_2.2.14-win32-x86-openssl-0.9.8k.msi</span></tt>) cho các bài viết trong loạt bài này. Hệ điều hành tôi đang sử dụng là Windows 7.</p>
+<p>Khi chạy tập tin cài đặt, chúng ta sẽ gặp giao diện như sau:</p>
+<img alt="" src="/static/web-programming/install-apache/apache-install-1.png" />
+<p>Nhấn vào nút <strong>Next</strong> để qua màn hình kế:</p>
+<img alt="" src="/static/web-programming/install-apache/apache-install-2.png" />
+<p>Chọn ô đầu tiên để đồng ý với cam kết bản quyền, và nhấn nút <strong>Next</strong> để qua trang kế:</p>
+<img alt="" src="/static/web-programming/install-apache/apache-install-3.png" />
+<p>Tiếp tục nhấn nút <strong>Next</strong>:</p>
+<img alt="" src="/static/web-programming/install-apache/apache-install-4.png" />
+<p>Điền thông tin vào các ô trống như trong hình ví dụ, và nhấn <strong>Next</strong>:</p>
+<img alt="" src="/static/web-programming/install-apache/apache-install-5.png" />
+<p>Chọn kiểu cài đặt <strong>Typical</strong> và nhấn nút <strong>Next</strong>:</p>
+<img alt="" src="/static/web-programming/install-apache/apache-install-6.png" />
+<p>Nếu bạn muốn thay đổi đường dẫn cài đặt thì bạn sẽ chỉnh trong trang này, còn không thì nhấn nút <strong>Next</strong>:</p>
+<img alt="" src="/static/web-programming/install-apache/apache-install-7.png" />
+<p>Nhấn nút <strong>Install</strong> để bắt đầu quá trình cài đặt:</p>
+<img alt="" src="/static/web-programming/install-apache/apache-install-8.png" />
+<p>Chúng ta sẽ được thông báo về quá trình cài đặt.</p>
+<img alt="" src="/static/web-programming/install-apache/apache-install-9.png" />
+<p>Sau khi cài đặt hoàn thành, nhấn <strong>Finish</strong> để kết thúc:</p>
+<img alt="" src="/static/web-programming/install-apache/apache-install-10.png" />
+<p>Nhấn vào nút <strong>Start</strong> và nhập vào <strong>services.msc</strong> như hình trên để kiểm tra sự tồn tại của máy chủ web Apache2:</p>
+<img alt="" src="/static/web-programming/install-apache/apache-install-11.png" />
+<p>Như hình trên, dịch vụ Apache2 đã được chạy (started). Để kiểm tra thì chúng ta sẽ mở Internet Explorer (IE) lên và truy cập vào địa chỉ <strong>http://localhost</strong>. Nếu bạn nhận được kết quả như hình bên dưới đây thì bạn đã hoàn thành việc cài đặt máy chủ web Apache rồi đó.</p>
+<img alt="" src="/static/web-programming/install-apache/apache-install-12.png" />
+<p>Trong bài tới chúng ta sẽ tiếp tục thực hiện việc cài đặt Python.</p>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2009-12-17T09:07:00+07:00"><i class="fa fa-calendar"></i> Thu 17 December 2009</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nguyen-thanh-nam.html" rel="author">Nguyễn Thành Nam</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/install.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">install</a>
+            <a href="../../tag/apache.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">apache</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

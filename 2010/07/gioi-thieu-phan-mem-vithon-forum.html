@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Giới thiệu phần mềm Vithon Forum
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/tin-tuc.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Tin tức - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2010/07/gioi-thieu-phan-mem-vithon-forum.html" rel="bookmark" title="Permalink to Giới thiệu phần mềm Vithon Forum">Giới thiệu phần mềm Vithon Forum</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Nhóm Python Cho Người Việt (PCNV) hân hạnh công bố phần mềm <strong>Vithon Forum</strong> đến với cộng đồng.</p>
+<div class="section" id="gioi-thieu">
+<h2>Giới thiệu</h2>
+<p>Phần mềm Vithon Forum (gọi tắt là <strong>VF</strong>) là một phần mềm tự do, mã mở, miễn phí với chức năng chính là một diễn đàn thảo luận tương tự như các gói phần mềm phpBB, punBB, pyForum.</p>
+<p>VF là một ứng dụng web được viết bằng ngôn ngữ Python theo mô hình WSGI. VF có thể được triển khai với các máy chủ hỗ trợ WSGI hay CGI ví dụ như Apache. VF có thể sử dụng nhiều hệ cơ sở dữ liệu quan hệ như SQLite, MySQL, Oracle.</p>
+</div>
+<div class="section" id="tinh-nang">
+<h2>Tính năng</h2>
+<p>VF có các tính năng nổi trội sau:</p>
+<dl class="docutils">
+<dt>Đơn giản</dt>
+<dd>VF chỉ thực hiện một công việc chính đó là lưu trữ và hiển thị các thảo luận của người dùng một cách tiện lợi nhất. VF không mong muốn trở thành một công cụ tích hợp thư điện tử, lịch cá nhân, danh sách công việc, nhắn tin, tán gẫu, v.v...</dd>
+<dt>Nhỏ gọn</dt>
+<dd>Vì chỉ phục vụ một số ít tác vụ cơ bản của một diễn đàn, toàn bộ chương trình VF (trừ các thư viện ngoài) chỉ chiếm khoảng 100 kilobyte dung lượng dĩa.</dd>
+<dt>An toàn</dt>
+<dd>VF được phát triển với các tính năng an ninh được đặt lên hàng đầu. Vì sự đơn giản và tính nhỏ gọn của VF nên chương trình được thiết kế ưu tiên sự an toàn hơn tính năng, và việc kiểm tra mã nguồn được thực hiện thường xuyên nhằm đảm bảo sự ưu tiên đó.</dd>
+<dt>Thuận tiện</dt>
+<dd>VF đề cao việc sử dụng các chuẩn mở như OpenID để việc sử dụng VF trở nên dễ dàng hơn cho người dùng. Bên canh đó, các tính năng thông thường mà người dùng đã quen thuộc ở các gói phần mềm khác cũng có mặt trong VF như BBCode. Tất cả chỉ nhằm một mục đích tạo ra môi trường thảo luận thuận tiện.</dd>
+</dl>
+</div>
+<div class="section" id="yeu-cau-he-thong">
+<h2>Yêu cầu hệ thống</h2>
+<p>Để triển khai VF, hệ thống sẽ cần một số ứng dụng và mô-đun sau:</p>
+<ul class="simple">
+<li>Python v2.5 trở lên.</li>
+<li>Mô-đun mako</li>
+<li>Mô-đun werkzeug</li>
+<li>Mô-đun sqlalchemy</li>
+<li>Mô-đun routes</li>
+<li>Mô-đun repoze.who.plugins.openid</li>
+<li>Mô-đun repoze.what.plugins.xml</li>
+<li>Mô-đun postmarkup</li>
+<li>Mô-đun unidecode</li>
+<li>Mô-đun zope.interface</li>
+</ul>
+<p>Các mô-đun này có thể được cài đặt bằng <strong>setuptools</strong> (<strong>easy_install</strong>) hoặc <strong>pip</strong>.</p>
+</div>
+<div class="section" id="cai-dat">
+<h2>Cài đặt</h2>
+<p>Mã nguồn của VF có thể được tải về từ địa chỉ <a class="reference external" href="http://bitbucket.org/vithon/vithon-forum">http://bitbucket.org/vithon/vithon-forum</a>.</p>
+<p>Giải nén mã nguồn vào một thư mục nào đấy, giả sử như <strong>/opt/vithon-forum</strong>.</p>
+<p>Dựa vào nội dung của tập tin <strong>config.py</strong> để tạo tập tin <strong>siteconfig.py</strong> mới, với các dòng lệnh gán giá trị phù hợp cho biến toàn cục. Các biến quan trọng cần thay đổi là <strong>COOKIE_SECRET</strong>, <strong>DATABASE_URL</strong>, <strong>STATIC_CONTENT_PATH</strong>, <strong>SESSION_STORAGE_PATH</strong>.</p>
+<p>Tập tin <strong>siteconfig.py</strong> có thể có dạng sau:</p>
+<div class="highlight"><pre><span></span><span class="n">BOARD_NAME</span> <span class="o">=</span> <span class="s1">&#39;Acme Hideout&#39;</span>
+<span class="n">COOKIE_SECRET</span> <span class="o">=</span> <span class="s1">&#39;y@h0O&#39;</span>
+<span class="n">DATABASE_URL</span> <span class="o">=</span> <span class="s1">&#39;sqlite:////opt/vithon-forum/db.db&#39;</span>
+<span class="n">STATIC_CONTENT_PATH</span> <span class="o">=</span> <span class="s1">&#39;/opt/vithon-forum/static&#39;</span>
+<span class="n">SESSION_STORAGE_PATH</span> <span class="o">=</span> <span class="s1">&#39;/tmp/session&#39;</span>
+<span class="n">SESSION_COOKIE_NAME</span> <span class="o">=</span> <span class="s1">&#39;sid&#39;</span>
+<span class="n">ENTRIES_PER_PAGE</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">ORGANIZATION</span> <span class="o">=</span> <span class="s1">&#39;Acme Corp&#39;</span>
+</pre></div>
+<p>Sau đó, chúng ta cần phải khởi tạo cơ sở dữ liệu bằng lệnh <strong>initdb</strong>.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/vithon-forum
+$ python forum.py initdb
+</pre></div>
+<p>Việc cài đặt đã hoàn tất.</p>
+</div>
+<div class="section" id="van-hanh">
+<h2>Vận hành</h2>
+<p>Mặc dù cơ sở dữ liệu đã được khởi tạo khi cài đặt nhưng chúng ta chưa có dữ liệu nào trong cơ sở dữ liệu cả. Do đó, trước khi chạy VF, chúng ta sẽ cần phải tạo một số diễn đàn. Chúng ta sẽ sử dụng lệnh <strong>shell</strong> để thực hiện việc này.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/vithon-forum
+$ python forum.py shell
+</pre></div>
+<p>Lệnh <strong>shell</strong> sẽ mở một phiên làm việc tương tác cho phép chúng ta sử dụng Python để tác động đến chương trình VF. Chúng ta sẽ nhập vào đoạn mã Python như sau.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">model</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">Forum</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Forum 1&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Dien giai cho Forum 1&#39;</span><span class="p">)</span>
+<span class="n">f11</span> <span class="o">=</span> <span class="n">Forum</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Forum 1.1&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Dien giai cho Forum 1.1&#39;</span><span class="p">,</span> <span class="n">f1</span><span class="p">)</span>
+<span class="n">f12</span> <span class="o">=</span> <span class="n">Forum</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Forum 1.2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Dien giai cho Forum 1.2&#39;</span><span class="p">,</span> <span class="n">f1</span><span class="p">)</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="n">Forum</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Forum 2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Dien giai cho Forum 2&#39;</span><span class="p">)</span>
+<span class="n">f21</span> <span class="o">=</span> <span class="n">Forum</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Forum 2.1&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Dien giai cho Forum 2.1&#39;</span><span class="p">,</span> <span class="n">f2</span><span class="p">)</span>
+<span class="n">f22</span> <span class="o">=</span> <span class="n">Forum</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Forum 2.2&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;Dien giai cho Forum 2.2&#39;</span><span class="p">,</span> <span class="n">f2</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+<p>Các câu lệnh trên tạo ra cấu trúc diễn đàn như sau:</p>
+<pre class="literal-block">
+Forum 1
+  |
+  +-- Forum 1.1
+  |
+  +-- Forum 1.2
+
+Forum 2
+  |
+  +-- Forum 2.1
+  |
+  +-- Forum 2.2
+</pre>
+<p>Vì VF không có các tính năng quản lý qua web nên lệnh <strong>shell</strong> cũng chính là môi trường quản lý chính.</p>
+<p>Cuối cùng, để chạy VF, chúng ta sẽ dùng lệnh <strong>runserver</strong> tương tự như sau:</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/vithon-forum
+$ python forum.py runserver -h <span class="m">127</span>.0.0.1 -p <span class="m">8080</span>
+</pre></div>
+<p>Khi này, nếu ta mở trình duyệt lên và đi đến trang <a class="reference external" href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> thì chúng ta sẽ thấy diễn đàn đã hoạt động.</p>
+</div>
+<div class="section" id="trien-khai-theo-mo-hinh-cgi">
+<h2>Triển khai theo mô hình CGI</h2>
+<p>Chúng ta cũng có thể triển khai VF theo mô hình CGI.</p>
+<p>Đầu tiên chúng ta cần chép tập tin <strong>forum.cgi</strong> vào thư mục chứa các tập tin CGI (ví dụ như <strong>/var/www/cgi-bin</strong>).</p>
+<p>Tiếp đến chúng ta cần sửa các lệnh thiết lập đường dẫn trong tập tin này cho phù hợp.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Set the path to store python package cache</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PYTHON_EGG_CACHE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/tmp/.egg&#39;</span>
+<span class="c1"># Set the path to vithon forum here</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;/opt/vithon-forum&#39;</span><span class="p">)</span>
+</pre></div>
+<p>Nếu như tập tin <strong>siteconfig.py</strong> nằm ở thư mục khác (ví dụ như trong thư mục <strong>/var/www/cgi-bin</strong>), thì chúng ta cũng sẽ cần thêm vào các dòng bên dưới. Nếu <strong>siteconfig.py</strong> nằm chung chỗ với các tập tin khác của VF thì chúng ta không cần các dòng lệnh này.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Set the path to siteconfig.py here</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;/var/www/cgi-bin&#39;</span><span class="p">)</span>
+</pre></div>
+<p>Và cuối cùng chúng ta chỉ cần cấu hình máy chủ web để sử dụng tập tin <strong>forum.cgi</strong> như là một ứng dụng CGI. Thông tin về vấn đề này được nói rõ hơn trong tài liệu đi kèm với máy chủ web.</p>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2010-07-01T11:49:00+07:00"><i class="fa fa-calendar"></i> Thu 01 July 2010</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nhom-pcnv.html" rel="author">Nhóm PCNV</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/tin-tuc.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="39 articles in this category">Tin tức</a>
+            <a href="../../tag/python.html" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">python</a>
+            <a href="../../tag/vithon.html" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">vithon</a>
+            <a href="../../tag/wsgi.html" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">wsgi</a>
+            <a href="../../tag/forum.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">forum</a>
+            <a href="../../tag/bulletin-board.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">bulletin board</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/tin-tuc.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Tin tức (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

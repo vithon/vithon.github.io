@@ -1,0 +1,945 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+<head>
+
+<link rel="STYLESHEET" href="tut.css" type="text/css" />
+
+<link rel="SHORTCUT ICON" href="../icons/pyfav.png" type="image/png" />
+
+<link rel="start" href="../index.html" title="Chỉ mục tài liệu Python" />
+
+<link rel="first" href="tut.html" title="Bài chỉ dẫn Python" />
+
+<link rel="contents" href="node2.html" title="Mục lục" />
+
+<link rel="index" href="node19.html" title="Chỉ mục" />
+
+<link rel="last" href="about.html" title="Về tài liệu này..." />
+
+<link rel="help" href="about.html" title="Về tài liệu này..." />
+
+<link rel="next" href="node8.html" />
+
+<link rel="prev" href="node6.html" />
+
+<link rel="parent" href="tut.html" />
+
+<link rel="next" href="node8.html" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="aesop" content="information" />
+
+<title>5. Cấu trúc dữ liệu </title>
+
+</head>
+
+<body>
+
+<div class="navigation">
+
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="4. Bàn thêm về luồng điều khiển" href="node6.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="6. Mô-đun" href="node8.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node6.html">4. Bàn thêm về luồng điều khiển</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node8.html">6. Mô-đun</a>
+
+</div>
+
+<hr /></div>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<div class="online-navigation">
+
+<!--Table of Child-Links-->
+
+<a name="CHILD_LINKS"><strong>Mục con</strong></a>
+
+<ul class="ChildLinks">
+
+<li><a href="node7.html#SECTION007100000000000000000">5.1 Bàn thêm về danh sách</a>
+
+<ul>
+
+<li><a href="node7.html#SECTION007110000000000000000">5.1.1 Dùng danh sách như ngăn xếp</a>
+
+</li><li><a href="node7.html#SECTION007120000000000000000">5.1.2 Dùng danh sách như hàng đợi</a>
+
+</li><li><a href="node7.html#SECTION007130000000000000000">5.1.3 Công cụ lập trình hướng hàm</a>
+
+</li><li><a href="node7.html#SECTION007140000000000000000">5.1.4 Gộp danh sách</a>
+
+</li></ul>
+
+</li><li><a href="node7.html#SECTION007200000000000000000">5.2 <tt class="keyword">del</tt> câu lệnh</a>
+
+</li><li><a href="node7.html#SECTION007300000000000000000">5.3 Bộ và dãy</a>
+
+</li><li><a href="node7.html#SECTION007400000000000000000">5.4 Tập hợp</a>
+
+</li><li><a href="node7.html#SECTION007500000000000000000">5.5 Từ điển</a>
+
+</li><li><a href="node7.html#SECTION007600000000000000000">5.6 Kỹ thuật lặp</a>
+
+</li><li><a href="node7.html#SECTION007700000000000000000">5.7 Bàn thêm về điều kiện</a>
+
+</li><li><a href="node7.html#SECTION007800000000000000000">5.8 So sánh dãy và các kiểu khác</a>
+
+</li></ul>
+
+<!--End of Table of Child-Links-->
+
+</div>
+
+<hr />
+
+<h1><a name="SECTION007000000000000000000"></a><a name="structures"></a>
+
+<br />
+5. Cấu trúc dữ liệu 
+</h1>
+
+<p>
+Chương này diễn giải kỹ hơn một vài điều bạn đã học được, và cũng nói thêm về một số điều mới.
+
+</p><p>
+
+<h1><a name="SECTION007100000000000000000"></a><a name="moreLists"></a>
+
+<br />
+5.1 Bàn thêm về danh sách 
+</h1>
+
+</p><p>
+Kiểu dữ liệu danh sách (kiểu list) có một số phương thức khác. Đây là toàn bộ các phương thức của đối tượng danh sách:
+
+</p><p>
+
+<dl><dt><table cellpadding="0" cellspacing="0"><tr valign="baseline">
+
+<td><nobr><b><tt id="l2h-9" xml:id="l2h-9" class="method">append</tt></b>(</nobr></td>
+
+<td><var>x</var>)</td></tr></table></dt>
+
+<dd>
+Thêm một phần tử vào cuối danh sách; tương đương với <code>a[len(a):] = [<var>x</var>]</code>.
+</dd></dl>
+
+</p><p>
+
+<dl><dt><table cellpadding="0" cellspacing="0"><tr valign="baseline">
+
+<td><nobr><b><tt id="l2h-10" xml:id="l2h-10" class="method">extend</tt></b>(</nobr></td>
+
+<td><var>L</var>)</td></tr></table></dt>
+
+<dd>
+Nới rộng danh sách bằng cách chèn vào tất cả các phần tử của danh sách chỉ định; tương đương với <code>a[len(a):] = <var>L</var></code>.
+</dd></dl>
+
+</p><p>
+
+<dl><dt><table cellpadding="0" cellspacing="0"><tr valign="baseline">
+
+<td><nobr><b><tt id="l2h-11" xml:id="l2h-11" class="method">insert</tt></b>(</nobr></td>
+
+<td><var>i, x</var>)</td></tr></table></dt>
+
+<dd>
+Chèn một phần tử vào vị trí chỉ định. Thông số đầu là chỉ mục của phần tử sẽ bị đẩy lùi, cho nên <code>a.insert(0, <var>x</var>)</code>
+chèn vào đầu danh sách, và <code>a.insert(len(a), <var>x</var>)</code>
+tương đương với <code>a.append(<var>x</var>)</code>.
+</dd></dl>
+
+</p><p>
+
+<dl><dt><table cellpadding="0" cellspacing="0"><tr valign="baseline">
+
+<td><nobr><b><tt id="l2h-12" xml:id="l2h-12" class="method">remove</tt></b>(</nobr></td>
+
+<td><var>x</var>)</td></tr></table></dt>
+
+<dd>
+Bỏ ra khỏi danh sách phần tử đầu tiên có giá trị là <var>x</var>. Sẽ có lỗi nếu không có phần tử như vậy.
+</dd></dl>
+
+</p><p>
+
+<dl><dt><table cellpadding="0" cellspacing="0"><tr valign="baseline">
+
+<td><nobr><b><tt id="l2h-13" xml:id="l2h-13" class="method">pop</tt></b>(</nobr></td>
+
+<td><var></var><big>[</big><var>i</var><big>]</big><var></var>)</td></tr></table></dt>
+
+<dd>
+Bỏ khỏi danh sách phần tử ở vị trí chỉ định, và trả về chính nó. Nếu không chỉ định vị trí, <code>a.pop()</code> bỏ và trả về phần tử cuối trong danh sách. (Ngoặc vuông xung quanh <var>i</var> trong khai báo hàm cho biết thông số đó là không bắt buộc, không có nghĩa là bạn cần gõ dấu ngoặc vuông ở vị trí đó. Bạn sẽ thấy cách viết này thường xuyên trong
+<em class="citetitle"><a href="../lib/lib.html" title="Tham khảo thư viện Python">Tham khảo thư viện Python</a></em>.)
+</dd></dl>
+
+</p><p>
+
+<dl><dt><table cellpadding="0" cellspacing="0"><tr valign="baseline">
+
+<td><nobr><b><tt id="l2h-14" xml:id="l2h-14" class="method">index</tt></b>(</nobr></td>
+
+<td><var>x</var>)</td></tr></table></dt>
+
+<dd>
+Trả về chỉ mục của phần tử trong danh sách mà có giá trị là <var>x</var>. Sẽ có lỗi nếu không có phần tử như vậy.
+</dd></dl>
+
+</p><p>
+
+<dl><dt><table cellpadding="0" cellspacing="0"><tr valign="baseline">
+
+<td><nobr><b><tt id="l2h-15" xml:id="l2h-15" class="method">count</tt></b>(</nobr></td>
+
+<td><var>x</var>)</td></tr></table></dt>
+
+<dd>
+Trả về số lần <var>x</var> xuất hiện trong danh sách.
+</dd></dl>
+
+</p><p>
+
+<dl><dt><table cellpadding="0" cellspacing="0"><tr valign="baseline">
+
+<td><nobr><b><tt id="l2h-16" xml:id="l2h-16" class="method">sort</tt></b>(</nobr></td>
+
+<td><var></var>)</td></tr></table></dt>
+
+<dd>
+Sắp xếp các phần tử trong danh sách, ngay tại chỗ.
+</dd></dl>
+
+</p><p>
+
+<dl><dt><table cellpadding="0" cellspacing="0"><tr valign="baseline">
+
+<td><nobr><b><tt id="l2h-17" xml:id="l2h-17" class="method">reverse</tt></b>(</nobr></td>
+
+<td><var></var>)</td></tr></table></dt>
+
+<dd>
+Đảo ngược thứ tự các phần tử trong danh sách, ngay tại chỗ.
+</dd></dl>
+
+</p><p>
+Một ví dụ có sử dụng hầu hết các phương thức của danh sách:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; a = [66.25, 333, 333, 1, 1234.5]
+&gt;&gt;&gt; print a.count(333), a.count(66.25), a.count('x')
+2 1 0
+&gt;&gt;&gt; a.insert(2, -1)
+&gt;&gt;&gt; a.append(333)
+&gt;&gt;&gt; a
+[66.25, 333, -1, 333, 1, 1234.5, 333]
+&gt;&gt;&gt; a.index(333)
+1
+&gt;&gt;&gt; a.remove(333)
+&gt;&gt;&gt; a
+[66.25, -1, 333, 1, 1234.5, 333]
+&gt;&gt;&gt; a.reverse()
+&gt;&gt;&gt; a
+[333, 1234.5, 1, 333, -1, 66.25]
+&gt;&gt;&gt; a.sort()
+&gt;&gt;&gt; a
+[-1, 1, 66.25, 333, 333, 1234.5]
+</pre></div>
+
+</p><p>
+
+<h2><a name="SECTION007110000000000000000"></a><a name="lists-as-stacks"></a>
+
+<br />
+5.1.1 Dùng danh sách như ngăn xếp 
+</h2>
+
+</p><p>
+Các phương thức của danh sách làm cho nó rất dễ sử dụng như là ngăn xếp (stack), là nơi mà phần tử cuối được thêm vào là phần tử đầu được lấy ra (``vào sau, ra trước'' hay ``last-in, first-out''). Để thêm phần tử vào đỉnh của ngăn xếp, dùng
+<tt class="method">append()</tt>. Để lấy một phần tử từ đỉnh của ngăn xếp, dùng
+<tt class="method">pop()</tt> mà không chỉ định chỉ mục. Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; stack = [3, 4, 5]
+&gt;&gt;&gt; stack.append(6)
+&gt;&gt;&gt; stack.append(7)
+&gt;&gt;&gt; stack
+[3, 4, 5, 6, 7]
+&gt;&gt;&gt; stack.pop()
+7
+&gt;&gt;&gt; stack
+[3, 4, 5, 6]
+&gt;&gt;&gt; stack.pop()
+6
+&gt;&gt;&gt; stack.pop()
+5
+&gt;&gt;&gt; stack
+[3, 4]
+</pre></div>
+
+</p><p>
+
+<h2><a name="SECTION007120000000000000000"></a><a name="lists-as-queues"></a>
+
+<br />
+5.1.2 Dùng danh sách như hàng đợi 
+</h2>
+
+</p><p>
+Bạn cũng có thể thuận tiện dùng danh sách như là hàng đợi (queue), nơi mà phần tử được thêm vào đầu tiên là phần tử được lấy ra đầu tiên (``vào trước, ra trước'' hay ``first-in, first-out''). Để thêm một phần tử vào cuối hàng đợi, dùng
+<tt class="method">append()</tt>. Để lấy một phần tử từ đầu hàng đợi, dùng <tt class="method">pop()</tt> với <code>0</code> là chỉ mục. Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; queue = ["Eric", "John", "Michael"]
+&gt;&gt;&gt; queue.append("Terry")           # Terry arrives
+&gt;&gt;&gt; queue.append("Graham")          # Graham arrives
+&gt;&gt;&gt; queue.pop(0)
+'Eric'
+&gt;&gt;&gt; queue.pop(0)
+'John'
+&gt;&gt;&gt; queue
+['Michael', 'Terry', 'Graham']
+</pre></div>
+
+</p><p>
+
+<h2><a name="SECTION007130000000000000000"></a><a name="functional"></a>
+
+<br />
+5.1.3 Công cụ lập trình hướng hàm 
+</h2>
+
+</p><p>
+Có sẵn ba hàm rất hữu dụng khi dùng với danh sách: <tt class="function">filter()</tt>, <tt class="function">map()</tt>, và <tt class="function">reduce()</tt>.
+
+</p><p>
+"<tt class="samp">filter(<var>function</var>, <var>sequence</var>)</tt>" trả về một dãy chứa các phần tử từ dãy mà <code><var>function</var>(<var>item</var>)</code> có giá trị đúng. Nếu <var>sequence</var> là một <tt class="class">string</tt> hoặc <tt class="class">tuple</tt>, thì kết quả trả về sẽ có cùng kiểu; ngược lại, sẽ luôn luôn là một <tt class="class">list</tt>. Ví dụ, để tìm một vài số nguyên tố:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; def f(x): return x % 2 != 0 and x % 3 != 0
+...
+&gt;&gt;&gt; filter(f, range(2, 25))
+[5, 7, 11, 13, 17, 19, 23]
+</pre></div>
+
+</p><p>
+"<tt class="samp">map(<var>function</var>, <var>sequence</var>)</tt>" gọi
+<code><var>function</var>(<var>item</var>)</code> với mỗi phần tử trong dãy và trả về một danh sách các giá trị trả về. Ví dụ, để tính một vài số lập phương:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; def cube(x): return x*x*x
+...
+&gt;&gt;&gt; map(cube, range(1, 11))
+[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]
+</pre></div>
+
+</p><p>
+Có thể truyền vào nhiều dãy; hàm đó phải nhận từng ấy thông số với mỗi phần tử trong mỗi dãy là một thông số (hoặc <code>None</code> nếu dãy nào đó ngắn hơn dãy còn lại). Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; seq = range(8)
+&gt;&gt;&gt; def add(x, y): return x+y
+...
+&gt;&gt;&gt; map(add, seq, seq)
+[0, 2, 4, 6, 8, 10, 12, 14]
+</pre></div>
+
+</p><p>
+"<tt class="samp">reduce(<var>function</var>, <var>sequence</var>)</tt>" trả về giá trị duy nhất được tạo ra từ việc gọi hàm nhị phân <var>function</var> với thông số là hai phần tử đầu của dãy, rồi sau đó với giá trị trả về này với phần tử kế, và cứ thế. Ví dụ, để tính tổng của các số từ 1 đến 10:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; def add(x,y): return x+y
+...
+&gt;&gt;&gt; reduce(add, range(1, 11))
+55
+</pre></div>
+
+</p><p>
+Nếu chỉ có một phần tử trong dãy, giá trị của nó sẽ được trả về; nếu dãy rỗng, biệt lệ sẽ được nâng.
+
+</p><p>
+Có thể truyền thêm thông số thứ ba để cho biết giá trị ban đầu. Trong trường hợp đó, giá trị này sẽ được trả về nếu dãy rỗng, và hàm sẽ được áp dụng cho giá trị ban đầu, và giá trị của phần tử đầu của dãy, rồi với giá trị được trả về với giá trị của phần tử kế, và cứ thế. Ví dụ,
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; def sum(seq):
+...     def add(x,y): return x+y
+...     return reduce(add, seq, 0)
+... 
+&gt;&gt;&gt; sum(range(1, 11))
+55
+&gt;&gt;&gt; sum([])
+0
+</pre></div>
+
+</p><p>
+Đừng dùng định nghĩa của ví dụ này về <tt class="function">sum()</tt>: vì việc cộng các con số là một nhu cầu chung, một hàm có sẵn
+<code>sum(<var>sequence</var>)</code> đã được cung cấp, và hoặc động y như vậy.
+
+<span class="versionnote">Từ phiên bản 2.3.</span>
+
+</p><p>
+
+<h2><a name="SECTION007140000000000000000">
+5.1.4 Gộp danh sách</a>
+
+</h2>
+
+</p><p>
+Việc gộp danh sách (list comprehension) cung cấp một cách xúc tích để tạo danh sách mà không cần dùng tới <tt class="function">map()</tt>, <tt class="function">filter()</tt> hoặc <tt class="keyword">lambda</tt>. Kết quả là khai báo danh sách kiểu này thường dễ hiểu hơn những danh sách tạo ra từ những cách kia. Mỗi gộp danh sách chứa một biểu thức, theo sau bởi vế <tt class="keyword">for</tt> , rồi không có hoặc có các vế <tt class="keyword">for</tt> hoặc
+<tt class="keyword">if</tt> . Kết quả sẽ là một danh sách được trả về từ việc định giá biểu thức trong ngữ cảnh của các vế <tt class="keyword">for</tt> và <tt class="keyword">if</tt> theo sau nó. Nếu biểu thức trả về một tuple, nó phải được đặt trong ngoặc.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; freshfruit = ['  banana', '  loganberry ', 'passion fruit  ']
+&gt;&gt;&gt; [weapon.strip() for weapon in freshfruit]
+['banana', 'loganberry', 'passion fruit']
+&gt;&gt;&gt; vec = [2, 4, 6]
+&gt;&gt;&gt; [3*x for x in vec]
+[6, 12, 18]
+&gt;&gt;&gt; [3*x for x in vec if x &gt; 3]
+[12, 18]
+&gt;&gt;&gt; [3*x for x in vec if x &lt; 2]
+[]
+&gt;&gt;&gt; [[x,x**2] for x in vec]
+[[2, 4], [4, 16], [6, 36]]
+&gt;&gt;&gt; [x, x**2 for x in vec]	# error - parens required for tuples
+  File "&lt;stdin&gt;", line 1, in ?
+    [x, x**2 for x in vec]
+               ^
+SyntaxError: invalid syntax
+&gt;&gt;&gt; [(x, x**2) for x in vec]
+[(2, 4), (4, 16), (6, 36)]
+&gt;&gt;&gt; vec1 = [2, 4, 6]
+&gt;&gt;&gt; vec2 = [4, 3, -9]
+&gt;&gt;&gt; [x*y for x in vec1 for y in vec2]
+[8, 6, -18, 16, 12, -36, 24, 18, -54]
+&gt;&gt;&gt; [x+y for x in vec1 for y in vec2]
+[6, 5, -7, 8, 7, -5, 10, 9, -3]
+&gt;&gt;&gt; [vec1[i]*vec2[i] for i in range(len(vec1))]
+[8, 12, -54]
+</pre></div>
+
+</p><p>
+Cách gộp danh sách uyển chuyển hơn nhiều so với <tt class="function">map()</tt> và có thể được áp dụng cho các biểu thức phức tạp và các hàm lồng nhau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; [str(round(355/113.0, i)) for i in range(1,6)]
+['3.1', '3.14', '3.142', '3.1416', '3.14159']
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION007200000000000000000"></a><a name="del"></a>
+
+<br />
+5.2 <tt class="keyword">del</tt> câu lệnh 
+</h1>
+
+</p><p>
+Có một cách để bỏ một phần tử ra khỏi danh sách dựa trên chỉ mục của nó, thay vì giá trị: câu lệnh <tt class="keyword">del</tt> . Cách này khác với phương thức
+<tt class="method">pop()</tt>trả về một giá trị. Câu lệnh <tt class="keyword">del</tt>
+cũng có thể được sử dụng để bỏ các miếng cắt (slice) khỏi danh sách hoặc xóa toàn bộ danh sách (điều mà chúng ta đã làm trước đó bằng cách gán một danh sách rỗng vào miếng cắt). Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; a = [-1, 1, 66.25, 333, 333, 1234.5]
+&gt;&gt;&gt; del a[0]
+&gt;&gt;&gt; a
+[1, 66.25, 333, 333, 1234.5]
+&gt;&gt;&gt; del a[2:4]
+&gt;&gt;&gt; a
+[1, 66.25, 1234.5]
+&gt;&gt;&gt; del a[:]
+&gt;&gt;&gt; a
+[]
+</pre></div>
+
+</p><p>
+
+<tt class="keyword">del</tt> cũng có thể được dùng để xóa hoàn toàn các biến:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; del a
+</pre></div>
+
+</p><p>
+Tham chiếu tới tên <code>a</code> sau đó sẽ tạo ra lỗi (ít nhất cho đến khi một giá trị khác được gán vào cho nó). Chúng ta sẽ thấy các cách dùng khác với
+<tt class="keyword">del</tt> sau này.
+
+</p><p>
+
+<h1><a name="SECTION007300000000000000000"></a><a name="tuples"></a>
+
+<br />
+5.3 Bộ và dãy 
+</h1>
+
+</p><p>
+Chúng ta đã thấy rằng danh sách và chuỗi có nhiều thuộc tính chung, như là có chỉ mục, và các toán tử cắt miếng. Chúng là hai ví dụ của
+<a class="ulink" href="../lib/typesseq.html"><em>dãy (sequence)</em> kiểu dữ liệu</a>. Vì Python là một ngôn ngữ đang phát triển, các kiểu dữ liệu dãy khác có thể được thêm vào. Có một kiểu dãy chuẩn khác:
+<em>bộ (tuple)</em>.
+
+</p><p>
+Một tuple gồm một số các giá trị phân cách bởi dấu phẩy, ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; t = 12345, 54321, 'hello!'
+&gt;&gt;&gt; t[0]
+12345
+&gt;&gt;&gt; t
+(12345, 54321, 'hello!')
+&gt;&gt;&gt; # Tuples may be nested:
+... u = t, (1, 2, 3, 4, 5)
+&gt;&gt;&gt; u
+((12345, 54321, 'hello!'), (1, 2, 3, 4, 5))
+</pre></div>
+
+</p><p>
+Khi xuất ra, tuple luôn luôn được kèm giữa hai dấu ngoặc nhằm để cho các tuple lồng nhau có thể được thông dịch chính xác; chúng có thể được nhập vào với ngoặc hoặc không, mặc dù thông thường chúng ta vẫn cần các dấu ngoặc (nếu tuple là một phần của một biểu thức lớn hơn).
+
+</p><p>
+Tuple được dùng nhiều. Ví dụ: cặp tọa độ (x, y), bản ghi nhân viên từ cơ sở dữ liệu, v.v... Giống như chuỗi, tuple không thể bị thay đổi: không thể gán giá trị mới cho từng phần tử của tuple (mặc dù bạn có thể đạt được cùng kết quả với cắt miếng và ghép dãy). Cũng có thể tạo tuple chứa các đối tượng khả biến ví dụ như danh sách.
+
+</p><p>
+Vấn đề đặc biệt là trong việc tạo nên tuple chứa 0 hoặc một phần tử: cú pháp ngôn ngữ có một vài điểm riêng để thực hiện việc này. Tuple rỗng được tạo nên bởi một cặp ngoặc rỗng; tuple một phần tử được tạo bởi một giá trị theo sau bởi một dấu phẩy (việc cho giá trị đơn lẻ vào trong ngoặc không đủ để tạo tuple). Xấu, nhưng hiệu quả. Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; empty = ()
+&gt;&gt;&gt; singleton = 'hello',    # &lt;-- note trailing comma
+&gt;&gt;&gt; len(empty)
+0
+&gt;&gt;&gt; len(singleton)
+1
+&gt;&gt;&gt; singleton
+('hello',)
+</pre></div>
+
+</p><p>
+Câu lệnh <code>t = 12345, 54321, 'hello!'</code> là một ví dụ của
+<em>việc đóng gói tuple (tuple packing)</em>: các giá trị <code>12345</code>, <code>54321</code> và
+<code>'hello!'</code> được gói lại vào trong một tuple. Và quá trình ngược:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; x, y, z = t
+</pre></div>
+
+</p><p>
+Và nó được gọi là <em>tháo dãy</em>. Việc tháo dãy yêu cầu danh sách các biến bên trái có cùng số phần tử như độ lớn của dãy. Chú ý rằng phép đa gán (multiple assignment) thật ra chỉ là sự tổng hợp của việc gói tuple và tháo dãy.
+
+</p><p>
+Có một điểm không đối xứng ở đây: việc gói nhiều giá trị luôn luôn tạo một tuple, nhưng phép tháo ra có thể được áp dụng cho mọi dãy (chuỗi, danh sách, tuple).
+
+</p><p>
+
+<h1><a name="SECTION007400000000000000000"></a><a name="sets"></a>
+
+<br />
+5.4 Tập hợp 
+</h1>
+
+</p><p>
+Python cũng có một kiểu dữ liệu cho <em>tập hợp (set)</em>. Một tập hợp là một nhóm các phần tử không lặp. Ứng dụng cơ bản bao gồm việc kiểm tra hội viên và bỏ các phần tử trùng lặp. Các đối tượng tập hợp cũng hỗ trợ các toán tử như hợp, giao, hiệu, và hiệu đối xứng.
+
+</p><p>
+Đây là một ví dụ ngắn:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+&gt;&gt;&gt; fruit = set(basket)               # create a set without duplicates
+&gt;&gt;&gt; fruit
+set(['orange', 'pear', 'apple', 'banana'])
+&gt;&gt;&gt; 'orange' in fruit                 # fast membership testing
+True
+&gt;&gt;&gt; 'crabgrass' in fruit
+False
+
+&gt;&gt;&gt; # Demonstrate set operations on unique letters from two words
+...
+&gt;&gt;&gt; a = set('abracadabra')
+&gt;&gt;&gt; b = set('alacazam')
+&gt;&gt;&gt; a                                  # unique letters in a
+set(['a', 'r', 'b', 'c', 'd'])
+&gt;&gt;&gt; a - b                              # letters in a but not in b
+set(['r', 'd', 'b'])
+&gt;&gt;&gt; a | b                              # letters in either a or b
+set(['a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'])
+&gt;&gt;&gt; a &amp; b                              # letters in both a and b
+set(['a', 'c'])
+&gt;&gt;&gt; a ^ b                              # letters in a or b but not both
+set(['r', 'd', 'b', 'm', 'z', 'l'])
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION007500000000000000000"></a><a name="dictionaries"></a>
+
+<br />
+5.5 Từ điển 
+</h1>
+
+</p><p>
+Một kiểu dữ liệu hữu dụng khác được đưa vào Python là
+<a class="ulink" href="../lib/typesmapping.html"><em>từ điển (dictionary)</em></a>. Từ điển được tìm thấy trong các ngôn ngữ khác như ``bộ nhớ kết hợp (associative memory)'' hoặc ``mảng kết hợp (associative array)''. Không như dãy được chia chỉ mục từ một khoảng số, từ điển được chia chỉ mục từ <em>các khóa</em>, có thể là bất kỳ kiểu không đổi nào; chuỗi và số luôn luôn có thể làm khóa. Tuple có thể được dùng làm khóa nếu nó chỉ chứa chuỗi, số, hoặc tuple; nếu tuple chứa bất kỳ một đối tượng khả biến nào thì nó không thể được dùng làm khóa. Bạn không thể dùng danh sách làm khóa, vì danh sách có thể được thay đổi ngay tại chỗ với phép gán vào chỉ mục, phép gán miếng cắt, hoặc các phương thức khác như
+<tt class="method">append()</tt> và <tt class="method">extend()</tt>.
+
+</p><p>
+Dễ nhất là nghĩ về từ điển như một tập hợp không thứ tự của các bộ
+<em>khóa: giá trị</em> , với điều kiện là khóa phải là duy nhất (trong cùng một từ điển). Một cặp ngoặc nhọn tạo một từ điển rỗng: <code>{}</code>. Đặt một loạt các cụm khóa:giá trị phân biệt bởi dấu phẩy vào trong ngoặc nhọn tạo nên các cặp khóa:giá trị ban đầu cho từ điển; đây cũng là cách mà từ điển được xuất ra.
+
+</p><p>
+Công việc chính của từ điển là chứa một giá trị vào một khóa nào đó và lấy lại giá trị từ khóa đó. Cũng có thể xóa một cặp khóa:giá trị với <code>del</code>. Nếu bạn chứa vào một khóa đã có sẵn, giá trị cũ sẽ bị mất. Lấy giá trị từ một khóa không tồn tại sẽ gây nên lỗi.
+
+</p><p>
+Phương thức <tt class="method">keys()</tt> của đối tượng từ điển trả về một danh sách các khóa đã được dùng trong từ điển, theo một thứ tự bất kỳ (nếu bạn muốn chúng được sắp xếp, chỉ cần áp dụng phương thức <tt class="method">sort()</tt> vào danh sách các khóa). Để kiểm tra xem một khóa có trong từ điển hay không, có thể dùng phương thức
+<tt class="method">has_key()</tt> hoặc từ khóa <tt class="keyword">in</tt> .
+
+</p><p>
+Đây là một ví dụ nhỏ về cách dùng từ điển:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; tel = {'jack': 4098, 'sape': 4139}
+&gt;&gt;&gt; tel['guido'] = 4127
+&gt;&gt;&gt; tel
+{'sape': 4139, 'guido': 4127, 'jack': 4098}
+&gt;&gt;&gt; tel['jack']
+4098
+&gt;&gt;&gt; del tel['sape']
+&gt;&gt;&gt; tel['irv'] = 4127
+&gt;&gt;&gt; tel
+{'guido': 4127, 'irv': 4127, 'jack': 4098}
+&gt;&gt;&gt; tel.keys()
+['guido', 'irv', 'jack']
+&gt;&gt;&gt; tel.has_key('guido')
+True
+&gt;&gt;&gt; 'guido' in tel
+True
+</pre></div>
+
+</p><p>
+Phương thức <tt class="function">dict()</tt> dùng để tạo từ điển trực tiếp từ các danh sách các cụm khóa-giá trị chứa trong tuple. Khi các cụm có một mẫu nào đó, việc gộp danh sách có thể chỉ ra ngắn gọn danh sách khóa-giá trị.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
+{'sape': 4139, 'jack': 4098, 'guido': 4127}
+&gt;&gt;&gt; dict([(x, x**2) for x in (2, 4, 6)])     # use a list comprehension
+{2: 4, 4: 16, 6: 36}
+</pre></div>
+
+</p><p>
+Ở phần sau của bài chỉ dẫn chúng ta sẽ tìm hiểu về các biểu thức bộ tạo thích hợp hơn với việc cung cấp các cặp khóa-giá trị vào hàm khởi tạo <tt class="function">dict()</tt> .
+
+</p><p>
+Khi mà khóa là những chuỗi đơn giản, đôi khi nó sẽ dễ hơn nếu chỉ định các cụm bằng thống số từ khóa:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; dict(sape=4139, guido=4127, jack=4098)
+{'sape': 4139, 'jack': 4098, 'guido': 4127}
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION007600000000000000000"></a><a name="loopidioms"></a>
+
+<br />
+5.6 Kỹ thuật lặp 
+</h1>
+
+</p><p>
+Khi lặp qua từ điển, khóa và giá trị tương ứng có thể được lấy ra cùng lúc bằng phương thức <tt class="method">iteritems()</tt> .
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; knights = {'gallahad': 'the pure', 'robin': 'the brave'}
+&gt;&gt;&gt; for k, v in knights.iteritems():
+...     print k, v
+...
+gallahad the pure
+robin the brave
+</pre></div>
+
+</p><p>
+Khi lặp qua một dãy, vị trí chỉ mục và giá trị tương ứng có thể được lấy ra cùng lúc bằng hàm
+<tt class="function">enumerate()</tt> .
+
+</p><p>
+
+<div class="verbatim"><pre> 
+&gt;&gt;&gt; for i, v in enumerate(['tic', 'tac', 'toe']):
+...     print i, v
+...
+0 tic
+1 tac
+2 toe
+</pre></div>
+
+</p><p>
+Để lặp qua hai hoặc nhiều dãy cùng lúc, các phần tử có thể được ghép với nhau bằng hàm <tt class="function">zip()</tt> .
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; questions = ['name', 'quest', 'favorite color']
+&gt;&gt;&gt; answers = ['lancelot', 'the holy grail', 'blue']
+&gt;&gt;&gt; for q, a in zip(questions, answers):
+...     print 'What is your %s?  It is %s.' % (q, a)
+...	
+What is your name?  It is lancelot.
+What is your quest?  It is the holy grail.
+What is your favorite color?  It is blue.
+</pre></div>
+
+</p><p>
+Để lặp qua một dãy theo thứ tự đảo, đầu tiên chỉ định dãy đó theo thứ tự xuôi, rồi gọi hàm <tt class="function">reversed()</tt>
+.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; for i in reversed(xrange(1,10,2)):
+...     print i
+...
+9
+7
+5
+3
+1
+</pre></div>
+
+</p><p>
+Để lặp qua một dãy theo thứ tự đã sắp xếp, dùng hàm <tt class="function">sorted()</tt>
+và nó sẽ trả về một danh sách đã sắp xếp trong khi vẫn để danh sách gốc nguyên vẹn.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+&gt;&gt;&gt; for f in sorted(set(basket)):
+...     print f
+... 	
+apple
+banana
+orange
+pear
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION007700000000000000000"></a><a name="conditions"></a>
+
+<br />
+5.7 Bàn thêm về điều kiện 
+</h1>
+
+</p><p>
+Điều kiện dùng trong các câu lệnh <code>while</code> và <code>if</code> có thể chứa bất kỳ toán tử nào, không chỉ là phép so sánh.
+
+</p><p>
+Các toán tử so sánh <code>in</code> và <code>not in</code> kiểm tra xem giá trị có mặt (hoặc không có mặt) trong một dãy. Toán tử <code>is</code> và
+<code>is not</code> so sánh xem hai đối tượng có phải cùng là một đối tượng hay không; việc này chỉ quan trọng đối với các đối tượng khả biến như danh sách. Mọi toán tử so sánh có cùng độ ưu tiên, thấp hơn của các toán tử số.
+
+</p><p>
+So sánh có thể được nối với nhau. Ví dụ như, <code>a &lt; b == c</code> kiểm tra xem <code>a</code> nhỏ hơn <code>b</code> và hơn nữa <code>b</code> bằng với
+<code>c</code>.
+
+</p><p>
+Phép so sánh có thể được ghép với nhau bằng toán tử Boolean <code>and</code> và
+<code>or</code>, và kết quả của phép so sánh (hoặc của mọi biểu thức Boolean) có thể được đảo ngược với <code>not</code>. Các toán tử này có độ ưu tiên thấp hơn các toán tử so sánh; giữa chúng, <code>not</code> có độ ưu tiên cao nhất và <code>or</code> thấp nhất, để cho
+<code>A and not B or C</code> tương đương với <code>(A and (not B)) or C</code>. Như mọi khi, dấu ngoặc đơn có thể được dùng để cho biết kết cấu đúng ý.
+
+</p><p>
+Các toán tử Boolean <code>and</code> và <code>or</code> còn được gọi là
+<em>đoản mạch (short-circuit)</em> toán tử: toán hạng của chúng được đánh giá từ trái qua phải, và việc định giá dừng lại ngay khi kết quả được xác định. Ví dụ như, nếu <code>A</code> và <code>C</code> là đúng nhưng
+<code>B</code> là sai, <code>A and B and C</code> không định giá biểu thức <code>C</code>. Khi dùng như một giá trị chung chung và không phải như một Boolean, giá trị trả về của một toán tử đoản mạch là thông số được định giá cuối cùng.
+
+</p><p>
+Có thể gán kết quả của một phép so sánh hoặc một biểu thức Boolean vào một biến. Ví dụ,
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; string1, string2, string3 = '', 'Trondheim', 'Hammer Dance'
+&gt;&gt;&gt; non_null = string1 or string2 or string3
+&gt;&gt;&gt; non_null
+'Trondheim'
+</pre></div>
+
+</p><p>
+Chú ý rằng trong Python, khác với C, phép gán không thể có mặt trong biểu thức. Các lập trình viên C sẽ không hài lòng với việc này, nhưng nó tránh một nhóm lớn các lỗi thường gặp trong chương trình C: nhập vào <code>=</code> trong một biểu thức khi mà
+<code>==</code> được nhằm tới.
+
+</p><p>
+
+<h1><a name="SECTION007800000000000000000"></a><a name="comparing"></a>
+
+<br />
+5.8 So sánh dãy và các kiểu khác 
+</h1>
+
+</p><p>
+Đối tượng dãy có thể được so sánh với đối tượng khác cùng kiểu dãy. Sự so sánh dùng <em>từ điển</em> thứ tự: đầu tiên hai phần tử đâu được so sánh, và nếu chúng khác nhau thì kết quả được xác định; nếu chúng bằng nhau thì hai phần tử kế sẽ được so sánh và cứ thế, cho đến cuối một trong hai dãy. Nếu hai phần tử được so sánh lại là hai phần dãy cùng kiểu, phép so sánh từ điển lại được thực hiện đệ quy như vậy. Nếu mọi phần tử trong hai dãy đều bằng nhau thì chúng được coi là bằng nhau. Nếu một dãy là dãy con ban đầu của dãy kia, thì dãy ngắn hơn sẽ là dãy bé hơn. Thứ tự từ điển đối với chuỗi sử dụng thứ tự ASCII cho từng ký tự. Một vài ví dụ về việc so sánh dãy cùng kiểu:
+
+</p><p>
+
+<div class="verbatim"><pre>
+(1, 2, 3)              &lt; (1, 2, 4)
+[1, 2, 3]              &lt; [1, 2, 4]
+'ABC' &lt; 'C' &lt; 'Pascal' &lt; 'Python'
+(1, 2, 3, 4)           &lt; (1, 2, 4)
+(1, 2)                 &lt; (1, 2, -1)
+(1, 2, 3)             == (1.0, 2.0, 3.0)
+(1, 2, ('aa', 'ab'))   &lt; (1, 2, ('abc', 'a'), 4)
+</pre></div>
+
+</p><p>
+Lưu ý rằng so sánh các đối tượng khác kiểu cũng được chấp nhận. Kết quả có thể đoán được nhưng ngoài ý muốn: các kiểu được xếp theo thứ tự tên của chúng. Do đó, một danh sách (list) luôn nhỏ hơn một chuỗi (string), và một chuỗi luôn nhỏ hơn một tuple, v.v....  <a name="tex2html3" href="#foot743"><sup>5.1</sup></a> Các kiểu số lẫn lộn được so sánh theo giá trị của chúng, do đó 0 bằng 0.0, v.v...
+
+</p><p>
+
+<br /><hr /><h4>Chú thích</h4>
+
+<dl>
+
+<dt><a name="foot743">... v.v...</a><a href="node7.html#tex2html3"><sup>5.1</sup></a></dt>
+
+<dd>
+        Không nên dựa vào luật so sánh các đối tượng khác kiểu vì nó có thể bị thay đổi ở phiên bản tương lai của ngôn ngữ.
+
+
+</dd>
+
+</dl>
+
+<div class="navigation">
+
+<div class="online-navigation">
+
+<p></p><hr />
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="4. Bàn thêm về luồng điều khiển" href="node6.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="6. Mô-đun" href="node8.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node6.html">4. Bàn thêm về luồng điều khiển</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node8.html">6. Mô-đun</a>
+
+</div>
+
+</div>
+
+<hr />
+
+<span class="release-info">Phiên bản 2.5, tài liệu được cập nhật ngày 19, tháng 09, năm 2006.</span>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<address>
+Xem <i><a href="about.html">Về tài liệu này...</a></i> về cách đề nghị thay đổi.
+</address>
+
+</p></body>
+
+</html>
+

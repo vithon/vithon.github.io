@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Xử lý tiếng Việt trong Python
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2009/06/xu-ly-tieng-viet-trong-python.html" rel="bookmark" title="Permalink to Xử lý tiếng Việt trong Python">Xử lý tiếng Việt trong Python</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Ví dụ sau minh họa 3 codecs bạn hay gặp nhất trong Python:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;sky down no enemy&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">&lt;type &#39;str&#39;&gt; 17</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;thiên hạ vô địch&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">&#39;thi\xc3\xaan h\xe1\xba\xa1 v\xc3\xb4 \xc4\x91\xe1\xbb\x8bch&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">&lt;type &#39;str&#39;&gt; 23</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="nb">unicode</span><span class="p">(</span><span class="s2">&quot;thiên hạ vô địch&quot;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">u&#39;thi\xean h\u1ea1 v\xf4 \u0111\u1ecbch&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">&lt;type &#39;unicode&#39;&gt; 16</span>
+</pre></div>
+<p>Nghiên cứu ví dụ trên. <tt class="docutils literal">len(s)</tt> trong hai ví dụ đầu thực sự là số byte cần để lưu trữ <tt class="docutils literal">s</tt>. <tt class="docutils literal">len(s)</tt> trong ví dụ 3 là độ dài ký tự, dung lượng nhớ thực sự để lưu trữ <tt class="docutils literal">s</tt> là 16 * 2 = 32 bytes.</p>
+<p>Tại bất cứ một thời điểm nào trong chương trình Python bạn cũng phải xác định được bạn đang thao tác với chuỗi kiểu gì: ascii, unicode, hay utf8... Dùng lệnh sau để biết một chuỗi là unicode hay không:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">u&#39;thi\xean h\u1ea1 v\xf4 \u0111\u1ecbch&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span> <span class="o">=</span> <span class="s2">&quot;sky down no enemy&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">ss</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;thiên hạ vô địch&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">ss</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+<p>Cộng một chuỗi không phải unicode với một chuỗi unicode thì chuỗi không phải unicode sẽ được tự động convert sang unicode trước khi cộng:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span> <span class="o">=</span> <span class="s2">&quot;sky down no enemy&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span> <span class="o">+</span> <span class="sa">u</span><span class="s2">&quot;&quot;</span>
+<span class="go">u&#39;sky down no enemy&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span> <span class="o">=</span> <span class="s2">&quot;thiên hạ vô địch&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span> <span class="o">+</span> <span class="sa">u</span><span class="s2">&quot;&quot;</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">UnicodeDecodeError</span>: <span class="n">&#39;ascii&#39; codec can&#39;t decode byte 0xc3 in position 3: ordinal not in range(128)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span> <span class="o">=</span> <span class="nb">unicode</span><span class="p">(</span><span class="s2">&quot;thiên hạ vô địch&quot;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span> <span class="o">+</span> <span class="sa">u</span><span class="s2">&quot;&quot;</span>
+<span class="go">u&#39;thi\xean h\u1ea1 v\xf4 \u0111\u1ecbch&#39;</span>
+</pre></div>
+<p>Trong tình huống thứ 2 bạn cố gắng cộng một chuỗi utf8 vào chuỗi unicode. Python tự động chuyển chuỗi utf8 thành chuỗi unicode bằng cách decode với codec='ascii', vì vậy gặp lỗi. Tình huống này tương đương với:</p>
+<div class="highlight"><pre><span></span><span class="go">ss + u&quot;&quot; = ss.decode(&#39;ascii&#39;) + u&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span> <span class="o">=</span> <span class="s2">&quot;thiên hạ vô địch&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="sa">u</span><span class="s2">&quot;&quot;</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">UnicodeDecodeError</span>: <span class="n">&#39;ascii&#39; codec can&#39;t decode byte 0xc3 in position 3: ordinal not in range(128)</span>
+</pre></div>
+<p>Hai cách để cộng đúng là:</p>
+<div class="highlight"><pre><span></span><span class="go">ss.decode(&#39;utf8&#39;) + u&quot;&quot;</span>
+</pre></div>
+<p>hoặc</p>
+<div class="highlight"><pre><span></span><span class="go">unicode(ss, &#39;utf8&#39;) + u&quot;&quot;</span>
+</pre></div>
+<p>Các thao tác với chuỗi khác như <tt class="docutils literal">join</tt>, <tt class="docutils literal">split</tt>, <tt class="docutils literal">find</tt>... cũng tương tự. Nghĩa là nếu có một tham số unicode thì các tham số còn lại được tự động chuyển sang unicode trước khi thực hiện thao tác. Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span> <span class="o">=</span> <span class="s2">&quot;sky down no enemy&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ss</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="go">[u&#39;sky&#39;, u&#39;down&#39;, u&#39;no&#39;, u&#39;enemy&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sky&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">,</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span> <span class="s2">&quot;enemy&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">unichr</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="go">u&#39;sky down no enemy&#39;</span>
+</pre></div>
+<p>Tương tự thao tác sau sẽ gây lỗi:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;thiên hạ vô địch&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;string&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;string&gt;</span>
+<span class="gr">UnicodeDecodeError</span>: <span class="n">&#39;ascii&#39; codec can&#39;t decode byte 0xc3 in position 3: ordinal not in range(128)</span>
+</pre></div>
+<p>Để chuyển một chuỗi tiếng Việt utf sang dạng viết hoa, bạn luôn luôn phải chuyển nó về unicode trước. Nghiên cứu ví dụ sau:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;thiên hạ vô địch&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="go">&#39;THI\xc3\xaaN H\xe1\xba\xa1 V\xc3\xb4 \xc4\x91\xe1\xbb\x8bCH&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">&#39;thi\xc3\xaan h\xe1\xba\xa1 v\xc3\xb4 \xc4\x91\xe1\xbb\x8bch&#39;</span>
+<span class="go">&lt;&lt;/sourcecode&gt;&gt;</span>
+</pre></div>
+<p>So sánh với <tt class="docutils literal">s</tt> ta thấy <tt class="docutils literal">s.upper()</tt> không upper case được các ký tự <tt class="docutils literal">ê</tt>, <tt class="docutils literal">ạ</tt>, <tt class="docutils literal">ô</tt>, <tt class="docutils literal">đ</tt>, <tt class="docutils literal">ị</tt>...</p>
+<p>Để upper một chuỗi utf bạn phải chuyển nó về unicode trước, upper xong thì chuyển ngược lại. Hàm Upper sau nhận đầu vào là chuỗi utf, upper nó và trả về utf khác đã được upper, hàm này thích hợp cho mục đích upper tiếng Việt:</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="k">def</span> <span class="nf">Upper</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;utf8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;thiên hạ vô địch&quot;</span>
+    <span class="n">us</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+
+    <span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">print</span> <span class="n">Upper</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">Upper</span><span class="p">(</span><span class="n">us</span><span class="p">)</span>
+</pre></div>
+<p>Kết quả:</p>
+<pre class="literal-block">
+THIêN Hạ Vô địCH
+THIÊN HẠ VÔ ĐỊCH
+THIÊN HẠ VÔ ĐỊCH
+</pre>
+<p>Đầu vào thích hợp của Upper là ascii, utf8, unicode, các dạng khác có thể sai: latin1, tcvn... Tương tự như vậy cho hàm lower, và capwords. Xem xét ví sau với capwords:</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">string</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;thiên hạ vô địch&quot;</span>
+
+<span class="k">print</span> <span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">string</span><span class="o">.</span><span class="n">capwords</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">))</span>
+</pre></div>
+<p>Kết quả:</p>
+<pre class="literal-block">
+Thiên Hạ Vô địch
+Thiên Hạ Vô Địch
+</pre>
+<p>Các tên file hoặc tên thư mục là tiếng Việt có dấu cũng đòi hỏi cách xử lý đặc biệt. Giả sử bạn có thư mục <tt class="docutils literal">abc</tt> với một file duy nhất tên là: <tt class="docutils literal">tiếng việt.txt</tt>. Thư mục <tt class="docutils literal">abc</tt> đặt trong thư mục cá nhân của bạn. Nghiên cứu đoạn chương trình sau:</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">),</span> <span class="s2">&quot;abc&quot;</span><span class="p">)</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">basename</span><span class="p">)</span> <span class="k">for</span> <span class="n">basename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)]</span>
+
+<span class="k">print</span> <span class="nb">map</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">,</span> <span class="n">files</span><span class="p">)</span>
+</pre></div>
+<p><strong>Chú ý:</strong></p>
+<ul class="simple">
+<li>Trên Windows <tt class="docutils literal">path = <span class="pre">&quot;C:\Documents</span> and Settings\YourAccountName\abc&quot;</tt></li>
+<li>Trên Linux <tt class="docutils literal">path = &quot;/home/YourAccountName/abc&quot;</tt></li>
+</ul>
+<p>Vì chỉ có duy nhất một file <tt class="docutils literal">tiếng việt.txt</tt> trong thư mục <tt class="docutils literal">abc</tt> nên chúng ta mong đợi kết quả in ra là: <tt class="docutils literal">[True]</tt>. Tuy nhiên chỉ Linux cho câu trả lời này. Windows thì không. Không tin bạn thử xem. Chương trình trên cho dù đã được viết với việc tận dụng thư viện sẵn có <tt class="docutils literal">os</tt> nhằm nâng cao tính khả chuyển nhưng vẫn không khả chuyển, khi tên file là tiếng Việt có dấu.</p>
+<p>Giải quyết vấn đề này rất đơn giản bạn chỉ cần thay <tt class="docutils literal">&quot;abc&quot;</tt> thành <tt class="docutils literal">u&quot;abc&quot;</tt> để tất cả các đường dẫn tên file bị ép chuyển sang unicode là OK. Bạn làm như sau:</p>
+<div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">),</span> <span class="sa">u</span><span class="s2">&quot;abc&quot;</span><span class="p">)</span>
+</pre></div>
+<p>hoặc</p>
+<div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;~&quot;</span><span class="p">),</span> <span class="s2">&quot;abc&quot;</span><span class="p">)</span>
+</pre></div>
+<p>Các vấn đề tương tự cũng áp dụng cho hàm <tt class="docutils literal">glob</tt> hoặc <tt class="docutils literal">walk</tt>, Các hàm này cần các đường dẫn là chuỗi unicode để có thể lấy chính xác các file có tên tiếng Việt.</p>
+<p>Loại bỏ dấu tiếng Việt. Trong nhiều trường hợp bạn cần loại bỏ dấu của một chuỗi tiếng Việt có dấu. Chẳng hạn chuyển <tt class="docutils literal">tiếng việt</tt> thành <tt class="docutils literal">tieng viet</tt>. Đây là một cách thức đơn giản giải quyết vấn đề này:</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">INTAB</span> <span class="o">=</span> <span class="s2">&quot;ạảãàáâậầấẩẫăắằặẳẵóòọõỏôộổỗồốơờớợởỡéèẻẹẽêếềệểễúùụủũưựữửừứíìịỉĩýỳỷỵỹđ&quot;</span>
+<span class="n">INTAB</span> <span class="o">=</span> <span class="p">[</span><span class="n">ch</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">INTAB</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)]</span>
+
+<span class="n">OUTTAB</span> <span class="o">=</span> <span class="s2">&quot;a&quot;</span><span class="o">*</span><span class="mi">17</span> <span class="o">+</span> <span class="s2">&quot;o&quot;</span><span class="o">*</span><span class="mi">17</span> <span class="o">+</span> <span class="s2">&quot;e&quot;</span><span class="o">*</span><span class="mi">11</span> <span class="o">+</span> <span class="s2">&quot;u&quot;</span><span class="o">*</span><span class="mi">11</span> <span class="o">+</span> <span class="s2">&quot;i&quot;</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="s2">&quot;y&quot;</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="s2">&quot;d&quot;</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">INTAB</span><span class="p">))</span>
+<span class="n">replaces_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">INTAB</span><span class="p">,</span> <span class="n">OUTTAB</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">khongdau</span><span class="p">(</span><span class="n">utf8_str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">replaces_dict</span><span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)],</span> <span class="n">utf8_str</span><span class="p">)</span>
+
+<span class="k">print</span> <span class="n">khongdau</span><span class="p">(</span><span class="s2">&quot;thiên hạ vô địch&quot;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">khongdau</span><span class="p">(</span><span class="s2">&quot;sky down no enemy&quot;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">khongdau</span><span class="p">(</span><span class="s2">&quot;THIÊN HẠ VÔ ĐỊCH&quot;</span><span class="p">)</span>
+</pre></div>
+<p>Kết quả:</p>
+<pre class="literal-block">
+thien ha vo dich
+sky down no enemy
+THIÊN HẠ VÔ ĐỊCH
+</pre>
+<p>Test thứ ba cho thấy nó chưa làm việc với chữ hoa. Một chút cải tiến nhỏ để nó làm việc với chữ hoa các bạn có thể thêm vào dễ dàng. Chương trình này chưa được test kỹ về sự chính xác và về performance. Các bạn tự test và công bố kết quả nhé.</p>
+<p>Slice với chuỗi tiếng việt dạng utf8 có thể gặp các vấn đề. Thao tác tương tự khi bạn đọc các khối dữ liệu utf8 với kích thước quy định trước từ file utf8. Xem xét các ví dụ sau:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;thiên hạ vô địch&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span>
+<span class="go">&#39;thi\xc3\xaan h\xe1\xba\xa1 v\xc3\xb4 \xc4\x91\xe1\xbb\x8bch&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span>
+<span class="go">&#39;h\xe1\xba\xa1 v\xc3\xb4 \xc4&#39;</span>
+</pre></div>
+<p>chuỗi s[7:17] là chuỗi què. byte cuối cùng của chuỗi này <tt class="docutils literal">\xc4</tt> mới là một nửa của chữ cái <tt class="docutils literal">đ</tt> (<tt class="docutils literal">'\xc4\x91'</tt>), vì vậy mọi thao tác của bạn trên chuỗi này có tiềm năng gặp lỗi. chẳng hạn:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">unicode</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">17</span><span class="p">],</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;/usr/lib/python2.6/encodings/utf_8.py&quot;</span>, line <span class="m">16</span>, in <span class="n">decode</span>
+    <span class="k">return</span> <span class="n">codecs</span><span class="o">.</span><span class="n">utf_8_decode</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="gr">UnicodeDecodeError</span>: <span class="n">&#39;utf8&#39; codec can&#39;t decode byte 0xc4 in position 9: unexpected end of data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">unicode</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">16</span><span class="p">],</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+<span class="go">u&#39;h\u1ea1 v\xf4 &#39;</span>
+</pre></div>
+<p>Unicode áp dụng cho s[7:16] thì vô tư vì nó không bị què.</p>
+<p>Việc đọc các file text utf8 cũng gặp tình huống tương tự. Chẳng hạn thao tác sau tiềm năng gặp lỗi:</p>
+<div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;file name&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+<p>Trong tình huống này bạn cố gắng đọc 1000 byte đầu tiên của file, <tt class="docutils literal">s</tt> có thể là chuỗi tiếng Việt bị què như tình huống ở trên.</p>
+<p>Đọc ghi file dữ liệu tiếng Việt. File chứa dữ liệu dạng văn bản tiếng Việt thường được ghi dưới dạng unicode hoặc utf8. Đoạn chương trình sau đọc nội dung utf8:</p>
+<div class="highlight"><pre><span></span><span class="go">ff = open(&quot;anyfile&quot;, &#39;r&#39;)</span>
+<span class="go">content = ff.read()</span>
+<span class="go">ff.close()</span>
+</pre></div>
+<p>Dữ liệu tiếng Việt lưu dưới dạng utf8 thường có BOM_UTF8 (= <tt class="docutils literal">&quot;\xef\xbb\xbf&quot;</tt>) ở đầu file. Bạn phải loại bỏ cái này trước khi có thể làm cái gì đó. Đoạn chương trình sau làm việc này:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">codecs</span>
+
+<span class="n">content</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;anyfile&quot;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">content</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">codecs</span><span class="o">.</span><span class="n">BOM_UTF8</span><span class="p">):</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+</pre></div>
+<p>Chú ý rằng đoạn chương trình trên không thích hợp cho việc xử lý các file lớn (hơn 200MB). Với các file lớn bạn cần chia nhỏ thành các file nhỏ hơn.</p>
+<p><tt class="docutils literal">codecs</tt> là thư viện chứa rất nhiều BOM.</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">codecs</span><span class="p">)</span>
+<span class="go">[&#39;BOM&#39;, &#39;BOM32_BE&#39;, &#39;BOM32_LE&#39;, &#39;BOM64_BE&#39;, &#39;BOM64_LE&#39;, &#39;BOM_BE&#39;, &#39;BOM_LE&#39;, &#39;BOM_UTF16&#39;, &#39;BOM_UTF16_BE&#39;, &#39;BOM_UTF16_LE&#39;, &#39;BOM_UTF32&#39;,</span>
+<span class="go">&#39;BOM_UTF32_BE&#39;, &#39;BOM_UTF32_LE&#39;, &#39;BOM_UTF8&#39;, ...]</span>
+</pre></div>
+<p>Dùng thư viện <tt class="docutils literal">codecs</tt> bạn có thể nhanh chóng đọc nội dung file mà không mất nhiều công biến đổi encoding. Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="c1"># đọc toàn bộ nội dung của file vào content,</span>
+<span class="c1"># nội dung của file được biết trước như là utf8,</span>
+<span class="c1"># content sẽ là nội dung unicode.</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;your file name&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="c1"># mặc định đọc toàn bộ nội dung của file vào content</span>
+<span class="c1"># (dạng mặc định là utf8)</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;your file name&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+<p>Ghi dữ liệu tiếng Việt ra file:</p>
+<div class="highlight"><pre><span></span><span class="n">ff</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;filename&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+<p>Ở đây <tt class="docutils literal">content</tt> là chuỗi utf8, nếu bạn đưa vào <tt class="docutils literal">content</tt> là dạng unicode, nó sẽ được tự động chuyển về dạng utf8 trước khi được ghi ra file.</p>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2009-06-13T19:23:00+07:00"><i class="fa fa-calendar"></i> Sat 13 June 2009</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/pham-thi-minh-hoai.html" rel="author">Phạm Thị Minh Hoài</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/unicode.html" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">unicode</a>
+            <a href="../../tag/utf.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">utf</a>
+            <a href="../../tag/vietnamese.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">vietnamese</a>
+            <a href="../../tag/codec.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">codec</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

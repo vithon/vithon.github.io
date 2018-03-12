@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Thuật toán đẹp: Tìm chuỗi Boyer-Moore-Horspool
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2014/01/thuat-toan-dep-tim-chuoi-boyer-moore-horspool.html" rel="bookmark" title="Permalink to Thuật toán đẹp: Tìm chuỗi Boyer-Moore-Horspool">Thuật toán đẹp: Tìm chuỗi Boyer-Moore-Horspool</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <div class="section" id="muc-dich">
+<h2>Mục đích</h2>
+<p>Tìm chính xác (exact match) chuỗi con (substring) trong một chuỗi dài hơn.</p>
+</div>
+<div class="section" id="y-tuong-chinh">
+<h2>Ý tưởng chính</h2>
+<p>Gọi chuỗi cần tìm là <strong>P</strong> (pattern), và chuỗi dài là <strong>T</strong> (text).</p>
+<p>So sánh ngược P trong T, nghĩa là ta sẽ so sánh ký tự cuối của P trước, sau đó so sánh ký tự kế cuối, và lần lượt như vậy đến ký tự đầu tiên trong P. Gọi vị trí trong T để bắt đầu so sánh hai chuỗi là <strong>i</strong>. Việc so sánh sẽ so sánh lần lượt <strong>T[i]</strong> với ký tự cuối của P, rồi <strong>T[i-1]</strong> với ký tự kế cuối của P, v.v...</p>
+<p>Nếu việc so sánh ngược vượt qua được ký tự đầu tiên trong P, ta đã tìm được P trong T.</p>
+<p>Nếu việc so sánh ngược bị thất bại, ta sẽ <strong>căn P cho khớp với T[i]</strong> và thử lại việc so sánh ngược. Điều này tương đương với việc dịch chuyển <strong>i</strong> đến vị trí xa hơn trong T. Đây là ý tưởng chủ chốt của thuật toán BMH.</p>
+<ul class="simple">
+<li>Nếu <strong>T[i]</strong> không có trong P, thì ta có thể dịch chuyển <strong>i</strong> đến vị trí <strong>i + len(P)</strong>.</li>
+<li>Nếu vị trí cuối cùng của <strong>T[i]</strong> trong P là <strong>x</strong> thì ta dịch chuyển <strong>i</strong> đến vị trí <strong>i + len(P) - x - 1</strong>.</li>
+</ul>
+<div class="highlight"><pre><span></span>Trạng thái bắt đầu
+
+             i
+             |
+             v
++-+-+-+-+-+-+-+-+-+-+-+-+
+| | | | |d|b|a| | | | | |
++-+-+-+-+-+-+-+-+-+-+-+-+
+
+    +-+-+-+-+-+
+    |a|a|c|b|a|
+    +-+-+-+-+-+
+
+------------------------------------------
+
+So sánh tiếp tục
+
+             i
+             |
+             v
++-+-+-+-+-+-+-+-+-+-+-+-+
+| | | | |d|b|a| | | | | |
++-+-+-+-+-+-+-+-+-+-+-+-+
+             =
+    +-+-+-+-+-+
+    |a|a|c|b|a|
+    +-+-+-+-+-+
+
+------------------------------------------
+
+So sánh tiếp tục
+
+             i
+             |
+             v
++-+-+-+-+-+-+-+-+-+-+-+-+
+| | | | |d|b|a| | | | | |
++-+-+-+-+-+-+-+-+-+-+-+-+
+         = =
+    +-+-+-+-+-+
+    |a|a|c|b|a|
+    +-+-+-+-+-+
+
+------------------------------------------
+
+So sánh sai
+
+             i
+             |
+             v
++-+-+-+-+-+-+-+-+-+-+-+-+
+| | | | |d|b|a| | | | | |
++-+-+-+-+-+-+-+-+-+-+-+-+
+         ! = =
+    +-+-+-+-+-+
+    |a|a|c|b|a|
+    +-+-+-+-+-+
+
+------------------------------------------
+
+Căn P theo T[i]...
+
+             i
+             |
+             v
++-+-+-+-+-+-+-+-+-+-+-+-+
+| | | | |d|b|a| | | | | |
++-+-+-+-+-+-+-+-+-+-+-+-+
+             |
+          +-+-+-+-+-+
+          |a|a|c|b|a|
+        +-+-+-+-+-+
+
+------------------------------------------
+
+... cũng có nghĩa là dịch chuyển i
+
+                   i
+                   |
+                   v
++-+-+-+-+-+-+-+-+-+-+-+-+
+| | | | |d|b|a| | | | | |
++-+-+-+-+-+-+-+-+-+-+-+-+
+
+        +-+-+-+-+-+
+        |a|a|c|b|a|
+        +-+-+-+-+-+
+</pre></div>
+<p>Để cài đặt hai bước trên, người ta thường dùng một mảng chứa vị trí cuối cùng của các ký tự trong P trừ ký tự cuối cùng (P[ : -1]).</p>
+</div>
+<div class="section" id="vi-du">
+<h2>Ví dụ</h2>
+<p>Giả sử chúng ta muốn tìm chuỗi <strong>needle</strong> trong chuỗi <strong>find the needle in the haystack</strong>.</p>
+<p>Trước khi bắt đầu, ta sẽ lập bảng vị trí cuối của các ký tự trong P[ : -1].</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="14%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Ký tự</th>
+<th class="head">Vị trí</th>
+<th class="head">Diễn giải</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>n</td>
+<td>0</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>e</td>
+<td>2</td>
+<td>Ta chọn vị trí của ký tự thứ hai.</td>
+</tr>
+<tr><td>d</td>
+<td>3</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>l</td>
+<td>4</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>Sau đó ta sẽ xem xét sự thay đổi ở các bước của thuật toán. Vì độ dài của P là 6, nên i sẽ bắt đầu từ vị trí 5. Trong bảng dưới, chữ đậm là ký tự trùng nhau của T và P, chữ gạch dưới là các ký tự đang xét.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="2%" />
+<col width="33%" />
+<col width="11%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">i</th>
+<th class="head">T</th>
+<th class="head">T[i]</th>
+<th class="head">Diễn giải</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>5</td>
+<td><u>find t</u>he needle in the haystack</td>
+<td>t</td>
+<td>t không có trong bảng. Dịch i lên 11 (5 + 6).</td>
+</tr>
+<tr><td>11</td>
+<td>find t<u>he ne<strong>e</strong></u>dle in the haystack</td>
+<td>e</td>
+<td>e có trong bảng. Dịch i lên 14 (11 + 6 - 2 - 1).</td>
+</tr>
+<tr><td>14</td>
+<td>find the <u><strong>needle</strong></u> in the haystack</td>
+<td>e</td>
+<td><strong>Tìm thấy</strong>. e có trong bảng. Dịch i lên 17 (14 + 6 - 2 - 1).</td>
+</tr>
+<tr><td>17</td>
+<td>find the nee<u>dle&nbsp;in</u> the haystack</td>
+<td>n</td>
+<td>n có trong bảng. Dịch i lên 22 (17 + 6 - 0 - 1).</td>
+</tr>
+<tr><td>22</td>
+<td>find the needle i<u>n&nbsp;the&nbsp;</u>haystack</td>
+<td>khoảng trắng</td>
+<td>khoảng trắng không có trong bảng. Dịch i lên 28 (22 + 6).</td>
+</tr>
+<tr><td>28</td>
+<td>find the needle in the <u>haysta</u>ck</td>
+<td>a</td>
+<td>a không có trong bảng. Dịch i lên 34 (28 + 6).
+Dừng việc tìm kiếm vì đã xét hết chuỗi.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="do-phuc-tap">
+<h2>Độ phức tạp</h2>
+<dl class="docutils">
+<dt>Thời gian chạy</dt>
+<dd>Tệ nhất là O(n*m), với n là độ dài của T và m là độ dài của P. Trung bình là O(n). Và tốt nhất là dưới tuyến tính (sublinear) vì thuật toán có thể nhảy qua nhiều ký tự. Trong ví dụ trên, ta chỉ cần 12 phép so sánh  để tìm chuỗi <strong>needle</strong> (6 ký tự) trong chuỗi <strong>find the needle in the haystack</strong> (31 ký tự).</dd>
+<dt>Bộ nhớ cần thiết</dt>
+<dd>O(n) với n là số ký tự trong bảng chữ cái (ví dụ như 256 giá trị của một byte, hoặc nếu bảng chữ cái là Unicode thì có thể sẽ nhiều hơn 60000 giá trị) vì chúng ta cần tạo bảng vị trí các ký tự trong P.</dd>
+</dl>
+<p>Thuật toán BMH là thuật toán tìm chuỗi chính xác tổng quát nhất, nhanh nhất, và đơn giản nhất.</p>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2014-01-09T07:35:00+07:00"><i class="fa fa-calendar"></i> Thu 09 January 2014</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nguyen-thanh-nam.html" rel="author">Nguyễn Thành Nam</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/algorithm.html" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">algorithm</a>
+            <a href="../../tag/string.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">string</a>
+            <a href="../../tag/search.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">search</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

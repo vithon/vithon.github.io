@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Cuộc thi viết chương trình theo dõi mã máy
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/tin-tuc.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Tin tức - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2010/07/cuoc-thi-viet-chuong-trinh-theo-doi-ma-may.html" rel="bookmark" title="Permalink to Cuộc thi viết chương trình theo dõi mã máy">Cuộc thi viết chương trình theo dõi mã máy</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Một người bạn của chúng ta đã có nhã ý tài trợ cho một cuộc thi nhỏ.</p>
+<p>Mục tiêu: Viết một công cụ bằng ngôn ngữ Python để thực hiện việc lưu lại những lệnh gọi hàm ở mức hợp ngữ trong khi thực thi của một chương trình thông thường khác.</p>
+<p>Ví dụ: Với đoạn mã tương tự như sau:</p>
+<div class="highlight"><pre><span></span><span class="err">0</span><span class="nf">x08048552</span> <span class="err">&lt;</span><span class="no">main</span><span class="err">+</span><span class="mi">110</span><span class="err">&gt;</span><span class="p">:</span>        <span class="no">mov</span>    <span class="no">DWORD</span> <span class="no">PTR</span> <span class="p">[</span><span class="no">esp</span><span class="p">],</span><span class="no">eax</span>
+<span class="err">0</span><span class="nf">x08048555</span> <span class="err">&lt;</span><span class="no">main</span><span class="err">+</span><span class="mi">113</span><span class="err">&gt;</span><span class="p">:</span>        <span class="no">call</span>   <span class="mh">0x80483d8</span> <span class="p">&lt;</span><span class="no">printf@plt</span><span class="p">&gt;</span>
+<span class="err">0</span><span class="nf">x0804855a</span> <span class="err">&lt;</span><span class="no">main</span><span class="err">+</span><span class="mi">118</span><span class="err">&gt;</span><span class="p">:</span>        <span class="no">mov</span>    <span class="no">eax</span><span class="p">,</span><span class="mi">0x0</span>
+<span class="err">0</span><span class="nf">x0804855f</span> <span class="err">&lt;</span><span class="no">main</span><span class="err">+</span><span class="mi">123</span><span class="err">&gt;</span><span class="p">:</span>        <span class="no">leave</span>
+<span class="err">0</span><span class="nf">x08048560</span> <span class="err">&lt;</span><span class="no">main</span><span class="err">+</span><span class="mi">124</span><span class="err">&gt;</span><span class="p">:</span>        <span class="no">ret</span>
+</pre></div>
+<p>thì chương trình sẽ in ra thông tin tương tự (có thể tùy ý chỉnh sửa cho đầy đủ hơn) như sau:</p>
+<div class="highlight"><pre><span></span><span class="err">*</span> <span class="nf">Before</span> <span class="no">printf</span><span class="p">()</span>
+<span class="err">--------------------------------------------------------------------------[</span><span class="nf">regs</span><span class="p">]</span>
+  <span class="nl">EAX:</span> <span class="err">0</span><span class="nf">x08048646</span>  <span class="no">EBX</span><span class="p">:</span> <span class="mi">0x002B2FF4</span>  <span class="no">ECX</span><span class="p">:</span> <span class="mi">0x00000003</span>  <span class="no">EDX</span><span class="p">:</span> <span class="mi">0xBFFFEF9C</span>
+  <span class="nl">ESI:</span> <span class="err">0</span><span class="nf">x00000000</span>  <span class="no">EDI</span><span class="p">:</span> <span class="mi">0x00000000</span>  <span class="no">EBP</span><span class="p">:</span> <span class="mi">0xBFFFF0A8</span>  <span class="no">ESP</span><span class="p">:</span> <span class="mi">0xBFFFEF80</span>
+
+<span class="err">*</span> <span class="nf">After</span> <span class="no">printf</span><span class="p">()</span>
+<span class="err">--------------------------------------------------------------------------[</span><span class="nf">regs</span><span class="p">]</span>
+  <span class="nl">EAX:</span> <span class="err">0</span><span class="nf">x0000000A</span>  <span class="no">EBX</span><span class="p">:</span> <span class="mi">0x002B2FF4</span>  <span class="no">ECX</span><span class="p">:</span> <span class="mi">0xBFFFEF68</span>  <span class="no">EDX</span><span class="p">:</span> <span class="mi">0x002B4320</span>
+  <span class="nl">ESI:</span> <span class="err">0</span><span class="nf">x00000000</span>  <span class="no">EDI</span><span class="p">:</span> <span class="mi">0x00000000</span>  <span class="no">EBP</span><span class="p">:</span> <span class="mi">0xBFFFF0A8</span>  <span class="no">ESP</span><span class="p">:</span> <span class="mi">0xBFFFEF80</span>
+</pre></div>
+<p>Yêu cầu: Bắt buộc phải sử dụng ngôn ngữ Python cho chương trình chính. Có thể sử dụng thêm các công cụ phụ hoặc thư viện hỗ trợ như GDB, ptrace.</p>
+<p>Hạn nộp bài: Ngày 26 tháng 07 năm 2010</p>
+<p>Nộp bài (mã nguồn) về cho <a class="reference external" href="mailto:admin+frontpage&#64;vithon.org">admin+frontpage&#64;vithon.org</a> (xin vui lòng bỏ +frontpage).</p>
+<p>Giải thưởng: Một giải thưởng duy nhất bao gồm 100.000 đồng tiền mặt và một món quà từ Las Vegas.</p>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2010-07-22T05:13:00+07:00"><i class="fa fa-calendar"></i> Thu 22 July 2010</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nguyen-thanh-nam.html" rel="author">Nguyễn Thành Nam</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/tin-tuc.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="39 articles in this category">Tin tức</a>
+            <a href="../../tag/contest.html" data-toggle="tooltip"
+      class="label label-default"
+      title="8 articles with this tag">contest</a>
+            <a href="../../tag/gdb.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">gdb</a>
+            <a href="../../tag/tracer.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">tracer</a>
+            <a href="../../tag/ptrace.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">ptrace</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/tin-tuc.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Tin tức (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

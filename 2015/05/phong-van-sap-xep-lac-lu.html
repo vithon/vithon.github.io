@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Phỏng vấn: Sắp xếp lắc lư
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2015/05/phong-van-sap-xep-lac-lu.html" rel="bookmark" title="Permalink to Phỏng vấn: Sắp xếp lắc lư">Phỏng vấn: Sắp xếp lắc lư</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <div class="section" id="cau-hoi">
+<h2>Câu hỏi</h2>
+<p>Cho một mảng <strong>A</strong> các số nguyên <strong>a[i]</strong>, tìm cách sắp xếp mảng sao cho phần tử thứ nhất nhỏ hơn phần tử thứ hai, phần tử thứ hai lớn hơn phần tử thứ ba, phần tử thứ ba nhỏ hơn phần tử thứ tư v.v... Tức là:</p>
+<pre class="literal-block">
+a[0] &lt;= a[1] &gt;= a[2] &lt;= a[3] &gt;= a[4] ...
+</pre>
+<p>Ta gọi một mảng có thứ tự như vậy là một mảng đã được sắp xếp lắc lư (wiggly sorted).</p>
+</div>
+<div class="section" id="phan-tich">
+<h2>Phân tích</h2>
+<p>Ta nhận xét rằng yêu cầu thứ tự chỉ áp dụng vào hai phần tử lân cận của phần tử đang xét. Ví dụ, phần tử <strong>a[1]</strong> chỉ cần lớn hơn hai phần tử <strong>a[0]</strong> và <strong>a[2]</strong>, ngoài ra không còn quan hệ với phần tử nào nữa. Điều đó dẫn đến ý tưởng giải sẽ rất có thể ở dạng tham ăn (<strong>greedy algorithm</strong>).</p>
+<p>Giả sử như ta đã có mảng <strong>A'</strong> có độ dài <strong>2n</strong> (chẵn) thỏa mãn điều kiện. Phần tử kế tiếp (<strong>2n + 1</strong>) vì ở vị trí lẻ nên sẽ phải nhỏ hơn phần tử cuối cùng trong mảng, đồng thời cũng phải đảm bảo nhỏ hơn phần tử sau đó (<strong>2n + 2</strong>). Vì ta không biết phần tử (<strong>2n + 2</strong>) sẽ có giá trị bao nhiêu nên cách an toàn nhất để thỏa mãn hai điều kiện cho phần tử <strong>2n + 1</strong> là chọn phần tử <strong>nhỏ nhất</strong> trong số các phần tử còn lại của <strong>A</strong>.</p>
+<p>Lập luận tương tự cho thấy rằng phần tử ở vị trí <strong>chẵn</strong> nên có giá trị <strong>lớn nhất</strong> trong số các phần tử còn lại.</p>
+<p>Tóm lại, cách giải câu hỏi này sẽ bao gồm hai bước chính:</p>
+<ol class="arabic simple">
+<li>Sắp xếp mảng <strong>A</strong> theo thứ tự tăng dần.</li>
+<li>Lần lượt gán <strong>a[0] = min(A)</strong>, và <strong>a[1] = max(A[1 : ])</strong>, và <strong>a[2] = min(A[2 : ])</strong>, v.v...</li>
+</ol>
+<p>Dĩ nhiên là ta không cần gọi <strong>min</strong> hay <strong>max</strong> mà chỉ cần giữ hai biến chỉ mục từ đầu, và cuối mảng <strong>A</strong> để tìm ngay giá trị cực tiểu hay cực đại vì <strong>A</strong> đã được sắp xếp ở bước đầu tiên.</p>
+<p>Độ phức tạp thực thi của cách giải này phụ thuộc vào thuộc toán sắp xếp sử dụng ở bước đầu tiên.</p>
+<p>Vấn đề cài đặt cách giải xin được để lại cho bạn đọc. <a class="reference external" href="forum.vithon.org">Diễn đàn</a> là nơi tốt nhất để trao đổi về các yếu tố liên quan đến cài đặt.</p>
+</div>
+<div class="section" id="tong-ket">
+<h2>Tổng kết</h2>
+<p>Qua loạt bài <strong>Phỏng vấn</strong>, tác giả hy vọng rằng bạn đọc nhận ra được sự quan trọng của bộ kiến thức nền tảng, đặc biệt là các cấu trúc dữ liệu phổ biến. Từ các kiến thức nền tảng này, chúng ta có thể giải quyết được rất nhiều những vấn đề khác.</p>
+<p><strong>Python</strong> cùng với phương châm <strong>kèm cả pin</strong> đem đến cho chúng ta một loạt các cấu trúc dữ liệu qua các kiểu, hoặc mô-đun có sẵn. <strong>Python</strong> thật sự là một công cụ mạnh mẽ và hữu ích.</p>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2015-05-05T00:05:00+07:00"><i class="fa fa-calendar"></i> Tue 05 May 2015</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nguyen-thanh-nam.html" rel="author">Nguyễn Thành Nam</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/interview.html" data-toggle="tooltip"
+      class="label label-default"
+      title="10 articles with this tag">interview</a>
+            <a href="../../tag/greedy-algorithm.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">greedy algorithm</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

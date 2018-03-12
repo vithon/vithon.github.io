@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Lập trình web với Python (7)
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2011/08/lap-trinh-web-voi-python-7.html" rel="bookmark" title="Permalink to Lập trình web với Python (7)">Lập trình web với Python (7)</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Trong bài cuối của loạt bài Lập trình web với Python, chúng ta sẽ bàn đến chuẩn <strong>WSGI</strong> (Web Server Gateway Interface).</p>
+<p>WSGI, khác với HTTP, CGI và FCGI, không phải là chuẩn giao thức liên lạc (communication protocol) mà là chuẩn giao tiếp (standard interface) giữa ứng dụng máy chủ (server) và các khung xương (framework) hay các ứng dụng web (web application). Hình tượng hóa mà nói, WSGI nằm phía trên HTTP/CGI/FCGI và phía dưới ứng dụng thật sự. Lớp WSGI giúp lớp ứng dụng trao đổi với lớp máy chủ theo một cách khả chuyển, tức là một ứng dụng WSGI có thể chạy như nhau trên máy chủ khác nhau như Apache, NGINX, hay Lighttpd, sử dụng các giao thức khác nhau như CGI, FCGI, SCGI, hay AJP. Nói một cách khác, WSGI &quot;che&quot; cách liên lạc qua mạng và tạo điều kiện cho ứng dụng web tập trung vào việc xử lý các vấn đề quan trọng hơn.</p>
+<p>Một ứng dụng WSGI là một đối tượng gọi được (callable object). Một đối tượng gọi được có thể là một hàm, một phương thức, hoặc một đối tượng có hàm <strong>__call__</strong>. Đối tượng gọi được này phải nhận hai tham số là <strong>environ</strong> và <strong>start_response</strong>. Tham số <strong>environ</strong> là một từ điển với các khóa theo chuẩn CGI và một số khóa đặc biệt mà máy chủ WSGI có thể truyền cho ứng dụng. <strong>start_response</strong> là một đối tượng gọi được do máy chủ WSGI cung cấp cho ứng dụng để ứng dụng bắt đầu việc truyền dữ liệu cho máy chủ WSGI. <strong>start_response</strong> nhận hai tham số là dòng trạng thái trả lời (status string) và một danh sách bộ-2 (list of 2-tuple) các đầu mục (header), mỗi bộ-2 bao gồm tên và giá trị của đầu mục. Giá trị trả về của ứng dụng WSGI là một bộ khả lặp (iterable) sinh ra nội dung sẽ được máy chủ WSGI truyền lại cho máy chủ HTTP hoặc trình duyệt. Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simple_app</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Simplest possible application object&quot;&quot;&quot;</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;200 OK&#39;</span>
+  <span class="n">response_headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">)]</span>
+  <span class="n">start_response</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">response_headers</span><span class="p">)</span>
+  <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;Hello world!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
+</pre></div>
+<p>Đầu tiên, ta thiết lập chuỗi trạng thái là <strong>200 OK</strong>, xác định đầu mục <strong>Content-type</strong> là <strong>text/plain</strong> rồi gọi <strong>start_response</strong> với các thông tin như vậy. Giá trị trả về là một danh sách với phần tử duy nhất là chuỗi <strong>Hello world!n</strong>. Ta cũng có thể trả về chuỗi <strong>Hello world!</strong> trực tiếp mà không cần đặt nó vào trong một danh sách vì bản thân một chuỗi cũng là một đối tượng khả lặp. Tuy nhiên, làm như vậy không được khuyến khích vì khi đó máy chủ WSGI sẽ phải làm việc nhiều hơn, lặp qua từng ký tự H, e, l, l, o... thay vì lấy thẳng chuỗi trả lời.</p>
+<p>Chúng ta sẽ viết lại ứng dụng đếm số lần truy cập như trong kỳ trước theo dạng một ứng dụng WSGI. Chúng ta sẽ tạo tập tin <strong>C:Program FilesApache Software FoundationApache2.2fcgi-binhello2.py</strong> với nội dung như sau:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!C:\Python26\python.exe</span>
+<span class="kn">from</span> <span class="nn">flup.server</span> <span class="kn">import</span> <span class="n">fcgi</span>
+
+<span class="k">class</span> <span class="nc">HelloApp</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+      <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+      <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+              <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+              <span class="n">start_response</span><span class="p">(</span><span class="s1">&#39;200 OK&#39;</span><span class="p">,</span> <span class="p">[(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">)])</span>
+              <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;Hello WSGI World </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+      <span class="n">webapp</span> <span class="o">=</span> <span class="n">HelloApp</span><span class="p">()</span>
+      <span class="n">fcgi</span><span class="o">.</span><span class="n">WSGIServer</span><span class="p">(</span><span class="n">webapp</span><span class="p">,</span> <span class="n">bindAddress</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">8888</span><span class="p">))</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+<p>Thực thi ứng dụng này với lệnh <strong>python hello2.py</strong>, chạy máy chủ Apache với các thiết lập đã làm trong bài viết kỳ trước, và truy cập vào địa chỉ <strong>http://localhost/fcgi-bin/hello.py</strong> thì chúng ta sẽ thấy hình như sau:</p>
+<img alt="" src="/static/web-programming/wsgi/wsgi1.png" />
+<p>Khi làm tươi trình duyệt thì chúng ta nhận được hình sau:</p>
+<img alt="" src="/static/web-programming/wsgi/wsgi2.png" />
+<p>So sánh ứng dụng viết theo WSGI và ứng dụng viết theo các giao thức CGI, hay FCGI ta thấy rõ rằng ứng dụng WSGI không cần quan tâm đến việc dữ liệu sẽ được truyền cho trình duyệt bằng cách nào. Ứng dụng WSGI chỉ quan tâm đến việc tạo ra dữ liệu gì và đẩy chỗ dữ liệu đó cho lớp WSGI bên dưới. Lớp này sẽ tự động thực hiện việc truyền tới trình duyệt theo cách tốt nhất có thể.</p>
+<p>Tuy nhiên, ứng dụng WSGI cũng phải biết rõ cách hoạt động của máy chủ WSGI. Ví dụ, một ứng dụng WSGI chạy trên máy chủ WSGI theo mô hình CGI thì sẽ không thể trông chờ đến việc sử dụng lại biến toàn cục vì mỗi yêu cầu được một tiến trình riêng xử lý. Đồng thời ứng dụng WSGI cũng phải đảm bảo rằng các chuỗi trả về phải là chuỗi byte (byte string) và không được sử dụng chuỗi unicode (unicode string). Lý do là vì giao thức HTTP không hiểu unicode. Do đó, tốt nhất là ứng dụng WSGI nên gọi <strong>encode</strong> trên các chuỗi unicode để chuyển các chuỗi unicode thành các chuỗi byte trước khi đưa xuống cho máy chủ WSGI.</p>
+<p>Một điểm hay của giao tiếp WSGI là một ứng dụng WSGI có thể gói (wrap) một ứng dụng WSGI khác bên trong. Điều này cho phép chúng ta tạo ra các ứng dụng WSGI hoạt động như các phần giữa (middleware), hoặc bộ lọc (filter). Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">simple_app</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Simplest possible application object&quot;&quot;&quot;</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;200 OK&#39;</span>
+  <span class="n">response_headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">)]</span>
+  <span class="n">start_response</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">response_headers</span><span class="p">)</span>
+  <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;Hello world!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">real_app</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="n">simple_app</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+  <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;Tag!</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">r</span>
+</pre></div>
+<p>Với đoạn mã trên, ứng dụng <strong>real_app</strong> đã gói ứng dụng <strong>simple_app</strong> và chèn vào một chuỗi <strong>Tag!n</strong> phía trước những gì mà <strong>simple_app</strong> gửi về. Đây là một cách để tạo nên các ứng dụng web lớn từ việc ghép các ứng dụng web nhỏ lại với nhau.</p>
+<p>Chúng ta dừng loạt bài <strong>Lập trình web với Python</strong> tại đây. Sau 7 bài viết ngắn gọn (nhưng diễn ra trong một khoảng thời gian dài), chúng ta đã xem xét qua việc cài đặt Apache, và Python, rồi các giao thức nền tảng như HTTP, CGI. Từ đó, chúng ta bàn đến các giao thức hiện đại hơn, có một số ưu điểm tốt như FCGI với ví dụ đếm số lần truy cập. Cuối cùng chúng ta dừng lại với một thảo luận ngắn về giao tiếp WSGI, là giao tiếp phổ thông nhất để viết ứng dụng web trong thế giới Python.</p>
+<p>Tôi hy vọng sẽ gặp bạn đọc trong các bài viết khác. Để thảo luận về loạt bài này, bạn có thể sử dụng <a class="reference external" href="forum.vithon.org">diễn đàn</a>.</p>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2011-08-11T08:00:00+07:00"><i class="fa fa-calendar"></i> Thu 11 August 2011</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nguyen-thanh-nam.html" rel="author">Nguyễn Thành Nam</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/web.html" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">web</a>
+            <a href="../../tag/tutorial.html" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">tutorial</a>
+            <a href="../../tag/wsgi.html" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">wsgi</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

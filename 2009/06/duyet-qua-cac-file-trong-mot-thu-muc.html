@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Duyệt qua các file trong một thư mục
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2009/06/duyet-qua-cac-file-trong-mot-thu-muc.html" rel="bookmark" title="Permalink to Duyệt qua các file trong một thư mục">Duyệt qua các file trong một thư mục</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Bạn thường gặp bài toán liệt kê danh sách tất cả các file trong một thư mục cho trước. Dưới đây là một vài các cách khác nhau tùy theo hoàn cảnh.</p>
+<div class="section" id="su-dung-os-listdir">
+<h2>1. Sử dụng <tt class="docutils literal">os.listdir</tt></h2>
+<p>Câu lệnh sau sẽ lấy danh mục các file trong thư mục <tt class="docutils literal">Test</tt> nằm trong thư mục cá nhân của bạn.</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;~/Test&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+<span class="go">[&#39;file 3&#39;, &#39;file 1&#39;, &#39;file 2&#39;]</span>
+</pre></div>
+<p><tt class="docutils literal">os.listdir</tt> chỉ cho bạn tên file hoặc thư mục nằm trong đường dẫn đó. Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;/mnt/data/pictures/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="go">[&#39;Old&#39;, &#39;Icons&#39;, &#39;baby.jpg&#39;]</span>
+</pre></div>
+<p>Để có đường dẫn đầy đủ bạn có thể viết:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">FJoin</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">FJoin</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">files</span>
+<span class="go">[&#39;/mnt/data/pictures/Old&#39;, &#39;/mnt/data/pictures/Icons&#39;, &#39;/mnt/data/pictures/baby.jpg&#39;]</span>
+</pre></div>
+<p>Để đảm bảo vấn đề tương thích mã khi chuyển qua lại giữa các hệ điều hành bạn luôn luôn nên dùng: <tt class="docutils literal">os.path.join</tt> để nối các đường dẫn, hoặc dùng <tt class="docutils literal">os.path.sep</tt> để cộng các đường dẫn.</p>
+<p>Không nên:</p>
+<div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">path1</span> <span class="o">+</span> <span class="s2">&quot;\path2&quot;</span>
+</pre></div>
+<p>Nên viết:</p>
+<div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path1</span><span class="p">,</span> <span class="s2">&quot;path2&quot;</span><span class="p">)</span>
+</pre></div>
+<p>hoặc</p>
+<div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">path1</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span> <span class="o">+</span> <span class="n">path2</span>
+</pre></div>
+<p>Trên Windows bạn có thể viết: <tt class="docutils literal">path = <span class="pre">&quot;~/Test&quot;</span></tt> hoặc <tt class="docutils literal"><span class="pre">&quot;~/test&quot;</span></tt> đều được. Linux phân biệt chữ hoa chữ thường nên phải viết chính xác <tt class="docutils literal">Test</tt>. Ký tự phân tách đường dẫn trên linux là <tt class="docutils literal">&quot;/&quot;</tt>, trên Windows bạn có thể viết <tt class="docutils literal">&quot;/&quot;</tt> hoặc tôi hay dùng <tt class="docutils literal"><span class="pre">&quot;\\&quot;</span></tt> (thay vì <tt class="docutils literal"><span class="pre">`&quot;\&quot;</span></tt>).</p>
+</div>
+<div class="section" id="su-dung-walk">
+<h2>2. Sử dụng <tt class="docutils literal">walk</tt></h2>
+<p><tt class="docutils literal">os.listdir</tt> chỉ liệt kê các file và thư mục trong một thư mục. Để lấy được cả danh sách đệ quy các file trong thư mục bạn có thể dùng <tt class="docutils literal">os.walk</tt> hoặc thư viện ngoài <tt class="docutils literal">glob</tt>.</p>
+<p>Hàm <tt class="docutils literal">os.walk</tt> là một <em>generator function</em> và <tt class="docutils literal">os.walk(path)</tt> là một <em>generator object</em>. Nghĩa là hàm trạng thái trả về các kết quả kế tiếp nhau theo yêu cầu. Mỗi một item của <tt class="docutils literal">walk</tt> có ba thành phần:</p>
+<ol class="arabic simple">
+<li>Thư mục hiện tại</li>
+<li>Các thư mục con</li>
+<li>Các file bên trong</li>
+</ol>
+<p>Dưới đây là hàm sử dụng <tt class="docutils literal">walk</tt> để liệt kê tất cả các file và thư mục con trong một thư mục cho trước, kết quả trả về chứa đường dẫn đầy đủ:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">FJoin</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span>
+
+<span class="k">def</span> <span class="nf">GetFiles</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Output: file_list là danh sách tất cả các file trong path và trong tất cả các</span>
+<span class="sd">       thư mục con bên trong nó. dir_list là danh sách tất cả các thư mục con</span>
+<span class="sd">       của nó. Các output đều chứa đường dẫn đầy đủ.&quot;&quot;&quot;</span>
+
+    <span class="n">file_list</span><span class="p">,</span> <span class="n">dir_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="nb">dir</span><span class="p">,</span> <span class="n">subdirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">file_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">FJoin</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">])</span>
+        <span class="n">dir_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">FJoin</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">subdirs</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">file_list</span><span class="p">,</span> <span class="n">dir_list</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">files</span><span class="p">,</span> <span class="n">dirs</span> <span class="o">=</span> <span class="n">GetFiles</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/Music&quot;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="k">print</span> <span class="nb">file</span>
+    <span class="k">for</span> <span class="nb">dir</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+        <span class="k">print</span> <span class="nb">dir</span>
+</pre></div>
+<p>Hàm này chạy tốt trên Windows, trên Linux nó lấy cả các link. Nói chung các link sẽ không có ý nghĩa trong đa số các trường hợp của bạn. Để loại bỏ các link bạn viêt lại hàm <tt class="docutils literal">GetFiles</tt> như sau:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">GetFiles</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">file_list</span><span class="p">,</span> <span class="n">dir_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="nb">dir</span><span class="p">,</span> <span class="n">subdirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">file_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">FJoin</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">])</span>
+        <span class="n">dir_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">FJoin</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">subdirs</span><span class="p">])</span>
+    <span class="n">file_list</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">file_list</span><span class="p">)</span>
+    <span class="n">dir_list</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">dir_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">file_list</span><span class="p">,</span> <span class="n">dir_list</span>
+</pre></div>
+<p>Chú ý rằng một object vừa có thể là file vừa có thể là link. Vì vậy bạn không thể dùng hàm <tt class="docutils literal">os.path.isfile</tt> để lọc các link được:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="s1">&#39;/home/hoaiptm/Music/mylink&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">&#39;/home/hoaiptm/Music/mylink&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+<p>Tương tự như vậy với hàm <tt class="docutils literal">os.path.isdir</tt>, nó cũng trả về <tt class="docutils literal">True</tt> nếu object là link liên kết đến một thư mục khác.</p>
+</div>
+<div class="section" id="su-dung-glob">
+<h2>3. Sử dụng <tt class="docutils literal">glob</tt></h2>
+<p><tt class="docutils literal">glob</tt> là cách liệt kê file và thư mục theo pattern, các pattern có thể chứa các ký tự đại diện như <tt class="docutils literal">*</tt>, <tt class="docutils literal">?</tt>, <tt class="docutils literal">[]</tt>, nó cho phép bạn tìm kiếm chỉ các file có tên thỏa mãn quy tắc pattern cho trước. Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="c1"># liệt kê các file và thư mục trong thư mục path</span>
+<span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">))</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="c1"># liệt kê các file và thư mục cấp 2 bên trong thư mục path.</span>
+<span class="c1"># chẳng hạn path chứa thư mục A, B, C thì lệnh trên sẽ</span>
+<span class="c1"># liệt kê hết các file và thư mục bên trong A, B, C.</span>
+<span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">))</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="c1"># liệt kê các file và thư mục trong thư mục path bắt đầu với chữ cái a.</span>
+<span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;[a]*&quot;</span><span class="p">))</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="c1"># liệt kê các file và thư mục trong thư mục path</span>
+<span class="c1"># có tên kết thúc bằng chữ cái p và có đúng 3 ký tự.</span>
+<span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;??p&quot;</span><span class="p">))</span>
+</pre></div>
+<p>Chú ý rằng không giống như <tt class="docutils literal">listdir</tt> hoặc <tt class="docutils literal">walk</tt>, <tt class="docutils literal">glob</tt> lấy đường dẫn đầy đủ.</p>
+<p>Hàm <tt class="docutils literal">glob</tt> không thực hiện đệ quy. Hàm sau đây sử dụng <tt class="docutils literal">glob</tt> để tìm kiếm đệ quy tất cả các file và thư mục bên trong thư mục cho trước:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="k">def</span> <span class="nf">dirwalk</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">bag</span><span class="p">,</span> <span class="n">wildcards</span><span class="p">):</span>
+    <span class="n">bag</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">wildcards</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
+        <span class="n">fullpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">fullpath</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">islink</span><span class="p">(</span><span class="n">fullpath</span><span class="p">):</span>
+            <span class="n">dirwalk</span><span class="p">(</span><span class="n">fullpath</span><span class="p">,</span> <span class="n">bag</span><span class="p">,</span> <span class="n">wildcards</span><span class="p">)</span>
+
+<span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Lấy tất cả các file và thư mục con trong thư mục path:</span>
+<span class="n">dirwalk</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span>  <span class="s2">&quot;*&quot;</span><span class="p">)</span>
+
+<span class="c1"># Lấy tất cả các file trong thư mục path (có thể có lẫn thư mục):</span>
+<span class="n">dirwalk</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="s2">&quot;*.*&quot;</span><span class="p">)</span>
+
+<span class="c1"># Lấy tất cả các file python trong thư mục path:</span>
+<span class="n">dirwalk</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span>  <span class="s2">&quot;*.py&quot;</span><span class="p">)</span>
+
+<span class="c1"># Lấy tất cả các file hoặc thư mục bắt đầu bằng &quot;py&quot; trong thư mục path:</span>
+<span class="n">dirwalk</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span>  <span class="s2">&quot;py*.*&quot;</span><span class="p">)</span>
+</pre></div>
+<p>Hàm <tt class="docutils literal">dirwalk</tt> ở triển khai này làm được nhiều việc hơn hàm GetFiles triển khai ở mục 2. Nó tổng quát hơn.</p>
+<p>Một cách triển khai khác có thể viết như thế này:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dirwalk2</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">bag</span><span class="p">,</span> <span class="n">wildcards</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; bag là một list chứa các file thỏa mãn quy tắc wildcards &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">)):</span>
+        <span class="n">bag</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">wildcards</span><span class="p">)))</span>
+        <span class="n">dirwalk2</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">),</span> <span class="n">bag</span><span class="p">,</span> <span class="n">wildcards</span><span class="p">)</span>
+</pre></div>
+<p><tt class="docutils literal">dirwalk2</tt> tuy ngắn gọn nhưng khó hiểu hơn <tt class="docutils literal">dirwalk</tt>. Nó hoàn toàn tương tự ngoại trừ việc không kiểm tra một object có thể là link (chỉ có ý nghĩa trên linux).</p>
+</div>
+<div class="section" id="thu-muc-co-chua-ten-file-tieng-viet">
+<h2>4. Thư mục có chứa tên file tiếng Việt</h2>
+<p>Các ví dụ phía trên giả thiết rằng bạn có các tên file và thư mục là tiếng anh thông thường hoặc tiếng việt không dấu. Thư mục có thể chứa các file có tên tiếng việt hoặc tiếng Tàu, tiếng Hàn... Bạn phải truyền đối số unicode cho các hàm <tt class="docutils literal">listdir</tt>, <tt class="docutils literal">walk</tt>, <tt class="docutils literal">glob</tt>... Quy tắc này áp dụng cho tất cả các hàm và thủ tục khác thao tác với file. Quan sát ví dụ sau (trên Windows):</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">FJoin</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">FExists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;D:/abc&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="go">[&#39;V? mi?n t\xe2y&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">FJoin</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)]</span>
+<span class="go">[&#39;D:/abc\\V? mi?n t\xe2y&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">FExists</span><span class="p">(</span><span class="n">FJoin</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)]</span>
+<span class="go">[False]</span>
+</pre></div>
+<p>Thư mục <tt class="docutils literal">abc</tt> có chứa duy nhất file <tt class="docutils literal">Về miền tây</tt>, tên file là tiếng Việt có dấu, kết quả kiểm tra sự tồn tại cho thấy file không tồn tại. Nguyên nhân là từ hàm <tt class="docutils literal">listdir</tt>. Nêu đối số của hàm <tt class="docutils literal">listdir</tt> là unicode các tên file lấy về cũng là unicode, nếu là ascii, các tên file trả về cũng là dạng ascii. Vì vậy tên file trả về của <tt class="docutils literal">listdir</tt> trong trường hợp này không đúng và bạn không thể thao tác với file đó được. Để lấy đúng tên file trong trường hợp này bạn phải truyền đối số unicode cho hàm <tt class="docutils literal">listdir</tt>:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="sa">u</span><span class="s2">&quot;D:/abc&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">FJoin</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)]</span>
+<span class="go">[u&#39;D:/abc\\V\u1ec1 mi\u1ec1n t\xe2y&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">FExists</span><span class="p">(</span><span class="n">FJoin</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">f</span><span class="p">))</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)]</span>
+<span class="go">[True]</span>
+</pre></div>
+<p>Tuy nhiên trên Linux, bạn không gặp vấn đề này.</p>
+</div>
+<div class="section" id="bai-tap-vi-du">
+<h2>5. Bài tập ví dụ:</h2>
+<p>Viết chương trình đổi tên tất cả các file trong thư mục <tt class="docutils literal"><span class="pre">c:\data</span></tt> và các thư mục con của nó. Đổi tên các file có phần mở rộng là <tt class="docutils literal">*.htm</tt> thành <tt class="docutils literal">*.docx</tt>.</p>
+<p>Dưới đây là một triển khai của bài tập này:</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="k">def</span> <span class="nf">dirwalk</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">bag</span><span class="p">,</span> <span class="n">wildcards</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; bag là một list chứa các file thỏa mãn quy tắc wildcards &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">)):</span>
+        <span class="n">bag</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">wildcards</span><span class="p">)))</span>
+        <span class="n">dirwalk</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">),</span> <span class="n">bag</span><span class="p">,</span> <span class="n">wildcards</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">rename</span><span class="p">(</span><span class="n">oldName</span><span class="p">,</span> <span class="n">newExt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Thay thế phần mở rộng cũ thành mở rộng mới. Giả thiết oldName luôn có</span>
+<span class="sd">     phần mở rộng. &quot;&quot;&quot;</span>
+
+    <span class="n">newName</span> <span class="o">=</span> <span class="n">oldName</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">oldName</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">newExt</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">oldName</span><span class="p">,</span> <span class="n">newName</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">newName</span>
+
+<span class="k">def</span> <span class="nf">WalkAndRename</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">oldExt</span><span class="p">,</span> <span class="n">newExt</span><span class="p">):</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">dirwalk</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="sa">u</span><span class="s2">&quot;*&quot;</span> <span class="o">+</span> <span class="n">oldExt</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">f</span><span class="p">,</span> <span class="s2">&quot;--&gt;&quot;</span><span class="p">,</span> <span class="n">rename</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">newExt</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">WalkAndRename</span><span class="p">(</span><span class="s1">&#39;c:</span><span class="se">\\</span><span class="s1">data&#39;</span><span class="p">,</span> <span class="s2">&quot;htm&quot;</span><span class="p">,</span> <span class="s1">&#39;docx&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2009-06-20T03:45:00+07:00"><i class="fa fa-calendar"></i> Sat 20 June 2009</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/pham-thi-minh-hoai.html" rel="author">Phạm Thị Minh Hoài</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/unicode.html" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">unicode</a>
+            <a href="../../tag/walk.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">walk</a>
+            <a href="../../tag/listdir.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">listdir</a>
+            <a href="../../tag/glob.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">glob</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

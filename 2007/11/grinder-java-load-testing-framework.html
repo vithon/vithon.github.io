@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Grinder - Java load testing framework
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2007/11/grinder-java-load-testing-framework.html" rel="bookmark" title="Permalink to Grinder - Java load testing framework">Grinder - Java load testing framework</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Những người làm phần mềm hẳn ai cũng đã biết đến công đoạn rất quan trọng sau khi thành phẩm là &quot;kiểm thử&quot; (test). Một trong những kiểu kiểm thử (test case) cần phải làm là kiểm thử khả năng chịu đựng của hệ thống (load test). Có một công cụ rất mạnh để tự động hóa quá trình này, tiết kiệm thời gian và công sức cho đội kiểm thử đó là Grinder.</p>
+<div class="section" id="gioi-thieu">
+<h2>Giới thiệu</h2>
+<p>Tại sao lại là <a class="reference external" href="http://grinder.sourceforge.net">Grinder</a> mà không phải là một công cụ nào khác? Đơn giản là vì Grinder sử dụng Jython - Python chạy trên nền Java - một sự kết hợp tuyệt vời của một ngôn ngữ rất mềm dẻo, mạnh mẽ (Python) với một khung nền có thể chạy trên mọi hệ điều hành (Java).</p>
+<p>Grinder bao gồm 3 thành phần:</p>
+<ul class="simple">
+<li>Console: đây là thành phần đóng vai trò điều khiển và tiếp nhận kết quả kiểm thử trả về.</li>
+<li>Agent process: đây là thành phần nhận lệnh từ Console và điều khiển các worker process.</li>
+<li>Worker process: đây là các kịch bản kiểm thử do người dùng định nghĩa.</li>
+</ul>
+<p>Như vậy, tại máy dùng để theo dõi và hiển thị kết quả kiểm thử, chạy Console. Tại các máy trạm chịu trách nhiệm chạy các kịch bản kiểm thử, chạy Agent process. Các kịch bản kiểm thử sẽ được tự động chuyển về cho các Agent process từ Console khi người dùng ra lệnh chạy.</p>
+</div>
+<div class="section" id="chuan-bi">
+<h2>Chuẩn bị</h2>
+<p>Để chạy được Grinder cần phải cài đặt các biến môi trường trỏ về đúng thư mục cài đặt Grinder và các thành phần liên quan.</p>
+<div class="section" id="doi-voi-windows">
+<h3>Đối với Windows</h3>
+<ul>
+<li><p class="first">Tạo tập tin kịch bản gọi mõi khi chạy <tt class="docutils literal">setGrinderEnv.cmd</tt>:</p>
+<div class="highlight"><pre><span></span><span class="k">set</span> <span class="nv">GRINDERPATH</span><span class="p">=</span>(full path to grinder install directory)
+<span class="k">set</span> <span class="nv">GRINDERPROPERTIES</span><span class="p">=</span>(full path to grinder.properties)\grinder.properties
+<span class="k">set</span> <span class="nv">CLASSPATH</span><span class="p">=</span><span class="nv">%GRINDERPATH%</span>\lib\grinder.jar;<span class="nv">%CLASSPATH%</span>
+<span class="k">set</span> <span class="nv">JAVA_HOME</span><span class="p">=</span>(full path to java install directory)
+<span class="k">PATH</span>=<span class="nv">%JAVA_HOME%</span>\bin;<span class="nv">%PATH%</span>
+</pre></div>
+</li>
+<li><p class="first">Hoặc gán trực tiếp biến môi trường mỗi khi khởi động bằng cách:</p>
+<ul class="simple">
+<li>Vào System Properties chọn tab Advanced chọn tiếp Environment Variables</li>
+<li>Chọn New và thêm vào tên biến và đường dẫn như trên.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="doi-voi-unix">
+<h3>Đối với Unix</h3>
+<ul>
+<li><p class="first">Tạo tập tin kịch bản <tt class="docutils literal">setGrinderEnv.sh</tt>:</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/ksh</span>
+<span class="nv">GRINDERPATH</span><span class="o">=(</span>full path to grinder install directory<span class="o">)</span>
+<span class="nv">GRINDERPROPERTIES</span><span class="o">=(</span>full path to grinder.properties<span class="o">)</span>/grinder.properties
+<span class="nv">CLASSPATH</span><span class="o">=</span><span class="nv">$GRINDERPATH</span>/lib/grinder.jar:<span class="nv">$CLASSPATH</span>
+<span class="nv">JAVA_HOME</span><span class="o">=(</span>full path to java install directory<span class="o">)</span>
+<span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span> CLASSPATH PATH GRINDERPROPERTIES
+</pre></div>
+</li>
+<li><p class="first">Hoặc gán trực tiếp mỗi khi đăng nhập vào người dùng bằng cách thêm vào trong tập tin <tt class="docutils literal"><span class="pre">/home/$USER/.bashrc</span></tt>:</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">GRINDERPATH</span><span class="o">=(</span>full path to grinder install directory<span class="o">)</span>
+<span class="nb">export</span> <span class="nv">GRINDERPROPERTIES</span><span class="o">=(</span>full path to grinder.properties<span class="o">)</span>/grinder.properties
+<span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span><span class="nv">$GRINDERPATH</span>/lib/grinder.jar:<span class="nv">$CLASSPATH</span>
+<span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=(</span>full path to java install directory<span class="o">)</span>
+</pre></div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="cau-hinh">
+<h2>Cấu hình</h2>
+<p>Tập tin thuộc tính <tt class="docutils literal">grinder.properties</tt> thường gồm các tham số sau:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="44%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Tên tham số</th>
+<th class="head">Giải thích</th>
+<th class="head">Giá trị mặc định</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><tt class="docutils literal">grinder.processes</tt></td>
+<td>Số lượng tiến trình worker mà một agent khởi tạo</td>
+<td>1</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.threads</tt></td>
+<td>Số lượng tiểu trình mà mỗi tiến trình worker sinh ra</td>
+<td>1</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.runs</tt></td>
+<td>Số lần chạy kịch bản kiểm thử mà mỗi tiểu trình
+chạy. 0 nghĩa là chạy lặp đi lặp lại. Tham số này
+nên để là 0 khi sử dụng Console để điều khiển hoạt
+động của các agent.</td>
+<td>1</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.processIncrement</tt></td>
+<td>Nếu đặt, agent sẽ tăng số lượng tiếng trình worker
+lên sau mỗi nhịp
+<tt class="docutils literal">grinder.processIncrementInterval</tt>.</td>
+<td>0 (Khởi động tất cả các
+tiến trình worker cùng lúc.)</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.processIncrementInterval</tt></td>
+<td>Sử dụng cùng với tham số
+<tt class="docutils literal">grinder.processIncrement</tt>, tham số này xác định
+nhịp tăng tiến trình worker tính theo mili giây.</td>
+<td>60000</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.initialProcesses</tt></td>
+<td>Sử dụng cùng với tham số
+<tt class="docutils literal">grinder.processIncrement</tt>, tham số này xác định
+số lượng tiến trình worker khởi động.</td>
+<td>Giá trị của
+<tt class="docutils literal">grinder.processIncrement</tt>.</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.duration</tt></td>
+<td>Thời gian mỗi tiến trình worker chạy. Tham số này có
+thể xác định cùng với tham số <tt class="docutils literal">grinder.runs</tt>, điều
+đó có nghĩa là tiến trình worker sẽ chấm dứt nếu hết
+thời gian chạy hoặc số lượng tiến trình worker đạt
+tối đa.</td>
+<td>0 (Không kết thúc.)</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.script</tt></td>
+<td>Tên tập tin kịch bản sẽ chạy.</td>
+<td><tt class="docutils literal">grinder.py</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.jvm</tt></td>
+<td>Sử dụng máo ảo Java (JVM) khác. Mặc định là <tt class="docutils literal">java</tt>
+nên không cần phải khai báo nếu đã có sẵn trong
+đường dẫn (PATH).</td>
+<td><tt class="docutils literal">java</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.jvm.classpath</tt></td>
+<td>Dùng để xác định đường dẫn đến các lớp sử dụng cho
+tiến trình worker. Bất cứ đường dẫn nào xác định ở
+đây sẽ được thêm vào trong đường dẫn classpath sử
+dụng để khởi động tiến trình Grinder.</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.jvm.arguments</tt></td>
+<td>Các tham số phụ thêm cho tiến trình worker.</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.logDirectory</tt></td>
+<td>Thư mục lưu tập tin log. Tự động tạo nếu chưa có.</td>
+<td>Thư mục cục bộ</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.numberOfOldLogs</tt></td>
+<td>Số lượng nhật kí được lưu lại từ lần chạy trước đó.</td>
+<td>1</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.hostID</tt></td>
+<td>Thay thế chuỗi <tt class="docutils literal">host</tt> sử dụng trong tên tập tin
+nhật kí và trong nhật kí.</td>
+<td>Tên máy</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.consoleHost</tt></td>
+<td>Địa chỉ IP hoặc tên máy sử dụng cho kết nối giữa các
+agent, tiến trình worker và console.</td>
+<td>Tất cả các giao tiếp
+mạng của máy.</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.consolePort</tt></td>
+<td>Cổng để agent và tiến trình worker sử dụng để kết
+nối đến console.</td>
+<td>6372</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.useConsole</tt></td>
+<td>Nếu đặt là <tt class="docutils literal">false</tt>, agent và tiến trình worker sẽ
+không sử dụng console.</td>
+<td><tt class="docutils literal">true</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.reportToConsole.interval</tt></td>
+<td>Khoảng thời gian mỗi tiến trình gửi cập nhật về cho
+console. Tham số này cũng xác định khoảng thời gian
+các tập tin dữ liệu được làm mới. Giá trị tính theo
+mili giây.</td>
+<td>500</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.initialSleepTime</tt></td>
+<td>Khoảng thời gian tối đa mỗi tiểu trình đợi trước khi
+bắt đầu. Không giống như thời gian ngừng trong kịch
+bản, tham số này thay đổi ngẫu nhiên giữa 0 và giá
+trị được đặt. Bị ảnh hưởng bởi tham số
+<tt class="docutils literal">grinder.sleepTimeFactor</tt>, còn tham số
+<tt class="docutils literal">grinder.sleepTimeVariation</tt> thì không. Giá trị
+tính theo mili giây.</td>
+<td>0</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.sleepTimeFactor</tt></td>
+<td>Thêm một hệ số vào thời gian chờ đã đặt, thông qua
+một thuộc tính hay trong kịch bản. Đặt giá trị này
+là 0.1 kịch bản sẽ chạy nhanh hơn mười lần.</td>
+<td>1</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.sleepTimeVariation</tt></td>
+<td>Thông thường, Grinder thay đổi thời gian chờ xác
+định trong kịch bản tùy theo sự phân chia bình
+thường. Tham số này xác định một dải phân đoạn mà đa
+số (chiếm 99.75%) là sẽ rơi vào trong dải này. Ví
+dụ, nếu thời gian chờ xác định là 1000 và
+<tt class="docutils literal">sleepTimeVariation</tt> đặt là 0.1, khi đó 99.75% các
+giá trị thời gian chờ sẽ nằm trong khoảng 900 và
+1100 milli giây.</td>
+<td>0.2</td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.logProcessStreams</tt></td>
+<td>Đặt là <tt class="docutils literal">false</tt> để tắt tính năng ghi nhật kí những
+thông báo và lỗi hiển thị của tiến trình worker.
+Dùng tham số này để giảm tải cho các tiểu trình tại
+máy trạm.</td>
+<td><tt class="docutils literal">true</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.reportTimesToConsole</tt></td>
+<td>Đặt là <tt class="docutils literal">false</tt> để tắt tính năng phản hồi thông tin
+thời gian về cho console, các thông tin thống kê
+khác vẫn được phản hồi.</td>
+<td><tt class="docutils literal">true</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.debug.singleprocess</tt></td>
+<td>Nếu đặt là <tt class="docutils literal">true</tt>, agent sẽ phát sinh tiểu trình
+để chạy kịch bản thay vì tiến trình, sử dụng một bộ
+nạp lớp đặc biệt để cô lập engine ra. Điều này cho
+phép engine dễ gỡ rối hơn. Mục đích chính của công
+cụ này là gỡ rối Grinder engine, tuy nhiên nó cũng
+có thể dùng cho người dùng chuyên nghiệp vào các mục
+đích khác.</td>
+<td><tt class="docutils literal">false</tt></td>
+</tr>
+<tr><td><tt class="docutils literal">grinder.useNanoTime</tt></td>
+<td>Nết đặt là <tt class="docutils literal">true</tt>, <tt class="docutils literal">System.nanoTime()</tt> sẽ được
+dùng để đo thời gian thay vì
+<tt class="docutils literal">System.currentTimeMills()</tt>. Grinder sẽ vẫn phản
+hồi thời gian tính bằng mili giây. Độ chính xác của
+những phương pháp này phụ thuộc vào sự hiện thực hóa
+JVM và hệ điều hành. Tham số <tt class="docutils literal">true</tt> chỉ dùng cho
+J2SE 5 hoặc lớn hơn.</td>
+<td><tt class="docutils literal">false</tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="vi-du">
+<h2>Ví dụ</h2>
+<p>Thông thường, một tập tin cấu hình đơn giản chỉ cần các thông số sau:</p>
+<pre class="literal-block">
+grinder.process 1
+grinder.threads 1
+grinder.runs 1
+grinder.script sample.py
+</pre>
+<p>Nếu chạy ở chế độ có Console thì cần thêm:</p>
+<pre class="literal-block">
+grinder.useConsole true
+grinder.consoleHost x.x.x.x (IP hoặc tên máy Console)
+grinder.consolePort xxx (cổng quy định bởi Console)
+</pre>
+</div>
+<div class="section" id="chay">
+<h2>Chạy</h2>
+<p>Để chạy Grinder có thể đơn giản như sau:</p>
+<ul>
+<li><p class="first">Chạy Console:</p>
+<pre class="literal-block">
+java net.grinder.Console
+</pre>
+</li>
+<li><p class="first">Chạy Agent:</p>
+<pre class="literal-block">
+java net.grinder.Grinder
+</pre>
+</li>
+</ul>
+<p>Hoặc tạo tập tin kịch bản như sau:</p>
+<div class="section" id="id1">
+<h3>Đối với Windows</h3>
+<p>startAgent.cmd</p>
+<div class="highlight"><pre><span></span><span class="k">call</span> <span class="p">(</span><span class="k">path</span> to setGrinderEnv.cmd<span class="p">)</span>\setGrinderEnv.cmd
+<span class="k">echo</span> <span class="nv">%CLASSPATH%</span>
+java -cp <span class="nv">%CLASSPATH%</span> net.grinder.Grinder <span class="nv">%GRINDERPROPERTIES%</span>
+</pre></div>
+<p>startConsole.cmd</p>
+<div class="highlight"><pre><span></span><span class="k">call</span> <span class="p">(</span><span class="k">path</span> to setGrinderEnv.cmd<span class="p">)</span>\setGrinderEnv.cmd
+java -cp <span class="nv">%CLASSPATH%</span> net.grinder.Console
+</pre></div>
+</div>
+<div class="section" id="id2">
+<h3>Đối với Unix</h3>
+<p>startAgent.sh</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/ksh</span>
+. <span class="o">(</span>path to setGrinderEnv.sh<span class="o">)</span>/setGrinderEnv.sh
+java -cp <span class="nv">$CLASSPATH</span> net.grinder.Grinder <span class="nv">$GRINDERPROPERTIES</span>
+</pre></div>
+<p>startConsole.sh</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/ksh</span>
+. <span class="o">(</span>path to setGrinderEnv.sh<span class="o">)</span>/setGrinderEnv.sh
+java -cp <span class="nv">$CLASSPATH</span> net.grinder.Console
+</pre></div>
+<p>Công việc tiếp theo chỉ là... viết kịch bản kiểm thử và chạy.</p>
+</div>
+</div>
+<div class="section" id="tu-dong-hoa">
+<h2>Tự động hóa</h2>
+<p>Đến đây hẳn nhiều người, nhất là những lập trình viên không (chưa) biết ngôn ngữ Python sẽ tiếc nuối vì không biết viết mã cho kịch bản kiểm thử như thế nào. Nhưng có một cách để những lập trình viên này vẫn có thể dùng công cụ kiểm thử mạnh mẽ Grinder mà không cần phải biết viết một dòng mã Python nào. Từ phiên bản 3.0 trở lên, Grinder cung cấp một môi trường proxy kiểm soát dữ liệu vào ra để tự động tạo mã kịch bản tương ứng. Điều đó có nghĩa là, kịch bản sẽ tự động được tạo ra theo đúng những thao tác chuột và bàn phím mà những người kiểm thử làm. Và tất nhiên cách này chỉ dùng cho những kiểm thử đối với các ứng dụng web.</p>
+<p>Để khởi động Grinder proxy:</p>
+<div class="section" id="id3">
+<h3>Đối với Windows</h3>
+<p>startProxy.cmd</p>
+<div class="highlight"><pre><span></span><span class="k">call</span> <span class="p">(</span><span class="k">path</span> to setGrinderEnv.cmd<span class="p">)</span>\setGrinderEnv.cmd
+java -cp <span class="nv">%CLASSPATH%</span> net.grinder.TCPProxy -console -http <span class="p">&gt;</span> script_name.py
+</pre></div>
+</div>
+<div class="section" id="id4">
+<h3>Đối với Unix</h3>
+<p>startProxy.sh</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/ksh</span>
+. <span class="o">(</span>path to setGrinderEnv.sh<span class="o">)</span>/setGrinderEnv.sh
+java -cp <span class="nv">$CLASSPATH</span> net.grinder.TCPProxy -console -http &gt; script_name.py
+</pre></div>
+<p>Sau đó thiết đặt trình duyệt cho trỏ đến proxy là <tt class="docutils literal">localhost</tt> với cổng <tt class="docutils literal">8081</tt> và bắt đầu các thao tác kiểm thử.</p>
+</div>
+</div>
+<div class="section" id="tong-ket">
+<h2>Tổng kết</h2>
+<p>Trên đây là những bước cơ bản nhất để có thể làm quen với một công cụ kiểm thử vô cùng mạnh mẽ, đơn giản, dễ dùng và đặc biệt là hoàn toàn miễn phí. Mặc dù chạy trên nền Java nhưng trong quá trình thử nghiệm cũng như sử dụng để kiểm thử hệ thống Online Trading của công ty Chứng khoán VNDirect, Grinder chạy rất nhẹ nhàng, không tốn nhiều RAM như tôi lo ngại, thậm chí tôi sử dụng chính các máy của người dùng làm agent trong khi mọi người vẫn làm việc mà không hề thấy hệ thống bị kéo chậm lại hay có vấn đề gì xảy ra. Việc làm quen với Grinder cũng không mất quá nhiều thời gian, kể cả với một tay ngang như tôi. Grinder thật sự rất ấn tượng. Và điểm nổi trội nhất của Grinder đó là nó cho phép người dùng tự định nghĩa kịch bản kiểm thử bằng một ngôn ngữ mạnh mẽ và mềm dẻo - Python.</p>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2007-11-29T21:14:00+07:00"><i class="fa fa-calendar"></i> Thu 29 November 2007</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/le-ngoc-hieu.html" rel="author">Lê Ngọc Hiếu</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/jython.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">jython</a>
+            <a href="../../tag/load-test.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">load test</a>
+            <a href="../../tag/grinder.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">grinder</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

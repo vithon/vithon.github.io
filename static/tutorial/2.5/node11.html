@@ -1,0 +1,912 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+<head>
+
+<link rel="STYLESHEET" href="tut.css" type="text/css" />
+
+<link rel="SHORTCUT ICON" href="../icons/pyfav.png" type="image/png" />
+
+<link rel="start" href="../index.html" title="Chỉ mục tài liệu Python" />
+
+<link rel="first" href="tut.html" title="Bài chỉ dẫn Python" />
+
+<link rel="contents" href="node2.html" title="Mục lục" />
+
+<link rel="index" href="node19.html" title="Chỉ mục" />
+
+<link rel="last" href="about.html" title="Về tài liệu này..." />
+
+<link rel="help" href="about.html" title="Về tài liệu này..." />
+
+<link rel="next" href="node12.html" />
+
+<link rel="prev" href="node10.html" />
+
+<link rel="parent" href="tut.html" />
+
+<link rel="next" href="node12.html" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="aesop" content="information" />
+
+<title>9. Lớp </title>
+
+</head>
+
+<body>
+
+<div class="navigation">
+
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="8. Lỗi và biệt lệ" href="node10.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="10. Giới thiệu sơ về bộ thư viện chuẩn" href="node12.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node10.html">8. Lỗi và biệt lệ</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node12.html">10. Giới thiệu sơ về bộ thư viện chuẩn</a>
+
+</div>
+
+<hr /></div>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<div class="online-navigation">
+
+<!--Table of Child-Links-->
+
+<a name="CHILD_LINKS"><strong>Mục con</strong></a>
+
+<ul class="ChildLinks">
+
+<li><a href="node11.html#SECTION0011100000000000000000">9.1 Vài lời về thuật ngữ</a>
+
+</li><li><a href="node11.html#SECTION0011200000000000000000">9.2 Phạm vi trong Python và vùng tên</a>
+
+</li><li><a href="node11.html#SECTION0011300000000000000000">9.3 Cái nhìn đầu tiên về lớp</a>
+
+<ul>
+
+<li><a href="node11.html#SECTION0011310000000000000000">9.3.1 Cú pháp định nghĩa lớp</a>
+
+</li><li><a href="node11.html#SECTION0011320000000000000000">9.3.2 Đối tượng lớp</a>
+
+</li><li><a href="node11.html#SECTION0011330000000000000000">9.3.3 Đối tượng trường hợp</a>
+
+</li><li><a href="node11.html#SECTION0011340000000000000000">9.3.4 Đối tượng phương thức</a>
+
+</li></ul>
+
+</li><li><a href="node11.html#SECTION0011400000000000000000">9.4 Một vài lời bình</a>
+
+</li><li><a href="node11.html#SECTION0011500000000000000000">9.5 Kế thừa</a>
+
+<ul>
+
+<li><a href="node11.html#SECTION0011510000000000000000">9.5.1 Đa kế thừa</a>
+
+</li></ul>
+
+</li><li><a href="node11.html#SECTION0011600000000000000000">9.6 Biến riêng</a>
+
+</li><li><a href="node11.html#SECTION0011700000000000000000">9.7 Những điều khác</a>
+
+</li><li><a href="node11.html#SECTION0011800000000000000000">9.8 Biệt lệ cũng là lớp</a>
+
+</li><li><a href="node11.html#SECTION0011900000000000000000">9.9 Bộ lặp</a>
+
+</li><li><a href="node11.html#SECTION00111000000000000000000">9.10 Bộ tạo</a>
+
+</li><li><a href="node11.html#SECTION00111100000000000000000">9.11 Biểu thức bộ tạo</a>
+
+</li></ul>
+
+<!--End of Table of Child-Links-->
+
+</div>
+
+<hr />
+
+<h1><a name="SECTION0011000000000000000000"></a><a name="classes"></a>
+
+<br />
+9. Lớp 
+</h1>
+
+<p>
+Chỉ cần một ít cú pháp và từ khóa mới, Python đã có thể hỗ trợ lớp. Nó là sự trộn lẫn giữa C++ và Modula-3. Cũng như mô-đun, các lớp tron Python không đặt rào cản tuyệt đối giữa định nghĩa lớp và người sử dụng, mà thay vào đó nó dựa vào sự lịch thiệp trong cách dùng mà ``không phá định nghĩa.'' Tuy nhiên, các tính năng quan trọng nhất của lớp vẫn được giữ lại trọn vẹn: cách kế thừa lớp hỗ trợ nhiều lớp cơ sở, lớp con có thể định nghĩa lại bất kỳ phương thức nào của các lớp cơ sở của nó, và một phương thức có thể gọi một phương thức cùng tên của một lớp cơ sở. Các đối tượng có thể chứa một lượng dũ liệu riêng bất kỳ.
+
+</p><p>
+Theo thuật ngữ C++, mọi thành viên lớp (kể cả thành viên dữ liệu) là
+<em>public</em>(công cộng), và mọi thành viên hàm là <em>virtual</em>(ảo). Không có bộ khởi tạo (constructor) hoặc bộ hủy (destructor) đặc biệt. Cũng như Modula-3, không có cách viết tắt nào để tham chiếu tới các thành viên của một đối tượng từ các phương thức của nó: hàm phương thức được khai báo với thông số thứ nhất thể hiện chính đối tượng đó, và được tự động truyền vào qua lệnh gọi. Như trong Smalltalk, các lớp cũng là các đối tượng theo một nghĩa rộng: trong Python, mọi kiểu dữ liệu là đều là các đối tượng. Điều này cho phép nhập (import) và đổi tên. Không như C++ và Modula-3, các kiểu có sẵn có thể được dùng như các lớp cơ sở để mở rộng bởi người dùng. Và như trong C++ nhưng không giống Modula-3, đa số các toán tử có sẵn với cú pháp đặc biệt (các toán tử số học, truy cập mảng, v.v...) có thể được định nghĩa lại trong các trường hợp cụ thể của lớp.
+
+</p><p>
+
+<h1><a name="SECTION0011100000000000000000"></a><a name="terminology"></a>
+
+<br />
+9.1 Vài lời về thuật ngữ 
+</h1>
+
+</p><p>
+Những từ chuyên ngành dùng ở đây theo từ vựng của Smalltalk và C++.
+
+</p><p>
+Các đối tượng có tính cá thể (individuality), và nhiều tên (trong nhiều phạm vi, scope) có thể được gắn vào cùng một đối tượng. Trong các ngôn ngữ khác được gọi là tên lóng (alias). Nó thường không được nhận ra khi dùng Python lần đầu, và có thể được bỏ qua khi làm việc với các kiểu bất biến cơ bản (số, chuỗi, bộ). Tuy nhiên, tên lóng có một ảnh hưởng đối với ý nghĩa của mã Python có sử dụng các đối tượng khả biến như danh sách, từ điển, và đa số các kiểu thể hiện các vật ngoài chương trình (tập tin, cửa sổ, v.v...). Nó thường được dùng vì tên lóng có tác dụng như là con trỏ theo một vài khía cạnh nào đó. Ví dụ, truyền một đối tượng vào một hàm rẻ vì chỉ có con trỏ là được truyền, và nếu một hàm thay đổi một đối tượng được truyền vào, thì nơi gọi sẽ thấy các thay đổi đó -- thay vì cần hai kiểu truyền thông số như trong Pascal.
+
+</p><p>
+
+<h1><a name="SECTION0011200000000000000000"></a><a name="scopes"></a>
+
+<br />
+9.2 Phạm vi trong Python và vùng tên 
+</h1>
+
+</p><p>
+Trước khi giới thiệu lớp, chúng ta sẽ cần hiểu phạm vi (scope) và vùng tên (namespace) hoạt động như thế nào vì các định nghĩa lớp sẽ sử dụng chúng. Kiến thức về vấn đề này cũng rất hữu dụng với những nhà lập trình Python chuyên nghiệp.
+
+</p><p>
+Bắt đầu với một vài định nghĩa.
+
+</p><p>
+A <em>namespace (vùng tên)</em> (vùng tên) là ánh xạ từ tên vào đối tượng. Đa số các vùng tên được cài đặt bằng từ điển Python, nhưng điều đó thường là không quan trọng (trừ tốc độ), và có thể sẽ thay đổi trong tương lai. Các ví dụ vùng tên như: tập hợp các tên có sẵn (các hàm như <tt class="function">abs()</tt>, và các tên biệt lệ có sẵn); các tên toàn cụ trong một mô-đun; các tên nội bộ trong một phép gọi hàm. Theo nghĩa đó tập hợp các thuộc tính của một đối tượng cũng là một vùng tên. Điều quan trọng cần biết về vùng tên là tuyệt đối không có quan hệ gì giữa các vùng tên khác nhau; ví dụ hai mô-đun khác nhau có thể cùng định nghĩa hàm ``maximize'' mà không sợ lẫn lộn -- người dùng mô-đun phải thêm tiền tố tên mô-đun trước khi gọi hàm.
+
+</p><p>
+Cũng xin nói thêm là từ <em>thuộc tính</em> được dùng để chỉ mọi tên theo sau dấu chấm -- ví dụ, trong biểu thức <code>z.real</code>, <code>real</code> là một thuộc tính của đối tượng <code>z</code>. Nói đúng ra, tham chiếu tới tên trong một mô-đun là các tham chiếu tới thuộc tính: trong biểu thức
+<code>modname.funcname</code>, <code>modname</code> là một đối tượng mô-đun và
+<code>funcname</code> là một thuộc tính của nó. Trong trường hợp này, việc ánh xạ giữa các thuộc tính của mô-đun và các tên toàn cục được định nghĩa trong mô-đun thật ra rất đơn giản: chúng dùng chung một vùng tên!
+<a name="tex2html5" href="#foot1890"><sup>9.1</sup></a>
+
+</p><p>
+Thuộc tính có thể là chỉ đọc, hoặc đọc ghi. Trong trường hợp sau, phép gán vào thuộc tính có thể được thực hiện. Các thuộc tính mô-đun là đọc ghi: bạn có thể viết "<tt class="samp">modname.the_answer = 42</tt>". Các thuộc tính đọc ghi cũng có thể được xóa đi với câu lệnh <tt class="keyword">del</tt> . Ví dụ, "<tt class="samp">del modname.the_answer</tt>" sẽ xóa thuộc tính
+<tt class="member">the_answer</tt> từ đối tượng tên <code>modname</code>.
+
+</p><p>
+Các vùng tên được tạo ra vào những lúc khác nhau và có thời gian sống khác nhau. Vùng tên chứa các tên có sẵn được tạo ra khi trình thông dịch Python bắt đầu, và không bao giờ bị xóa đi. Vùng tên toàn cục của một mô-đun được tạo ra khi định nghĩa mô-đun được đọc; bình thường, vùng tên mô-đun cũng tồn tại cho tới khi trình thông dịch thoát ra. Các câu lệnh được thực thi bởi lời gọi ở lớp cao nhất của trình thông dịch, vì đọc từ một kịch bản hoặc qua tương tác, được coi như một phần của mô-đun gọi là
+<tt class="module">__main__</tt>, cho nên chúng cũng có vùng tên riêng. (Các tên có sẵn thật ra cũng tồn tại trong một mô-đun; được gọi là
+<tt class="module">__builtin__</tt>.)
+
+</p><p>
+Vùng tên nội bộ của một hàm được tạo ra khi hàm được gọi, và được xóa đi khi hàm trả về, hoặc nâng một biệt lệ không được xử lý trong hàm. Dĩ nhiên, các lời gọi hàm đệ quy có vùng tên riêng của chúng.
+
+</p><p>
+A <em>phạm vi</em> là một vùng văn bản của một chương trình Python mà một vùng tên có thể được truy cập trực tiếp. ``Có thể truy cập trực tiếp'' có nghĩa là một tham chiếu không đầy đủ (unqualifed reference) tới một tên sẽ thử tìm tên đó trong vùng tên.
+
+</p><p>
+Mặc dù phạm vi được xác định tĩnh, chúng được dùng một cách động. Vào bất kỳ một lúc nào, có ít nhất ba phạm vi lồng nhau mà vùng tên của chúng có thể được truy cập trực tiếp: phạm vi bên trong cùng, được tìm trước, chứa các tên nội bộ; các vùng tên của các hàm chứa nó, được tìm bắt đầu từ phạm vi chứa nó gần nhất (nearest enclosing scope); phạm vi giữa (middle scope), được tìm kế, chứa các tên toàn cục của mô-đun; và phạm vi ngoài cùng (được tìm sau cùng) là vùng tên chứa các tên có sẵn.
+
+</p><p>
+Nếu một tên được khai báo là toàn cục, thì mọi tham chiếu hoặc phép gán sẽ đi thẳng vào phạm vi giữa chứa các tên toàn cục của mô-đun. Nếu không, mọi biến được tìm thấy ngoài phạm vi trong cùng chỉ có thể được đọc (nếu thử khi vào các biến đó sẽ tạo một biến cục bộ <em>mới</em>
+trong phạm vi trong vùng, và không ảnh hưởng tới biến cùng tên ở phạm vi ngoài).
+
+</p><p>
+Thông thường, phạm vi nội bộ tham chiếu các tên nội bộ của hàm hiện tại (dựa vào văn bản). Bên ngoài hàm, phạm vi nội bộ tham chiếu cùng một vùng tên như phạm vi toàn cục: vùng tên của mô-đun. Các định nghĩa lớp đặt thêm một vùng tên khác trong phạm vi nội bộ.
+
+</p><p>
+Điểm quan trọng cần ghi nhớ là phạm vi được xác định theo văn bản: phạm vi toàn cục của một hàm được định nghĩa trong một mô-đun là vùng tên của mô-đun đó, cho dù mô-đun đó được gọi từ đâu, hoặc được đặt tên lóng nào. Mặt khác, việc tìm tên được thực hiện lúc chạy -- tuy nhiên, định nghĩa ngôn ngữ đang phát triển theo hướng xác định tên vào lúc ``dịch'', cho nên đừng dựa vào việc tìm tên động! (Thực ra thì các biến nội bộ đã được xác định tĩnh.)
+
+</p><p>
+Một điểm ngộ của Python là các phép gán luôn gán vào phạm vi trong cùng. Phép gán không chép dữ liệu -- chú chỉ buộc các tên và các đối tượng. Xóa cũng vậy: câu lệnh "<tt class="samp">del x</tt>" bỏ ràng buộc <code>x</code> khỏi vùng tên được tham chiếu tới bởi phạm vi nội bộ. Thực tế là mọi tác vụ có thêm các tên mới đều dùng phạm vi nội bộ: điển hình là các câu lệnh nhập và các định nghĩa hàm buộc tên mô-đun hoặc tên hàm vào phạm vi nội bộ. (Lệnh <tt class="keyword">global</tt> có thể được dùng để cho biết một biến cụ thể là ở phạm vi toàn cục.)
+
+</p><p>
+
+<h1><a name="SECTION0011300000000000000000"></a><a name="firstClasses"></a>
+
+<br />
+9.3 Cái nhìn đầu tiên về lớp 
+</h1>
+
+</p><p>
+Lớp thêm một ít cú pháp mới, ba kiểu đối tượng mới, và một ít ngữ nghĩa mới.
+
+</p><p>
+
+<h2><a name="SECTION0011310000000000000000"></a><a name="classDefinition"></a>
+
+<br />
+9.3.1 Cú pháp định nghĩa lớp 
+</h2>
+
+</p><p>
+Kiểu đơn giản nhất của việc định nghĩa lớp nhìn giống như:
+
+</p><p>
+
+<div class="verbatim"><pre>
+class ClassName:
+    &lt;statement-1&gt;
+    .
+    .
+    .
+    &lt;statement-N&gt;
+</pre></div>
+
+</p><p>
+Định nghĩa lớp, cũng như định nghĩa hàm (câu lệnh<tt class="keyword">def</tt> ) phải được thực thi trước khi chúng có hiệu lực. (Bạn có thể đặt một định nghĩa hàm trong một nhánh của lệnh <tt class="keyword">if</tt> , hoặc trong một hàm.)
+
+</p><p>
+Trong thực tế, các câu lệnh trong một định nghĩa lớp thường là định nghĩa hàm, nhưng các câu lệnh khác cũng được cho phép, và đôi khi rất hữu dụng. Các định nghĩa hàm trong một lớp thường có một dạng danh sách thông số lạ, vì phải tuân theo cách gọi phương thức.
+
+</p><p>
+Khi gặp phải một định nghĩa lớp, một vùng tên mới được tạo ra, và được dùng như là phạm vi nội bộ -- do đó, mọi phép gán vào các biến nội bộ đi vào vùng tên này. Đặc biệt, các định nghĩa hàm buộc tên của hàm mới ở đây.
+
+</p><p>
+Khi rời khỏi một định nghĩa lớp một cách bình thường, một <em>đối tượng lớp</em> được tạo ra. Đây cơ bản là một bộ gói (wrapper) của nội dung của vùng tên tạo ra bởi định nghĩa lớp. Phạm vi nội bộ ban đầu (trước khi vào định nghĩa lớp) được thiết lập lại, và đối tượng lớp được buộc vào đây qua tên lớp đã chỉ định ở định nghĩa lớp, (<tt class="class">ClassName</tt> trong ví dụ này).
+
+</p><p>
+
+<h2><a name="SECTION0011320000000000000000"></a><a name="classObjects"></a>
+
+<br />
+9.3.2 Đối tượng lớp 
+</h2>
+
+</p><p>
+Các đối tượng lớp hỗ trợ hai loại tác vụ: tham chiếu thuộc tính và tạo trường hợp (instantiation).
+
+</p><p>
+
+<em>Tham chiếu thuộc tính</em> dùng cú pháp chuẩn được dùng cho mọi tham chiếu thuộc tính trong Python: <code>obj.name</code>. Các tên thuộc tính hợp lệ gồm mọi tên trong vùng tên của lớp khi đối tượng lớp được tạo ra. Do đó, nếu định nghĩa lớp có dạng như sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+class MyClass:
+    "A simple example class"
+    i = 12345
+    def f(self):
+        return 'hello world'
+</pre></div>
+
+</p><p>
+thì <code>MyClass.i</code> và <code>MyClass.f</code> là những tham chiếu thuộc tính hợp lệ, trả về một số nguyên và một đối tượng hàm, theo thứ tự đó. Các thuộc tính lớp cũng có thể gán vào, cho nên bạn có thể thay đổi giá trị của <code>MyClass.i</code> bằng phép gán.  <tt class="member">__doc__</tt> cũng là một thuộc tính hợp lệ, trả về chuỗi tài liệu của lớp: <code>"A
+simple example class"</code>. 
+
+</p><p>
+Class <em>instantiation</em> (tạo trường hợp lớp) dùng cùng cách viết như gọi hàm. Hãy tưởng tượng một đối tượng lớp là một hàm không thông số trả về một trường hợp của lớp. Ví dụ (với lớp trên):
+
+</p><p>
+
+<div class="verbatim"><pre>
+x = MyClass()
+</pre></div>
+
+</p><p>
+tạo một <em>trường hợp</em> mới của lớp và gán đối tượng này vào biến nội bộ <code>x</code>.
+
+</p><p>
+Tác vụ tạo trường hợp (``gọi'' một đối tượng lớp) tạo một đối tượng rỗng. Nhiều lớp thích tạo đối tượng với các trường hợp được khởi tạo ở một trạng thái đầu nào đó. Do đó một lớp có thể định nghĩa một phương thức đặc biệt tên
+<tt class="method">__init__()</tt>, như sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+    def __init__(self):
+        self.data = []
+</pre></div>
+
+</p><p>
+Khi một lớp định nghĩa một phương thức <tt class="method">__init__()</tt> , việc tạo trường hợp lớp sẽ tự động gọi <tt class="method">__init__()</tt> ở trường hợp lớp mới vừa được tạo. Trong ví dụ nạy, một trường hợp đã khởi tạo mới có thể được tại ra từ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+x = MyClass()
+</pre></div>
+
+</p><p>
+Dĩ nhiên, <tt class="method">__init__()</tt> (phương thức) có thể nhận thêm thông số. Trong trường hợp đó, các thông số đưa vào phép tạo trường hợp lớp sẽ được truyền vào <tt class="method">__init__()</tt>. Ví dụ,
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; class Complex:
+...     def __init__(self, realpart, imagpart):
+...         self.r = realpart
+...         self.i = imagpart
+... 
+&gt;&gt;&gt; x = Complex(3.0, -4.5)
+&gt;&gt;&gt; x.r, x.i
+(3.0, -4.5)
+</pre></div>
+
+</p><p>
+
+<h2><a name="SECTION0011330000000000000000"></a><a name="instanceObjects"></a>
+
+<br />
+9.3.3 Đối tượng trường hợp 
+</h2>
+
+</p><p>
+Chúng ta có thể làm được gì với những đối tượng trường hợp? Tác vụ duy nhất mà các đối tượng trường hợp hiểu được là tham chiếu thuộc tính. Có hai loại tên thuộc tính hợp lệ, thuộc tính dữ liệu và phương thức.
+
+</p><p>
+
+<em>data attributes</em> (thuộc tính dữ liệu lớp) tương ứng với ``biến trường hợp'' trong Smalltalk, và ''thành viên dữ liệu'' trong C++. Thuộc tính dữ liệu không cần được khai báo; như các biến nội bộ, chúng tự động tồn tại khi được gán vào. Ví dụ, nếu <code>x</code> là một trường hợp của <tt class="class">MyClass</tt> được tạo ra ở trên, đoạn mã sau in ra giá trị <code>16</code>, mà không chừa lại dấu vết:
+
+</p><p>
+
+<div class="verbatim"><pre>
+x.counter = 1
+while x.counter &lt; 10:
+    x.counter = x.counter * 2
+print x.counter
+del x.counter
+</pre></div>
+
+</p><p>
+Loại tham chiếu thuộc tính trường hợp khác là một <em>method (phương thức)</em>. Một phương thức là một hàm ``của'' một đối tượng. (Trong Python, từ phương thức không chỉ riêng cho trường hợp lớp: các kiểu đối tượng khác cũng có thể có phương thức. Ví dụ, đối tượng danh sách có phương thức tên <code>append</code>, <code>insert</code>, <code>remove</code>, <code>sort</code>, v.v... Tuy nhiên, trong phần sau chúng ta sẽ chỉ dùng từ phương thức dể chỉ các phương thức của đối tượng trường hợp lớp, trừ khi được chỉ định khác đi.)
+
+</p><p>
+Các tên phương thức hợp lệ của một đối tượng trường hợp phụ thuộc vào lớp của nó. Theo định nghĩa, mọi thuộc tính của một lớp mà là những đối tượng hàm định nghĩa các phương thức tương ứng của các trường hợp của lớp đó. Trong ví dụ của chúng ta, <code>x.f</code> là một tham chiếu phương thức hợp lệ, vì
+<code>MyClass.f</code> là một hàm, nhưng <code>x.i</code> không phải, bởi vì
+<code>MyClass.i</code> không phải. Nhưng <code>x.f</code> không phải là một thứ như
+<code>MyClass.f</code> -- nó là một <a id="l2h-33" xml:id="l2h-33"></a><em>method object (đối tượng phương thức)</em>, không phải là một đối tượng hàm.
+
+</p><p>
+
+<h2><a name="SECTION0011340000000000000000"></a><a name="methodObjects"></a>
+
+<br />
+9.3.4 Đối tượng phương thức 
+</h2>
+
+</p><p>
+Thông thường, một phương thức được gọi ngay sau khi nó bị buộc:
+
+</p><p>
+
+<div class="verbatim"><pre>
+x.f()
+</pre></div>
+
+</p><p>
+Trong <tt class="class">MyClass</tt> , nó sẽ trả về chuỗi <code>'hello world'</code>. Tuy nhiên, cũng không nhất thiết phải gọi một phương thức ngay lập tức:
+<code>x.f</code> là một đối tượng phương thức, và có thể được cất đi và gọi vào một thời điểm khác. Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+xf = x.f
+while True:
+    print xf()
+</pre></div>
+
+</p><p>
+sẽ tiếp tục in "<tt class="samp">hello world</tt>" mãi mãi.
+
+</p><p>
+Chuyện gì thật sự xảy ra khi một phương thức được gọi? Bạn có thể đã nhận ra rằng <code>x.f()</code> được gọi với không thông số, mặc dù định nghĩa hàm của <tt class="method">f</tt> chỉ định một thông số. Chuyện gì xảy ra với thông số đó? Python chắc chắn nâng một biệt lệ khi một hàm cần một thông số được gọi suông -- cho dù thông số đó có được dùng hay không đi nữa...
+
+</p><p>
+Thật ra, bạn cũng có thể đã đoán ra được câu trả lời: điểm đặc biệt của phương thức là đối tượng đó được truyền vào ở thông số đầu tiên của hàm. Trong ví dụ của chúng ta, lời gọi <code>x.f()</code> hoàn toàn tương đương với <code>MyClass.f(x)</code>. Nói chung, gọi một hàm với một danh sách
+<var>n</var> thông số thì tương đương với việc gọi hàm tương ứng với một danh sách thông số được tạo ra bằng cách chèn đối tượng của phương thức vào trước thông số thứ nhất.
+
+</p><p>
+(Hiểu đơn giản là <code>obj.name(arg1, arg2)</code> tương đương với <code>Class.name(obj, arg1, arg2)</code> trong đó <code>obj</code> là đối tượng trường hợp của lớp <code>Class</code>, <code>name</code> là một thuộc tính hợp lệ không phải dữ liệu, tức là đối tượng hàm của lớp đó.)
+
+</p><p>
+
+<h1><a name="SECTION0011400000000000000000"></a><a name="remarks"></a>
+
+<br />
+9.4 Một vài lời bình 
+</h1>
+
+</p><p>
+Thuộc tính dữ liệu sẽ che thuộc tính phương thức cùng tên; để tránh vô tình trùng lặp tên, mà có thể dẫn đến các lỗi rất khó tìm ra trong các chương trình lớn, bạn nên có một quy định đặt tên nào đó để giảm thiểu tỉ lệ trùng lặp. Các quy định khả thi có thể gồm viết hoa tên phương thức, đặt tiền tố vào các tên thuộc tính dữ liệu (ví dụ như dấu gạch dưới _), hoặc dùng động từ cho phương thức và danh từ cho các thuộc tính dữ liệu.
+
+</p><p>
+Các thuộc tính dữ liệu có thể được tham chiếu tới bởi cả phương thức lẫn người dùng đối tượng đó. Nói một cách khác, lớp không thể được dùng để cài đặt các kiểu dữ liệu trừu tượng tuyệt đối. Trong thực tế, không có gì trong Python có thể ép việc che dấu dữ liệu -- tất cả đều dựa trên nguyên tắc. (Mặt khác, cài đặt Python, được viết bằng C, có thể dấu các chi tiết cài đặt và điểu khiển truy cập vào một đối tượng nếu cần; điều này có thể được dùng trong các bộ mở rộng Python viết bằng C.)
+
+</p><p>
+Người dùng nên dùng các thuộc tính dữ liệu một cách cẩn thận -- người dùng có thể phá hỏng những bất biến (invariant) được giữ bởi các phương thức nếu cố ý sửa các thuộc tính dữ liệu. Lưu ý rằng người dùng có thể thêm các thuộc tính dữ liệu riêng của hộ vào đối tượng trường hợp mà không làm ảnh hưởng tính hợp lệ của các phương thức, miễn là không có trùng lặp tên -- xin nhắc lại, một quy tắc đặt tên có thể giảm bớt sự đau đầu ở đây.
+
+</p><p>
+Không có cách ngắn gọn để tham chiếu tới thuộc tính dữ liệu (hoặc các phương thức khác!) từ trong phương thức. Điều này thật ra giúp chúng ta dễ đọc mã vì không có sự lẫn lộn giữa biến nội bộ và biến trường hợp.
+
+</p><p>
+Thông số đầu tiên của phương thức thường được gọi là
+<code>self</code>. Đây cũng chỉ là một quy ước: tên
+<code>self</code> hoàn toàn không có ý nghĩa đặc biệt trong Python. (Tuy nhiên xin nhớ nếu bạn không theo quy ước thì mã của bạn sẽ có thể trở nên khó đọc đối với người khác, và có thể là <em>trình duyệt lớp</em> được viết dựa trên những quy ước như vậy.)
+
+</p><p>
+Bất kỳ đối tượng hàm nào mà là thuộc tính của một lớp sẽ định nghĩa một phương thức cho các trường hợp của lớp đó. Không nhất thiết định nghĩa hàm phải nằm trong định nghĩa lớp trên văn bản: gán một đối tượng hàm vào một biến nội bộ trong lớp cũng được. Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+# Function defined outside the class
+def f1(self, x, y):
+    return min(x, x+y)
+
+class C:
+    f = f1
+    def g(self):
+        return 'hello world'
+    h = g
+</pre></div>
+
+</p><p>
+Bây giờ <code>f</code>, <code>g</code> và <code>h</code> đều là thuộc tính của lớp
+<tt class="class">C</tt> mà tham chiếu tới các đối tượng hàm, và do đó chúng đều là phương thức của các trường hợp của <tt class="class">C</tt> -- <code>h</code> hoàn toàn tương đương với <code>g</code>. Chú ý rằng kiểu viết này thường chỉ làm người đọc càng thêm khó hiểu mà thôi.
+
+</p><p>
+Phương thức có thể gọi phương thức khác thông qua thuộc tính phương thức của thông số
+<code>self</code> :
+
+</p><p>
+
+<div class="verbatim"><pre>
+class Bag:
+    def __init__(self):
+        self.data = []
+    def add(self, x):
+        self.data.append(x)
+    def addtwice(self, x):
+        self.add(x)
+        self.add(x)
+</pre></div>
+
+</p><p>
+Phương thức có thể tham chiếu tới các tên toàn cục theo cùng một cách như các hàm thông thường. Phạm vi toàn cục của một phương thức là mô-đun chứa định nghĩa lớp. (Phạm vi toàn cục không bao giờ là lớp!) Trong khi bạn ít gặp việc sử dụng dữ liệu toàn cục trong một phương thức, có những cách dùng hoàn toàn chính đáng: ví dụ như hàm và mô-đun được nhập vào phạm vi toàn cục có thể được sử dụng bởi phương thức, cũng như hàm và lớp được định nghĩa trong đó. Thông thường, lớp chứa các phương thức này được định nghĩa ngay trong phạm vi toàn cục, và trong phần kế đây chúng ta sẽ thấy tại sao một phương thức muốn tham chiếu tới chính lớp của nó!
+
+</p><p>
+
+<h1><a name="SECTION0011500000000000000000"></a><a name="inheritance"></a>
+
+<br />
+9.5 Kế thừa 
+</h1>
+
+</p><p>
+Dĩ nhiên, một tính năng ngôn ngữ sẽ không đáng được gọi là ``lớp'' nếu nó không hỗ trợ kế thừa. Cú pháp của một định nghĩa lớp con như sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+class DerivedClassName(BaseClassName):
+    &lt;statement-1&gt;
+    .
+    .
+    .
+    &lt;statement-N&gt;
+</pre></div>
+
+</p><p>
+Tên <tt class="class">BaseClassName</tt> phải đã được định nghĩa trong một phạm vi chứa định nghĩa lớp con. Thay vì tên lớp cơ sở, các biểu thức khác cũng được cho phép. Điều này rất hữu ích, ví dụ, khi mà lớp cơ sở được định nghĩa trong một mô-đun khác:
+
+</p><p>
+
+<div class="verbatim"><pre>
+class DerivedClassName(modname.BaseClassName):
+</pre></div>
+
+</p><p>
+Việc thực thi định nghĩa lớp con tiến hành như là lớp cơ sở. Khi một đối tượng lớp được tạo ra, lớp cơ sở sẽ được nhớ. Nó được dùng trong việc giải các tham chiếu thuộc tính: nếu một thuộc tính không được tìm thấy ở trong lớp, việc tìm kiếm sẽ tiếp tục ở lớp cơ sở. Luật này sẽ được lặp lại nếu lớp cơ sở kế thừa từ một lớp khác.
+
+</p><p>
+Không có gì đặc biệt trong việc tạo trường hợp của các lớp con:
+<code>DerivedClassName()</code> tạo một trường hợp của lớp. Các tham chiếu hàm được giải như sau: thuộc tính lớp tương ứng sẽ được tìm, đi xuống chuỗi các lớp cơ sở nếu cần, và tham chiếu phương thức là hợp lệ nếu tìm thấy một đối tượng hàm.
+
+</p><p>
+Lớp con có thể định nghĩa lại các phương thức của lớp cơ sở. Bởi vì phương thức không có quyền gì đặc biệt khi gọi một phương thức của cùng một đối tượng, một phương thức của lớp cơ sở gọi một phương thức khác được định nghĩa trong cùng lớp cơ sở có thể là đang gọi một phương thức do lớp con đã định nghĩa lại. (Người dùng C++ có thể hiểu là mọi phương thức của Python là <tt class="keyword">virtual</tt>.)
+
+</p><p>
+Một phương thức được định nghĩa lại trong lớp con có thể muốn mở rộng thay vì thay thế phương thức cùng tên của lớp cơ sở. Có một cách đơn giản để gọi phương thức của lớp sơ sở: chỉ việc gọi "<tt class="samp">BaseClassName.methodname(self, arguments)</tt>". Đôi khi điều này cũng có ích cho người dùng. (Lưu ý rằng đoạn mã chỉ hoạt động nếu lớp cơ sở được định nghĩa hoặc nhập trực tiếp vào phạm vi toàn cục.)
+
+</p><p>
+
+<h2><a name="SECTION0011510000000000000000"></a><a name="multiple"></a>
+
+<br />
+9.5.1 Đa kế thừa 
+</h2>
+
+</p><p>
+Python cũng hỗ trợ một dạng đa kế thừa hạn chế. Một định nghĩa lớp với nhiều lớp cơ sở có dạng sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+class DerivedClassName(Base1, Base2, Base3):
+    &lt;statement-1&gt;
+    .
+    .
+    .
+    &lt;statement-N&gt;
+</pre></div>
+
+</p><p>
+Luật duy nhất cần để giải thích ý nghĩa là luật giải các tham chiếu thuộc tính của lớp. Nó tuân theo luật tìm theo chiều sâu, và tìm trái qua phải. Do đó, nếu một thuộc tính không được tìm ra trong
+<tt class="class">DerivedClassName</tt>, nó sẽ được tìm trong <tt class="class">Base1</tt>, rồi (đệ quy) trong các lớp cơ sở của <tt class="class">Base1</tt>, rồi chỉ khi nó không được tìm thấy, nó sẽ được tìm trong <tt class="class">Base2</tt>, và cứ như vậy.
+
+</p><p>
+(Đối với một số người tìm theo chiều rộng -- tìm <tt class="class">Base2</tt> và
+<tt class="class">Base3</tt> trước các lớp cơ sở của <tt class="class">Base1</tt> -- có vẻ tự nhiên hơn. Nhưng, điều này yêu cầu bạn biết một thuộc tính nào đó của <tt class="class">Base1</tt> được thật sự định nghĩa trong <tt class="class">Base1</tt> hay trong một trong các lớp cơ sở của nó trước khi bạn có thể biết được hậu quả của sự trùng lặp tên với một thuộc tính của <tt class="class">Base2</tt>. Luật tìm theo chiều sâu không phân biệt giữa thuộc tính trực tiếp hay kế thừa của
+<tt class="class">Base1</tt>.)
+
+</p><p>
+Ai cũng biết rằng việc dùng đa kế thừa bừa bãi là một cơn ác mộng cho bảo trì, đặc biệt là Python dựa vào quy ước để tránh trùng lặp tên. Một vấn đề cơ bản với đa kế thừa là một lớp con của hai lớp mà có cùng một lớp cơ sở. Mặc dù dễ hiểu chuyện gì xảy ra trong vấn đề này (trường hợp sẽ có một bản chép duy nhất của ``các biến trường hợp'' của các thuộc tính dữ liệu dùng bởi lớp cơ sở chung), nó không rõ cho lắm nếu các ý nghĩa này thật sự hữu ích.
+
+</p><p>
+
+<h1><a name="SECTION0011600000000000000000"></a><a name="private"></a>
+
+<br />
+9.6 Biến riêng 
+</h1>
+
+</p><p>
+Có một dạng hỗ trợ nho nhỏ nho các từ định danh riêng của lớp (class-private identifier). Các từ định danh có dạng <code>__spam</code> (ít nhất hai dấu gạch dưới ở đầu, nhiều nhất một dấu dạch dưới ở cuối) được thay thế văn bản (textually replace) bằng <code>_classname__spam</code>, trong đó <code>classname</code> là tên lớp hiện tại với các gạch dưới ở đầu cắt bỏ. Việc xáo trộn tên (mangling) được thực hiện mà không quan tâm tới vị trí cú pháp của định danh, cho nên nó có thể được dùng để định nghĩa các trường hợp, biến, phương thức, riêng của lớp, hoặc các biến toàn cục, và ngay cả các biến của trường hợp, riêng với lớp này trên những trường hợp của lớp <em>khác</em> . Nếu tên bị xáo trộn dài hơn 255 ký tự thì nó sẽ bị cắt đi. Bên ngoài lớp, hoặc khi tên lớp chỉ có ký tự gạch dưới, việc xáo trộn tên sẽ không xảy ra.
+
+</p><p>
+Xáo trộn tên nhằm cung cấp cho các lớp một cách định nghĩa dễ dàng các biến và phương thức ``riêng'', mà không phải lo về các biến trường hợp được định nghĩa bởi lớp con, hoặc việc sử dụng biến trường hợp bởi mã bên ngoài lớp. Lưu ý rằng việc xáo trộn tên được thiết kế chủ yếu để tránh trùng lặp; người quyết tâm vẫn có thể truy cập hoặc thay đổi biến riêng. Và điều này cũng có thể có ích trong các trường hợp đặc biệt, như trong trình gỡ rối, và đó là một lý do tại sao lỗ hổng này vẫn chưa được vá.
+
+</p><p>
+Lưu ý rằng mã truyền vào <code>exec</code>, <code>eval()</code> hoặc
+<code>execfile()</code> không nhận tên lớp của lớp gọi là tên lớp hiện tại; điều này cũng giống như tác dụng của câu lệnh 
+<code>global</code> , tác dụng của nó cũng bị giới hạn ở mã được biên dịch cùng. Cùng giới hạn này cũng được áp dụng vào
+<code>getattr()</code>, <code>setattr()</code> và <code>delattr()</code>, khi tham chiếu <code>__dict__</code> trực tiếp.
+
+</p><p>
+
+<h1><a name="SECTION0011700000000000000000"></a><a name="odds"></a>
+
+<br />
+9.7 Những điều khác 
+</h1>
+
+</p><p>
+Đôi khi nó thật là hữu ích khi có một kiểu dữ liệu giống như Pascal ``record'' hoặc C ``struct'', gói gọn vài mẩu dữ liệu vào chung với nhau. Một định nghĩa lớp rỗng thực hiện được việc này:
+
+</p><p>
+
+<div class="verbatim"><pre>
+class Employee:
+    pass
+
+john = Employee() # Create an empty employee record
+
+# Fill the fields of the record
+john.name = 'John Doe'
+john.dept = 'computer lab'
+john.salary = 1000
+</pre></div>
+
+</p><p>
+Với mã Python cần một kiểu dữ liệu trừu tượng, ta có thể thay vào đó một lớp giả lập các phương thức của kiểu dữ liệu đó. Ví dụ, nếu bạn có một hàm định dạng một vài dữ liệu trong một đối tượng tập tin, bạn có thể định nghĩa một lớp với các phương thức
+<tt class="method">read()</tt> và <tt class="method">readline()</tt> lấy dữ liệu từ một chuỗi, và truyền vào nó một thông số.
+</p><p>
+Các đối tượng phương trức trường hợp cũng có thuộc tính: <code>m.im_self</code> là một đối tượng trường hợp với phương thức <tt class="method">m</tt>, và <code>m.im_func</code> là đối tượng hàm tương ứng với phương thức.
+
+</p><p>
+
+<h1><a name="SECTION0011800000000000000000"></a><a name="exceptionClasses"></a>
+
+<br />
+9.8 Biệt lệ cũng là lớp
+</h1>
+
+</p><p>
+Các biệt lệ được định nghĩa bởi người dùng cũng được định danh theo lớp. Bằng cách này, một hệ thống phân cấp biệt lệ có thể được tạo ra.
+
+</p><p>
+Có hai dạng lệnh <code>raise</code> mới:
+
+</p><p>
+
+<div class="verbatim"><pre>
+raise Class, instance
+
+raise instance
+</pre></div>
+
+</p><p>
+Trong dạng đầu, <code>instance</code> phải là một trường hợp của kiểu
+<tt class="class">Class</tt> hoặc là lớp con của nó. Dạng thứ hai là rút gọn của:
+
+</p><p>
+
+<div class="verbatim"><pre>
+raise instance.__class__, instance
+</pre></div>
+
+</p><p>
+Lớp trong vế <code>except</code> tương thích với một biệt lệ nếu nó cùng lớp, hoặc là một lớp cơ sở (nhưng chiều ngược lại thì không đúng -- một vế <code>except</code> dùng lớp con sẽ không tương thích với một biệt lệ lớp cơ sở). Ví dụ, đoạn mã sau sẽ in B, C, D theo thứ tự đó:
+
+</p><p>
+
+<div class="verbatim"><pre>
+class B:
+    pass
+class C(B):
+    pass
+class D(C):
+    pass
+
+for c in [B, C, D]:
+    try:
+        raise c()
+    except D:
+        print "D"
+    except C:
+        print "C"
+    except B:
+        print "B"
+</pre></div>
+
+</p><p>
+Nếu các vế <code>except</code> được đặt ngược (với "<tt class="samp">except B</tt>" ở đầu), nó sẽ in B, B, B -- vế <code>except</code> phù hợp đầu tiên được thực thi.
+
+</p><p>
+Khi một thông điệp lỗi được in, tên lớp của biệt lệ được in, theo sau bởi dấu hai chấm và một khoảng trắng, và cuối cùng là trường hợp đã được chuyển thành chuỗi bằng hàm có sẵn
+<tt class="function">str()</tt>.
+
+</p><p>
+
+<h1><a name="SECTION0011900000000000000000"></a><a name="iterators"></a>
+
+<br />
+9.9 Bộ lặp
+</h1>
+
+</p><p>
+Bây giờ có lẽ bạn đã lưu ý rằng hầu hết các đối tượng chứa (container object) có thể được lặp qua bằng câu lệnh <tt class="keyword">for</tt> :
+
+</p><p>
+
+<div class="verbatim"><pre>
+for element in [1, 2, 3]:
+    print element
+for element in (1, 2, 3):
+    print element
+for key in {'one':1, 'two':2}:
+    print key
+for char in "123":
+    print char
+for line in open("myfile.txt"):
+    print line
+</pre></div>
+
+</p><p>
+Kiểu truy xuất này rõ ràng, xúc tích, và tiện lợi. Bộ lặp (iterator) được dùng khắp nơi và hợp nhất Python. Đằng sau màn nhung, câu lệnh <tt class="keyword">for</tt>
+gọi <tt class="function">iter()</tt> trên đối tượng chứa. Hàm này trả về một đối tượng bộ lặp có định nghĩa phương thức
+<tt class="method">next()</tt> để truy xuất và các phần tử trong bộ chứa (container). Khi không còn phần tử nào, <tt class="method">next()</tt> nâng biệt lệ
+<tt class="exception">StopIteration</tt> để yêu cầu vòng lặp <tt class="keyword">for</tt> kết thúc. Ví dụ sau cho thấy cách hoạt động:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; s = 'abc'
+&gt;&gt;&gt; it = iter(s)
+&gt;&gt;&gt; it
+&lt;iterator object at 0x00A1DB50&gt;
+&gt;&gt;&gt; it.next()
+'a'
+&gt;&gt;&gt; it.next()
+'b'
+&gt;&gt;&gt; it.next()
+'c'
+&gt;&gt;&gt; it.next()
+
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in ?
+    it.next()
+StopIteration
+</pre></div>
+
+</p><p>
+Chúng ta đã hiểu giao thức bộ lặp, nên chúng ta có thể thêm cách thức bộ lặp (iterator behavior) vào lớp của chúng ta một cách dễ dàng. Định nghĩa một phương thức <tt class="method">__iter__()</tt> trả về một đối tượng với một phương thức <tt class="method">next()</tt> . Nếu lớp có định nghĩa
+<tt class="method">next()</tt>, thì <tt class="method">__iter__()</tt> chỉ cần trả về <code>self</code>:
+
+</p><p>
+
+<div class="verbatim"><pre>
+class Reverse:
+    "Iterator for looping over a sequence backwards"
+    def __init__(self, data):
+        self.data = data
+        self.index = len(data)
+    def __iter__(self):
+        return self
+    def next(self):
+        if self.index == 0:
+            raise StopIteration
+        self.index = self.index - 1
+        return self.data[self.index]
+
+&gt;&gt;&gt; for char in Reverse('spam'):
+...     print char
+...
+m
+a
+p
+s
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION00111000000000000000000"></a><a name="generators"></a>
+
+<br />
+9.10 Bộ tạo
+</h1>
+
+</p><p>
+Bộ sinh (generator) là một công cụ đơn giản và mạnh mẽ để tạo các bộ lặp. Chúng được viết như những hàm thông thường nhưng dùng câu lệnh <tt class="keyword">yield</tt> khi nào chúng muốn trả về dữ liệu. Mỗi lần <tt class="method">next()</tt> được gọi, bộ sinh trở lại nơi nó đã thoát ra (nó nhớ mọi dữ liệu và câu lệnh đã được thực thi lần cuối). Một ví dụ cho thấy bộ sinh có thể được tạo ra rất dễ dàng:
+
+</p><p>
+
+<div class="verbatim"><pre>
+def reverse(data):
+    for index in range(len(data)-1, -1, -1):
+        yield data[index]
+	
+&gt;&gt;&gt; for char in reverse('golf'):
+...     print char
+...
+f
+l
+o
+g
+</pre></div>
+
+</p><p>
+Bất kỳ việc gì có thể được thực hiện với bộ sinh cũng có thể được thực hiện với các bộ lặp dựa trên lớp như đã bàn đến ở phần trước. Điều khiến bộ sinh nhỏ gọn là các phương thức <tt class="method">__iter__()</tt> và <tt class="method">next()</tt> được tự động tạo ra.
+
+</p><p>
+Một tính năng chính khác là các biến nội bộ và trạng thái thực thi được tự động lưu giữa các lần gọi. Điều này làm cho hàm dễ viết hơn và rõ ràng hơn là cách sử dụng biến trường hợp như
+<code>self.index</code> và <code>self.data</code>.
+
+</p><p>
+Thêm vào việc tự động tạo và lưu trạng thái chương trình, khi các bộ tạo kết thúc, chúng tự động nâng <tt class="exception">StopIteration</tt>. Cộng lại, các tính năng này làm cho việc tạo các bộ lặp không có gì khó hơn là viết một hàm bình thường.
+
+</p><p>
+
+<h1><a name="SECTION00111100000000000000000"></a><a name="genexps"></a>
+
+<br />
+9.11 Biểu thức bộ tạo
+</h1>
+
+</p><p>
+Một vài bộ sinh đơn giản có thể được viết một cách xúc tích như các biểu thức bằng cách dùng một cú pháp giống như gộp danh sách (list comprehension) nhưng với ngoặc tròn thay vì ngoặc vuông. Các biểu thức này được thiết kế cho những khi bộ sinh được sử dụng ngay lập tức bởi hàm chứa nó. Biểu thức bộ sinh gọn hơn nhưng ít khả chuyển hơn là các định nghĩa bộ sinh đầy đủ và thường chiếm ít bộ nhớ hơn là gộp danh sách tương đương.
+
+</p><p>
+Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; sum(i*i for i in range(10))                 # sum of squares
+285
+
+&gt;&gt;&gt; xvec = [10, 20, 30]
+&gt;&gt;&gt; yvec = [7, 5, 3]
+&gt;&gt;&gt; sum(x*y for x,y in zip(xvec, yvec))         # dot product
+260
+
+&gt;&gt;&gt; from math import pi, sin
+&gt;&gt;&gt; sine_table = dict((x, sin(x*pi/180)) for x in range(0, 91))
+
+&gt;&gt;&gt; unique_words = set(word  for line in page  for word in line.split())
+
+&gt;&gt;&gt; valedictorian = max((student.gpa, student.name) for student in graduates)
+
+&gt;&gt;&gt; data = 'golf'
+&gt;&gt;&gt; list(data[i] for i in range(len(data)-1,-1,-1))
+['f', 'l', 'o', 'g']
+</pre></div>
+
+</p><p>
+
+<br /><hr /><h4>Ghi chú</h4>
+
+<dl>
+
+<dt><a name="foot1890">... vùng tên!</a><a href="node11.html#tex2html5"><sup>9.1</sup></a></dt>
+
+<dd>
+        Trừ một chuyện. Các đối tượng mô-đun có một thuộc tính chỉ đọc gọi là <tt class="member">__dict__</tt> trả về một từ điển dùng để cài đặt vùng tên của mô-đun; tên
+        <tt class="member">__dict__</tt> là một thuộc tính nhưng không phải là một tên toàn cục. Rõ ràng, sử dụng nó vi phạm tính trừu tượng của cài đặt vùng tên, và nên được giới hạn vào những chuyện như gỡ rối.
+
+
+</dd>
+
+</dl>
+
+<div class="navigation">
+
+<div class="online-navigation">
+
+<p></p><hr />
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="8. Lỗi và biệt lệ" href="node10.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="10. Giới thiệu sơ về bộ thư viện chuẩn" href="node12.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node10.html">8. Lỗi và biệt lệ</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node12.html">10. Giới thiệu sơ về bộ thư viện chuẩn</a>
+
+</div>
+
+</div>
+
+<hr />
+
+<span class="release-info">Phiên bản 2.5, tài liệu được cập nhật ngày 19, tháng 09, năm 2006.</span>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<address>
+Xem <i><a href="about.html">Về tài liệu này...</a></i> về cách đề nghị thay đổi.
+</address>
+
+</p></body>
+
+</html>
+

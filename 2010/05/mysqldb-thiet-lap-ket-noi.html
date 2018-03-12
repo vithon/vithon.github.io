@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  MySQLdb - Thiết lập kết nối
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2010/05/mysqldb-thiet-lap-ket-noi.html" rel="bookmark" title="Permalink to MySQLdb - Thiết lập kết nối">MySQLdb - Thiết lập kết nối</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>MySQLdb là một wrapper của thư viện MySQL C API: <tt class="docutils literal">_mysql</tt>. Nó cho phép bạn viết các ứng dụng Python khả chuyển (portable) chạy trên nhiều môi trường khác nhau để truy cập vào máy chủ có hệ quản trị CSDL MySQL.</p>
+<p>Bài viết sau đây đề cập một số khía cạnh liên quan tới thiết lập kết nối CSDL. Đó là vấn đề quan trọng đầu tiên khi làm việc với bất kỳ hệ quản trị CSDL nào.</p>
+<p>Bản cài đặt MySQLdb có thể download trên trang: <a class="reference external" href="http://sourceforge.net/projects/mysql-python/">http://sourceforge.net/projects/mysql-python/</a>. Download có sẵn cho các nền tảng windows 32 bit và các họ unix. Đáng tiếc là MySQLdb hiện chỉ sử dụng cho các phiên bản python từ 2.3 đến 2.6.</p>
+<div class="section" id="hello-world">
+<h2>Hello World</h2>
+<p>Giả thiết trên máy của bạn đã cài MySQL với cổng mặc định (3306) và account root không cần password. Đoạn chương trình sau minh họa một kết nối đơn giản nhất có thể. Nó in ra các db có trong CSDL này:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SHOW DATABASES&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="go">6L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="go">((&#39;information_schema&#39;,), (&#39;cdcol&#39;,), (&#39;mysql&#39;,), (&#39;phpmyadmin&#39;,), (&#39;test&#39;,))</span>
+</pre></div>
+</div>
+<div class="section" id="ket-noi-theo-ip">
+<h2>Kết nối theo IP</h2>
+<p>Truy cập từ xa đến một hệ thống phức tạp hơn, bạn cần biết các tham số:</p>
+<ul class="simple">
+<li>Máy chủ chứa MySQL (mặc định: <tt class="docutils literal">localhost</tt> hay <tt class="docutils literal">127.0.0.1</tt>)</li>
+<li>Cổng truy cập vào MySQL (mặc định: 3306)</li>
+<li>User, Password mà bạn được cấp</li>
+<li>Tên CSDL bạn muốn truy cập</li>
+</ul>
+<p>Ví dụ sau in ra các bảng của CSDL <tt class="docutils literal">mydb</tt> trên máy <tt class="docutils literal">192.168.90.31</tt> với cổng 3310:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;you&quot;</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="s2">&quot;mydb&quot;</span><span class="p">,</span> <span class="n">passwd</span><span class="o">=</span><span class="s2">&quot;mypw&quot;</span><span class="p">,</span> \
+<span class="go">      host=&quot;192.168.90.31&quot;, port=3310)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SHOW TABLES&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="section" id="ket-noi-theo-unix-socket">
+<h2>Kết nối theo UNIX socket</h2>
+<p>Trên các localhost cho phép dùng UNIX socket bạn có thể viết:</p>
+<div class="highlight"><pre><span></span><span class="go">db = MySQLdb.connect(db=&quot;test&quot;, user=&quot;hoaiptm&quot;, passwd=&quot;hoaiptm&quot;, \</span>
+<span class="go">                     unix_socket=&quot;/opt/hoaiptm/mysql/mysql.sock&quot;)</span>
+</pre></div>
+<p>Truy cập MySQL qua các socket trên unix tương tự như named pipe trên windows. Nó cho phép các ứng dụng localhost tạo các kết nối cực kỳ nhanh đến CSDL. Nếu bạn chưa hiểu rõ về socket bạn có thể đọc: <a class="reference external" href="http://beej.us/guide/bgipc/output/html/multipage/unixsock.html">http://beej.us/guide/bgipc/output/html/multipage/unixsock.html</a>.</p>
+</div>
+<div class="section" id="giau-password">
+<h2>Giấu password</h2>
+<p>Các ví dụ trên đây đều yêu cầu phải có password đặt trong mã nguồn Python. MySQLdb cho phép bạn giấu chúng trong một nơi mà chỉ bạn được phép truy cập:</p>
+<div class="highlight"><pre><span></span><span class="go">db = MySQLdb.connect(db=&quot;yourdb&quot;, read_default_file=&quot;/home/hoaiptm/mysql.ini&quot;)</span>
+</pre></div>
+<p>tập tin options <tt class="docutils literal">/home/hoaiptm/mysql.ini</tt> có thể có nội dung như sau:</p>
+<pre class="literal-block">
+[client]
+port=3310
+socket=/opt/hoaiptm/mysql/mysql.sock
+user=hoaiptm
+password=hoaiptm
+</pre>
+<p>Hướng dẫn về các option này có thể đọc trong tài liệu: <a class="reference external" href="http://www.yellis.net/docs/mysql/manuel_Option_files.html#Option_files">http://www.yellis.net/docs/mysql/manuel_Option_files.html#Option_files</a>.</p>
+</div>
+<div class="section" id="thay-doi-charset-mac-dinh">
+<h2>Thay đổi charset mặc định</h2>
+<p>Các kết nối trong các ví dụ trên sử dụng charset mặt định là <strong>latin1</strong>, do đó bạn không lấy được các dữ liệu tiếng Việt. Chẳng hạn bạn tạo một bảng <strong>user</strong> với chartset <strong>utf8</strong> trong CSDL <strong>test</strong> như sau:</p>
+<pre class="literal-block">
+USE `test`;
+CREATE TABLE `user` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `account` varchar(50) DEFAULT NULL,
+  `fullname` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 **DEFAULT CHARSET=utf8** ROW_FORMAT=DYNAMIC;
+INSERT INTO `user` VALUES (1,'hoaiptm','Phạm Thị Minh Hoài');
+INSERT INTO `user` VALUES (2,'trangnt','Ngô Thu Trang');
+</pre>
+<p>Sau đó cố gắng lấy dữ liệu từ bảng user:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;hoaiptm&quot;</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">passwd</span><span class="o">=</span><span class="s2">&quot;hoaiptm&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">3310</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SELECT fullname FROM user&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="go">2L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="go">((&#39;Ph?m Th? Minh Ho\xe0i&#39;,), (&#39;Ng\xf4 Thu Trang&#39;,))</span>
+</pre></div>
+<p>Các dấu <tt class="docutils literal">?</tt> cho thấy các ký tự utf8 đã không được truyền tải đúng. Để giải quyết vấn đề này chúng ta thêm tùy chọn <strong>charset = &quot;utf8&quot;</strong> trong connection:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;hoaiptm&quot;</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">passwd</span><span class="o">=</span><span class="s2">&quot;hoaiptm&quot;</span><span class="p">,</span> \
+<span class="go">      port=3310, charset=&quot;utf8&quot;)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="go">((u&#39;Ph\u1ea1m Th\u1ecb Minh Ho\xe0i&#39;,), (u&#39;Ng\xf4 Thu Trang&#39;,))</span>
+</pre></div>
+<p>Lúc này tất cả các dữ liệu trong trường text, char, varchar đều được trả về dạng unicode.</p>
+</div>
+<div class="section" id="yeu-cau-tra-ve-tu-dien">
+<h2>Yêu cầu trả về từ điển</h2>
+<p>MySQLdb cho phép trả về các kết quả dạng từ điển, để làm được điều đó bạn thêm tùy chọn <strong>cursorclass=MySQLdb.cursors.DictCursor</strong>. Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">db</span> <span class="o">=</span> <span class="n">MySQLdb</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;hoaiptm&quot;</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">passwd</span><span class="o">=</span><span class="s2">&quot;hoaiptm&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">3310</span><span class="p">,</span> \
+<span class="go">      charset=&quot;utf8&quot;, cursorclass=MySQLdb.cursors.DictCursor)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;select * from user&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="go">2L</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+<span class="go">({&#39;account&#39;: u&#39;hoaiptm&#39;, &#39;fullname&#39;: u&#39;Ph\u1ea1m Th\u1ecb Minh Ho\xe0i&#39;, &#39;Id&#39;: 1L}, \</span>
+<span class="go"> {&#39;account&#39;: u&#39;trangnt&#39;, &#39;fullname&#39;: u&#39;Ng\xf4 Thu Trang&#39;, &#39;Id&#39;: 2L})</span>
+</pre></div>
+<p>Chương trình sẽ chạy chậm đi chút xíu, nhưng bù lại kết quả trả về rất dễ sử dụng.</p>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2010-05-31T16:55:00+07:00"><i class="fa fa-calendar"></i> Mon 31 May 2010</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/pham-thi-minh-hoai.html" rel="author">Phạm Thị Minh Hoài</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/mysql.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">mysql</a>
+            <a href="../../tag/mysqldb.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">MySQLdb</a>
+            <a href="../../tag/database-connection.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">database connection</a>
+            <a href="../../tag/csdl.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">CSDL</a>
+            <a href="../../tag/database.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">database</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

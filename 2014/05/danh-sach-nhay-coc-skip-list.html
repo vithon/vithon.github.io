@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Danh sách nhảy cóc (Skip List)
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2014/05/danh-sach-nhay-coc-skip-list.html" rel="bookmark" title="Permalink to Danh sách nhảy cóc (Skip List)">Danh sách nhảy cóc (Skip List)</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <div class="section" id="gioi-thieu">
+<h2>Giới thiệu</h2>
+<p>Qua các lượt bài trước, chúng ta đã thảo luận về thuận toán tìm kiếm nhị
+phân và ngăn (partition). Cả hai thuận toán này đều dựa trên cấu trúc dữ
+liệu mảng (array) vốn rất quen thuộc với chúng ta.</p>
+<p>Ngoài ra, hai thuật toán trên được xếp vào nhóm thuật toán
+tất định (determistic algorithm). Các thuật toán thuộc nhóm này thỏa mãn
+hai điều kiện:</p>
+<ul class="simple">
+<li>Luôn trả về kết quả giống nhau nếu được cung cấp cùng một dữ liệu đầu vào.</li>
+<li>Các trạng thái (state) trong quá trình tính toán phải giống nhau với cùng một dữ liệu đầu vào.</li>
+</ul>
+<p>Trong bài viết này tác giả đề cập đến cấu trúc dữ liệu &quot;Danh Sách Nhảy
+Cóc&quot; (Skip List), cơ chế hoạt động của cấu trúc dữ liệu này (bao gồm các
+thao tác Thêm, Xóa, Tìm Kiếm) phụ thuộc vào yếu tố ngẫu nhiên vì vậy nó
+được xếp vào nhóm thuật toán ngẫu tính (randomized algorithm), trái
+ngược với nhóm thuật toán tất định.</p>
+</div>
+<div class="section" id="muc-dich">
+<h2>Mục đích</h2>
+<p>Một cấu trúc dữ liệu đơn giản nhưng hiệu quả trên các tác vụ cơ bản: Thêm, Xóa và Tìm Kiếm.</p>
+</div>
+<div class="section" id="dinh-nghia">
+<h2>Định nghĩa</h2>
+<p>Danh sách nhảy cóc S là một tập hợp các danh sách <tt class="docutils literal">S[0], S[1] ... <span class="pre">S[N-1]</span></tt>. Để dễ hình dung chúng ta xem mỗi danh sách con tương ứng với một &quot;tầng&quot;, trong đó <tt class="docutils literal">0</tt> là tầng thấp nhất, cho đến <tt class="docutils literal"><span class="pre">N-1</span></tt> là tầng cao nhất. Danh sách nhảy cóc luôn thỏa mãn các điều kiện:</p>
+<ul class="simple">
+<li>Mỗi danh sách con chứa các giá trị theo thứ tự tăng dần.</li>
+<li>Phần từ đầu và cuối mỗi danh sách con đều là NULL.</li>
+<li>Danh sách ở tầng cao hơn là dãy con của danh sách tầng dưới.</li>
+</ul>
+<p>Ví dụ một trạng thái của danh sách nhảy cóc chứa dãy số <tt class="docutils literal">12, 23, 34, 46, 64, 78, 89</tt>:</p>
+<pre class="literal-block">
+S[3]    NULL             23                                              NULL
+S[2]    NULL             23                      64                      NULL
+S[1]    NULL             23      34              64      78              NULL
+S[0]    NULL     12      23      34      46      64      78      89      NULL
+</pre>
+</div>
+<div class="section" id="tim-kiem-trong-danh-sach">
+<h2>Tìm kiếm trong danh sách</h2>
+<p>Gọi K là giá trị cần tìm kiếm. Ý tưởng chính của thuật toán là cố gắng duyệt càng xa càng tốt trên tầng cao hơn và tiếp tục ở tầng thấp hơn cho đến khi không thể duyệt được nữa.</p>
+<p>Thuật toán bắt đầu từ phần tử đầu tiên, tầng trên cùng của danh sách. Duyệt theo quy luật:</p>
+<ul class="simple">
+<li>Nhảy sang phần tử kế tiếp trên cùng tầng nếu phần tử tiếp theo đó khác NULL và bé hơn hoặc bằng K.</li>
+<li>Nếu không thể di chuyển trên cùng tầng được nữa:<ul>
+<li>Dừng duyệt nếu như đang ở tầng thấp nhất.</li>
+<li>Ngược lại, nhảy xuống phần tử ngay bên dưới ở tầng tiếp theo.</li>
+</ul>
+</li>
+</ul>
+<p>Sau khi kết thúc duyệt danh sách, nếu phần tử hiện tại bằng K, thuật toán kết luận tìm được K, ngược lại K không tồn tại trong danh sách.</p>
+<p>Ví dụ dưới đây minh họa việc tìm kiếm <tt class="docutils literal">K = 85</tt> trong danh sách S tại trạng thái được mô tả ở phần trước:</p>
+<pre class="literal-block">
+S[3]    NULL -------&gt; 23                                        NULL
+S[2]    NULL          23  -----------&gt;  64                      NULL
+S[1]    NULL          23    34          64 -&gt; 78 -&gt; 83          NULL
+S[0]    NULL    12    23    34    46    64    78    83    90    NULL
+</pre>
+<div class="section" id="giai-thich">
+<h3>Giải thích</h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="13%" />
+<col width="16%" />
+<col width="15%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Bước</th>
+<th class="head">Tầng hiện tại</th>
+<th class="head">Phần tử hiện tại</th>
+<th class="head">Phần tử kế tiếp</th>
+<th class="head">Di chuyển</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1</td>
+<td>S[3]</td>
+<td>NULL</td>
+<td>23</td>
+<td>Nhảy sang phần tử kế tiếp vì 23 &lt;= K</td>
+</tr>
+<tr><td>2</td>
+<td>S[3]</td>
+<td>23</td>
+<td>NULL</td>
+<td>Nhảy xuống tầng dưới vì phần tử kế tiếp bằng NULL</td>
+</tr>
+<tr><td>3</td>
+<td>S[2]</td>
+<td>23</td>
+<td>64</td>
+<td>Nhảy sang phần tử kế tiếp vì 64 &lt;= K</td>
+</tr>
+<tr><td>4</td>
+<td>S[2]</td>
+<td>64</td>
+<td>NULL</td>
+<td>Nhảy xuống tầng dưới vì phần tử kế tiếp bằng NULL</td>
+</tr>
+<tr><td>5</td>
+<td>S[1]</td>
+<td>64</td>
+<td>78</td>
+<td>Nhảy sang phần tử kế tiếp vì 78 &lt;= K</td>
+</tr>
+<tr><td>6</td>
+<td>S[1]</td>
+<td>78</td>
+<td>83</td>
+<td>Nhảy sang phần tử kế tiếp vì 83 &lt;= K</td>
+</tr>
+<tr><td>7</td>
+<td>S[1]</td>
+<td>83</td>
+<td>NULL</td>
+<td>Nhảy xuống tầng dưới vì phần tử kế tiếp bằng NULL</td>
+</tr>
+<tr><td>8</td>
+<td>S[0]</td>
+<td>83</td>
+<td>90</td>
+<td>Dừng thuật toán vì 90 &gt; K</td>
+</tr>
+</tbody>
+</table>
+<p>Dựa vào giá trị của phần tử cuối cùng, chúng ta kết luận không tìm thấy
+giá trị 85 trong danh sách. Mặt khác, nếu chúng ta tìm <tt class="docutils literal">K = 83</tt>, các
+bước duyệt trên danh sách sẽ giống hệt như vậy ngoại trừ việc thuật toán
+sẽ kết thúc ở bước thứ 7 và chúng ta tìm được K.</p>
+<p>Để ý các bước duyệt, chúng ta thấy thuật toán đã <em>nhảy cóc</em> qua các phần
+tử 12, 34 và 46.</p>
+</div>
+</div>
+<div class="section" id="them-phan-tu-vao-danh-sach">
+<h2>Thêm phần tử vào danh sách</h2>
+<p>Gọi H là giá trị của phần tử cần thêm vào danh sách S. Thuật toán được
+mô tả như sau:</p>
+<ol class="arabic simple">
+<li>Thực hiện việc tìm kiếm H trong S và lưu lại các vị trí cuối cùng trên mỗi tầng trong khi duyệt: <tt class="docutils literal"><span class="pre">p[N-1],</span> <span class="pre">p[N-2],</span> <span class="pre">...,</span> p[1], p[0]</tt> tương ứng với tầng <tt class="docutils literal"><span class="pre">N-1,</span> <span class="pre">N-2,</span> <span class="pre">...,</span> 1, 0</tt>.</li>
+<li>Nếu H đã tồn tại trong danh sách S, kết thúc thuật toán.</li>
+<li>Thêm phần tử giá trị <tt class="docutils literal">H</tt> vào sau <tt class="docutils literal">p[0]</tt>.</li>
+<li>Tung một đồng xu</li>
+</ol>
+<blockquote>
+<ol class="arabic simple">
+<li>Nếu được mặt ngửa, di chuyển lên tầng trên và thêm phần tử giá trị H vào sau vị trí tương ứng ở tầng này. (<tt class="docutils literal">p[1]</tt> nếu là tầng 1, <tt class="docutils literal">p[2]</tt> nếu là tầng 2, ...).</li>
+<li>Nếu được mặt xấp, dừng thuật toán.</li>
+</ol>
+</blockquote>
+<ol class="arabic simple" start="5">
+<li>Quay lại bước 4.</li>
+</ol>
+<p>Lưu ý tại bước 4, thuật toán phải tạo tầng mới nếu đồng xu hiện mặt ngửa
+và chúng ta đang ở tầng trên cùng.</p>
+</div>
+<div class="section" id="xoa-phan-tu-khoi-danh-sach">
+<h2>Xóa phần tử khỏi danh sách</h2>
+<p>Gọi H là giá trị của phần tử cần phải xóa khỏi danh sách S. Thuật toán
+khá tương tự với việc thêm phần tử:</p>
+<ol class="arabic simple">
+<li>Thực hiện việc tìm kiếm H trong S và lưu lại các vị trí cuối cùng trên mỗi tầng trong khi duyệt: <tt class="docutils literal"><span class="pre">p[N-1],</span> <span class="pre">p[N-2],</span> <span class="pre">...,</span> p[1], p[0]</tt>.</li>
+<li>Nếu không tìm thấy H, thuật toán kết thúc.</li>
+<li>Ngược lại, xóa tất cả các phần tử tại vị trí <tt class="docutils literal"><span class="pre">p[N-1],</span> <span class="pre">p[N-2],</span> <span class="pre">...,</span> p[1], p[0]</tt> khỏi danh sách.</li>
+<li>Xóa tất cả các tầng trống (tầng chỉ có hai phần tử NULL ở đầu và cuối).</li>
+</ol>
+</div>
+<div class="section" id="cai-dat">
+<h2>Cài đặt</h2>
+<p>Chúng ta định nghĩa một phần tử của danh sách nhảy cóc như sau:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SkipListNode</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span>  <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">down</span>  <span class="o">=</span> <span class="bp">None</span>
+</pre></div>
+<p>Như các bạn thấy, với mỗi phần tử ngoài giá trị cần lưu, chúng ta chỉ quan tâm đến phần tử kế tiếp (bên phải) và phần tử tương ứng nằm ở tầng dưới.</p>
+<p>Kế tiếp, định nghĩa danh sách nhảy cóc với hàm khởi tạo:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SkipList</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">SkipListNode</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+<p>Lớp <tt class="docutils literal">SkipList</tt> sử dụng biến <tt class="docutils literal">head</tt> để lưu phần tử đầu tiên của tầng cao nhất, đây luôn là vị trí bắt đầu khi chúng ta duyệt danh sách.</p>
+<p>Dễ thấy rằng tác vụ Thêm và Tìm Kiếm đều cần phải duyệt qua danh sách
+với cùng một cách để tìm một giá trị, vì vậy chúng ta định nghĩa
+hàm <tt class="docutils literal">_search</tt> để có thể dùng chung cho cả hai như sau:</p>
+<div class="highlight"><pre><span></span><span class="c1">#</span>
+    <span class="k">def</span> <span class="nf">_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">last_nodes</span>   <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">current_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">current_node</span><span class="o">.</span><span class="n">next</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">current_node</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="n">value</span><span class="p">:</span>
+                <span class="n">current_node</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">.</span><span class="n">next</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">last_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_node</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">current_node</span><span class="o">.</span><span class="n">down</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">current_node</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">.</span><span class="n">down</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">break</span>
+        <span class="k">return</span> <span class="n">last_nodes</span>
+</pre></div>
+<p>Cách hoạt động của hàm này được mô tả ở mục <a class="reference internal" href="#tim-kiem-trong-danh-sach">Tìm kiếm trong danh sách</a>, giá trị trả về là danh sách <tt class="docutils literal"><span class="pre">p[N-1],</span> <span class="pre">p[N-2],</span> <span class="pre">...,</span> p[0]</tt> tương ứng với phần tử cuối cùng được duyệt đến tại các tầng <tt class="docutils literal"><span class="pre">N-1,</span> <span class="pre">N-1,</span> <span class="pre">...,</span> 0</tt>.</p>
+<p>Lúc này hàm <tt class="docutils literal">search</tt> của chúng ta khá đơn giản, chỉ cần kiểm tra giá trị của phần tử cuối cùng được trả về bởi <tt class="docutils literal">_search</tt>:</p>
+<div class="highlight"><pre><span></span><span class="c1">#</span>
+    <span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">last_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">last_nodes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>
+
+        <span class="k">return</span> <span class="bp">None</span>
+</pre></div>
+<p>Hàm <tt class="docutils literal">insert</tt> để thêm phần tử vào danh sách:</p>
+<div class="highlight"><pre><span></span><span class="c1">#</span>
+    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">):</span>
+
+        <span class="n">last_nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search</span><span class="p">(</span><span class="n">new_value</span><span class="p">)</span>
+
+        <span class="c1"># Stop if the value is already there in the list</span>
+        <span class="k">if</span> <span class="n">last_nodes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">new_value</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">last_created_node</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">new_node</span> <span class="o">=</span> <span class="n">SkipListNode</span><span class="p">(</span><span class="n">new_value</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">last_nodes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">last_node</span>       <span class="o">=</span> <span class="n">last_nodes</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">new_node</span><span class="o">.</span><span class="n">next</span>   <span class="o">=</span> <span class="n">last_node</span><span class="o">.</span><span class="n">next</span>
+                <span class="n">last_node</span><span class="o">.</span><span class="n">next</span>  <span class="o">=</span> <span class="n">new_node</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">new_head</span>       <span class="o">=</span> <span class="n">SkipListNode</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+                <span class="n">new_head</span><span class="o">.</span><span class="n">down</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+                <span class="n">new_head</span><span class="o">.</span><span class="n">next</span>  <span class="o">=</span> <span class="n">new_node</span>
+                <span class="n">new_node</span><span class="o">.</span><span class="n">next</span>  <span class="o">=</span> <span class="bp">None</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">head</span>      <span class="o">=</span> <span class="n">new_head</span>
+
+            <span class="n">new_node</span><span class="o">.</span><span class="n">down</span>      <span class="o">=</span> <span class="n">last_created_node</span>
+            <span class="n">last_created_node</span>  <span class="o">=</span> <span class="n">new_node</span>
+
+            <span class="c1"># We are flipping the coin now</span>
+            <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">break</span>
+</pre></div>
+<p>Và cuối cùng là hàm <tt class="docutils literal">remove</tt> để xóa phần tử khỏi danh sách:</p>
+<div class="highlight"><pre><span></span><span class="c1">#</span>
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">current_node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">current_node</span><span class="o">.</span><span class="n">next</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">current_node</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;=</span> <span class="n">value</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">current_node</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">:</span>
+                    <span class="n">current_node</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">.</span><span class="n">next</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">current_node</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+
+                <span class="k">if</span> <span class="n">current_node</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">current_node</span><span class="o">.</span><span class="n">next</span> <span class="ow">is</span> <span class="bp">None</span>\
+                    <span class="ow">and</span> <span class="n">current_node</span><span class="o">.</span><span class="n">down</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">.</span><span class="n">down</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">current_node</span><span class="o">.</span><span class="n">down</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">current_node</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">.</span><span class="n">down</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">break</span>
+</pre></div>
+<p>Về cơ bản hàm này khá giống hàm <tt class="docutils literal">_search</tt>: chúng ta vẫn duyệt từ <tt class="docutils literal">head</tt> để tìm kiếm giá trị <tt class="docutils literal">value</tt>. Điểm khác biệt là, nếu tìm thấy <tt class="docutils literal">value</tt> ở bất kỳ tầng nào, chúng ta tiến hành xóa phần tử khỏi tầng đó đồng thời xóa luôn tầng này nếu không còn phần tử (khác <tt class="docutils literal">NULL</tt>) nào khác.</p>
+</div>
+<div class="section" id="do-phuc-tap">
+<h2>Độ phức tạp</h2>
+<ul class="simple">
+<li>Trung bình<ul>
+<li>Bộ nhớ cần thiết: O(n)</li>
+<li>Thời gian tìm kiếm, thêm, xóa: O(logn)</li>
+</ul>
+</li>
+<li>Tệ nhất<ul>
+<li>Bộ nhớ cần thiết: O(n*logn)</li>
+<li>Thời gian tìm kiếm, thêm, xóa: O(n)</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ban-luan-them">
+<h2>Bàn luận thêm</h2>
+<ul class="simple">
+<li>Các bạn có thể thấy ở thao tác <strong>Thêm phần tử</strong>, danh sách không thay đổi nếu chúng ta thêm một phần tử vốn đã có sẵn trong danh sách. Điều này đồng nghĩa với việc chúng ta mặc định các phần tử là đôi một khác nhau. Hãy sửa lại các đoạn mã ở trên để danh sách nhảy cóc của chúng ta có thể hỗ trợ các phần tử giống nhau.</li>
+<li>Để ý rằng độ phức tạp của Danh Sách Nhảy Cóc tương đương với Cây Nhị Phân, ngoại trừ việc Danh Sách Nhảy Cóc sử dụng nhiều bộ nhớ hơn. Bạn đọc có thể chỉ ra điểm nhỉnh hơn của Danh Sách Nhảy Cóc không? (Gợi ý: chuyện gì xảy ra đối với hai danh sách khi có nhiều tiến trình muốn thêm phần tử vào danh sách <strong>cùng một lúc</strong>?)</li>
+<li>Hãy viết hàm in ra trạng thái của danh sách nhảy cóc.</li>
+<li>Hãy viết hàm in ra các phần tử của danh sách nhảy cóc.</li>
+</ul>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2014-05-01T15:01:00+07:00"><i class="fa fa-calendar"></i> Thu 01 May 2014</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/phan-dac-anh-huy.html" rel="author">Phan Đắc Anh Huy</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

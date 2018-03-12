@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Python One-Liner
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2010/01/python-one-liner.html" rel="bookmark" title="Permalink to Python One-Liner">Python One-Liner</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p><strong>Python One-Liner</strong> là trường phái viết Python trên một dòng. Theo đó mỗi một hành động xác định được viết bởi các lệnh cô đọng gom lại trên một dòng duy nhất. <strong>Hành động xác định</strong> không phải là những hành động quá phức tạp, nhưng cũng không quá đơn giản. Ví dụ việc trao đổi giá trị giữa hai biến có thể coi là một hành động xác định như vậy. Python cho phép thực hiện điều này trên một dòng với một lệnh duy nhất, và với tôi đó là một trong những lệnh Python đẹp nhất:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+</pre></div>
+<p><strong>Python One-Liners</strong> cũng chính là tập hợp các mẹo (trick) Python nhằm giải quyết các bài toán nhỏ một cách ngắn gọn theo phương châm <a class="reference external" href="http://wiki.python.org/moin/Powerful%20Python%20One-Liners">&quot;do a lot with a little.&quot;</a> Điều này thường khó thực hiện ở các ngôn ngữ khác. Nhưng chúng có thể thực hiện được trong Python do đặc trưng ngôn ngữ hỗ trợ cách viết như vậy. Chẳng hạn cách dùng hàm lambda, List Comprehensions, <tt class="docutils literal">map</tt>, <tt class="docutils literal">filter</tt>, <tt class="docutils literal">zip</tt>, <tt class="docutils literal">dict</tt>, <tt class="docutils literal">set</tt>... đã xây dựng những đặc trưng ngôn ngữ cho phép viết các mã ngắn gọn hơn các ngôn ngữ khác.</p>
+<p>Trong bài viết này tôi sẽ tổng hợp một số các bài toán đơn giản mà triển khai Python có thể được viết trên một dòng. Chúng là các bài toán cơ bản có liên quan đến <strong>list</strong>. Tôi hi vọng những bạn chưa biết về các công thức trong bài này sẽ tìm thấy nhiều điểm lý thú, và qua đó càng hiểu được sức mạnh và sự hấp dẫn tuyệt vời của Python. Các công thức này một số được tôi thường xuyên sử dụng, một số được sưu tầm và các bạn có thể tìm thấy ở đâu đó trên internet.</p>
+<div class="section" id="lam-phang-mot-list">
+<h2>1. Làm phẳng một list</h2>
+<p>Cho một list dạng hai chiều như sau: <strong>L = [[1,2,3], [4,5,6], [7], [8,9]]</strong> hãy biến nó thành dạng một chiều dạng <strong>[1, 2, 3, 4, 5, 6, 7, 8, 9]</strong>. Đây là một số lời giải một dòng của bài toán này:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="p">[])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>  <span class="c1">#import itertools.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">L</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
+</pre></div>
+<p><em>Python cung cấp cho bạn một tập hợp phong phú các cú pháp và hàm dựng sẵn cho phép bạn giải cùng một bài toán theo nhiều cách khác nhau.</em> Trong các lời giải trên lời giải cuối cùng là nhanh nhất và nó cũng dễ hiểu nhất. Chi tiết các lời giải trên các bạn có thể xem trên trang: <a class="reference external" href="http://stackoverflow.com/questions/952914/making-a-flat-list-out-of-list-of-lists-in-python">Making a flat list out of list of lists in python</a>. Hàm <strong>reduce</strong> đã bị loại bỏ kể từ Python 3000 (<a class="reference external" href="http://www.artima.com/weblogs/viewpost.jsp?thread=98196">Suggested by Guido van Rossum</a>), tuy nhiên vẫn được giữa lại trong thư viện <strong>functools</strong>, do vậy bạn có thể dùng:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">functools</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+</pre></div>
+<p>Nếu list L không phải là hai chiều, mà có thể chứa các list con đệ quy, bạn có thể dùng hàm sau:</p>
+<div class="highlight"><pre><span></span><span class="go">def flatten(seq, a = list()):</span>
+<span class="go">    try:</span>
+<span class="go">        for item in seq:</span>
+<span class="go">            flatten(item, a)</span>
+<span class="go">    except TypeError:</span>
+<span class="go">        a.append(seq)</span>
+<span class="go">    return a</span>
+
+<span class="go">print flatten([[1,2, [3,4], 5], 6, [7, [8, 9]]])</span>
+</pre></div>
+</div>
+<div class="section" id="loai-bo-cac-phan-tu-trung-nhau-trong-list">
+<h2>2. Loại bỏ các phần tử trùng nhau trong list</h2>
+<p>Hãy tạo ra một list mới chứa các phần tử không trùng nhau của L. Một số cách giải trên một dòng:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>  <span class="c1"># Python 3.x trả về iterator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="n">L</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+</pre></div>
+<p>Với <strong>L = [5,6,1,1,1,2,2,2,3,3,3]</strong> hai lời giải trên cho kết quả <strong>[1, 2, 3, 5, 6]</strong>. Lời giải cuối cùng cho kết quả <strong>[5, 6, 1, 2, 3]</strong>. Như vậy trong một số tình huống lời giải cuối cùng tốt hơn, do nó vẫn giữ được thứ tự các phần tử như ban đầu. Tuy vậy lời giải cuối cùng chạy rất chậm. Hãy xem kết quả đo thời gian chạy của các lời giải như sau:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;list(set(L))&quot;</span><span class="p">,</span> <span class="s2">&quot;L = range(10**4)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">0.030437396173560671</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;dict.fromkeys(L).keys()&quot;</span><span class="p">,</span> <span class="s2">&quot;L = range(10**4)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">0.027800167602894277</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Timer</span><span class="p">(</span><span class="s2">&quot;[x for i, x in enumerate(L) if i==L.index(x)]&quot;</span><span class="p">,</span> <span class="s2">&quot;L = range(10**4)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">25.005568798618903</span>
+</pre></div>
+<p>Việc <em>so sánh thời gian chạy</em> giữa các <strong>Python One-Liner</strong> rất hay được các tác giả thực hiện. Chúng đánh giá khả năng sử dụng thực tế của mỗi công thức. Lời giải cuối cùng như các bạn thấy dù có ưu điểm song không thể dùng được khi có test xấu trên 10000 phần tử.</p>
+</div>
+<div class="section" id="dem-so-phan-tu-co-trong-mot-list">
+<h2>3. Đếm số phần tử có trong một list</h2>
+<p>Nếu chỉ đếm một phần tử thì quá đơn giản, dùng <strong>list.count</strong> là xong, nhưng nếu để đếm tần số cho nhiều item một lúc thì làm thế nào. Chẳng hạn có <strong>L = [5,6,1,1,1,2,2,2,3,3]</strong> muốn tạo ra <strong>D={5:1, 6:1, 1:3, 2:3, 3:2}</strong>.</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dict</span><span class="p">([(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">L</span><span class="p">)])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">L</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">L</span><span class="p">)}</span> <span class="c1"># dict comprehensions, có từ Python 3.x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="c1"># import collections, có từ Python 3.x</span>
+</pre></div>
+<p>Lời giải số một tuy dài nhưng có thể chạy trên hầu hết các bản Python &gt; 2.4. Lời giải số hai chẳng qua là từ 1 ra nhưng với cú pháp mới của Python 3.x nó dễ hiểu và đơn giản hơn. Lời giải cuối cùng đơn giản đến mức bạn chỉ cần có <strong>import collections</strong>. Module <strong>collections</strong>  chứa các phương tiện cho phép bạn viết các mã Python ngắn gọn, và chạy rất nhanh. Một ví dụ khác về cách dùng <strong>Counter</strong> trong module <strong>collections</strong>, đoạn mã này cho phép đếm tần số xuất hiện của các ký tự trong một string:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="s2">&quot;abcabca&quot;</span><span class="p">)</span>
+<span class="go">Counter({&#39;a&#39;: 3, &#39;c&#39;: 2, &#39;b&#39;: 2})</span>
+</pre></div>
+<p>Càng về sau này các phiên bản Python càng hỗ trợ nhiều hơn các cú pháp và thư viện cho phép bạn viết các mã ngắn gọn hơn. Đây là đặc trưng của Python: <em>Viết ít hơn làm nhiều hơn</em>. Việc gia tăng hiểu biết của bạn về các thư viện là một kinh nghiệm quan trọng.</p>
+</div>
+<div class="section" id="chia-mot-list-thanh-nhieu-list">
+<h2>4. Chia một list thành nhiều list</h2>
+<p>Bài toán chia một list thành nhiều list có thể gặp hai yêu cầu:</p>
+<ol class="arabic simple">
+<li>Chia list thành nhiều list có độ dài bằng nhau</li>
+<li>Chia list thành n list con có độ dài tương đương nhau (với khác biệt kích thước nhỏ nhất).</li>
+</ol>
+<p>Vấn đề số một có thể giải quyết bằng các hàm sau:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span><span class="o">=</span><span class="k">lambda</span> <span class="n">a</span><span class="p">,</span><span class="n">n</span><span class="p">:</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">n</span><span class="p">:(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n</span><span class="p">]</span> \
+<span class="gp">... </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">[[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">L</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">chain</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">repeat</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))]</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">&lt;zip object at 0x01D607D8&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">SplitInto</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+<span class="go">[(0, 1, 2), (3, 4, 5), (6, 7, 8), (9, None, None)]</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">L</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="n">zip_longest</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">iter</span><span class="p">(</span><span class="n">L</span><span class="p">)]</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">SplitInto</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+<span class="go">[(0, 1, 2), (3, 4, 5), (6, 7, 8), (9, None, None)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">L</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="n">zip_longest</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="nb">iter</span><span class="p">(</span><span class="n">L</span><span class="p">)]</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="n">fillvalue</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">SplitInto</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+<span class="go">[(0, 1, 2), (3, 4, 5), (6, 7, 8), (9, -1, -1)]</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span><span class="o">=</span> <span class="k">lambda</span> <span class="n">L</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="p">[</span><span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">),</span> <span class="n">n</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">[[0, 1, 2], [3, 4, 5], [6, 7, 8], [9]]</span>
+</pre></div>
+<p>Lời giải số 1, 4 dùng cho các phiên bản Python từ 2.3 trở đi. Hai lời giải 2, 3 sau đòi hỏi phải có lệnh <strong>from itertools import *</strong> và chỉ chạy từ Python 3.x trở đi. Chi tiết về các lời giải này các bạn có thể xem thêm: <a class="reference external" href="http://stackoverflow.com/questions/312443/how-do-you-split-a-list-into-evenly-sized-chunks-in-python">How do you split a list into evenly sized chunks in Python?</a></p>
+<p>Vấn đề số 2 có thể có lời giải sau:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">L</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="p">[</span><span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">::</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># SplitInto(list(range(10)), 3) với Python 3.x</span>
+<span class="go">[[0, 3, 6, 9], [1, 4, 7], [2, 5, 8]]</span>
+</pre></div>
+<p>Lời giải trên là đơn giản đến mức... không cần tìm thêm các lời giải khác làm gì cho mệt. Tuy nhiên nó không chia theo đúng thứ tự.  Đây là cách khác phức tạp hơn nhưng giữ nguyên được thứ tự các phần tử:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">L</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="p">[</span><span class="n">L</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="mf">1.0</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">):</span><span class="nb">int</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mf">1.0</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span><span class="o">/</span><span class="n">n</span><span class="p">)]</span> \
+<span class="gp">... </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">[[0, 1, 2], [3, 4, 5], [6, 7, 8, 9]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">[[0, 1, 2, 3, 4], [5, 6, 7, 8, 9]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SplitInto</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">[[0, 1], [2, 3, 4], [5, 6], [7, 8, 9]]</span>
+</pre></div>
+<p>Cách viết này khá dài, nhưng giữ nguyên được thứ tự giữa các phần tử. Các dòng dài chính là đặc trưng của <strong>Python One-liner</strong>.</p>
+</div>
+<div class="section" id="kiem-tra-mot-list-la-tap-con-cua-list-khac">
+<h2>5. Kiểm tra một list là tập con của list khác</h2>
+<p>Cho hai list a, b. kiểm tra xem a có chứa b hay không. Danh sách a chứa danh sách b nếu tất cả các phần tử của b đều có trong a. Cách giải sau đã có lần tôi trình bày, dùng thư viện <strong>operator</strong> và hàm built-in <strong>reduce</strong>, có thể dùng với mọi phiên bản Python 2.x:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">and_</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">reduce</span><span class="p">(</span><span class="n">operator</span><span class="o">.</span><span class="n">and_</span><span class="p">,</span> <span class="nb">map</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+<p>Từ Python 2.4 bạn có thể sử dụng set:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">c</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">set</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">set</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+<p>Từ Python 2.5 bạn có thể viết:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">all</span><span class="p">([</span><span class="n">x</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">b</span><span class="p">])</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">all</span><span class="p">([</span><span class="n">x</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">c</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+<p>Module <strong>operator</strong> cung cấp cách dùng các toán tử như các hàm. Trong ví dụ 1 thực tế chúng ta dùng toán tử <strong>in</strong> thông thường. Các toán tử dùng như các hàm cho phép kết hợp với các hàm built-in khác để viết các lệnh Python rất ngắn gọn và thuận tiện. Một ví dụ (được lấy trong tài liệu Python) tính tích vô hướng hai vector:</p>
+<div class="highlight"><pre><span></span><span class="go">sum(map(operator.mul, vector1, vector2))</span>
+</pre></div>
+<p>Thật khó để viết ngắn hơn và chạy nhanh hơn như vậy. Các ví dụ trên càng nói rõ hơn điều tôi đã nhấn mạnh ở mục 3: các phiên bản Python càng về sau càng hỗ trợ tốt hơn việc viết các mã ngắn gọn và hiệu quả. Tuy vậy bạn phải cân nhắc <em>lựa chọn giải pháp đúng</em> cho phiên bản Python mà nó sẽ chạy.</p>
+</div>
+<div class="section" id="sap-xep-nhieu-column">
+<h2>6. Sắp xếp nhiều column</h2>
+<p>Cho các column a, b, c... có cùng kích thước. Hãy sắp xếp chúng theo thứ tự a, b, c.... Nội dung các dòng không thay đổi. Dưới đây là một ví dụ triển khai với 2 cột a, b:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">(1, 1, 2, 2, 3, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">(&#39;a&#39;, &#39;c&#39;, &#39;a&#39;, &#39;b&#39;, &#39;b&#39;, &#39;c&#39;)</span>
+</pre></div>
+<p>Thật tuyệt!!!. Chúng đơn giản đến mức khó có thể ngắn gọn hơn nữa. Công thức trên trọn vẹn trên một dòng có ít hơn 80 ký tự. Tất cả chỉ có 4 lệnh. Ít nhất nó cũng gây cho tôi nhiều sự phấn khích và ngạc nhiên. Và các bạn sẽ thấy trên nhiều forum Python, việc tìm kiếm các &quot;One-Liner&quot; thực sự là thú vị và là trò chơi hấp dẫn của các Python guru.</p>
+</div>
+<div class="section" id="tong-ket">
+<h2>7. Tổng kết</h2>
+<p>Khi kích thước dữ liệu đầu vào lớn một số trong các hàm trả về list trên đây cần được thay thế bằng các hàm trạng thái. Chẳng hạn việc chia một list thành nhiều list bằng nhau nên viết thành hàm trạng thái, sẽ dùng ít bộ nhớ và nhanh hơn:</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">SplitInto</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+
+    <span class="k">while</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">end</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">a</span><span class="p">[</span><span class="n">start</span> <span class="o">*</span> <span class="n">n</span><span class="p">:</span> <span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">n</span><span class="p">]</span>
+        <span class="n">start</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+<p>Chuẩn viết mã Python là không quá 80 ký tự trên một dòng. Python One-Liner viết hết các lệnh Python trên một dòng, làm cho các line dài hơn bình thường. Mã Python khó đọc và khó hiểu hơn do cách viết cô đọng, các biến được đặt tên ngắn. Với các bài toán không mang tính cơ bản, các bạn nên hạn chế viết theo cách này.</p>
+<p>Các chương trình viết trên một dòng không có nghĩa là nhanh nhất. Thậm chí trong đa số các trường hợp để viết trên một dòng người ta phải chọn cách viết mất nhiều thời gian chạy hơn. Do vậy khi kích thước dữ liệu lớn, tốt hơn hết hãy lựa chọn cách viết tối ưu, và chấp nhận mã dài hơn.</p>
+<p>Tôi hi vọng rằng các bạn sẽ thích thú với các ví dụ trên đây. Chắc chắn còn nhiều cách giải khác cho mỗi vấn đề mà tôi đã nêu ra. Nếu các bạn tìm thấy chúng xin hãy vui lòng comment để mọi người cùng biết. Điều sau cùng tôi muốn nhấn mạnh là <em>tuy việc tìm kiếm các lời giải một dòng cho mỗi vấn đề chỉ đơn giản là thú vui, ít mang tính ứng dụng, nhưng chúng thực sự sẽ thúc đẩy việc học hỏi và tìm kiếm kinh nghiệm của chúng ta.</em></p>
+<p>Một số bài tập Python có thể triển khai trên một dòng:</p>
+<ul class="simple">
+<li>Tạo ma trận đơn vị kích thước bất kỳ</li>
+<li>Triển khai sàng Sieve of Eratosthenes</li>
+<li>Triển khai dãy số Fibonacci.</li>
+<li>Tạo một list chứa tất cả các hoán vị của một list khác (các phần tử có thể bằng nhau).</li>
+</ul>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2010-01-22T16:30:00+07:00"><i class="fa fa-calendar"></i> Fri 22 January 2010</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/pham-thi-minh-hoai.html" rel="author">Phạm Thị Minh Hoài</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/ngon-ngu.html" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">ngôn ngữ</a>
+            <a href="../../tag/list.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">list</a>
+            <a href="../../tag/collections.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">collections</a>
+            <a href="../../tag/meo-python.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">mẹo python</a>
+            <a href="../../tag/one-liner.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">one-liner</a>
+            <a href="../../tag/operator.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">operator</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

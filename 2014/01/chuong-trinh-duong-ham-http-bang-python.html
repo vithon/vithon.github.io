@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Chương trình đường hầm HTTP bằng Python
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2014/01/chuong-trinh-duong-ham-http-bang-python.html" rel="bookmark" title="Permalink to Chương trình đường hầm HTTP bằng Python">Chương trình đường hầm HTTP bằng Python</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>(Bài gửi đến PCNV từ cộng tác viên <a class="reference external" href="https://twitter.com/khuevu">Vũ Khuê</a>. Xin cảm ơn bạn.)</p>
+<div class="section" id="gioi-thieu">
+<h2>Giới thiệu</h2>
+<p>Có những lúc bạn cần kết nối đến máy chủ ngoài mạng nội bộ ở một cổng không thuộc những giao thức ứng dụng phổ biến như HTTP hay HTTPS (cổng 80 hoặc 443). Nhưnng điều đáng buồn là tường lửa chặn yêu cầu đến những cổng ngoài 80 hoặc 443. Khi đó, điều bạn có thể làm là thiết lập một chương trình trên một máy ngoại mạng. Chưong trình này nhận yêu cầu tử cổng 80 hoặc 443 và chuyển nó đến cổng và máy chủ thực sự. Việc này thường được gọi là thiết lập đường hầm (tunneling).</p>
+<p>Trên thực tế, chương trình <tt class="docutils literal">ssh</tt> với tuỳ chọn <tt class="docutils literal"><span class="pre">-L</span></tt> thường được sử dụng cho nhiệm vụ này. Tuy nhiên trong bài này chúng ta sẽ viết chương trinh đường hầm này dựa trên giao thức HTTP. Mục đích chính là miêu tả việc xử lý dữ liệu mạng tầm thấp với Python.</p>
+</div>
+<div class="section" id="cau-truc">
+<h2>Cấu trúc</h2>
+<p>Chương trình này gồm 2 thành phần máy khách (client) và máy chủ (server)</p>
+<dl class="docutils">
+<dt>Tunnel.py</dt>
+<dd>Thành phần máy khách. Thành phần này nhận yêu cầu từ một cổng nhất định và bọc dữ liệu này duới dạng một yêu cầu HTTP rồi gửi đến thành phần máy chủ.</dd>
+<dt>Tunneld.py</dt>
+<dd>Thành phần máy chủ. Thành phần thực chất là một máy chủ HTTP (HTTP server). Khi có yêu cầu gửi đến, nó sẽ đọc yêu cầu này và thực hiện tác vụ tương ứng. Ví dụ như thực hiện kết nối với một máy khác hoặc chuyển dữ liệu từ tải của yêu cầu HTTP đến máy này.</dd>
+</dl>
+<p>Để thiết lập đường hầm, chạy 2 thành phần như sau:</p>
+<div class="highlight"><pre><span></span>python tunnel.py -p <span class="o">[</span>client_listen_port<span class="o">]</span> -h <span class="o">[</span>target_host<span class="o">]</span>:<span class="o">[</span>target_port<span class="o">]</span>
+python tunneld.py -p <span class="o">[</span>server_listen_port<span class="o">]</span>
+</pre></div>
+<p>Một ứng dụng muốn gửi yêu cầu đến máy nào đó (target_host), nó cần gửi yêu cầu đó thông qua cổng mà tunnel.py được khởi tạo với (client_listen_port).</p>
+</div>
+<div class="section" id="trien-khai">
+<h2>Triển khai</h2>
+<p>Bạn có thể tìm thấy mã chương trình tại <a class="reference external" href="https://github.com/khuevu/http-tunnel">https://github.com/khuevu/http-tunnel</a>.</p>
+<div class="section" id="tunnel-py">
+<h3>Tunnel.py</h3>
+<p>Thành phần này nghe ở một cổng nhất định. Nó có 2 tiểu trình (thread) riêng biệt để nhận và trả lời yêu cầu:</p>
+<div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">BUFFER</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">50</span>
+
+<span class="c1">#set global timeout</span>
+<span class="n">socket</span><span class="o">.</span><span class="n">setdefaulttimeout</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">SendThread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Thread to send data to remote tunneld</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">():</span>
+            <span class="c1"># receive data and send to through tunnel</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">BUFFER</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">ReceiveThread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Thread to receive data from remote tunneld</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">():</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn</span><span class="o">.</span><span class="n">receive</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">socket</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="o">...</span>
+</pre></div>
+<p>Hằng số <tt class="docutils literal">BUFFER</tt> là lượng dữ liệu theo byte mà chường trình sẽ nhận từ ứng dụng trước khi gửi qua đường hầm. Có thể có nhiều ứng dụng kết nối với chương trình <tt class="docutils literal">tunnel.py</tt>. Vì thế, ta cần tạo kết nối riêng cho mỗi ứng dụng. Dưới đây là đoạn mã của lớp <tt class="docutils literal">Connection</tt>:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Connection</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection_id</span><span class="p">,</span> <span class="n">remote_addr</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">connection_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">http_conn</span> <span class="o">=</span> <span class="n">httplib</span><span class="o">.</span><span class="n">HTTPConnection</span><span class="p">(</span><span class="n">remote_addr</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">],</span> <span class="n">remote_addr</span><span class="p">[</span><span class="s1">&#39;port&#39;</span><span class="p">])</span>
+    <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target_addr</span><span class="p">):</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">({</span><span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="n">target_addr</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">],</span> <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">target_addr</span><span class="p">[</span><span class="s1">&#39;port&#39;</span><span class="p">]})</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">,</span> <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">http_conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s1">&#39;Successfully create connection&#39;</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s1">&#39;Fail to establish connection: status </span><span class="si">%s</span><span class="s1"> because </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="n">response</span><span class="o">.</span><span class="n">status</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">({</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">})</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">,</span> <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">}</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">http_conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;PUT&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="p">(</span><span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">print</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span>
+        <span class="k">except</span> <span class="p">(</span><span class="n">httplib</span><span class="o">.</span><span class="n">HTTPResponse</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">error</span><span class="p">)</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Error Sending Data: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ex</span>
+
+    <span class="k">def</span> <span class="nf">receive</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">http_conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">http_conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">data</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">&quot;GET HTTP Status: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span>
+                <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">except</span> <span class="p">(</span><span class="n">httplib</span><span class="o">.</span><span class="n">HTTPResponse</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">error</span><span class="p">)</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">&quot;Error Receiving Data: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ex</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="o">...</span>
+</pre></div>
+<p>Như bạn thấy ở đây, <tt class="docutils literal">Connection</tt> có những hàm để thiết lập đường hầm, gửi và nhận dữ liệu. Sự tưong tác này được xây dựng trên giao thức HTTP. Cụ thể là:</p>
+<ul class="simple">
+<li>POST request: yêu cầu thiết lập kết nối.</li>
+<li>PUT request: gửi dữ liệu qua kết nối.</li>
+<li>GET request: nhận kết nối.</li>
+<li>DELETE request: kết thúc kết nối.</li>
+</ul>
+<p>Sẽ rõ ràng hơn khi ta nhìn vào mã của <tt class="docutils literal">tunneld.py</tt>, thành phần nhận những yêu cầu HTTP này:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ProxyRequestHandler</span><span class="p">(</span><span class="n">BaseHTTPRequestHandler</span><span class="p">):</span>
+    <span class="o">...</span>
+
+    <span class="n">BUFFER</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">50</span>
+
+    <span class="k">def</span> <span class="nf">_get_connection_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">do_GET</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;GET: Read data from TargetAddress and return to client through http response&quot;&quot;&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_socket</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">s</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">BUFFER</span><span class="p">)</span>
+                <span class="k">print</span> <span class="n">data</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">send_response</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">end_headers</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">wfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">do_POST</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;POST: Create TCP Connection to the TargetAddress&quot;&quot;&quot;</span>
+        <span class="nb">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_connection_id</span><span class="p">()</span>
+
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">getheader</span><span class="p">(</span><span class="s1">&#39;content-length&#39;</span><span class="p">))</span>
+        <span class="n">req_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">cgi</span><span class="o">.</span><span class="n">parse_qs</span><span class="p">(</span><span class="n">req_data</span><span class="p">,</span> <span class="n">keep_blank_values</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">target_host</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">target_port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;port&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">print</span> <span class="s1">&#39;Connecting to target address: </span><span class="si">%s</span><span class="s1"> </span><span class="si">% s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">target_host</span><span class="p">,</span> <span class="n">target_port</span><span class="p">)</span>
+        <span class="c1">#open socket connection to remote server</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">target_host</span><span class="p">,</span> <span class="n">target_port</span><span class="p">))</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s1">&#39;Successfully connected&#39;</span>
+        <span class="c1">#save socket reference</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sockets</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">send_response</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end_headers</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">error</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span> <span class="n">e</span>
+
+    <span class="k">def</span> <span class="nf">do_PUT</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Read data from HTTP Request and send to TargetAddress&quot;&quot;&quot;</span>
+        <span class="nb">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_connection_id</span><span class="p">()</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sockets</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">getheader</span><span class="p">(</span><span class="s1">&#39;content-length&#39;</span><span class="p">))</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">cgi</span><span class="o">.</span><span class="n">parse_qs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">length</span><span class="p">),</span> <span class="n">keep_blank_values</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">send_response</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+        <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">do_DELETE</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_close_socket</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">send_response</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_headers</span><span class="p">()</span>
+</pre></div>
+<p>Ở đây, <tt class="docutils literal">ProxyRequestHandler</tt> chính là một máy chủ HTTP, nhận và xử lý những yêu cầu cơ bản của HTTP.</p>
+<ul class="simple">
+<li><tt class="docutils literal">do_POST</tt> hàm này xử lý những yêu cầu POST. Nó sẽ lấy thông tin về máy đối tượng (tên miền, cổng) và tạo kết nối TCP đến máy đó. Nó trả về trạng thái 200 nếu kết nối này thành công.</li>
+<li><tt class="docutils literal">do_GET</tt> hàm này lấy dữ liệu từ kết nối đã được thiết lập với máy đối tương trong <tt class="docutils literal">do_POST</tt>. Sau đó nó trả dữ liệu này trong trả lời HTTP của yêu cầu GET.</li>
+<li><tt class="docutils literal">do_PUT</tt> hàm này lấy nhận yêu cầu PUT, đọc dữ liệu từ tải của yêu cầu đó và gửi qua kết nối nói trên.</li>
+<li><tt class="docutils literal">do_DELETE</tt> hàm này đóng kết nối với máy đối tượng.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="thu-nghiem-chuong-trinh">
+<h2>Thử nghiệm chương trình</h2>
+<p>Chúng ta sẽ thử chương trình này bằng việc kết nối với một IRC server thông qua chương trình. Trước hết, thiết lập đường hầm cần thiết. Tại một máy ngoại mạng, không bị chặn bởi tường lửa, chạy:</p>
+<pre class="literal-block">
+python tunneld.py -p 80
+</pre>
+<p>Tại máy nội mạng chạy:</p>
+<pre class="literal-block">
+python tunnel.py -p 8889 -h mayngoaimang:80 irc.freenode.net:6667
+</pre>
+<p>Như vậy ta đã thiết lập một đương hầm ở cổng 8889 qua máy ngoại mạng đến IRC server ở cổng 6667. Yêu cầu đến cổng 6667 thường bị chặn bởi tường lửa. Để thử nghiệm, ta kết nối đến cổng 8889 và gửi yêu cầu theo giao thức IRC:</p>
+<pre class="literal-block">
+nc localhost 8889
+NICK abcxyz
+USER abcxyz abcxyz irc.freenode.net :abcxyz
+</pre>
+<p>(nc - netcat - là một công cụ giúp bạn gửi giữ liệu trên TCP <a class="reference external" href="http://www.irongeek.com/i.php?page=backtrack-3-man/netcat">http://www.irongeek.com/i.php?page=backtrack-3-man/netcat</a>.)</p>
+<p>Ta nhận được trả lời thông báo kết nối thành công:</p>
+<pre class="literal-block">
+:calvino.freenode.net NOTICE * :*** Looking up your hostname...
+:calvino.freenode.net NOTICE * :*** Checking Ident
+:calvino.freenode.net NOTICE * :*** Found your hostname
+:calvino.freenode.net NOTICE * :*** No Ident response
+NICK abcxyz
+USER abcxyz abcxyz irc.freenode.net :abcxyz
+:calvino.freenode.net 001 abcxyz :Welcome to the freenode Internet Relay Chat Network abcxyz
+:calvino.freenode.net 002 abcxyz :Your host is calvino.freenode.net[ ... /6667], running version ircd-seven-1.1.3
+:calvino.freenode.net 003 abcxyz :This server was created Sun Dec 4 2011 at 14:42:47 CET
+:calvino.freenode.net 004 abcxyz calvino.freenode.net ircd-seven-1.1.3 DOQRSZaghilopswzCFILMPQbcefgijklmnopqrstvz bkloveqjfI
+:calvino.freenode.net 005 abcxyz CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQcgimnprstz CHANLIMIT=#:120 PREFIX=(ov)&#64;+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode KNOCK STATUSMSG=&#64;+ CALLERID=g :are supported by this server
+:calvino.freenode.net 005 abcxyz CASEMAPPING=rfc1459 CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 ETRACE CPRIVMSG CNOTICE DEAF=D MONITOR=100 FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: :are supported by this server
+:calvino.freenode.net 005 abcxyz EXTBAN=$,arx WHOX CLIENTVER=3.0 SAFELIST ELIST=CTU :are supported by this server
+:calvino.freenode.net 251 abcxyz :There are 232 users and 70582 invisible on 31 servers
+:calvino.freenode.net 252 abcxyz 45 :IRC Operators online
+:calvino.freenode.net 253 abcxyz 10 :unknown connection(s)
+:calvino.freenode.net 254 abcxyz 34513 :channels formed
+:calvino.freenode.net 255 abcxyz :I have 6757 clients and 1 servers
+:calvino.freenode.net 265 abcxyz 6757 10768 :Current local users 6757, max 10768
+:calvino.freenode.net 266 abcxyz 70814 83501 :Current global users 70814, max 83501
+:calvino.freenode.net 250 abcxyz :Highest connection count: 10769 (10768 clients) (2194912 connections received)
+...
+</pre>
+</div>
+<div class="section" id="ket">
+<h2>Kết</h2>
+<p>Như vậy chúng ta đã đi qua một chương trình xử lý dữ liệu mạng với Python. Chương trình chủ yếu làm việc với dữ liệu thông qua socket API. Một điều quan trọng khác mà bài viết này đề cập đến là sự tách biệt giữa giao thức ứng dụng và dữ liệu gửi trên giao thức đó. Chúng ta có thể vận chuyển dữ liệu mà thông thường đuợc gửi bằng giao thức này qua một giao thức khác.</p>
+<p>Chú ý: Chương trình chỉ có mục đích thí nghiệm và không phù hợp với chạy thực dụng.</p>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2014-01-13T18:43:00+07:00"><i class="fa fa-calendar"></i> Mon 13 January 2014</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/phan-dac-anh-huy.html" rel="author">Phan Đắc Anh Huy</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/http.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">http</a>
+            <a href="../../tag/tunnel.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">tunnel</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

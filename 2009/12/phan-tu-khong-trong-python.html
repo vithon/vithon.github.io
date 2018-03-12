@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Phần tử không trong Python
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - All posts - Atom Feed"/>
+      <link href="/feeds/bai-viet.atom.xml" type="application/atom+xml" rel="alternate" title="Python Cho Người Việt - Category: Bài viết - Atom Feed"/>
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2009/12/phan-tu-khong-trong-python.html" rel="bookmark" title="Permalink to Phần tử không trong Python">Phần tử không trong Python</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <p>Bài viết này nêu lên một số khía cạnh thú vị (nhưng cũng rắc rối) của kiểu dữ liệu <tt class="docutils literal">None</tt> cùng các phép toán liên quan đến nó, qua đó giúp các bạn mới học hiểu sâu sắc hơn về các kiểu dữ liệu có trong Python. Bài viết này có sử dụng một số khái niệm có trong lý thuyết nhóm chỉ nhằm mục đích minh họa những ý đồ của người viết.</p>
+<div class="section" id="khai-niem-phan-tu-khong">
+<h2>1. Khái niệm phần tử không</h2>
+<p>Trong lý thuyết nhóm có khái niệm về phần tử không hay <a class="reference external" href="http://vi.wikipedia.org/wiki/Ph%E1%BA%A7n_t%E1%BB%AD_%C4%91%C6%A1n_v%E1%BB%8B">phần tử trung hòa</a>. Phần tử không <strong>θ</strong> của một tập <strong>S</strong> trên phép toán <strong>*</strong> là phần tử thỏa mãn: <tt class="docutils literal">a*θ = θ*a = a</tt> với mọi <strong>a</strong> trên <strong>S</strong>.</p>
+<p>Các kiểu dữ liệu cơ bản trong Python cũng có phần tử không như vậy. Xem bảng tổng kết sau:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="11%" />
+<col width="14%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Kiểu dữ liệu</th>
+<th class="head">Phép toán</th>
+<th class="head">Phần tử không</th>
+<th class="head">Ví dụ</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Số nguyên</td>
+<td>+</td>
+<td>0</td>
+<td>0 + 69 = 69 + 0</td>
+</tr>
+<tr><td>Số thực</td>
+<td>+</td>
+<td>0.0</td>
+<td>0.0 + 96.0 = 96.0 + 0.0</td>
+</tr>
+<tr><td>Danh sách</td>
+<td>+, extend</td>
+<td>[]</td>
+<td>[1] + [] = [] + [1] = [1]</td>
+</tr>
+<tr><td>tuple</td>
+<td>+</td>
+<td>()</td>
+<td>(1,) + () = () + (1,) = (1,)</td>
+</tr>
+<tr><td>Tập hợp</td>
+<td>union</td>
+<td>set([])</td>
+<td>set([1]).union(set([])) = set([]).union(set([1])) = set([1])</td>
+</tr>
+<tr><td>Chuỗi</td>
+<td>+</td>
+<td><tt class="docutils literal">&quot;&quot;</tt></td>
+<td>&quot;abc&quot; + &quot;&quot; = &quot;&quot; + &quot;abc&quot; = &quot;abc&quot;</td>
+</tr>
+<tr><td>Từ điển</td>
+<td>update</td>
+<td>{}</td>
+<td>{1:1}.update({}) = {}.update({1:1}) = {1:1}</td>
+</tr>
+<tr><td>Số phức</td>
+<td>+</td>
+<td>0 + 0j</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>Logic</td>
+<td>or</td>
+<td>False</td>
+<td>False or True = True or False = True</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="none-va-cac-toan-tu-logic">
+<h2>2. None và các toán tử logic</h2>
+<p><strong>None</strong> là một tập hợp đặc biệt, chỉ có chính nó, mà cũng không phải là chính nó. Không phải là chính nó vì <strong>None</strong> bao hàm ý nghĩa là <em>thiếu giá trị</em> (denoting lack of value):</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="go">&lt;type &#39;NoneType&#39;&gt;</span>
+</pre></div>
+<p><strong>None</strong> tương tác với tất cả các phần tử không:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(([]</span> <span class="ow">and</span> <span class="bp">None</span><span class="p">)</span> <span class="o">==</span> <span class="p">[])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(({}</span> <span class="ow">and</span> <span class="bp">None</span><span class="p">)</span> <span class="o">==</span> <span class="p">{})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="mf">0.0</span> <span class="ow">and</span> <span class="bp">None</span><span class="p">)</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="bp">None</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="nb">set</span><span class="p">([])</span> <span class="ow">and</span> <span class="bp">None</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">([]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((()</span> <span class="ow">and</span> <span class="bp">None</span><span class="p">)</span> <span class="o">==</span> <span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="mi">0j</span> <span class="ow">and</span> <span class="bp">None</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="n">J</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">False</span> <span class="ow">and</span> <span class="bp">None</span><span class="p">)</span> <span class="o">==</span> <span class="bp">False</span><span class="p">)</span>
+</pre></div>
+<p>Nếu ta gọi <strong>S</strong> là tập hợp các phần tử không, bao gồm chính <strong>None</strong>, thì với phép toán <strong>and</strong>, <strong>None</strong> chính là phần tử không bên phải của <strong>S</strong>. Ai bảo <strong>None</strong> không phải là giá trị.</p>
+<p>Tuy nhiên:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">and</span> <span class="p">[])</span> <span class="o">==</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">and</span> <span class="p">{})</span> <span class="o">==</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">and</span> <span class="nb">set</span><span class="p">([]))</span> <span class="o">==</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">and</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">and</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="bp">None</span><span class="p">)</span>
+</pre></div>
+<p>Tương tự:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">or</span> <span class="nb">set</span><span class="p">([]))</span> <span class="o">==</span> <span class="nb">set</span><span class="p">([]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">or</span> <span class="p">[])</span> <span class="o">==</span> <span class="p">[])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">or</span> <span class="p">{})</span> <span class="o">==</span> <span class="p">{})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">or</span> <span class="mi">0j</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0j</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">or</span> <span class="p">())</span> <span class="o">==</span> <span class="p">())</span>
+</pre></div>
+<p>Nghĩa là <strong>None</strong> là phần tử không bên phải đối với tập <strong>S</strong> nói trên trong phép toán <strong>or</strong>.</p>
+<p>Và:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(({}</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(([]</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="mi">0</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="nb">set</span><span class="p">([])</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="mi">0j</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((()</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="mf">0.0</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+</pre></div>
+<p>Như vậy khi <strong>None</strong> tương tác với các phần tử không, <em>thứ tự các toán hạng</em> là điều bạn cần chú ý.</p>
+<p>Phép toán <strong>or</strong> giữa <strong>None</strong> và object bất kỳ không phải là phần tử không là ánh xạ đồng nhất bất kể thứ tự phép toán:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">set</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">])</span> <span class="ow">or</span> <span class="bp">None</span>
+<span class="go">set([&#39;a&#39;])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="bp">None</span> <span class="ow">or</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">])</span>
+<span class="go">set([&#39;a&#39;])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="bp">None</span> <span class="ow">or</span> <span class="s2">&quot;abc&quot;</span>
+<span class="go">&#39;abc&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;abc&quot;</span> <span class="ow">or</span> <span class="bp">None</span>
+<span class="go">&#39;abc&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="bp">None</span> <span class="ow">or</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+<span class="go">{1: 1}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span> <span class="ow">or</span> <span class="bp">None</span>
+<span class="go">{1: 1}</span>
+</pre></div>
+<p>Phép toán <strong>and</strong> thì luôn cho kết quả <strong>None</strong> với bất kỳ phần tử nào không phải là phần tử không, không kể thứ tự toán hạng:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">and</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="mi">1</span> <span class="ow">and</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(([</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">and</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="s2">&quot;abc&quot;</span> <span class="ow">and</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">((</span><span class="bp">None</span> <span class="ow">and</span> <span class="s2">&quot;abc&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">)</span>
+</pre></div>
+<p>Một biểu thức logic chứa <strong>None</strong> có thể trả về <strong>None</strong>, nghĩa là không có giá trị. Điều này làm cho <strong>None</strong> trong python trở lên phức tạp và không giống với <strong>null</strong> trong C# hay <strong>nothing</strong> trong VB.NET. Trong VB.NET một biểu thức logic luôn luôn trả về giá trị logic.</p>
+<p><strong>None</strong> là tận cùng (bottom), là nhỏ hơn tất cả.</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">None</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="p">{}</span> <span class="o">&lt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s2">&quot;&quot;</span> <span class="o">&lt;</span> <span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+<p><strong>None</strong> không có bất kỳ một method nào, thậm chí chính nó là một method khi được dùng với <strong>filter</strong> hoặc <strong>map</strong> (xem phần dưới).</p>
+<p>Cuối cùng <strong>None</strong> là <strong>None</strong> - đừng băn khoăn (^-^):</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">None</span> <span class="ow">is</span> <span class="bp">None</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="bp">None</span> <span class="o">==</span> <span class="bp">None</span>
+<span class="go">True</span>
+</pre></div>
+<p>Việc hiểu rõ bản chất của <strong>None</strong> cùng các tương tác của nó với các phần tử không qua các phép toán logic là RẤT quan trọng khi bạn viết các lệnh <tt class="docutils literal">if</tt>, <tt class="docutils literal">filter</tt>...</p>
+<p>Một hàm bất kỳ có thể trả về <strong>None</strong> nếu bạn viết <strong>return None</strong>, hoặc không <strong>return</strong> ở bất kỳ chỗ nào trong hàm. Một hàm như vậy khi tham gia vào biểu thức logic sẽ tạo ra những hiệu ứng mà bạn cần phải nắm rõ bản chất.</p>
+</div>
+<div class="section" id="loai-bo-cac-phan-tu-khong-trong-danh-sach">
+<h2>3. Loại bỏ các phần tử không trong danh sách</h2>
+<p>Nói chung các phần tử không sẽ không có ý nghĩa khi nó nằm trong danh sách. Một trong những cách để loại bỏ phần tử không là dùng <strong>filter</strong>. <strong>filter</strong> cùng với hàm <strong>func</strong> sẽ loại bỏ tất cả các phần tử trong danh sách mà tác động của hàm <strong>func</strong> lên phần tử này tạo ra phần tử không. Diễn giải dễ hiểu của nó như sau:</p>
+<div class="highlight"><pre><span></span><span class="go">filter(func, list)</span>
+</pre></div>
+<p>tương đương với</p>
+<div class="highlight"><pre><span></span><span class="go">S = [0, 0.0, [], (), {}, set([]), &quot;&quot;, 0j, False]</span>
+<span class="go">def filter(func, list):</span>
+<span class="go">    return [x for x in list if func(x) not in S]</span>
+</pre></div>
+<p>Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span> <span class="p">[]])</span>
+<span class="go">[False, []]</span>
+</pre></div>
+<p>Để loại bỏ các phần tử không trong danh sách <tt class="docutils literal">L</tt>, đơn giản là bạn dùng hàm ánh xạ đồng nhất <tt class="docutils literal">f(x) = x</tt> ví dụ như <tt class="docutils literal">filter(lambda x: x, L)</tt>. Hàm này tương đương với:</p>
+<div class="highlight"><pre><span></span><span class="go">def filter(func, list):</span>
+<span class="go">    return [x for x in list if x not in S]</span>
+</pre></div>
+<p>Cuối cùng một cách viết gây khó hiểu là thay thế <tt class="docutils literal">lambda x: x</tt> bằng hàm <strong>None</strong>.</p>
+<div class="highlight"><pre><span></span><span class="go">filter(None, list) # &lt;==&gt; filter(lambda x: x, list)</span>
+</pre></div>
+<p>Ví dụ:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">filter</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="o">+</span><span class="mi">0j</span><span class="p">,</span> <span class="nb">set</span><span class="p">([]),</span> <span class="p">(),</span> <span class="p">[],</span> <span class="p">{},</span> <span class="bp">False</span><span class="p">])</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">filter</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">])</span>
+<span class="go">[&#39;abc&#39;, &#39; &#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">filter</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="go">[1, 2]</span>
+</pre></div>
+<p>Ở đây chúng ta có cảm giác như <strong>None</strong> được dùng như một hàm. Thực ra không phải vậy, <strong>None</strong> có nghĩa là không có hàm nào ở đây cả, nói cách khác đối số đầu tiên của <strong>filter</strong> bị khuyết. Python lúc đó sẽ dùng hàm mặc định gì đó tương tự như <tt class="docutils literal">lambda x: x</tt>.</p>
+</div>
+<div class="section" id="dung-none-voi-map">
+<h2>4. Dùng None với map</h2>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">map</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">}])</span>
+<span class="go">[1, 2, {1: 2}]</span>
+</pre></div>
+<p><strong>map</strong> không thay đổi danh sách khi nó bị khuyết hàm tác động. Khi đó hàm <strong>None</strong> tương đương với ánh xạ đồng nhất (mặc dù không chính xác, vì thực ra là không có hàm nào cả, Python có thể đã sử dụng hàm mặc định). Tuy nhiên dùng hàm <strong>None</strong> khi có hai danh sách trở lên thì lại tạo ra <em>khả năng đặc biệt</em>.</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">map</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="go">[(1, 3), (2, 4)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">map</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="go">[(1, 3, 5), (2, 4, 6)]</span>
+</pre></div>
+<p>Khả năng này tương đương với <strong>zip</strong>.</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">zip</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="go">[(1, 3, 5), (2, 4, 6)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">zip</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="go">[(1, 3), (2, 4)]</span>
+</pre></div>
+<p>Diễn giải của nó như sau:</p>
+<div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="go">[(1, 3), (2, 4)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="go">[(1, 3, 5), (2, 4, 6)]</span>
+</pre></div>
+<p>Một lần nữa trong mục này, mặc dù <strong>None</strong> bao hàm ý nghĩa về sự khuyết giá trị, song trong triển khai của hàm bất kỳ việc khuyết giá trị dẫn đến việc sử dụng các hàm mặc định. Lúc đó <strong>None</strong> có ý nghĩa là những gì mặc định. Đôi khi có thể ngắn gọn coi nó cũng là một hàm đặc biệt, hàm <strong>None</strong>.</p>
+<p>Chú ý quan trọng: Các test của bài viết này được thử trên <strong>python 2.5.x</strong>.</p>
+</div>
+
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2009-12-25T06:30:00+07:00"><i class="fa fa-calendar"></i> Fri 25 December 2009</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/pham-thi-minh-hoai.html" rel="author">Phạm Thị Minh Hoài</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="44 articles in this category">Bài viết</a>
+            <a href="../../tag/ngon-ngu.html" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">ngôn ngữ</a>
+            <a href="../../tag/none.html" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">None</a>
+            <a href="../../tag/kieu-du-lieu.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">kiểu dữ liệu</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="/feeds/all.atom.xml"><i class="fa fa-rss fa-fw"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="/feeds/bai-viet.atom.xml"><i class="fa fa-rss fa-fw"></i> Category: Bài viết (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2016 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>

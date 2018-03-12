@@ -1,0 +1,625 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+<head>
+
+<link rel="STYLESHEET" href="tut.css" type="text/css" />
+
+<link rel="SHORTCUT ICON" href="../icons/pyfav.png" type="image/png" />
+
+<link rel="start" href="../index.html" title="Chỉ mục tài liệu Python" />
+
+<link rel="first" href="tut.html" title="Bài chỉ dẫn Python" />
+
+<link rel="contents" href="node2.html" title="Mục lục" />
+
+<link rel="index" href="node19.html" title="Chỉ mục" />
+
+<link rel="last" href="about.html" title="Về tài liệu này..." />
+
+<link rel="help" href="about.html" title="Về tài liệu này..." />
+
+<link rel="next" href="node14.html" />
+
+<link rel="prev" href="node12.html" />
+
+<link rel="parent" href="tut.html" />
+
+<link rel="next" href="node14.html" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="aesop" content="information" />
+
+<title>11. Giới thiệu sơ về bộ thư viện chuẩn - Phần II</title>
+
+</head>
+
+<body>
+
+<div class="navigation">
+
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="10. Giới thiệu sơ về bộ thư viện chuẩn" href="node12.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="12. Tiếp theo?" href="node14.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node12.html">10. Giới thiệu sơ về bộ thư viện chuẩn</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node14.html">12. Tiếp theo?</a>
+
+</div>
+
+<hr /></div>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<div class="online-navigation">
+
+<!--Table of Child-Links-->
+
+<a name="CHILD_LINKS"><strong>Mục con</strong></a>
+
+<ul class="ChildLinks">
+
+<li><a href="node13.html#SECTION0013100000000000000000">11.1 Định dạng ra</a>
+
+</li><li><a href="node13.html#SECTION0013200000000000000000">11.2 Tạo mẫu</a>
+
+</li><li><a href="node13.html#SECTION0013300000000000000000">11.3 Làm việc với bản ghi dữ liệu nhị phân</a>
+
+</li><li><a href="node13.html#SECTION0013400000000000000000">11.4 Đa luồng</a>
+
+</li><li><a href="node13.html#SECTION0013500000000000000000">11.5 Nhật ký</a>
+
+</li><li><a href="node13.html#SECTION0013600000000000000000">11.6 Tham chiếu yếu</a>
+
+</li><li><a href="node13.html#SECTION0013700000000000000000">11.7 Công cụ làm việc với danh sách</a>
+
+</li><li><a href="node13.html#SECTION0013800000000000000000">11.8 Số học dấu chấm động thập phân</a>
+
+</li></ul>
+
+<!--End of Table of Child-Links-->
+
+</div>
+
+<hr />
+
+<h1><a name="SECTION0013000000000000000000"></a><a name="briefTourTwo"></a>
+
+<br />
+11. Giới thiệu sơ về bộ thư viện chuẩn - Phần II
+</h1>
+
+<p>
+Bài giới thiệu thứ hai này nói về các mô-đun chuyên sâu nhằm đáp ứng các tác vụ lập trình chuyên nghiệp. Các mô-đun này ít khi xuất hiện ở các kịch bản nhỏ.
+
+</p><p>
+
+<h1><a name="SECTION0013100000000000000000"></a><a name="output-formatting"></a>
+
+<br />
+11.1 Định dạng ra
+</h1>
+
+</p><p>
+  <a class="ulink" href="../lib/module-repr.html"><tt class="module">repr</tt></a> (mô-đun)cung cấp một phiên bản <tt class="function">repr()</tt> đã được tùy biến để hiển thị vắn tắt các đối tượng chứa (container) lớn hoặc lồng nhau nhiều mức:
+
+</p><p>
+
+<div class="verbatim"><pre>
+    &gt;&gt;&gt; import repr   
+    &gt;&gt;&gt; repr.repr(set('supercalifragilisticexpialidocious'))
+    "set(['a', 'c', 'd', 'e', 'f', 'g', ...])"
+</pre></div>
+
+</p><p>
+  <a class="ulink" href="../lib/module-pprint.html"><tt class="module">pprint</tt></a> (mô-đun) hỗ trợ việc kiểm soát việc in các đối tượng sẵn có hoặc các đối tượng do người dùng định nghĩa một cách tinh vi hơn theo một phương thúc mà rình thông dịch có thể hiểu được. Khi kết quả hiển thị ngắn hơn một dòng thì "pretty printer" sẽ thêm các dấu xuống dòng và dấu thụt vào đầu dòng khiến cho cấu trúc dữ liệu được thể hiện rõ rệt hơn:
+
+</p><p>
+
+<div class="verbatim"><pre>
+    &gt;&gt;&gt; import pprint
+    &gt;&gt;&gt; t = [[[['black', 'cyan'], 'white', ['green', 'red']], [['magenta',
+    ...     'yellow'], 'blue']]]
+    ...
+    &gt;&gt;&gt; pprint.pprint(t, width=30)
+    [[[['black', 'cyan'],
+       'white',
+       ['green', 'red']],
+      [['magenta', 'yellow'],
+       'blue']]]
+</pre></div>
+
+</p><p>
+  <a class="ulink" href="../lib/module-textwrap.html"><tt class="module">textwrap</tt></a> (mô-đun) định dạng đoạn văn bản sao cho vừa với độ rộng của màn hình:
+
+</p><p>
+
+<div class="verbatim"><pre>
+    &gt;&gt;&gt; import textwrap
+    &gt;&gt;&gt; doc = """The wrap() method is just like fill() except that it returns
+    ... a list of strings instead of one big string with newlines to separate
+    ... the wrapped lines."""
+    ...
+    &gt;&gt;&gt; print textwrap.fill(doc, width=40)
+    The wrap() method is just like fill()
+    except that it returns a list of strings
+    instead of one big string with newlines
+    to separate the wrapped lines.
+</pre></div>
+
+</p><p>
+  <a class="ulink" href="../lib/module-locale.html"><tt class="module">locale</tt></a> (mô-đun) sử dụng một cơ sở dữ liệu các định dạng dữ liệu dựa trên đặc điểm của từng khu vực. Hàm định dạng của locale có thuộc tính tạo nhóm, cho phép định dạng trực tiếp các con số với các dấu phân chia nhóm:
+
+</p><p>
+
+<div class="verbatim"><pre>
+    &gt;&gt;&gt; import locale
+    &gt;&gt;&gt; locale.setlocale(locale.LC_ALL, 'English_United States.1252')
+    'English_United States.1252'
+    &gt;&gt;&gt; conv = locale.localeconv()          # get a mapping of conventions
+    &gt;&gt;&gt; x = 1234567.8
+    &gt;&gt;&gt; locale.format("%d", x, grouping=True)
+    '1,234,567'
+    &gt;&gt;&gt; locale.format("%s%.*f", (conv['currency_symbol'],
+    ...	      conv['frac_digits'], x), grouping=True)
+    '$1,234,567.80'
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION0013200000000000000000"></a><a name="templating"></a>
+
+<br />
+11.2 Tạo mẫu
+</h1>
+
+</p><p>
+  <a class="ulink" href="../lib/module-string.html"><tt class="module">string</tt></a> (mô-đun) cung cấp một lớp <tt class="class">Template</tt> với một cú pháp đơn giản, có thể dễ dàng thay đổi bởi người dùng. Điều này cho phép người dùng có thể tùy biến trình ứng dụng mà không phải thay đổi nó.
+
+</p><p>
+Định dạng này sử dụng các tên biến giữ chỗ bắt đầu với "<tt class="samp">$</tt>" sau đó là một tên biến hợp lệ của Python (chữ cái, chữ số và dấu gạch dưới). Tên giữ chỗ được đặt trong ngoặc, điều này khiến nó có thể được nối tiếp bởi các ký tự khác mà không cần có khoảng trống ở giữa. Viết "<tt class="samp">$$</tt>" sẽ tạo ra một ký tự thoát đơn "<tt class="samp">$</tt>":
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; from string import Template
+&gt;&gt;&gt; t = Template('${village}folk send $$10 to $cause.')
+&gt;&gt;&gt; t.substitute(village='Nottingham', cause='the ditch fund')
+'Nottinghamfolk send $10 to the ditch fund.'
+</pre></div>
+
+</p><p>
+  <tt class="method">substitute</tt> (phương thức) nâng <tt class="exception">KeyError</tt> nếu biến giữ chỗ không được cung cấp bởi một từ điển hay một tham số nhập từ bàn phím. Đối với các trình ứng dụng kiểu nhập liệu vào thư điện tử, dữ liệu nhập bởi người dùng có thể có thiếu sót, khi đó phương thức
+<tt class="method">safe_substitute</tt> sẽ thích hợp hơn -- nó giữ nguyên các biến giữ chỗ nếu dữ liệu bị thiếu:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; t = Template('Return the $item to $owner.')
+&gt;&gt;&gt; d = dict(item='unladen swallow')
+&gt;&gt;&gt; t.substitute(d)
+Traceback (most recent call last):
+  . . .
+KeyError: 'owner'
+&gt;&gt;&gt; t.safe_substitute(d)
+'Return the unladen swallow to $owner.'
+</pre></div>
+
+</p><p>
+Các lớp con của <code>Template</code> có thể định nghĩa một phần tử phân chia tùy biến. Ví dụ một ứng dụng đổi tên ảnh hàng loạt của một trình duyệt ảnh có thể sử dụng dấu phần trăm để làm các biến giữ chỗ ngày tháng, số thứ tự ảnh, hay định dạng ảnh:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; import time, os.path
+&gt;&gt;&gt; photofiles = ['img_1074.jpg', 'img_1076.jpg', 'img_1077.jpg']
+&gt;&gt;&gt; class BatchRename(Template):
+...     delimiter = '%'
+&gt;&gt;&gt; fmt = raw_input('Enter rename style (%d-date %n-seqnum %f-format):  ')
+Enter rename style (%d-date %n-seqnum %f-format):  Ashley_%n%f
+
+&gt;&gt;&gt; t = BatchRename(fmt)
+&gt;&gt;&gt; date = time.strftime('%d%b%y')
+&gt;&gt;&gt; for i, filename in enumerate(photofiles):
+...     base, ext = os.path.splitext(filename)
+...     newname = t.substitute(d=date, n=i, f=ext)
+...     print '%s --&gt; %s' % (filename, newname)
+
+img_1074.jpg --&gt; Ashley_0.jpg
+img_1076.jpg --&gt; Ashley_1.jpg
+img_1077.jpg --&gt; Ashley_2.jpg
+</pre></div>
+
+</p><p>
+Một ứng dụng khác của tạo mẫu là việc tách biệt lô-gíc chương trình ra khỏi các chi tiết về các định dạng đầu ra khác nhau. Điều này giúp cho việc thay thế các khuôn mẫu tùy biến cho các tập tin XML, các báo cáo bằng văn bản thông thường và các báo cáo bằng HTML.
+
+</p><p>
+
+<h1><a name="SECTION0013300000000000000000"></a><a name="binary-formats"></a>
+
+<br />
+11.3 Làm việc với bản ghi dữ liệu nhị phân
+</h1>
+
+</p><p>
+  <a class="ulink" href="../lib/module-struct.html"><tt class="module">struct</tt></a> (mô-đun) cung cấp các hàm
+<tt class="function">pack()</tt> và <tt class="function">unpack()</tt> để dùng với các định dạng bản ghi nhị phân với chiều dài không cố định. Ví dụ sau đây minh họa phương pháp lặp qua các thông tin trong phần tiêu đề của một tập tin ZIP (ký hiệu
+<code>"H"</code> và <code>"L"</code> biểu diễn các số không dấu hai byte và bốn byte):
+
+</p><p>
+
+<div class="verbatim"><pre>
+    import struct
+
+    data = open('myfile.zip', 'rb').read()
+    start = 0
+    for i in range(3):                      # show the first 3 file headers
+        start += 14
+        fields = struct.unpack('LLLHH', data[start:start+16])
+        crc32, comp_size, uncomp_size, filenamesize, extra_size = fields
+
+        start += 16
+        filename = data[start:start+filenamesize]
+        start += filenamesize
+        extra = data[start:start+extra_size]
+        print filename, hex(crc32), comp_size, uncomp_size
+
+        start += extra_size + comp_size     # skip to the next header
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION0013400000000000000000"></a><a name="multi-threading"></a>
+
+<br />
+11.4 Đa luồng
+</h1>
+
+</p><p>
+Phân luồng là kỹ thuật phân tách các tác vụ khác nhau của một chương trình khi chúng không bị ràng buộc trật tự với nhau. Các luồng được sử dụng để tăng tính đáp ứng của các chương trình ứng dụng đòi hỏi việc nhập liệu từ người dùng diễn ra cùng lúc với các tiến trình nền khác. Một trường hợp tương tự là việc chạy các tác vụ vào ra song song với các tác vụ tính toán ở một luồng khác.
+
+</p><p>
+Đoạn mã sau đây minh họa cách mô-đun
+<a class="ulink" href="../lib/module-threading.html"><tt class="module">threading</tt></a> chạy các tác vụ nền trong khi chương trình chính vẫn đang chạy:
+
+</p><p>
+
+<div class="verbatim"><pre>
+    import threading, zipfile
+
+    class AsyncZip(threading.Thread):
+        def __init__(self, infile, outfile):
+            threading.Thread.__init__(self)        
+            self.infile = infile
+            self.outfile = outfile
+        def run(self):
+            f = zipfile.ZipFile(self.outfile, 'w', zipfile.ZIP_DEFLATED)
+            f.write(self.infile)
+            f.close()
+            print 'Finished background zip of: ', self.infile
+
+    background = AsyncZip('mydata.txt', 'myarchive.zip')
+    background.start()
+    print 'The main program continues to run in foreground.'
+    
+    background.join()    # Wait for the background task to finish
+    print 'Main program waited until background was done.'
+</pre></div>
+
+</p><p>
+Khó khăn lớn nhất của các chương trình ứng dụng đa luồng là việc điều phối các luồng phải chia sẻ dữ liệu hay các tài nguyên khác. Về mặt này, mô-đun <code>threading</code> hỗ trợ một số hàm đồng bộ sơ cấp như các khóa (lock), các sự kiện (event), các biến điều kiện (condition) và các cờ hiệu (semaphore).
+
+</p><p>
+Mặc dù các công cụ kể trên rất mạnh, nhung những lỗi thiết kế nhỏ có thể dẫn tới các vấn đề rất khó có thể tái tạo được. Do đó, phương pháp được ưa chuộng trong việc điều phối các tác vụ là tập hợp các truy cập tới một tài nguyên vào một luồng, sau đó sử dụng mô-đun
+<a class="ulink" href="../lib/module-Queue.html"><tt class="module">Queue</tt></a> để nạp các yêu cầu từ các luồng khác tới luồng đó. Các trình ứng dụng sử dụng đối tượng
+<tt class="class">Queue</tt> cho việc giao tiếp và điều phối giữa các luồng có ưu điểm là dễ thiết kể hơn, dễ đọc hơn và đáng tin cậy hơn.
+
+</p><p>
+
+<h1><a name="SECTION0013500000000000000000"></a><a name="logging"></a>
+
+<br />
+11.5 Nhật ký
+</h1>
+
+</p><p>
+  <a class="ulink" href="../lib/module-logging.html"><tt class="module">logging</tt></a> (mô-đun) cung cấp một hệ thống ghi nhật ký (logging) linh hoạt và có đầy đủ các tính năng. Trong trường hợp đơn giản nhất, một thông điệp nhật ký được gửi tới một tập tin hay tới <code>sys.stderr</code>:
+
+</p><p>
+
+<div class="verbatim"><pre>
+    import logging
+    logging.debug('Debugging information')
+    logging.info('Informational message')
+    logging.warning('Warning:config file %s not found', 'server.conf')
+    logging.error('Error occurred')
+    logging.critical('Critical error -- shutting down')
+</pre></div>
+
+</p><p>
+Đoạn mã trên sẽ cho kết quả sau: 
+
+</p><p>
+
+<div class="verbatim"><pre>
+    WARNING:root:Warning:config file server.conf not found
+    ERROR:root:Error occurred
+    CRITICAL:root:Critical error -- shutting down
+</pre></div>
+
+</p><p>
+Theo mặc định, các thông điệp chứa thông tin dành cho việc gỡ rối bị chặn lại và đầu ra được gửi tới kênh báo lỗi chuẩn. Các thông điệp này còn có thể được chuyển tiếp tới thư điện tử, gói tin, socket hay máy chủ HTTP. Các bộ lọc có thể chọn các cơ chế chuyển tiếp tùy theo mức độ ưu tiên của thông điệp:
+<tt class="constant">DEBUG</tt>, <tt class="constant">INFO</tt>, <tt class="constant">WARNING</tt>, <tt class="constant">ERROR</tt>, và <tt class="constant">CRITICAL</tt>.
+
+</p><p>
+Hệ thống nhật ký có thể được cấu hình trực tiếp bên trong Python hoặc nạp từ một tập tin cấu hình mà người dùng có thể sửa đổi được, nhằm tùy biến việc ghi nhật ký mà không phải sửa đổi trình ứng dụng.
+
+</p><p>
+
+<h1><a name="SECTION0013600000000000000000"></a><a name="weak-references"></a>
+
+<br />
+11.6 Tham chiếu yếu
+</h1>
+
+</p><p>
+Python hỗ trợ việc quản lý bộ nhớ một cách tự động (bao gồm việc đếm tham chiếu với hầu hết các đối tượng và việc thu dọn rác). Vùng nhớ được giải phóng nhanh chóng sau khi tham chiếu cuối cùng đến nó kết thúc.
+
+</p><p>
+Phương pháp này tỏ ra hiệu quả với hầu hết các trình ứng dụng sử dụng Python, tuy vậy đôi khi ta có nhu cầu theo dõi một đối tượng chừng nào chúng được sử dụng ở một chỗ khác. Tuy vậy việc theo dõi này lại tạo ra một tham chiếu đến đối tượng đó, khiến bản thân nó trở thành một tham chiếu vĩnh viễn. Mô-đun
+<a class="ulink" href="../lib/module-weakref.html"><tt class="module">weakref</tt></a> cho phép theo dỗi một đối tượng mà không cần phải tạo một tham chiếu tới đối tượng đó. Khi đối tượng không còn cần dùng nữa, nó sẽ tự động bị loại ra khỏi bảng tham chiếu yếu và một hàm gọi ngược (callback) sẽ được gọi tới đối tượng <code>weakref</code>. Các ứng dụng phổ biến có chứa các đối tượng được lưu tạm và đòi hỏi chi phí khởi tạo cao:
+
+</p><p>
+
+<div class="verbatim"><pre>
+    &gt;&gt;&gt; import weakref, gc
+    &gt;&gt;&gt; class A:
+    ...     def __init__(self, value):
+    ...             self.value = value
+    ...     def __repr__(self):
+    ...             return str(self.value)
+    ...
+    &gt;&gt;&gt; a = A(10)                   # create a reference
+    &gt;&gt;&gt; d = weakref.WeakValueDictionary()
+    &gt;&gt;&gt; d['primary'] = a            # does not create a reference
+    &gt;&gt;&gt; d['primary']                # fetch the object if it is still alive
+    10
+    &gt;&gt;&gt; del a                       # remove the one reference
+    &gt;&gt;&gt; gc.collect()                # run garbage collection right away
+    0
+    &gt;&gt;&gt; d['primary']                # entry was automatically removed
+    Traceback (most recent call last):
+      File "&lt;pyshell#108&gt;", line 1, in -toplevel-
+        d['primary']                # entry was automatically removed
+      File "C:/PY24/lib/weakref.py", line 46, in __getitem__
+        o = self.data[key]()
+    KeyError: 'primary'
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION0013700000000000000000"></a><a name="list-tools"></a>
+
+<br />
+11.7 Công cụ làm việc với danh sách
+</h1>
+
+</p><p>
+Kiểu danh sách sẵn có của Python có thể đáp ứng được nhu cầu về nhiều kiểu cấu trúc dữ liệu khác nhau. Tuy vậy chúng ta đôi khi cần tới các kiểu cấu trúc khác, tùy thuộc vào các mục tiêu cụ thể về hiệu năng.
+
+</p><p>
+  <a class="ulink" href="../lib/module-array.html"><tt class="module">array</tt></a> (mô-đun) cung cấp đối tượng
+<tt class="class">array()</tt> giống như một danh sách chứa các dữ liệu cùng kiểu và lưu giữ chúng gọn hơn. Ví dụ sau cho thấy một mảng các con số được lưu giữ dưới dạng các số không dấu hai byte (mã
+<code>"H"</code>) thay vì mỗi phần tử chiếm 16 byte như trong một danh sách thông thường chứa các đối tượng số nguyên của Python:
+
+</p><p>
+
+<div class="verbatim"><pre>
+    &gt;&gt;&gt; from array import array
+    &gt;&gt;&gt; a = array('H', [4000, 10, 700, 22222])
+    &gt;&gt;&gt; sum(a)
+    26932
+    &gt;&gt;&gt; a[1:3]
+    array('H', [10, 700])
+</pre></div>
+
+</p><p>
+  <a class="ulink" href="../lib/module-collections.html"><tt class="module">collections</tt></a> (mô-đun) cung cấp đối tượng <tt class="class">deque()</tt> giống như một danh sách nhưng có các thao tác thêm vào và lấy ra đầu bên trái nhanh hơn, nhưng việc tìm kiếm ở giữa thì lại chậm hơn. Các đối tượng này thích hợp cho việc cài đặt các hàng đợi và tìm kiếm cây theo chiều rộng:
+
+</p><p>
+
+<div class="verbatim"><pre>
+    &gt;&gt;&gt; from collections import deque
+    &gt;&gt;&gt; d = deque(["task1", "task2", "task3"])
+    &gt;&gt;&gt; d.append("task4")
+    &gt;&gt;&gt; print "Handling", d.popleft()
+    Handling task1
+
+    unsearched = deque([starting_node])
+    def breadth_first_search(unsearched):
+        node = unsearched.popleft()
+        for m in gen_moves(node):
+            if is_goal(m):
+                return m
+            unsearched.append(m)
+</pre></div>
+
+</p><p>
+Ngoài các cấu trúc thay thế cho danh sách, thư viện chuẩn còn cung cấp các công cụ như mô-đun <a class="ulink" href="../lib/module-bisect.html"><tt class="module">bisect</tt></a>
+chứa các hàm thao tác trên danh sách đã được sắp xếp:
+
+</p><p>
+
+<div class="verbatim"><pre>
+    &gt;&gt;&gt; import bisect
+    &gt;&gt;&gt; scores = [(100, 'perl'), (200, 'tcl'), (400, 'lua'), (500, 'python')]
+    &gt;&gt;&gt; bisect.insort(scores, (300, 'ruby'))
+    &gt;&gt;&gt; scores
+    [(100, 'perl'), (200, 'tcl'), (300, 'ruby'), (400, 'lua'), (500, 'python')]
+</pre></div>
+
+</p><p>
+  <a class="ulink" href="../lib/module-heapq.html"><tt class="module">heapq</tt></a> (mô-đun) cung cấp các hàm để cài đặt đống (heap) dựa trên các danh sách thông thường. Phần tử có giá trị thấp nhất luôn được giữ ở vị trí đầu tiên. Hàm này rất có ích trong các trình ứng dụng đòi hỏi việc truy cập tới phần tử nhỏ nhất mà không cần phải sắp xếp lại toàn bộ danh sách:
+
+</p><p>
+
+<div class="verbatim"><pre>
+    &gt;&gt;&gt; from heapq import heapify, heappop, heappush
+    &gt;&gt;&gt; data = [1, 3, 5, 7, 9, 2, 4, 6, 8, 0]
+    &gt;&gt;&gt; heapify(data)                      # rearrange the list into heap order
+    &gt;&gt;&gt; heappush(data, -5)                 # add a new entry
+    &gt;&gt;&gt; [heappop(data) for i in range(3)]  # fetch the three smallest entries
+    [-5, 0, 1]
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION0013800000000000000000"></a><a name="decimal-fp"></a>
+
+<br />
+11.8 Số học dấu chấm động thập phân
+</h1>
+
+</p><p>
+  <a class="ulink" href="../lib/module-decimal.html"><tt class="module">decimal</tt></a> (mô-đun) cung cấp kiểu dữ liệu
+<tt class="class">Decimal</tt> cho các phép toán dấu chấm động hệ thập phân. So với cấu trúc dấu chấm động nhị phân <tt class="class">float</tt> sẵn có của Python, lớp này rất có ích trong các trình ứng dụng về tài chính và các công việc đòi hỏi việc biểu diễn chính xác các số thập phân, kiểm soát mức độ chính xác cũng như việc làm tròn các con số theo các quy định đề ra, theo dõi vị trí của dấu chấm động hay trong các trình ứng dụng mà người sử dụng mong muốn thu được kết quả khớp với kết quả tính toán bằng tay.
+
+</p><p>
+Ví dụ như, việc tính 5% thuế trên một cuộc gọi điện giá 70 cent sẽ cho kết quả khác nhau nếu sử dụng các phép toán dấy chấm động hệ thập phân và nhị phân. Sự khác biệt trở nên rõ rệt nếu kết quả được làm tròn tới cent:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; from decimal import *       
+&gt;&gt;&gt; Decimal('0.70') * Decimal('1.05')
+Decimal("0.7350")
+&gt;&gt;&gt; .70 * 1.05
+0.73499999999999999
+</pre></div>
+
+</p><p>
+  <tt class="class">Decimal</tt> giữ một số không ở vị trí cuối cùng, nó tự động quy kết quả kiểu có bốn chữ số sau dấu chấm nếu các thừa số của phép nhân có hai chữ số sau dấu chấm. <code>Decimal</code> thực hiện các phép toán tương tự như cách chúng được tính bằng tay, nhờ đó tránh được các vấn đề gặp phải khi dấu chấm động hệ nhị phân không thể biểu diễn chính xác các giá trị thập phân.
+
+</p><p>
+Việc biểu diễn chính xác các con số giúp cho lớp <tt class="class">Decimal</tt> có thể thực hiện được các phép tính modulo và các so sánh bằng, điều mà dấu chấm động hệ nhị phân không làm được:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; Decimal('1.00') % Decimal('.10')
+Decimal("0.00")
+&gt;&gt;&gt; 1.00 % 0.10
+0.09999999999999995
+       
+&gt;&gt;&gt; sum([Decimal('0.1')]*10) == Decimal('1.0')
+True
+&gt;&gt;&gt; sum([0.1]*10) == 1.0
+False
+</pre></div>
+
+</p><p>
+  <tt class="module">decimal</tt> (mô-đun) cung cấp các phép toán với độ chính xác cao, tùy thuộc vào đòi hỏi của người dùng:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; getcontext().prec = 36
+&gt;&gt;&gt; Decimal(1) / Decimal(7)
+Decimal("0.142857142857142857142857142857142857")
+</pre></div>
+
+</p><p>
+
+<div class="navigation">
+
+<div class="online-navigation">
+
+<p></p><hr />
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="10. Giới thiệu sơ về bộ thư viện chuẩn" href="node12.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="12. Tiếp theo?" href="node14.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node12.html">10. Giới thiệu sơ về bộ thư viện chuẩn</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node14.html">12. Tiếp theo?</a>
+
+</div>
+
+</div>
+
+<hr />
+
+<span class="release-info">Phiên bản 2.5, tài liệu được cập nhật ngày 19, tháng 09, năm 2006.</span>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<address>
+Xem <i><a href="about.html">Về tài liệu này...</a></i> về cách đề nghị thay đổi.
+</address>
+
+</p></body>
+
+</html>
+
