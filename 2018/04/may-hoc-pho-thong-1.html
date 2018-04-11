@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Máy học phổ thông (1)
+ | Python Cho Người Việt</title>
+
+    <meta name="author" content="Nhóm PCNV"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="../../theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="../../theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="../../theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+          <a href="../.." class="container pull-left">
+            <div class="">
+              <div class="side"><img src="../../logo.png" class="img-responsive"/></div>
+            </div>
+          </a>
+        <h1><a href="../..">Python Cho Người Việt</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../.." title="">Python Cho Người Việt</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="../../static/tutorial/2.5/tut.html">Bài chỉ dẫn 2.5</a>
+              </li>
+<li >
+                <a href="../../category/tin-tuc.html">Tin tức</a>
+              </li>
+<li >
+                <a href="../../category/bai-viet.html">Bài viết</a>
+              </li>
+<li >
+                <a href="http://forum.vithon.org">Diễn đàn</a>
+              </li>
+<li >
+                  <a href="../../page/about.html">Giới thiệu</a>
+                </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="../../search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="../../2018/04/may-hoc-pho-thong-1.html" rel="bookmark" title="Permalink to Máy học phổ thông (1)">Máy học phổ thông (1)</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <div>
+    <div class="section" id="gioi-thieu">
+<h2>Giới thiệu</h2>
+<div class="section" id="loat-bai-may-hoc-pho-thong">
+<h3>Loạt bài &quot;Máy học phổ thông&quot;</h3>
+<p>Loạt bài <strong>Máy học phổ thông</strong> nhằm vào một mục tiêu đơn giản là diễn giải một số kỹ thuật máy học với kiến thức toán phổ thông mà học sinh phổ thông trung học (cấp 3, khoảng lớp 11, 12) có thể hiểu, và áp dụng ngay lập tức. Dĩ nhiên, vì đây là trang mạng của nhóm Python cho người Việt nên ngôn ngữ lập trình được chọn để thể hiện các kỹ thuật trong loạt bài này sẽ là ngôn ngữ Python.</p>
+</div>
+<div class="section" id="may-hoc">
+<h3>Máy học</h3>
+<p>Máy học (machine learning) là một nhánh khoa học máy tính tận dụng các kỹ thuật tính toán để tạo cho máy tính khả năng &quot;học&quot; từ dữ liệu, mà không cần phải được lập trình rõ ràng. Một số ví dụ ứng dụng máy học bao gồm việc phỏng đoán giá nhà dựa trên diện tích đất, tự động phân loại hoa từ kích thước cánh, hoặc tự tìm đường nhanh nhất để thoát khỏi mê cung.</p>
+<p>Máy học thường được chia làm ba nhóm chính:</p>
+<dl class="docutils">
+<dt>Có giám sát (supervised)</dt>
+<dd>Các kỹ thuật trong nhóm này tận dụng sự hiện diện của kết quả gốc để điều chỉnh việc học của máy tính. Ví dụ như giá nhà đã bán gần đây có thể giúp cho việc dự đoán giá già sẽ bán được trong tương lai.</dd>
+<dt>Không giám sát (unsupervised)</dt>
+<dd>Các kỹ thuật trong nhóm này không sử dụng kết quả gốc nhưng vẫn có thể phân loại dữ liệu đầu vào thành nhiều nhóm riêng biệt. Ví dụ như các loại hoa có thể được phân loại theo kích thước cánh hoa to hay nhỏ, dài hay ngắn một cách tự động mà không cần bất kỳ chỉ dẫn cụ thể nào.</dd>
+<dt>Củng cố (reinforcement)</dt>
+<dd>Sự phối hợp giữa học có giám sát, và học không giám sát tạo ra các kỹ thuật học củng cố trong đó kết quả gốc chỉ được sử dụng sau khi một loạt các lựa chọn đã xảy ra. Ví dụ trong khi tìm đường thoát khỏi mê cung, chỉ sau khi tìm được đường đến cửa ra thì ta mới biết con đường đã đi là con đường tốt.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="hoi-quy-tuyen-tinh">
+<h2>Hồi quy tuyến tính</h2>
+<p>Một trong các kỹ thuật phổ dụng nhất trong máy học là kỹ thuật phân tích hồi quy tuyến tính (linear regression). Tên gọi này có hai phần quan trọng:</p>
+<dl class="docutils">
+<dt>Hồi quy (regression)</dt>
+<dd>Phân tích hồi quy cho phép ta tìm ra quan hệ giữa các biến độc lập (giả sử là <span class="math">\(x_1, x_2, \dots, x_n\)</span>) và biến phụ thuộc (giả sử là <span class="math">\(y\)</span>). Bình thường chúng ta sẽ có sẵn <em>mối quan hệ</em> <span class="math">\(y = f(x_1, x_2, \dots, x_n)\)</span> để từ đó xác định <em>giá trị</em> của biến phụ thuộc theo biến độc lập. Mục tiêu của phân tích hồi quy là tìm mối quan hệ từ các giá trị của biến độc lập và biến phụ thuộc.</dd>
+<dt>Tuyến tính (linear)</dt>
+<dd>Trong hồi quy tuyến tính, mối quan hệ giữa các biến độc lập và biến phụ thuộc được giả định là một mối quan hệ tuyến tính. Tức là <span class="math">\(y = \theta_n \times x_n + \theta_{n-1} \times x_{n-1} + \dots + \theta_1 \times x_1 + \theta_0 \times 1\)</span> với <span class="math">\(\theta_0, \theta_1, \dots, \theta_n\)</span> là các tham số cần tìm. Các tài liệu khác cũng hay dùng ký hiệu <span class="math">\(w\)</span> (trọng số của mô hình, tiếng Anh là weight) thay vì <span class="math">\(\theta\)</span>.</dd>
+</dl>
+<p>Chúng ta sẽ từng bước xây dựng và xem xét nguyên tắc của phương pháp hồi quy tuyến tính thông qua một số ví dụ trong các mục kế tiếp.</p>
+</div>
+<div class="section" id="uoc-luong-y-ax-b">
+<h2>Ước lượng <span class="math">\(y = ax + b\)</span></h2>
+<div class="section" id="khong-co-sai-so">
+<h3>Không có sai số</h3>
+<p>Giả sử chúng ta có bảng dữ liệu đầu vào như sau:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="46%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Dòng</th>
+<th class="head"><span class="math">\(x_1\)</span></th>
+<th class="head"><span class="math">\(y\)</span></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>0</td>
+<td>-2</td>
+<td>0</td>
+</tr>
+<tr><td>1</td>
+<td>0</td>
+<td>-4</td>
+</tr>
+</tbody>
+</table>
+<p>Chúng ta muốn tìm xem với <span class="math">\(x_1 = 2\)</span> (không có trong bảng trên) thì sẽ nhận được giá trị <span class="math">\(y\)</span> là bao nhiêu.</p>
+<div class="figure">
+<img alt="" src="/static/machine-learning/linear-reg-1.png" />
+<p class="caption">Đường thẳng đi qua chính xác hai điểm</p>
+<div class="legend">
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s1">&#39;g--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;linear-reg-1.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Vì ta đã giả định <span class="math">\(y = \theta_1 x_1 + \theta_0\)</span>, và ta có đúng hai điểm đầu vào, nên cách đơn giản nhất là giải hệ phương trình để tìm ra tham số <span class="math">\(\theta_1, \theta_0\)</span> của quan hệ đó. Ta sẽ có <span class="math">\(\theta_1 = -2, \theta_0 = -4\)</span>. Vậy nếu <span class="math">\(x_1 = 2\)</span> giá trị tương ứng sẽ là <span class="math">\(y = -8\)</span>.</p>
+<p>Đây chính là cách giải quyết vấn đề bình thường, khi ta phải lập trình rõ ràng từng bước cần làm để máy tính thực hiện. Nếu như bảng dữ liệu đầu vào có nhiều hơn 2 dòng thì làm sao chương trình của chúng ta tìm ra mối quan hệ giữa các điểm này?</p>
+</div>
+<div class="section" id="them-sai-so">
+<h3>Thêm sai số</h3>
+<p>Nếu như bảng đầu vào của chúng ta bây giờ có thêm một số điểm mới như sau:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="46%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Dòng</th>
+<th class="head"><span class="math">\(x_1\)</span></th>
+<th class="head"><span class="math">\(y\)</span></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>0</td>
+<td>-2</td>
+<td>0</td>
+</tr>
+<tr><td>1</td>
+<td>-1</td>
+<td>-3</td>
+</tr>
+<tr><td>2</td>
+<td>0</td>
+<td>-4</td>
+</tr>
+<tr><td>3</td>
+<td>1</td>
+<td>-3</td>
+</tr>
+</tbody>
+</table>
+<p>Phương pháp chính xác không còn có thể được dùng nữa vì bây giờ ta có 4 điểm, và chúng không nằm trên cùng một đường thẳng nào cả.</p>
+<div class="figure">
+<img alt="" src="/static/machine-learning/linear-reg-2.png" />
+<p class="caption">Không có đường thẳng nào đi qua 4 điểm này</p>
+<div class="legend">
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;linear-reg-2.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Do đó, chúng ta sẽ chấp nhận có sai số trong việc hồi quy để tìm ra mối quan hệ tuyến tính giữa các điểm đầu vào.</p>
+<p>Chúng ta giả sử rằng mối quan hệ tìm được là <span class="math">\(\hat{y} = \theta_1 x_1 + \theta_0 x_0\)</span>, với giá trị <span class="math">\(x_0 = 1\)</span>. Ký hiệu <span class="math">\(\hat{y}\)</span> đọc là &quot;y mũ&quot; để phân biệt với &quot;y thường&quot;, và thường được dùng để nhấn mạnh đây là giá trị phỏng đoán, không phải giá trị thực.</p>
+<p>Sai số giữa <span class="math">\(\hat{y}\)</span> và <span class="math">\(y\)</span> đơn giản là <span class="math">\(\hat{y} - y\)</span>. Để không phải quan tâm <span class="math">\(\hat{y}\)</span> lớn hơn, hay nhỏ hơn <span class="math">\(y\)</span>, ta sẽ dùng bình phương của sai số <span class="math">\((\hat{y} - y)^2\)</span>.</p>
+<p>Với mỗi giá trị đầu vào, ta sẽ có sai số cho dòng đó. Tổng bình phương sai số (residual sum of squares, sum of squared residuals, sum of squared errors) của các dòng đầu vào thể hiện độ khớp giữa mối quan hệ tìm được, và mối quan hệ thật sự (mà chúng ta không biết). Do đó, mục tiêu của chúng ta là tìm các tham số <span class="math">\(\theta_1, \theta_0\)</span> sao cho tổng bình phương sai số của các điểm là nhỏ nhất.</p>
+<p>Gọi <span class="math">\(\vec{\theta} = (\theta_0, \theta_1)\)</span> là biểu diễn dạng véc tơ của hai giá trị <span class="math">\(\theta_1, \theta_0\)</span>. Hàm mất mát (loss function, cost function) của phương pháp hồi quy tuyến tính có dạng:</p>
+<div class="math">
+\begin{equation*}
+\mathcal{L}(\vec{\theta}) = \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right)^2
+\end{equation*}
+</div>
+<p>Nhưng vì chúng ta chỉ quan tâm đến việc tìm giá trị cực tiểu của hàm mất mát, người ta thường dùng hàm mất mát ở dạng sau (lý do sẽ được làm rõ trong chốc lát):</p>
+<div class="math">
+\begin{equation*}
+\mathcal{L}(\vec{\theta}) = \frac{1}{2} \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right)^2
+\end{equation*}
+</div>
+<p>Ta cần tìm một véc tơ <span class="math">\(\vec{\theta_{min}}\)</span> sao cho <span class="math">\(\mathcal{L}(\vec{\theta_{min}})\)</span> có giá trị cực tiểu.</p>
+<p>Sử dụng ký hiệu <span class="math">\(\mathop{\mathrm{arg\,min}}_x f(x)\)</span> để biểu diễn một hàm trả về giá trị <span class="math">\(x\)</span> mà tại đó giá trị của <span class="math">\(f(x)\)</span> là nhỏ nhất, chúng ta viết lại mục tiêu của chúng ta như sau:</p>
+<div class="math">
+\begin{equation*}
+\vec{\theta_{min}} = \mathop{\mathrm{arg\,min}}_{\vec{\theta}} \mathcal{L}(\vec{\theta}) = \mathop{\mathrm{arg\,min}}_{\vec{\theta}} \cfrac{1}{2} \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right)^2
+\end{equation*}
+</div>
+<p>Một trong những cách để tìm <span class="math">\(\vec{\theta_{min}}\)</span> là tính đạo hàm bậc nhất của <span class="math">\(\mathcal{L}(\vec{\theta})\)</span> theo <span class="math">\(\vec{\theta}\)</span> và giải phương trình để đạo hàm đó đạt giá trị 0. Tuy nhiên, cách làm này nằm ngoài phạm vi Toán phổ thông, và cần phải đến chương trình đại học đại cương về Đại số tuyến tính (Linear Algebra) và Giải tích ma trận (Matrix Calculus) chúng ta mới có thể làm.</p>
+<p>Một cách khác để tìm <span class="math">\(\vec{\theta_{min}}\)</span> là sử dụng kỹ thuật xuống dốc (gradient descent). Kỹ thuật xuống dốc có thể được sử dụng ở đây vì hàm mất mát trong trường hợp này chỉ có một cực trị toàn cục (global optimum) (và cực trị này là cực tiểu) cho nên kỹ thuật xuống dốc được đảm bảo sẽ hội tụ (converge) đến giá trị đấy. Kỹ thuật này sẽ được giải thích cặn kẽ hơn trong một bài viết khác. Ở đây, chúng ta chỉ cần tính đạo hàm riêng (partial derivative) của <span class="math">\(\mathcal{L}(\vec{\theta})\)</span> theo từng biến thành phần  <span class="math">\(\theta_1, \theta_0\)</span> để cập nhật lại chính các biến đó.</p>
+<p>Với <span class="math">\(j \in \{ 0, 1 \}\)</span>, công thức cập nhật <span class="math">\(\theta_j\)</span> được cho bởi:</p>
+<div class="math">
+\begin{equation*}
+\theta_j^{(t+1)} = \theta_j^{(t)} - \alpha \times \cfrac{\partial}{\partial \theta_j} \mathcal{L}(\vec{\theta^{(t)}})
+\end{equation*}
+</div>
+<p>Hệ số <span class="math">\(\alpha\)</span> được gọi là tốc độ học (learning rate). Nhiều tài liệu sử dụng <span class="math">\(\gamma\)</span> hoặc <span class="math">\(\eta\)</span> thay cho <span class="math">\(\alpha\)</span> trong công thức trên, nhưng chúng đều có ý nghĩa như nhau cả.</p>
+<p>Đạo hàm riêng của <span class="math">\(\mathcal{L}(\vec{\theta})\)</span> theo <span class="math">\(\theta_j\)</span>:</p>
+<div class="math">
+\begin{align*}
+\cfrac{\partial}{\partial \theta_j} \mathcal{L}(\vec{\theta}) &amp;= \cfrac{1}{2} \cfrac{\partial}{\partial \theta_j} \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right)^2 \\
+  &amp;= \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right) \cfrac{\partial}{\partial \theta_j} \left( \hat{y}^{(i)} - y^{(i)} \right) \\
+  &amp;= \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right) \cfrac{\partial}{\partial \theta_j} \hat{y}^{(i)} \\
+  &amp;= \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right) x_j^{(i)}
+\end{align*}
+</div>
+<p>Ráp vào công thức cập nhật <span class="math">\(\theta_j\)</span>:</p>
+<div class="math">
+\begin{equation*}
+\theta_j^{(t+1)} = \theta_j^{(t)} + \alpha \times \sum_{i=1}^4 \left( y^{(i)} - \hat{y}^{(i)} \right) x_j^{(i)}
+\end{equation*}
+</div>
+<p>Như vậy, toàn bộ việc giải ra <span class="math">\(\vec{\theta}\)</span> được tóm lại ở ba bước:</p>
+<ol class="arabic simple">
+<li>Khởi tạo các giá trị <span class="math">\(\theta_0, \theta_1\)</span> ngẫu nhiên.</li>
+<li>Trong khi vẫn chưa hội tụ thì cập nhật <span class="math">\(\theta_0, \theta_1\)</span> theo công thức trên.</li>
+</ol>
+<p>Điều kiện hội tụ có thể gồm một hoặc vài điều kiện sau:</p>
+<ol class="arabic simple">
+<li>Giá trị hàm mất mát chỉ thay đổi rất ít.</li>
+<li>Giá trị của <span class="math">\(\vec{\theta}\)</span> thay đổi rất ít.</li>
+<li>Số lần lặp vượt quá một giới hạn nào đó.</li>
+<li>Hoặc các điều kiện khác tùy vào khả năng sáng tạo.</li>
+</ol>
+<p>Ta sẽ cài đặt ý tưởng của phương pháp hồi quy tuyến tính như sau:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Bảng đầu vào.</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>  <span class="c1"># (x_0, x_1)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># y</span>
+
+<span class="c1"># Khởi tạo theta là vec tơ (0, 0).</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># Định tốc độ học.</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># Điều kiện hội tụ là lặp 1000 lần.</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">theta_new</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">)):</span>
+        <span class="c1"># Tính độ dốc theo theta_j.</span>
+        <span class="n">gradient</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">)):</span>
+            <span class="n">y_hat</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">gradient</span> <span class="o">+=</span> <span class="p">(</span><span class="n">ys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_hat</span><span class="p">)</span> <span class="o">*</span> <span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="c1"># Cập nhật theta.</span>
+        <span class="n">theta_new</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">gradient</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">theta_new</span>
+<span class="k">print</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+</pre></div>
+<p>Kết quả thực thi sẽ là:</p>
+<pre class="literal-block">
+[-2.9999999999982405, -0.9999999999989124]
+</pre>
+<p>Tức là mối quan hệ tuyến tính giữa 4 điểm là <span class="math">\(\hat{y} = -3.0 \times x_1 + -1.0\)</span>. Mối quan hệ này được thể hiện qua đồ thị bên dưới.</p>
+<div class="figure">
+<img alt="" src="/static/machine-learning/linear-reg-3.png" />
+<p class="caption">Đường khớp dữ liệu <span class="math">\(\theta_0 = -3.0\)</span> và <span class="math">\(\theta_1 = -1.0\)</span></p>
+<div class="legend">
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">)],</span>
+         <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="mf">3.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="mf">3.0</span><span class="p">],</span> <span class="s1">&#39;g--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;linear-reg-3.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="xay-dung-thuoc-tinh-feature-engineering">
+<h2>Xây dựng thuộc tính (feature engineering)</h2>
+<p>Mặc dù phương pháp hồi quy tuyến tính giả định mối quan hệ tuyến tính, chúng ta vẫn có thể tìm được các mối quan hệ đa thức bậc cao, hoặc phi tuyến. Tính chất tuyến tính chỉ là giữa biến phụ thuộc và biến độc lập, còn giữa các biến độc lập với nhau thì chúng có thể có những quan hệ phi tuyến.</p>
+<p>Xét ví dụ trong mục ở trên, với bốn điểm không thẳng hàng.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="46%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Dòng</th>
+<th class="head"><span class="math">\(x_1\)</span></th>
+<th class="head"><span class="math">\(y\)</span></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>0</td>
+<td>-2</td>
+<td>0</td>
+</tr>
+<tr><td>1</td>
+<td>-1</td>
+<td>-3</td>
+</tr>
+<tr><td>2</td>
+<td>0</td>
+<td>-4</td>
+</tr>
+<tr><td>3</td>
+<td>1</td>
+<td>-3</td>
+</tr>
+</tbody>
+</table>
+<p>Ta có thể thêm một cột <span class="math">\(x_2 = x_1^2\)</span> để có bảng:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="31%" />
+<col width="31%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Dòng</th>
+<th class="head"><span class="math">\(x_2\)</span></th>
+<th class="head"><span class="math">\(x_1\)</span></th>
+<th class="head"><span class="math">\(y\)</span></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>0</td>
+<td>4</td>
+<td>-2</td>
+<td>0</td>
+</tr>
+<tr><td>1</td>
+<td>1</td>
+<td>-1</td>
+<td>-3</td>
+</tr>
+<tr><td>2</td>
+<td>0</td>
+<td>0</td>
+<td>-4</td>
+</tr>
+<tr><td>3</td>
+<td>1</td>
+<td>1</td>
+<td>-3</td>
+</tr>
+</tbody>
+</table>
+<p>Chúng ta muốn tìm quan hệ <span class="math">\(\hat{y} = \theta_2 x_2 + \theta_1 x_1 + \theta_0 x_0\)</span> với <span class="math">\(x_0 = 1\)</span>. Và chúng ta chỉ cần sửa một chút mã nguồn trong phần trên:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Bảng đầu vào.</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>  <span class="c1"># (x_0, x_1, x_2)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># y</span>
+
+<span class="c1"># Khởi tạo theta là vec tơ (0, 0, 0).</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># Định tốc độ học.</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># Điều kiện hội tụ là lặp 10000 lần.</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="n">theta_new</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">)):</span>
+        <span class="c1"># Tính độ dốc theo theta_j.</span>
+        <span class="n">gradient</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">)):</span>
+            <span class="n">y_hat</span> <span class="o">=</span> <span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span>
+                     <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span>
+                     <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">gradient</span> <span class="o">+=</span> <span class="p">(</span><span class="n">ys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_hat</span><span class="p">)</span> <span class="o">*</span> <span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="c1"># Cập nhật theta.</span>
+        <span class="n">theta_new</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">theta</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">gradient</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">theta_new</span>
+<span class="k">print</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+</pre></div>
+<p>Kết quả nhận được:</p>
+<pre class="literal-block">
+[-3.999999999999987, -4.7184218854317494e-15, 0.9999999999999933]
+</pre>
+<p>Hay viết cách khác <span class="math">\(\hat{y} = 1.0 \times x_2 - 0.0 \times x_1 - 4.0\)</span>. Vì <span class="math">\(x_2 = x_1^2\)</span>, quan hệ này là <span class="math">\(\hat{y} = x_1^2 - 4.0\)</span>, rõ ràng là một đường pa-ra-bôn nhị thức.</p>
+<div class="figure">
+<img alt="" src="/static/machine-learning/linear-reg-4.png" />
+<p class="caption">Đường pa-ra-bôn đi qua bốn điểm, cũng chính là mối quan hệ thực giữa <span class="math">\(y\)</span> và <span class="math">\(x_1\)</span>.</p>
+<div class="legend">
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span> <span class="o">/</span> <span class="mf">100.0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)],</span>
+         <span class="p">[(</span><span class="n">x</span> <span class="o">/</span> <span class="mf">100.0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">4.0</span>
+          <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)],</span>
+         <span class="s1">&#39;g--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;linear-reg-4.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Việc thêm cột vào bảng như chúng ta đã làm được gọi là xây dựng thuộc tính (feature engineering). Chúng ta tạo ra một thuộc tính mới, hoặc cắt bỏ đi các thuộc tính đã có nhằm giúp cho mô hình của chúng ta khớp (fit) tốt hơn với dữ liệu, hoặc đạt được một số tính chất nào đó mà chúng ta cần. Công việc xây dựng thuộc tính rất phụ thuộc vào kinh nghiệm, và sự tinh tế của người làm. Nói trắng ra thì nó mang tính chất <em>mò</em> và <em>hên</em> rất nhiều.</p>
+</div>
+<div class="section" id="tom-tat">
+<h2>Tóm tắt</h2>
+<p>Bài viết này giới thiệu tổng quát về máy học, và xây dựng nên kỹ thuật hồi quy tuyến tính từ nền tảng. Kỹ thuật này đơn giản, nhưng rất phổ biến trong các phương pháp máy học. Ở bài viết kế tiếp, chúng ta sẽ nói kỹ hơn về kỹ thuật xuống dốc đã được sử dụng trong bài này.</p>
+</div>
+<script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+  </div>
+
+
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2018-04-07T13:58:00+07:00"><i class="fa fa-calendar"></i> Sat 07 April 2018</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="../../author/nguyen-thanh-nam.html" rel="author">Nguyễn Thành Nam</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <a href="../../category/bai-viet.html" rel="tag"
+                  data-toggle="tooltip" class="label label-info"
+                  title="45 articles in this category">Bài viết</a>
+            <a href="../../tag/linear-regression.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">linear regression</a>
+            <a href="../../tag/machine-learning.html" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">machine learning</a>
+      </p>
+      <hr/>
+
+
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://www.python.org/">
+      <i class="fa fa-link fa-fw"></i>
+    Python.org
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="../../authors.html"><i class="fa fa-user fa-fw"></i> Authors</a></li>
+                <li><a href="../../categories.html"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
+                <li><a href="../../archives.html"><i class="fa fa-calendar fa-fw"></i> Dates</a></li>
+                <li><a href="../../tags.html"><i class="fa fa-tag fa-fw"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          <p>&copy; 2007-2018 Nhóm PCNV.</p>
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="../../theme/js/jquery.mglass.js"></script>
+    <script src="../../theme/js/application.js"></script>
+
+  </body>
+</html>
