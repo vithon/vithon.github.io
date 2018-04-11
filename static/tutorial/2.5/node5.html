@@ -1,0 +1,981 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+<head>
+
+<link rel="STYLESHEET" href="tut.css" type="text/css" />
+
+<link rel="SHORTCUT ICON" href="../icons/pyfav.png" type="image/png" />
+
+<link rel="start" href="../index.html" title="Chỉ mục tài liệu Python" />
+
+<link rel="first" href="tut.html" title="Bài chỉ dẫn Python" />
+
+<link rel="contents" href="node2.html" title="Mục lục" />
+
+<link rel="index" href="node19.html" title="Chỉ mục" />
+
+<link rel="last" href="about.html" title="Về tài liệu này..." />
+
+<link rel="help" href="about.html" title="Về tài liệu này..." />
+
+<link rel="next" href="node6.html" />
+
+<link rel="prev" href="node4.html" />
+
+<link rel="parent" href="tut.html" />
+
+<link rel="next" href="node6.html" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="aesop" content="information" />
+
+<title>3. Giới thiệu sơ về Python </title>
+
+</head>
+
+<body>
+
+<div class="navigation">
+
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="2. Sử dụng trình thông dịch Python" href="node4.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="4. Bàn thêm về luồng điều khiển" href="node6.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node4.html">2. Sử dụng trình thông dịch Python</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node6.html">4. Bàn thêm về luồng điều khiển</a>
+
+</div>
+
+<hr /></div>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<div class="online-navigation">
+
+<!--Table of Child-Links-->
+
+<a name="CHILD_LINKS"><strong>Mục con</strong></a>
+
+<ul class="ChildLinks">
+
+<li><a href="node5.html#SECTION005100000000000000000">3.1 Dùng Python như là máy tính</a>
+
+<ul>
+
+<li><a href="node5.html#SECTION005110000000000000000">3.1.1 Số</a>
+
+</li><li><a href="node5.html#SECTION005120000000000000000">3.1.2 Chuỗi</a>
+
+</li><li><a href="node5.html#SECTION005130000000000000000">3.1.3 Chuỗi Unicode</a>
+
+</li><li><a href="node5.html#SECTION005140000000000000000">3.1.4 Danh sách</a>
+
+</li></ul>
+
+</li><li><a href="node5.html#SECTION005200000000000000000">3.2 Những bước đầu lập trình</a>
+
+</li></ul>
+
+<!--End of Table of Child-Links-->
+
+</div>
+
+<hr />
+
+<h1><a name="SECTION005000000000000000000"></a><a name="informal"></a>
+
+<br />
+3. Giới thiệu sơ về Python 
+</h1>
+
+<p>
+Trong ví dụ say, đầu vào và đầu ra được phân biệt bằng sự hiện diện của dấu nhắc ("<tt class="samp">&gt;&gt;&gt;&nbsp;</tt>" và "<tt class="samp">...&nbsp;</tt>"): để lặp lại ví tụ, bạn cần nhập vào mọi thứ sau dấu nhắc, khi dấu nhắc xuất hiện; các dòng không bắt đầu bằng một dấu nhắc là kết quả xuất từ trình thông dịch. Lưu ý rằng dấu nhắc thứ (secondary prompt) trên một dòng riêng nó có nghĩa là bạn phải nhận một dòng trống; dòng này dùng để kết thúc một lệnh nhiều dòng.
+
+</p><p>
+Nhiều ví dụ trong tài liệu này, ngay cả những ví dụ nhập từ dòng lệnh tương tác, có cả chú thích. Các chú thích trong Python bắt đầu bằng một dấu thăng, "<tt class="character">#</tt>", và kéo dài tới hết dòng. Một chú thích có thể xuất hiện ở đầu dòng, hoặc theo sau khoảng trắng hoặc mã, nhưng không phải trong một chuỗi. Một dấu thăng trong một chuỗi chỉ là một dấu thăng.
+
+</p><p>
+Một vài ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+# this is the first comment
+SPAM = 1                 # and this is the second comment
+                         # ... and now a third!
+STRING = "# This is not a comment."
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION005100000000000000000"></a><a name="calculator"></a>
+
+<br />
+3.1 Dùng Python như là máy tính 
+</h1>
+
+</p><p>
+Hãy thử một vài lệnh Python đơn giản. Khởi động trình thông dịch và chờ dấu nhắc chính, "<tt class="samp">&gt;&gt;&gt;&nbsp;</tt>". (Không lâu đâu.)
+
+</p><p>
+
+<h2><a name="SECTION005110000000000000000"></a><a name="numbers"></a>
+
+<br />
+3.1.1 Số 
+</h2>
+
+</p><p>
+Trình thông dịch đóng vài trò là một máy tính đơn giản: bạn nhập một biểu thức và nó sẽ trả về giá trị. Cú pháp biểu thức rất dễ hiểu: các toán tử <code>+</code>, <code>-</code>, <code>*</code> và
+<code>/</code> hoạt động như trong hầu hết các ngôn ngữ khác (ví dụ Pascal hay C); dấu ngoặc tròn dùng để gộp nhóm. Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; 2+2
+4
+&gt;&gt;&gt; # This is a comment
+... 2+2
+4
+&gt;&gt;&gt; 2+2  # and a comment on the same line as code
+4
+&gt;&gt;&gt; (50-5*6)/4
+5
+&gt;&gt;&gt; # Integer division returns the floor:
+... 7/3
+2
+&gt;&gt;&gt; 7/-3
+-3
+</pre></div>
+
+</p><p>
+Dấu bằng ("<tt class="character">=</tt>") được dùng để gán một giá trị vào một biến. Sau đó, không có giá trị nào được hiện ra trước dấu nhắc tương tác kế:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; width = 20
+&gt;&gt;&gt; height = 5*9
+&gt;&gt;&gt; width * height
+900
+</pre></div>
+
+</p><p>
+Một giá trị có thể được gán vào nhiều biến cùng một lúc:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; x = y = z = 0  # Zero x, y and z
+&gt;&gt;&gt; x
+0
+&gt;&gt;&gt; y
+0
+&gt;&gt;&gt; z
+0
+</pre></div>
+
+</p><p>
+Python hoàn toàn hỗ trợ dấu chấm động; các toán tử với các toán hạng khác kiểu chuyển toán hạng số nguyên thành dấu chấm động:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; 3 * 3.75 / 1.5
+7.5
+&gt;&gt;&gt; 7.0 / 2
+3.5
+</pre></div>
+
+</p><p>
+Số phức cũng được hỗ trợ; số ảo được viết với hậu tố "<tt class="samp">j</tt>" hoặc "<tt class="samp">J</tt>". Các số phức với phần thực khác không được viết "<tt class="samp">(<var>real</var>+<var>imag</var>j)</tt>", hoặc có thể được tạo ra với hàm "<tt class="samp">complex(<var>real</var>, <var>imag</var>)</tt>".
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; 1j * 1J
+(-1+0j)
+&gt;&gt;&gt; 1j * complex(0,1)
+(-1+0j)
+&gt;&gt;&gt; 3+1j*3
+(3+3j)
+&gt;&gt;&gt; (3+1j)*3
+(9+3j)
+&gt;&gt;&gt; (1+2j)/(1+1j)
+(1.5+0.5j)
+</pre></div>
+
+</p><p>
+Các số phức luôn được thể hiện bởi hai số chấm động, phần thực và phần ảo. Để lấy các phần từ một số phức <var>z</var>, dùng <code><var>z</var>.real</code> và <code><var>z</var>.imag</code>.  
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; a=1.5+0.5j
+&gt;&gt;&gt; a.real
+1.5
+&gt;&gt;&gt; a.imag
+0.5
+</pre></div>
+
+</p><p>
+Các hàm chuyển đổi từ chấm động sang số nguyên (<tt class="function">float()</tt>, <tt class="function">int()</tt> và <tt class="function">long()</tt>) không dùng được với số phức -- không có một cách chính xác nào để chuyển đổi một số phức thành một số thực. Dùng <code>abs(<var>z</var>)</code> để lấy độ lớn (magnitude) (như là một số chấm động) hoặc <code>z.real</code> để lấy phần thực.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; a=3.0+4.0j
+&gt;&gt;&gt; float(a)
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in ?
+TypeError: can't convert complex to float; use abs(z)
+&gt;&gt;&gt; a.real
+3.0
+&gt;&gt;&gt; a.imag
+4.0
+&gt;&gt;&gt; abs(a)  # sqrt(a.real**2 + a.imag**2)
+5.0
+&gt;&gt;&gt;
+</pre></div>
+
+</p><p>
+Trong chế độ tương tác, biểu thức được in ra cuối cùng được gán vào biến <code>_</code>. Khi bạn dùng Python như là máy tính, nó sẽ giúp bạn tiếp tục các phép tính dễ hơn, ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; tax = 12.5 / 100
+&gt;&gt;&gt; price = 100.50
+&gt;&gt;&gt; price * tax
+12.5625
+&gt;&gt;&gt; price + _
+113.0625
+&gt;&gt;&gt; round(_, 2)
+113.06
+&gt;&gt;&gt;
+</pre></div>
+
+</p><p>
+Biến này nên được coi là chỉ đọc từ phía người dùng. Không nên gán một giá trị vào biến này trực tiếp -- bạn sẽ tạo một biến cục bộ riêng với cùng tên, che đi biến có sẵn với cách thức (behavior) diệu kỳ của nó.
+
+</p><p>
+
+<h2><a name="SECTION005120000000000000000"></a><a name="strings"></a>
+
+<br />
+3.1.2 Chuỗi 
+</h2>
+
+</p><p>
+Ngoài số, Python còn làm việc được với chuỗi, có thể được biểu hiện theo nhiều cách. Chúng có thể được kẹp trong dấu nháy đơn, đôi:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; 'spam eggs'
+'spam eggs'
+&gt;&gt;&gt; 'doesn\'t'
+"doesn't"
+&gt;&gt;&gt; "doesn't"
+"doesn't"
+&gt;&gt;&gt; '"Yes," he said.'
+'"Yes," he said.'
+&gt;&gt;&gt; "\"Yes,\" he said."
+'"Yes," he said.'
+&gt;&gt;&gt; '"Isn\'t," she said.'
+'"Isn\'t," she said.'
+</pre></div>
+
+</p><p>
+Các chuỗi có thể phủ nhiều dòng theo nhiều cách. Các dòng tiếp tục (continuation line) có thể được dùng, với một dấu suỵt huyền là ký tự cuối cùng trên một dòng cho biết rằng dòng kế là sự nối tiếp của dòng này:
+
+</p><p>
+
+<div class="verbatim"><pre>
+hello = "This is a rather long string containing\n\
+several lines of text just as you would do in C.\n\
+    Note that whitespace at the beginning of the line is\
+ significant."
+
+print hello
+</pre></div>
+
+</p><p>
+Lưu ý rằng các dòng mới vẫn cần được chèn trong chuỗi với
+<code>\n</code>; ký tự dòng mới theo sau dấu suỵt huyền sẽ bị bỏ qua. Ví dụ này sẽ in ra:
+
+</p><p>
+
+<div class="verbatim"><pre>
+This is a rather long string containing
+several lines of text just as you would do in C.
+    Note that whitespace at the beginning of the line is significant.
+</pre></div>
+
+</p><p>
+Tuy nhiên, nếu ta làm cho chuỗi trực tiếp thành chuỗi ``thô'', các dãy
+<code>\n</code> sẽ không được chuyển thành các dòng mới, nhưng dấu suỵt huyền ở cuối dòng, và ký tự dòng mới trong nguồn, sẽ đều được thêm vào trong chuỗi như dữ liệu. Cho nên, ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+hello = r"This is a rather long string containing\n\
+several lines of text much as you would do in C."
+
+print hello
+</pre></div>
+
+</p><p>
+sẽ in:
+
+</p><p>
+
+<div class="verbatim"><pre>
+This is a rather long string containing\n\
+several lines of text much as you would do in C.
+</pre></div>
+
+</p><p>
+Hoặc, các chuỗi có thể được vây quanh trong một cặp nháy ba:
+<code>"""</code> hoặc <code>'</code><code>'</code>'. Cuỗi mỗi dòng không cần thêm dấu suỵt huyền khi dùng nháy ba, và chúng sẽ có mặt trong chuỗi.
+
+</p><p>
+
+<div class="verbatim"><pre>
+print """
+Usage: thingy [OPTIONS] 
+     -h                        Display this usage message
+     -H hostname               Hostname to connect to
+"""
+</pre></div>
+
+</p><p>
+xuất ra:
+
+</p><p>
+
+<div class="verbatim"><pre>
+Usage: thingy [OPTIONS] 
+     -h                        Display this usage message
+     -H hostname               Hostname to connect to
+</pre></div>
+
+</p><p>
+Trình thông dịch in ra kết quả của các tác vụ chuỗi theo cùng cách như khi chúng được nhập vào: trong dấu nháy, và với các ký tự dấu nháy hay đặc biệt khác được thoát nghĩa (escape) bằng dấu suỵt huyền, để hiện giá trị thực. Chuỗi được kèm trong dấu nháy đôi nếu chuỗi chứa một dấu nháy đơn và không chứa dấu nháy đôi, ngoài ra nó sẽ được chứa trong các dấu nháy đơn. (Câu lệnh <tt class="keyword">print</tt> , được giải thích sau, có thể dùng để viết các chuỗi không có dấu nháy hoặc thoát nghĩa.)
+
+</p><p>
+Các chuỗi có thể được nối với nhau với toán tử
+<code>+</code> , và được lặp lại với <code>*</code>:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; word = 'Help' + 'A'
+&gt;&gt;&gt; word
+'HelpA'
+&gt;&gt;&gt; '&lt;' + word*5 + '&gt;'
+'&lt;HelpAHelpAHelpAHelpAHelpA&gt;'
+</pre></div>
+
+</p><p>
+Hai chuỗi trực tiếp kế nhau được tự động nối với nhau; dòng đầu tiên bên trên có thể được biết "<tt class="samp">word = 'Help'
+'A'</tt>"; việc này chỉ có tác dụng với hai chuỗi trực tiếp (string literal), không có tác dụng với các biểu thức chuỗi bất kỳ khác:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; 'str' 'ing'                   #  &lt;-  This is ok
+'string'
+&gt;&gt;&gt; 'str'.strip() + 'ing'   #  &lt;-  This is ok
+'string'
+&gt;&gt;&gt; 'str'.strip() 'ing'     #  &lt;-  This is invalid
+  File "&lt;stdin&gt;", line 1, in ?
+    'str'.strip() 'ing'
+                      ^
+SyntaxError: invalid syntax
+</pre></div>
+
+</p><p>
+Các chuỗi có thể được chỉ mục (subscript hoặc index); như trong C, ký tự đầu tiên của một chuỗi có chỉ mục 0. Không có kiểu ký tự riêng; một ký tự chỉ đơn giản là một chuỗi có độ dài là một. Như trong Icon, chuỗi con có thể được chỉ định theo <em>cách viết cắt lát (slice notation)</em>: hai chỉ mục phân cách bởi một dấu hai chấm.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; word[4]
+'A'
+&gt;&gt;&gt; word[0:2]
+'He'
+&gt;&gt;&gt; word[2:4]
+'lp'
+</pre></div>
+
+</p><p>
+Các chỉ mục cắt lát có giá trị mặc định hữu dụng; chỉ mục đầu tiên có giá trị mặc định là không, chỉ mục thứ hai mặc định là kích thước của chuỗi đang bị cắt.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; word[:2]    # The first two characters
+'He'
+&gt;&gt;&gt; word[2:]    # Everything except the first two characters
+'lpA'
+</pre></div>
+
+</p><p>
+Không như C, các chuỗi Python không thể bị thay đổi. Phép gán vào một vị trí chỉ mục trong một chuỗi sẽ gây ra lỗi:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; word[0] = 'x'
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in ?
+TypeError: object doesn't support item assignment
+&gt;&gt;&gt; word[:1] = 'Splat'
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in ?
+TypeError: object doesn't support slice assignment
+</pre></div>
+
+</p><p>
+Tuy nhiên, việc tạo một chuỗi với nội dung gộp chung cũng dễ và hiệu quả:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; 'x' + word[1:]
+'xelpA'
+&gt;&gt;&gt; 'Splat' + word[4]
+'SplatA'
+</pre></div>
+
+</p><p>
+Đây là một tính chất bất biến hữu dụng khác của tác vụ cắt lát:
+<code>s[:i] + s[i:]</code> bằng <code>s</code>.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; word[:2] + word[2:]
+'HelpA'
+&gt;&gt;&gt; word[:3] + word[3:]
+'HelpA'
+</pre></div>
+
+</p><p>
+Các chỉ mục cắt lát giảm sinh (degenerate) được xử lý rất khéo: một chỉ mục quá lớn sẽ được thay bằng kích thước chuỗi, một giới hạn trên nhỏ hơn giới hạn dưới trả về một chuỗi rỗng.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; word[1:100]
+'elpA'
+&gt;&gt;&gt; word[10:]
+''
+&gt;&gt;&gt; word[2:1]
+''
+</pre></div>
+
+</p><p>
+Các chỉ mục có thể là số âm, để bắt đầu đếm từ bên phải. Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; word[-1]     # The last character
+'A'
+&gt;&gt;&gt; word[-2]     # The last-but-one character
+'p'
+&gt;&gt;&gt; word[-2:]    # The last two characters
+'pA'
+&gt;&gt;&gt; word[:-2]    # Everything except the last two characters
+'Hel'
+</pre></div>
+
+</p><p>
+Nhưng lưu ý rằng <code>-0</code> thật ra cũng là <code>0</code>, cho nên nó không bắt đầu đếm từ bên phải!
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; word[-0]     # (since -0 equals 0)
+'H'
+</pre></div>
+
+</p><p>
+Các chỉ mục cắt lát âm ngoài phạm vi thì bị thu ngắn, nhưng đừng thử kiểu này với các chỉ mục một phần từ (không phải cắt lát):
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; word[-100:]
+'HelpA'
+&gt;&gt;&gt; word[-10]    # error
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in ?
+IndexError: string index out of range
+</pre></div>
+
+</p><p>
+Cách tốt nhất để nhớ hoạt động của cắt lát là nghĩ về các chỉ mục như đang trỏ vào <em>giữa</em> các ký tự, với cạnh trái của ký tự đầu tiên là 0. Sau đó cạnh phải của ký tự cuối cùng của một chuỗi của <var>n</var> ký tự có chỉ mục <var>n</var>, ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+ +---+---+---+---+---+ 
+ | H | e | l | p | A |
+ +---+---+---+---+---+ 
+ 0   1   2   3   4   5 
+-5  -4  -3  -2  -1
+</pre></div>
+
+</p><p>
+Các số hàng đầu cho biết vị trí của các chỉ mục 0...5 trong chuỗi; dòng thứ hai cho biết các chỉ mục âm tương ứng. Một lát từ <var>i</var> tới <var>j</var> chứa toàn bộ các ký tự giữa các cạnh đánh số <var>i</var> và <var>j</var>tương ứng.
+
+</p><p>
+Với các chỉ mục không âm, chiều dài của lát là hiệu của các chỉ mục, nếu cả hai đều trong giới hạn. Ví dụ, độ dài của
+<code>word[1:3]</code> là 2.
+
+</p><p>
+Hàm có sẵn <tt class="function">len()</tt> trả về độ dài của một chuỗi:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; s = 'supercalifragilisticexpialidocious'
+&gt;&gt;&gt; len(s)
+34
+</pre></div>
+
+</p><p>
+
+<div class="seealso">
+
+<p class="heading">Xem thêm:</p>
+
+<dl compact="compact" class="seetitle">
+
+<dt><em class="citetitle"><a href="../lib/typesseq.html">Các kiểu dãy</a></em></dt>
+
+<dd>Chuỗi, và các chuỗi Unicode được nhắc đến trong mục kế, là ví dụ của <em>các kiểu dãy</em>, và hỗ trợ các tác vụ chung được hỗ trợ bởi các kiểu đó.</dd>
+
+</dl>
+
+<dl compact="compact" class="seetitle">
+
+<dt><em class="citetitle"><a href="../lib/string-methods.html">Các phương thức chuỗi</a></em></dt>
+
+<dd>Cả chuỗi và chuỗi Unicode hỗ trợ một số lớn các phương thức nhằm vào chuyển đổi (transform) và tìm kiếm.</dd>
+
+</dl>
+
+<dl compact="compact" class="seetitle">
+
+<dt><em class="citetitle"><a href="../lib/typesseq-strings.html">Các tác vụ định dạng chuỗi</a></em></dt>
+
+<dd>Các tác vụ định dạng chuỗi được gọi khi các chuỗi và chuỗi Unicode là toán hạng bên trái của toán tử <code>%</code> được bàn đến chi tiết hơn ở đây.</dd>
+
+</dl>
+
+</div>
+
+</p><p>
+
+<h2><a name="SECTION005130000000000000000"></a><a name="unicodeStrings"></a>
+
+<br />
+3.1.3 Chuỗi Unicode 
+</h2>
+
+</p><p>
+Bắt đầu với Python 2.0, một kiểu dữ liệu mới để chứa dữ liệu văn bản được cung cấp cho nhà lập trình: đối tượng Unicode. Nó có thể được dùng để chứa và thay đổi dữ liệu Unicode (xem <a class="url" href="http://www.unicode.org/">http://www.unicode.org/</a>) và tích hợp tốt với các đối tượng chuỗi đã có, bằng việc tự chuyển đổi khi cần.
+
+</p><p>
+Unicode có lợi điểm là cung cấp một số thứ tự (ordinal) cho mọi ký tự trong các bản thảo dùng trong các văn bản xưa và nay. Trước kia, chỉ có 256 số thứ tự cho các ký tự bản thảo. Các văn bản xưa bị giới hạn vào một trang mã (code page) dùng để ánh xạ các số vào các ký tự bản thảo. Điều này dẫn đến nhiều lẫn lộn đặc biệt là trong ngữ cảnh quốc tế hóa (internationalization, hay được viết tắt là "<tt class="samp">i18n</tt>" -- "<tt class="character">i</tt>" + 18 ký tự + "<tt class="character">n</tt>") phần mềm. Unicode giải quyết các vấn đề này bằng các định nghĩa một trang mã cho mọi bản thảo.
+
+</p><p>
+Tạo một chuỗi Unicode trong Python dễ như tạo một chuỗi thường:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; u'Hello World !'
+u'Hello World !'
+</pre></div>
+
+</p><p>
+Ký tự "<tt class="character">u</tt>" đằng trước dấu nháy cho biết đây là một chuỗi Unicode cần được tạo. Nếu bạn muốn thêm các ký tự đặc biệt trong chuỗi, bạn có thể làm vậy bằng cách viết thoát nghĩa
+<em>Unicode-Escape</em> của Python. Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; u'Hello\u0020World !'
+u'Hello World !'
+</pre></div>
+
+</p><p>
+Dãy thoát nghĩa <code>\u0020</code> cho biết chèn một ký tự Unicode với thứ tự 0x0020 (ký tự khoảng trắng) vào một vị trí đã định.
+
+</p><p>
+Các ký tự khác được thông dịch theo thứ tự tương ứng của chúng như là thứ tự Unicode. Nếu bạn có các chuỗi trực tiếp trong bảng mã Latin-1 chuẩn được dùng ở nhiều nước phương Tây, bạn sẽ thấy rằng 256 ký tự đầu của bảng mã Unicode giống như 256 ký tự của Latin-1.
+
+</p><p>
+Cho các chuyên gia, Python cũng hỗ trợ các chuỗi Unicode thô. Bạn phải dùng tiền tố '<code>ur</code>' để bảo Python dùng bảng mã <em>thoát-nghĩa-Unicode-thô (Raw-Unicode-Escape)</em> . Nó sẽ chỉ áp dụng phép chuyển đổi <code>\uXXXX</code> bên trên nếu có một số lẻ các dấu suỵt huyền phía trước ký tự '<code>u</code>' nhỏ.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; ur'Hello\u0020World !'
+u'Hello World !'
+&gt;&gt;&gt; ur'Hello\\u0020World !'
+u'Hello\\\\u0020World !'
+</pre></div>
+
+</p><p>
+Chế độ thô sẽ hữu dụng trong trường hợp bạn phải nhập thật nhiều dấu suỵt huyền, như khi bạn dùng trong các biểu thức chính quy (regular expression).
+
+</p><p>
+Ngoài những bảng mã chuẩn này, Python cung cấp một tập hợp các cách khác để tạo các chuỗi Unicode từ một bảng mã đã biết. 
+
+</p><p>
+Hàm có sẵn <tt class="function">unicode()</tt><a id="l2h-3" xml:id="l2h-3"></a> cung cấp truy cập vào tất cả bộ mã/giải mã (codec - COder and DECoder) Unicode đã đăng ký. Một vài bảng mã phổ thông mà các bộ chuyển mã này có thể chuyển gồm
+<em>Latin-1</em>, <em>ASCII</em>, <em>UTF-8</em>, và <em>UTF-16</em>. Hai bảng mã sau cùng là các bảng mã có kích thước thay đổi và chứa mỗi ký tự Unicode trong một hoặc nhiều byte. Bảng mã mặc định thường được thiết lập là ASCII, nó cho phép các ký tự từ 0 tới 127 và cấm các ký tự khác. Khi một chuỗi Unicode được in, viết vào tập tin, hoặc chuyển với <tt class="function">str()</tt>, sự chuyển đổi diễn ra với bảng mã mặc định này.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; u"abc"
+u'abc'
+&gt;&gt;&gt; str(u"abc")
+'abc'
+&gt;&gt;&gt; u"äöü"
+u'\xe4\xf6\xfc'
+&gt;&gt;&gt; str(u"äöü")
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in ?
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-2: ordinal not in range(128)
+</pre></div>
+
+</p><p>
+Để chuyển một chuỗi Unicode thành một chuỗi 8-bit bằng một bảng mã nào đó, các đối tượng Unicode cung cấp một phương thức <tt class="function">encode()</tt> nhận một thông số, tên của bảng mã. Bạn nên dùng tên bảng mã viết thường.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; u"äöü".encode('utf-8')
+'\xc3\xa4\xc3\xb6\xc3\xbc'
+</pre></div>
+
+</p><p>
+Nếu bạn có dữ liệu trong một bảng mã nào đó và muốn tạo ra một chuỗi Unicode tương ứng từ nó, bạn có thể dùng hàm
+<tt class="function">unicode()</tt> với tên bảng mã là thông số thứ hai.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; unicode('\xc3\xa4\xc3\xb6\xc3\xbc', 'utf-8')
+u'\xe4\xf6\xfc'
+</pre></div>
+
+</p><p>
+
+<h2><a name="SECTION005140000000000000000"></a><a name="lists"></a>
+
+<br />
+3.1.4 Danh sách 
+</h2>
+
+</p><p>
+Python biết một số kiểu dữ liệu <em>gộp (compound)</em> , dùng để nhóm các giá trị với nhau. Kiểu linh hoạt nhất là <em>danh sách (list)</em>, có thể được viết như là một danh sách các giá trị phân cách bởi dấu phẩy ở giữa ngoặc vuông.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; a = ['spam', 'eggs', 100, 1234]
+&gt;&gt;&gt; a
+['spam', 'eggs', 100, 1234]
+</pre></div>
+
+</p><p>
+Cũng như các chỉ mục chuỗi, chỉ mục danh sách bắt đầu từ 0, và danh sách có thể được cắt lát, gộm và vân vân:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; a[0]
+'spam'
+&gt;&gt;&gt; a[3]
+1234
+&gt;&gt;&gt; a[-2]
+100
+&gt;&gt;&gt; a[1:-1]
+['eggs', 100]
+&gt;&gt;&gt; a[:2] + ['bacon', 2*2]
+['spam', 'eggs', 'bacon', 4]
+&gt;&gt;&gt; 3*a[:3] + ['Boo!']
+['spam', 'eggs', 100, 'spam', 'eggs', 100, 'spam', 'eggs', 100, 'Boo!']
+</pre></div>
+
+</p><p>
+Không như chuỗi, là những đối tượng <em>immutable (bất biến, không thể thay đổi)</em>, ta có thể thay đổi các phần tử của một danh sách:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; a
+['spam', 'eggs', 100, 1234]
+&gt;&gt;&gt; a[2] = a[2] + 23
+&gt;&gt;&gt; a
+['spam', 'eggs', 123, 1234]
+</pre></div>
+
+</p><p>
+Gán vào các cắt lát cũng có thể làm được, và nó có thể thay đổi kích thước của danh sách hoặc xóa sách nó.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; # Replace some items:
+... a[0:2] = [1, 12]
+&gt;&gt;&gt; a
+[1, 12, 123, 1234]
+&gt;&gt;&gt; # Remove some:
+... a[0:2] = []
+&gt;&gt;&gt; a
+[123, 1234]
+&gt;&gt;&gt; # Insert some:
+... a[1:1] = ['bletch', 'xyzzy']
+&gt;&gt;&gt; a
+[123, 'bletch', 'xyzzy', 1234]
+&gt;&gt;&gt; # Insert (a copy of) itself at the beginning
+&gt;&gt;&gt; a[:0] = a
+&gt;&gt;&gt; a
+[123, 'bletch', 'xyzzy', 1234, 123, 'bletch', 'xyzzy', 1234]
+&gt;&gt;&gt; # Clear the list: replace all items with an empty list
+&gt;&gt;&gt; a[:] = []
+&gt;&gt;&gt; a
+[]
+</pre></div>
+
+</p><p>
+Hàm có sẵn <tt class="function">len()</tt> cũng áp dụng vào danh sách:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; len(a)
+8
+</pre></div>
+
+</p><p>
+Có thể lồng các danh sách (tạo danh sách chứa các danh sách khác), ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; q = [2, 3]
+&gt;&gt;&gt; p = [1, q, 4]
+&gt;&gt;&gt; len(p)
+3
+&gt;&gt;&gt; p[1]
+[2, 3]
+&gt;&gt;&gt; p[1][0]
+2
+&gt;&gt;&gt; p[1].append('xtra')     # See section 5.1
+&gt;&gt;&gt; p
+[1, [2, 3, 'xtra'], 4]
+&gt;&gt;&gt; q
+[2, 3, 'xtra']
+</pre></div>
+
+</p><p>
+Lưu ý trong ví dụ, <code>p[1]</code> và <code>q</code> thật ra chỉ tới cùng đối tượng! Chúng ta sẽ nói về <em>nghĩa của đối tượng (object semantics)</em> trong các chương sau.
+
+</p><p>
+
+<h1><a name="SECTION005200000000000000000"></a><a name="firstSteps"></a>
+
+<br />
+3.2 Những bước đầu lập trình 
+</h1>
+
+</p><p>
+Dĩ nhiên, chúng ta có dùng Python cho các tác vụ phức tạp khác. Ví dụ ta có thể viết một dãy con ban đầu của dãy <em>Fibonacci</em> như sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; # Fibonacci series:
+... # the sum of two elements defines the next
+... a, b = 0, 1
+&gt;&gt;&gt; while b &lt; 10:
+...       print b
+...       a, b = b, a+b
+... 
+1
+1
+2
+3
+5
+8
+</pre></div>
+
+</p><p>
+Ví dụ này giới thiệu một vài tính năng mới.
+
+</p><p>
+
+<ul>
+
+<li>Dòng đầu tiên chứa một <em>phép gán đa biến (multiple assignment)</em>: các biến
+<code>a</code> và <code>b</code> đồng loạt nhận giá trị mới 0 và 1. Trong dòng cuối nó được dùng một lần nữa, cho thấy rằng các biểu thức ở phía phải được xác định trước khi bất kỳ phép gán nào được thực hiện. Các biểu thức phía phải được định giá từ trái qua phải.
+
+<p>
+
+</p></li>
+
+<li>Vòng lặp <tt class="keyword">while</tt> thực thi miễn là điều kiện (ở đây:
+<code>b &lt; 10</code>) vẫn là đúng (true). Trong Python, như C, mọi giá trị số nguyên khác không là đúng; không là sai (false). Điều kiện cũng có thể là danh sách, chuỗi, hoặc bất kỳ kiểu dãy nào; chiều dài khác không là đúng, dãy rỗng là sai. Phép so sánh dùng trong ví dụ là một phép so sánh đơn giản. Các toán tử so sanh chuẩn được viết như trong C: <code>&lt;</code> (nhỏ hơn), <code>&gt;</code> (lớn hơn),
+<code>==</code> (bằng), <code>&lt;=</code> (nhỏ hơn hoặc bằng),
+<code>&gt;=</code> (lớn hơn hoặc bằng) và <code>!=</code> (không bằng).
+
+<p>
+
+</p></li>
+
+<li>Vòng lặp <em>Thân</em> vòng lặp được <em>thụt vào</em>: các thục vào là cách của Python để nhóm các câu lệnh. Python không (chưa) cung cấp một công cụ soạn thảo dòng nhập thông minh, cho nên bạn phải nhập vào một tab hoặc khoảng trắng cho mỗi dòng thụt vào. Trong thực tế, bạn sẽ chuẩn bị đầu vào phức tạp hơn cho Python với một trình soạn thảo; đa số chúng đều có chức năng tự động thụt vào. Khi một câu lệnh ghép (compound statement) được nhập vào một cách tương tác, nó phải được theo sau bởi một dòng trống để chỉ ra sự kết thúc (vì bộ phân tích không thể khi nào bạn nhập dòng cuối). Lưu ý rằng mỗi dòng của một khối phải được thụt vào như nhau.
+
+<p>
+
+</p></li>
+
+<li>Vòng lặp <tt class="keyword">print</tt> (câu lệnh) viết ra giá trị của biểu thức nó được cung cấp. Nó khác với việc chỉ viết các biểu thức bạn muốn viết (như chúng ta đã làm trong các ví dụ máy tính trước) trong việc xử lý nhiều biểu thức và chuỗi. Các chuỗi được in ra không có dấu nháy, và một khoảng trắng được chèn vào giữa các phần tử, để bạn có thể định dạng chúng đẹp hơn, ví dụ:
+
+<p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; i = 256*256
+&gt;&gt;&gt; print 'The value of i is', i
+The value of i is 65536
+</pre></div>
+
+</p><p>
+Dấu phẩy sau cùng tránh dòng mới sau khi xuất:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; a, b = 0, 1
+&gt;&gt;&gt; while b &lt; 1000:
+...     print b,
+...     a, b = b, a+b
+... 
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+</pre></div>
+
+</p><p>
+Lưu ý rằng trình thông dịch chèn một dòng mới trước khi nó in ra dấu nhắc kế nếu dòng trước chưa xong.
+
+</p><p>
+
+</p></li>
+
+</ul>
+
+</p><p>
+
+<div class="navigation">
+
+<div class="online-navigation">
+
+<p></p><hr />
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="2. Sử dụng trình thông dịch Python" href="node4.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="4. Bàn thêm về luồng điều khiển" href="node6.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node4.html">2. Sử dụng trình thông dịch Python</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node6.html">4. Bàn thêm về luồng điều khiển</a>
+
+</div>
+
+</div>
+
+<hr />
+
+<span class="release-info">Phiên bản 2.5, tài liệu được cập nhật ngày 19, tháng 09, năm 2006.</span>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<address>
+Xem <i><a href="about.html">Về tài liệu này...</a></i> về cách đề nghị thay đổi.
+</address>
+
+</p></body>
+
+</html>
+

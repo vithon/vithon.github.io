@@ -1,0 +1,536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+<head>
+
+<link rel="STYLESHEET" href="tut.css" type="text/css" />
+
+<link rel="SHORTCUT ICON" href="../icons/pyfav.png" type="image/png" />
+
+<link rel="start" href="../index.html" title="Chỉ mục tài liệu Python" />
+
+<link rel="first" href="tut.html" title="Bài chỉ dẫn Python" />
+
+<link rel="contents" href="node2.html" title="Mục lục" />
+
+<link rel="index" href="node19.html" title="Chỉ mục" />
+
+<link rel="last" href="about.html" title="Về tài liệu này..." />
+
+<link rel="help" href="about.html" title="Về tài liệu này..." />
+
+<link rel="next" href="node10.html" />
+
+<link rel="prev" href="node8.html" />
+
+<link rel="parent" href="tut.html" />
+
+<link rel="next" href="node10.html" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="aesop" content="information" />
+
+<title>7. Vào và ra </title>
+
+</head>
+
+<body>
+
+<div class="navigation">
+
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="6. Mô-đun" href="node8.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="8. Lỗi và biệt lệ" href="node10.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node8.html">6. Mô-đun</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node10.html">8. Lỗi và biệt lệ</a>
+
+</div>
+
+<hr /></div>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<div class="online-navigation">
+
+<!--Table of Child-Links-->
+
+<a name="CHILD_LINKS"><strong>Mục con</strong></a>
+
+<ul class="ChildLinks">
+
+<li><a href="node9.html#SECTION009100000000000000000">7.1 Định dạng ra đẹp hơn</a>
+
+</li><li><a href="node9.html#SECTION009200000000000000000">7.2 Đọc và viết tập tin</a>
+
+<ul>
+
+<li><a href="node9.html#SECTION009210000000000000000">7.2.1 Phương thức của đối tượng tập tin</a>
+
+</li><li><a href="node9.html#SECTION009220000000000000000">7.2.2 <tt class="module">pickle</tt> mô-đun</a>
+
+</li></ul></li></ul>
+
+<!--End of Table of Child-Links-->
+
+</div>
+
+<hr />
+
+<h1><a name="SECTION009000000000000000000"></a><a name="io"></a>
+
+<br />
+7. Vào và ra 
+</h1>
+
+<p>
+Có nhiều các để thể hiện đầu ra của một chương trình; dữ liệu có thể được in ra ở dạng người đọc được, hoặc viết vào một tập tin để dùng sau này. Chương này sẽ bàn về một vài khả năng đó.
+
+</p><p>
+
+<h1><a name="SECTION009100000000000000000"></a><a name="formatting"></a>
+
+<br />
+7.1 Định dạng ra đẹp hơn 
+</h1>
+
+</p><p>
+Chúng ta đã gặp hai cách để viết giá trị: câu lệnh biểu thức <em>và</em> câu lệnh <tt class="keyword">print</tt> . (Cách thứ ba là dùng phương thức <tt class="method">write()</tt> của đối tượng tập tin; tập tin đầu ra chuẩn có thể được tham chiếu tới theo <code>sys.stdout</code>. Xem Tham khảo thư viện Python để biết thêm chi tiết.)
+
+</p><p>
+Thông thường bạn sẽ muốn điều khiển cách định dạng đầu ra của bạn nhiều hơn là chỉ đơn giản là in các giá trị phân cách bởi khoảng trắng. Có hai cách để định dạng đầu ra của bạn; cách thứ nhất là bạn tự xử lý các chuỗi; dùng phép cắt miếng của chuỗi và phép ghép chuỗi bạn có thể tạo bất kỳ bố cục nào bạn có thể nghĩ ra. Mô-đun chuẩn
+<tt class="module">string</tt><a id="l2h-29" xml:id="l2h-29"></a> chứa một vài công cụ để đệm chuỗi khít vào chiều ngang cột; chúng ta sẽ xem xét nó lát nữa. Cách thứ hai là dùng toán tử <code>%</code> với một chuỗi là thông số bên trái. Toán tử <code>%</code> thông dịch thông số trái như là một chuỗi định dạng kiểu <tt class="cfunction">sprintf()</tt> (như trong C) để áp dụng vào thông số bên phải; và trả về một chuỗi từ tác vụ định dạng này.
+
+</p><p>
+Một câu hỏi vẫn còn đó: làm sao để chuyển giá trị thành chuỗi? May mắn thay Python có một cách để chuyển bất kỳ giá trị nào thành chuỗi: truyền nó vào hàm <tt class="function">repr()</tt>  hay hàm <tt class="function">str()</tt> . Dấu nháy ngược (<code>``</code>) tương đương với <tt class="function">repr()</tt>, nhưng chúng không còn được dùng trong mã Python mới, và rất có thể sẽ không còn trong các phiên bản ngôn ngữ sau này.
+
+</p><p>
+  <tt class="function">str()</tt> nhằm để trả về cách thể hiện giá trị một cách dễ đọc, trong khi <tt class="function">repr()</tt> nhằm để tạo cách thể hiện mà trình thông dịch có thể đọc (hoặc sẽ sinh lỗi <tt class="exception">SyntaxError</tt> nếu không có cú pháp tương đương). Đối với các đối tượng không có cách thể hiện cho người đọc, <tt class="function">str()</tt> sẽ trả về cùng giá trị như
+<tt class="function">repr()</tt>. Nhiều giá trị, ví dụ như số, hoặc cấu trúc như danh sách và từ điển, có cùng cách thể hiện với cả hai hàm này. Riêng chuỗi và số chấm động có hai cách thể hiện khác biệt.
+
+</p><p>
+Một vài ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; s = 'Hello, world.'
+&gt;&gt;&gt; str(s)
+'Hello, world.'
+&gt;&gt;&gt; repr(s)
+"'Hello, world.'"
+&gt;&gt;&gt; str(0.1)
+'0.1'
+&gt;&gt;&gt; repr(0.1)
+'0.10000000000000001'
+&gt;&gt;&gt; x = 10 * 3.25
+&gt;&gt;&gt; y = 200 * 200
+&gt;&gt;&gt; s = 'The value of x is ' + repr(x) + ', and y is ' + repr(y) + '...'
+&gt;&gt;&gt; print s
+The value of x is 32.5, and y is 40000...
+&gt;&gt;&gt; # The repr() of a string adds string quotes and backslashes:
+... hello = 'hello, world\n'
+&gt;&gt;&gt; hellos = repr(hello)
+&gt;&gt;&gt; print hellos
+'hello, world\n'
+&gt;&gt;&gt; # The argument to repr() may be any Python object:
+... repr((x, y, ('spam', 'eggs')))
+"(32.5, 40000, ('spam', 'eggs'))"
+&gt;&gt;&gt; # reverse quotes are convenient in interactive sessions:
+... `x, y, ('spam', 'eggs')`
+"(32.5, 40000, ('spam', 'eggs'))"
+</pre></div>
+
+</p><p>
+Đây là hai cách để viết một bảng bình phương và lập phương:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; for x in range(1, 11):
+...     print repr(x).rjust(2), repr(x*x).rjust(3),
+...     # Note trailing comma on previous line
+...     print repr(x*x*x).rjust(4)
+...
+ 1   1    1
+ 2   4    8
+ 3   9   27
+ 4  16   64
+ 5  25  125
+ 6  36  216
+ 7  49  343
+ 8  64  512
+ 9  81  729
+10 100 1000
+&gt;&gt;&gt; for x in range(1,11):
+...     print '%2d %3d %4d' % (x, x*x, x*x*x)
+... 
+ 1   1    1
+ 2   4    8
+ 3   9   27
+ 4  16   64
+ 5  25  125
+ 6  36  216
+ 7  49  343
+ 8  64  512
+ 9  81  729
+10 100 1000
+</pre></div>
+
+</p><p>
+(Chú ý một khoảng trắng được thêm vào giữa các cột theo cách hoạt động của
+<tt class="keyword">print</tt> : nó luôn luôn thêm khoảng trắng giữa các thông số.)
+
+</p><p>
+Ví dụ này biểu diễn phương thức <tt class="method">rjust()</tt> của các đối tượng chuỗi, nó canh phải một chuỗi vào trong trường với độ rộng xác định bằng cách thêm khoảng trống vào bên trái. Các phương thức tương tự khác gồm
+<tt class="method">ljust()</tt> và <tt class="method">center()</tt>. Các phương thức này không viết gì cả, chúng chỉ trả về một chuỗi mới. Nếu chuỗi nhập vào quá dài, chúng cũng không cắt nó đi, mà trả về nó nguyên vẹn; điều này thường sẽ phá hỏng bố cục của bạn, nhưng vẫn tốt hơn là nói dối về một giá trị. (Nếu bạn thật sự muốn cắt bỏ bạn có thể thêm phép cắt miếng, như "<tt class="samp">x.ljust(n)[:n]</tt>".)
+
+</p><p>
+Có một phương thức khác, <tt class="method">zfill()</tt>, nó đệm không vào bên trái một chuỗi số. Nó hiểu các dấu cộng và trừ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; '12'.zfill(5)
+'00012'
+&gt;&gt;&gt; '-3.14'.zfill(7)
+'-003.14'
+&gt;&gt;&gt; '3.14159265359'.zfill(5)
+'3.14159265359'
+</pre></div>
+
+</p><p>
+Dùng toán tử <code>%</code> sẽ giống như vậy:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; import math
+&gt;&gt;&gt; print 'The value of PI is approximately %5.3f.' % math.pi
+The value of PI is approximately 3.142.
+</pre></div>
+
+</p><p>
+Nếu có nhiều hơn một định dạng trong chuỗi, bạn cần truyền một bộ ở toán hạng bên phải, như trong ví dụ này:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 7678}
+&gt;&gt;&gt; for name, phone in table.items():
+...     print '%-10s ==&gt; %10d' % (name, phone)
+... 
+Jack       ==&gt;       4098
+Dcab       ==&gt;       7678
+Sjoerd     ==&gt;       4127
+</pre></div>
+
+</p><p>
+Hầu hết các định dạng hoạt động như trong C và yêu cầu bạn truyền kiểu thích hợp; nếu không, bạn sẽ nhận biệt lệ thay vì đổ nhân (core dump). Định dạng <code>%s</code> dễ dãi hơn: nếu thông số tương ứng không phải là một đối tượng chuỗi, nó sẽ được chuyển thành chuỗi qua hàm có sẵn
+<tt class="function">str()</tt> . Việc dùng <code>*</code> để truyền vào độ rộng và mức chính xác như là một thông số nguyên riêng cũng được hỗ trợ. Các định dạng C <code>%n</code> và <code>%p</code> không được hỗ trợ.
+
+</p><p>
+Nếu bạn có một chuỗi định dạng rất dài và không muốn cắt ra, có thể bạn sẽ muốn tham chiếu tới các biến sắp được định dạng qua tên, thay vì vị trí. Việc này có thể được thực hiện theo dạng <code>%(name)format</code>, như ví dụ sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 8637678}
+&gt;&gt;&gt; print 'Jack: %(Jack)d; Sjoerd: %(Sjoerd)d; Dcab: %(Dcab)d' % table
+Jack: 4098; Sjoerd: 4127; Dcab: 8637678
+</pre></div>
+
+</p><p>
+Cách này đặc biệt hữu dụng khi đi kèm với hàm có sẵn
+<tt class="function">vars()</tt> mới, nó trả về một từ điển chứa tất cả các biến cục bộ.
+
+</p><p>
+
+<h1><a name="SECTION009200000000000000000"></a><a name="files"></a>
+
+<br />
+7.2 Đọc và viết tập tin 
+</h1>
+
+</p><p>
+
+<tt class="function">open()</tt><a id="l2h-30" xml:id="l2h-30"></a> trả về một đối tượng tập tin<a id="l2h-31" xml:id="l2h-31"></a>, và thường được dùng với hai thông số: "<tt class="samp">open(<var>filename</var>, <var>mode</var>)</tt>".
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; f=open('/tmp/workfile', 'w')
+&gt;&gt;&gt; print f
+&lt;open file '/tmp/workfile', mode 'w' at 80a0960&gt;
+</pre></div>
+
+</p><p>
+Thông số thứ nhất là một chuỗi chứa tên tập tin. Thông số thứ hai là một chuỗi khác chứa một vài ký tự xác định cách thức tập tin sẽ được dùng.  <var>mode</var> có thể là <code>'r'</code> khi tập sẽ chỉ được đọc, <code>'w'</code> chỉ được ghi (tập tin cùng tên đang có sẽ bị xóa), và <code>'a'</code> mở tập tin để thêm vào cuối; mọi dữ liệu ghi vào tập tin sẽ được tự động thêm vào cuối.  <code>'r+'</code> mở tập tin để đọc và ghi. Thông số <var>mode</var> là không bắt buộc; <code>'r'</code> sẽ được giả định nếu nó bị bỏ qua.
+
+</p><p>
+Trong Windows và Macintosh, <code>'b'</code> thêm vào <var>mode</var> mở tập tin ở chế độ nhị phân, cho nên cũng có các chế độ khác như
+<code>'rb'</code>, <code>'wb'</code>, và <code>'r+b'</code>. Windows phân biệt rõ các tập tin văn bản và nhị phân; ký tự hết dòng (end-of-line) trong các tập tin văn bản được tự động thay đổi một chút khi dữ liệu được đọc hay ghi. Việc thay đổi sau bức bình phong (behind-the-scene) như vậy không ảnh hưởng các tập tin văn bản ASCII, nhưng nó sẽ phá dữ liệu nhị phân như trong các tập tin <span class="file">JPEG</span> hay hàm
+<span class="file">EXE</span> . Cần cẩn thận dùng chế độ nhị phân khi đọc và ghi các tập tin như vậy.
+
+</p><p>
+
+<h2><a name="SECTION009210000000000000000"></a><a name="fileMethods"></a>
+
+<br />
+7.2.1 Phương thức của đối tượng tập tin 
+</h2>
+
+</p><p>
+Các ví dụ trong mục này sẽ giả sử một đối tượng tập tin <code>f</code> đã được tạo.
+
+</p><p>
+Để đọc nội dung tập tin, gọi <code>f.read(<var>size</var>)</code>, nó đọc một số lượng dữ liệu và trả về một chuỗi.  <var>size</var> là một thông số số nguyên không bắt buộc. Khi <var>size</var> bị bỏ qua hoặc âm, toàn bộ nội dung tập tin sẽ được đọc và trả về; bạn sẽ gặp vấn đề nếu tập tin lớn gấp đôi bộ nhớ của máy bạn. Ngược lại, nhiều nhất <var>size</var> byte sẽ được đọc và trả về. Nếu đã đến cuối tập tin, <code>f.read()</code> sẽ trả về một chuỗi rỗng (<code>""</code>).
+<div class="verbatim"><pre>
+&gt;&gt;&gt; f.read()
+'This is the entire file.\n'
+&gt;&gt;&gt; f.read()
+''
+</pre></div>
+
+</p><p>
+
+<code>f.readline()</code> đọc một dòng từ tập tin; ký tự dòng mới (<code>\n</code>) được giữ lại ở cuối chuỗi, và sẽ chỉ bị bỏ qua ở dòng cuối của tập tin nếu tập tin không kết thúc bằng một dòng mới. Điều này làm giá trị trả về rõ ràng; nếu
+<code>f.readline()</code> trả về một chuỗi rỗng có nghĩa là đã đụng cuối tập tin, trong khi một dòng trống thì được biểu diễn bởi <code>'\n'</code>, một chuỗi chỉ chứa duy nhât một ký tự dòng mới.  
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; f.readline()
+'This is the first line of the file.\n'
+&gt;&gt;&gt; f.readline()
+'Second line of the file\n'
+&gt;&gt;&gt; f.readline()
+''
+</pre></div>
+
+</p><p>
+
+<code>f.readlines()</code> trả về một danh sách tất cả các dòng trong tập tin. Nếu truyền một tham số không bắt buộc <var>sizehint</var>, nó sẽ đọc nhiêu đó byte từ tập tin và thêm một chút đủ để hoàn tất một dòng, và trả về các dòng đã đọc được. Điều này thường được dùng để đọc một cách hiệu quả từng dòng một trong một tập tin lớn mà không cần phải nạp toàn bộ tập tin vào bộ nhớ. Chỉ có các dòng toàn vẹn mới được trả về.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; f.readlines()
+['This is the first line of the file.\n', 'Second line of the file\n']
+</pre></div>
+
+</p><p>
+Một cách khác để đọc các dòng là lặp qua đối tượng tập tin. Nó rất tiết kiệm bộ nhớ, nhanh, và có mã đơn giản:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; for line in f:
+        print line,
+        
+This is the first line of the file.
+Second line of the file
+</pre></div>
+
+</p><p>
+Cách này đơn giản hơn nhưng không cho bạn điều khiển cách đọc. Vì hai cách này quản lý bộ đệm dòng khác nhau, chúng không nên được dùng chung.
+
+</p><p>
+
+<code>f.write(<var>string</var>)</code> viết nội dung của <var>string</var> vào tập tin, trả về <code>None</code>.  
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; f.write('This is a test\n')
+</pre></div>
+
+</p><p>
+Để viết một thứ khác không phải là chuỗi, nó sẽ cần được chuyển thành một chuỗi trước:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; value = ('the answer', 42)
+&gt;&gt;&gt; s = str(value)
+&gt;&gt;&gt; f.write(s)
+</pre></div>
+
+</p><p>
+
+<code>f.tell()</code> trả về một số nguyên cho biết vị trí hiện tại của đối tượng tập tin, tính theo byte từ đầu tập tin. Để di chuyển vị trí, dùng "<tt class="samp">f.seek(<var>offset</var>, <var>from_what</var>)</tt>". Vị trí được tính từ tổng của <var>offset</var> và điểm tham chiếu; điểu tham chiếu được xác định bởi thông số <var>from_what</var> . Giá trị
+<var>from_what</var> 0 tính từ đầu tập tin, 1 dùng vị trí hiện tại, và 2 tính từ vị trí cuối tập tin.  <var>from_what</var> có thể bị bỏ qua và mặc định là 0, điểm tham chiếu là đầu tập tin.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; f = open('/tmp/workfile', 'r+')
+&gt;&gt;&gt; f.write('0123456789abcdef')
+&gt;&gt;&gt; f.seek(5)     # Go to the 6th byte in the file
+&gt;&gt;&gt; f.read(1)        
+'5'
+&gt;&gt;&gt; f.seek(-3, 2) # Go to the 3rd byte before the end
+&gt;&gt;&gt; f.read(1)
+'d'
+</pre></div>
+
+</p><p>
+Khi bạn đã dùng xong, gọi <code>f.close()</code> để đóng nó lại và giải phóng tài nguyên hệ thống đã sử dụng khi mở tập tin. Sau khi gọi
+<code>f.close()</code>, mọi cách dùng đối tượng tập tin sẽ tự động thất bại.
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; f.close()
+&gt;&gt;&gt; f.read()
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in ?
+ValueError: I/O operation on closed file
+</pre></div>
+
+</p><p>
+Các đối tượng tập tin có thêm các phương thức phụ như
+<tt class="method">isatty()</tt> và <tt class="method">truncate()</tt> không được thường xuyên dùng; tham khảo tài liệu thư viện để biết thêm về các đối tượng tập tin.
+
+</p><p>
+
+<h2><a name="SECTION009220000000000000000"></a><a name="pickle"></a>
+
+<br />
+7.2.2 <tt class="module">pickle</tt> mô-đun 
+</h2>
+
+<a id="l2h-32" xml:id="l2h-32"></a>
+
+</p><p>
+Các chuỗi có thể được ghi hoặc đọc dễ dàng từ một tập tin. Các số cần một ít cố gắng hơn, vì phương thức <tt class="method">read()</tt> chỉ trả về chuỗi, và cần được truyền vào một hàm như
+<tt class="function">int()</tt>, nó sẽ nhận một chuỗi như <code>'123'</code> và trả về giá trị số 123 của nó. Tuy nhiên, khi bạn muốn lưu các kiểu dữ liệu phức tạp hơn như danh sách, từ điển, hoặc các đối tượng, việc này trở nên rắc rối hơn nhiều.
+
+</p><p>
+Thay vì để người dùng luôn viết và gỡ rối mã để lưu các kiểu dữ liệu phức tạp, Python cung cấp một mô-đun chuẩn gọi là
+<a class="ulink" href="../lib/module-pickle.html"><tt class="module">pickle</tt></a>. Đây là một mô-đun tuyệt diệu có thể nhận hầu hết mọi đối tượng Python (ngay cả một vài dạng mã Python!), và chuyển nó thành một chuỗi; quá trình này được gọi là <i class="dfn">giầm (pickling)</i>. Tạo lại đối tượng từ một chuỗi được gọi là
+<i class="dfn">vớt (unpickling)</i>. Giữa việc giầm và vớt, biểu diễn dạng chuỗi của đối tượng có thể được lưu vào tập tin, hoặc gửi qua mạng đến một máy ở xa.
+
+</p><p>
+Nếu bạn có một đối tượng <code>x</code>, và một đối tượng tập tin <code>f</code> đã được mở để ghi vào, cách đơn giản nhất để giầm đối tượng chỉ cần một dòng mã:
+
+</p><p>
+
+<div class="verbatim"><pre>
+pickle.dump(x, f)
+</pre></div>
+
+</p><p>
+Để vớt đối tượng ra, nếu <code>f</code> là một đối tượng tập tin đã được mở để đọc:
+
+</p><p>
+
+<div class="verbatim"><pre>
+x = pickle.load(f)
+</pre></div>
+
+</p><p>
+(Có những biến thể khác, dùng khi giầm nhiều đối tượng hoặc khi bạn không muốn viết dữ liệu đã giầm vào tập tin; tham khảo toàn bộ tài liệu về
+<a class="ulink" href="../lib/module-pickle.html"><tt class="module">pickle</tt></a> trong
+<em class="citetitle"><a href="../lib/" title="Tham khảo thư viện Python">Tham khảo thư viện Python</a></em>.)
+
+</p><p>
+
+<a class="ulink" href="../lib/module-pickle.html"><tt class="module">pickle</tt></a> là cách chuẩn để làm cho các đối tượng Python có thể được lưu và dùng lại bởi các chương trình khác, hoặc bởi lần chạy khác của cùng chương trình; thuật ngữ trong ngành gọi là đối tượng <i class="dfn">bền</i> . Vì
+<a class="ulink" href="../lib/module-pickle.html"><tt class="module">pickle</tt></a> được sử dụng rộng rãi, nhiều tác giả khi mở rộng Python đã cẩn thận để đảm bảo rằng các kiểu dữ liệu mới ví dụ như ma trận có thể được giầm và vớt đúng đắn.
+
+</p><p>
+
+<div class="navigation">
+
+<div class="online-navigation">
+
+<p></p><hr />
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="6. Mô-đun" href="node8.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="8. Lỗi và biệt lệ" href="node10.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node8.html">6. Mô-đun</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node10.html">8. Lỗi và biệt lệ</a>
+
+</div>
+
+</div>
+
+<hr />
+
+<span class="release-info">Phiên bản 2.5, tài liệu được cập nhật ngày 19, tháng 09, năm 2006.</span>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<address>
+Xem <i><a href="about.html">Về tài liệu này...</a></i> về cách đề nghị thay đổi.
+</address>
+
+</p></body>
+
+</html>
+

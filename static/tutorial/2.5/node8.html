@@ -1,0 +1,745 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+
+<head>
+
+<link rel="STYLESHEET" href="tut.css" type="text/css" />
+
+<link rel="SHORTCUT ICON" href="../icons/pyfav.png" type="image/png" />
+
+<link rel="start" href="../index.html" title="Chỉ mục tài liệu Python" />
+
+<link rel="first" href="tut.html" title="Bài chỉ dẫn Python" />
+
+<link rel="contents" href="node2.html" title="Mục lục" />
+
+<link rel="index" href="node19.html" title="Chỉ mục" />
+
+<link rel="last" href="about.html" title="Về tài liệu này..." />
+
+<link rel="help" href="about.html" title="Về tài liệu này..." />
+
+<link rel="next" href="node9.html" />
+
+<link rel="prev" href="node7.html" />
+
+<link rel="parent" href="tut.html" />
+
+<link rel="next" href="node9.html" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="aesop" content="information" />
+
+<title>6. Mô-đun </title>
+
+</head>
+
+<body>
+
+<div class="navigation">
+
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="5. Cấu trúc dữ liệu" href="node7.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="7. Vào và ra" href="node9.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node7.html">5. Cấu trúc dữ liệu</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node9.html">7. Vào và ra</a>
+
+</div>
+
+<hr /></div>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<div class="online-navigation">
+
+<!--Table of Child-Links-->
+
+<a name="CHILD_LINKS"><strong>Mục con</strong></a>
+
+<ul class="ChildLinks">
+
+<li><a href="node8.html#SECTION008100000000000000000">6.1 Bàn thêm về mô-đun</a>
+
+<ul>
+
+<li><a href="node8.html#SECTION008110000000000000000">6.1.1 Đường dẫn tìm mô-đun</a>
+
+</li><li><a href="node8.html#SECTION008120000000000000000">6.1.2 Các tập tin Python ``đã dịch''</a>
+
+</li></ul>
+
+</li><li><a href="node8.html#SECTION008200000000000000000">6.2 Các mô-đun chuẩn</a>
+
+</li><li><a href="node8.html#SECTION008300000000000000000">6.3 <tt class="function">dir()</tt> hàm</a>
+
+</li><li><a href="node8.html#SECTION008400000000000000000">6.4 Gói</a>
+
+<ul>
+
+<li><a href="node8.html#SECTION008410000000000000000">6.4.1 Nhập * từ một gói</a>
+
+</li><li><a href="node8.html#SECTION008420000000000000000">6.4.2 Tham chiếu nội trong gói</a>
+
+</li><li><a href="node8.html#SECTION008430000000000000000">6.4.3 Gói trong nhiều thư mục</a>
+
+</li></ul></li></ul>
+
+<!--End of Table of Child-Links-->
+
+</div>
+
+<hr />
+
+<h1><a name="SECTION008000000000000000000"></a><a name="modules"></a>
+
+<br />
+6. Mô-đun 
+</h1>
+
+<p>
+Nếu bạn thoát khỏi trình thông dịch và chạy nó lại, những gì bạn đã định nghĩa (hàm và biến) đều bị mất. Do đó, nếu bạn muốn viết một chương trình dài hơn, thì tốt nhất bạn nên dùng một trình soạn thảo để chuẩn bị đầu vào cho trình thông dịch và chạy nó với tập tin vào này. Việc này được gọi là tạo
+<em>kịch bản (script)</em>. Khi chương trình của bạn trở nên dài hơn, bạn sẽ muốn tách nó ra thành nhiều tập tin để dễ duy trì. Bạn sẽ muốn dùng một hàm thuận tiện mà bạn đã viết trong nhiều chương trình mà không cần phải chép lại định nghĩa của nó vào các chương trình đó.
+
+</p><p>
+Để hỗ trợ việc này, Python có một cách đặt các định nghĩa vào một tập tin và dùng chúng trong một kịch bản hoặc trong một phiên làm việc với trình thông dịch. Tập tin này được gọi là <em>mô-đun (module)</em>; các định nghĩa từ một mô-đun có thể được
+<em>nhập (import)</em> vào các mô-đun khác hoặc vào mô-đun <em>chính</em> (tập hợp các biến mà bạn có thể truy cập tới trong một kịch bản được chạy ở cấp cao nhất và trong chế độ máy tính).
+
+</p><p>
+Mô-đun là một tập tin chứa các định nghĩa và câu lệnh Python. Tên tập tin là tên của mô-đun với đuôi <span class="file">.py</span> được gắn vào. Trong một mô-đun, tên của mô-đun (là một chuỗi) có thể được truy cập qua một biến toàn cục <code>__name__</code>. Ví dụ, dùng trình soạn thảo của bạn để tạo một tập tin đặt tên là <span class="file">fibo.py</span> trong thư mục hiện tại với nội dung sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+# Fibonacci numbers module
+
+def fib(n):    # write Fibonacci series up to n
+    a, b = 0, 1
+    while b &lt; n:
+        print b,
+        a, b = b, a+b
+
+def fib2(n): # return Fibonacci series up to n
+    result = []
+    a, b = 0, 1
+    while b &lt; n:
+        result.append(b)
+        a, b = b, a+b
+    return result
+</pre></div>
+
+</p><p>
+Bây giờ chạy trình thông dịch Python và nhập mô-đun này với dòng lệnh sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; import fibo
+</pre></div>
+
+</p><p>
+Việc này sẽ không nhập trực tiếp các tên hàm định nghĩa trong <code>fibo</code> 
+vào bảng ký hiệu (symbol table); nó chỉ nhập tên mô-đun
+<code>fibo</code> mà thôi. Dùng tên mô-đun bạn có thể truy cập các hàm:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; fibo.fib(1000)
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+&gt;&gt;&gt; fibo.fib2(100)
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+&gt;&gt;&gt; fibo.__name__
+'fibo'
+</pre></div>
+
+</p><p>
+Nếu bạn định dùng một hàm thường xuyên, thì bạn có thể gán nó vào một tên cục bộ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; fib = fibo.fib
+&gt;&gt;&gt; fib(500)
+1 1 2 3 5 8 13 21 34 55 89 144 233 377
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION008100000000000000000"></a><a name="moreModules"></a>
+
+<br />
+6.1 Bàn thêm về mô-đun 
+</h1>
+
+</p><p>
+Mô-đun có thể chứa các câu lệnh khả thi cũng như các định nghĩa hàm. Các câu lệnh này nhằm mục đích khởi tạo mô-đun. Chúng sẽ chỉ được chạy lần
+<em>đầu</em> mô-đun được nhập ở đâu đó.<a name="tex2html4" href="#foot764"><sup>6.1</sup></a>
+
+</p><p>
+Mỗi mô-đun có một bảng ký hiệu riêng của nó và được dùng như bảng toàn cục đối với mọi hàm được định nghĩa trong mô-đun. Do đó, tác giả của một mô-đun có thể sử dụng các biến toàn cục trong mô-đun mà không phải lo lắng về việc trùng lặp với các biến toàn cục của người dùng. Mặt khác, nếu bạn biết bạn đang làm gì, bạn có thể truy cập vào các biến toàn cục của mô-đun với cùng một cách dùng để truy cập các hàm của nó.
+<code>modname.itemname</code>.
+
+</p><p>
+Mô-đun có thể nhập các mô-đun khác. Thông thường (nhưng không bắt buộc) ta hay để tất cả các lệnh <tt class="keyword">import</tt> ở đầu một mô-đun (hoặc kịch bản). Các tên của mô-đun bị nhập được đặt trong bảng ký hiệu toàn cục của mô-đun nhập nó.
+
+</p><p>
+Có một biến thể của câu lệnh <tt class="keyword">import</tt> để nhập nhiều tên trực tiếp từ một mô-đun vào trong bảng ký hiệu của mô-đun nhập. Ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; from fibo import fib, fib2
+&gt;&gt;&gt; fib(500)
+1 1 2 3 5 8 13 21 34 55 89 144 233 377
+</pre></div>
+
+</p><p>
+Câu lệnh này không đưa tên mô-đun bị nhập vào bảng ký hiệu cục bộ (do đó trong ví dụ này, <code>fibo</code> chưa được định nghĩa)
+
+</p><p>
+Và một biến thể khác để nhập tất cả các tên từ một mô-đun:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; from fibo import *
+&gt;&gt;&gt; fib(500)
+1 1 2 3 5 8 13 21 34 55 89 144 233 377
+</pre></div>
+
+</p><p>
+Câu lệnh này nhập tất cả mọi tên trừ những tên bắt đầu bằng dấu gạch chân (<code>_</code>).
+
+</p><p>
+
+<h2><a name="SECTION008110000000000000000"></a><a name="searchPath"></a>
+
+<br />
+6.1.1 Đường dẫn tìm mô-đun 
+</h2>
+
+</p><p>
+
+<a id="l2h-18" xml:id="l2h-18"></a>Khi mô-đun tên <tt class="module">spam</tt> được nhập vào, trình thông dịch sẽ tìm một tập tin tên <span class="file">spam.py</span> trong thư mục hiện tại, rồi trong danh sách các thư mục được chỉ định bởi biến môi trường <a class="envvar" id="l2h-19" xml:id="l2h-19">PYTHONPATH</a>. Biến này có cùng cú pháp như là biến môi trường <a class="envvar" id="l2h-20" xml:id="l2h-20">PATH</a>, cùng chứa một danh sách tên các thư mục. Khi <a class="envvar" id="l2h-21" xml:id="l2h-21">PYTHONPATH</a> chưa được thiết lập, hoặc khi tập tin không được tìm thấy, việc tìm kiếm sẽ tiếp tục tìm trong đường dẫn mặc định tùy theo khi cài Python; trên <span class="Unix">Unix</span>, đường dẫn này thường là <span class="file">.:/usr/local/lib/python</span>.
+
+</p><p>
+Thật ra, mô-đun được tìm trong danh sách các thư mục chỉ định bởi biến <code>sys.path</code> đã được thiết lập từ thư mục chứa kịch bản nguồn (hoặc thư mục hiện tại),
+<a class="envvar" id="l2h-22" xml:id="l2h-22">PYTHONPATH</a> và các mặc định khi cài đặt. Điều này cho phép các chương trình Python thay đổi hoặc thay thế đường dẫn tìm mô-đun. Lưu ý rằng vì thư mục chứa kịch bản đang chạy nằm trong đường dẫn tìm kiếm, tên của kịch bản nhất thiết phải không trùng với tên các mô-đun chuẩn, nếu không thì Python sẽ cố sức nạp kịch bản như là một mô-đun khi mô-đun đó được nhập vào. Thông thường điều này sẽ gây lỗi. Xem mục&nbsp;<a href="#standardModules">6.2</a>, ``Các mô-đun chuẩn,'' để biết thêm chi tiết.
+
+</p><p>
+
+<h2><a name="SECTION008120000000000000000">
+6.1.2 Các tập tin Python ``đã dịch''</a>
+
+</h2>
+
+</p><p>
+Như một cách quan trọng để tăng tốc quá trình khởi động của các chương trình ngắn có dùng nhiều mô-đun chuẩn, nếu tập tin có tên <span class="file">spam.pyc</span> tồn tại trong thư mục mà <span class="file">spam.py</span> được tìm thấy, tập tin này được giả định là phiên bản đã được ``biên dịch byte'' (byte-compile) của mô-đun <tt class="module">spam</tt>. Thời gian thay đổi của phiên bản <span class="file">spam.py</span> dùng để tạo
+<span class="file">spam.pyc</span> được lưu lại trong <span class="file">spam.pyc</span>, và tập tin
+<span class="file">.pyc</span> sẽ bị bỏ qua nếu chúng không khớp nhau.
+
+</p><p>
+Thông thường, bạn không cần làm gì cả để tạo tập tin
+<span class="file">spam.pyc</span> . Khi nào <span class="file">spam.py</span> được biên dịch thành công, Python sẽ thử ghi phiên bản đã biên dịch ra
+<span class="file">spam.pyc</span>. Nếu việc ghi này thất bại thì cũng không có lỗi gì xảy ra; nếu vì lý do gì đó mà tập tin không được ghi đầy đủ, tập tin
+<span class="file">spam.pyc</span> sẽ bị đánh dấu là không hợp lệ và sẽ bị bỏ qua sau này. Nội dung của tập tin <span class="file">spam.pyc</span> không phụ thuộc vào hệ thống, do đó một thư mục mô-đun Python có thể được chia xẻ với nhiều máy trên các kiến trúc khác nhau.
+
+</p><p>
+Một vài mẹo cho chuyên gia:
+
+</p><p>
+
+<ul>
+
+<li>Khi trình thông dịch Python được chạy với cờ <b class="programopt">-O</b> , mã tối ưu được tạo và lưu trong các tập tin <span class="file">.pyo</span> . Trình tối ưu hóa hiện tại không giúp gì nhiều, nó chỉ bỏ đi các lệnh
+<tt class="keyword">assert</tt> . Khi <b class="programopt">-O</b> được dùng, <em>tất cả</em>
+mã byte (bytecode) đều được tối ưu; <code>.pyc</code> bị bỏ qua và <code>.py</code>
+được biên dịch ra mã byte tối ưu.
+
+<p>
+
+</p></li>
+
+<li>Truyền hai cờ <b class="programopt">-O</b> vào trình thông dịch Python (<b class="programopt">-OO</b>) sẽ khiến trình biên dịch mã byte thực hiện những tối ưu mà trong những trường hợp hiếm hoi có thể dẫn đến hỏng hóc trong chương trình. Hiện tại chỉ có các chuỗi <code>__doc__</code> được bỏ đi khỏi mã byte, làm cho tập tin <span class="file">.pyo</span> gọn hơn. Vì một vài chương trình phụ thuộc vào các chuỗi này, bạn nên chỉ dùng tùy chọn này nếu bạn rõ bạn đang làm gì.
+
+<p>
+
+</p></li>
+
+<li>Một chương trình không chạy nhanh hơn khi nó được đọc từ một tập tin <span class="file">.pyc</span> hay
+<span class="file">.pyo</span> so với khi nó được đọc từ tập tin <span class="file">.py</span> ; một điểm nhanh hơn duy nhất ở các tập tin <span class="file">.pyc</span> hay <span class="file">.pyo</span> là tốc độ chúng được nạp.
+
+<p>
+
+</p></li>
+
+<li>Khi một kịch bản được chạy bằng cách nhập tên nó ở dòng lệnh, thì mã byte của kịch bản không bao giờ được ghi vào tập tin <span class="file">.pyc</span> hay
+<span class="file">.pyo</span> . Do đó, thời gian khởi động của một kịch bản có thể được giảm xuống bằng cách chuyển hầu hết mã của nó thành mô-đun và tạo một kịch bản nhỏ để nhập mô-đun đó. Bạn cũng có thể chạy tập tin
+<span class="file">.pyc</span> hay <span class="file">.pyo</span> trực tiếp từ dòng lệnh.
+
+<p>
+
+</p></li>
+
+<li>Có thể dùng tập tin <span class="file">spam.pyc</span> (hay
+<span class="file">spam.pyo</span> khi <b class="programopt">-O</b> được dùng) và không có tập tin
+<span class="file">spam.py</span> của cùng một mô-đun. Việc này được tận dụng để phân phối một thư viện Python dưới một dạng hơi khó để dịch ngược.
+
+<p>
+
+</p></li>
+
+<li>Mô-đun <a class="ulink" href="../lib/module-compileall.html"><tt class="module">compileall</tt></a>  <a id="l2h-23" xml:id="l2h-23"></a> có thể tạo các tập tin <span class="file">.pyc</span> (hoặc các tập tin
+<span class="file">.pyo</span> khi <b class="programopt">-O</b> được dùng) cho mọi mô-đun trong một thư mục.
+
+<p>
+
+</p></li>
+
+</ul>
+
+</p><p>
+
+<h1><a name="SECTION008200000000000000000"></a><a name="standardModules"></a>
+
+<br />
+6.2 Các mô-đun chuẩn 
+</h1>
+
+</p><p>
+Python có một thư viện các mô-đun chuẩn, được nói tới trong một tài liệu khác, <em class="citetitle"><a href="../lib/lib.html" title="Tham khảo thư viện Python">Tham khảo thư viện Python</a></em>
+(từ nay gọi là ``Tài liệu tham khảo'''). Một vài mô-đun được chuyển thẳng vào trình thông dịch; chúng cung cấp các tác vụ không nằm trong phạm vi chính của ngôn ngữ nhưng cũng được tạo sẵn vì hiệu quả cao hoặc để truy cập vào những chức năng của hệ điều hành ví dụ như các lệnh gọi hệ thống. Tập hợp các mô-đun này là một tùy chọn cấu hình lệ thuộc vào hệ thống. Ví dụ, mô-đun <tt class="module">amoeba</tt> chỉ có trên các hệ hỗ trợ Amoeba. Cần phải nhắc đến mô-đun: <a class="ulink" href="../lib/module-sys.html"><tt class="module">sys</tt></a><a id="l2h-24" xml:id="l2h-24"></a>, được đưa vào trong mọi trình thông dịch Python. Các biến <code>sys.ps1</code> và
+<code>sys.ps2</code> định nghĩa những chuỗi được dùng như dấu nhắc chính và phụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.ps1
+'&gt;&gt;&gt; '
+&gt;&gt;&gt; sys.ps2
+'... '
+&gt;&gt;&gt; sys.ps1 = 'C&gt; '
+C&gt; print 'Yuck!'
+Yuck!
+C&gt;
+</pre></div>
+
+</p><p>
+Hai biến này chỉ được định nghĩa khi trình thông dịch chạy ở chế độ tương tác.
+
+</p><p>
+Biến <code>sys.path</code> là một danh sách các chuỗi quyết định đường dẫn tìm kiếm các mô-đun của trình thông dịch. Nó được khởi tạo theo đường dẫn mặc định từ biến môi trường <a class="envvar" id="l2h-25" xml:id="l2h-25">PYTHONPATH</a>, hoặc từ một giá trị có sẵn nếu <a class="envvar" id="l2h-26" xml:id="l2h-26">PYTHONPATH</a> không được thiết lập. Bạn có thể sửa nó bằng cách dùng các công cụ trên danh sách: 
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.path.append('/ufs/guido/lib/python')
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION008300000000000000000"></a><a name="dir"></a>
+
+<br />
+6.3 <tt class="function">dir()</tt> hàm 
+</h1>
+
+</p><p>
+Hàm có sẵn <tt class="function">dir()</tt> được dùng để tìm các tên một mô-đun định nghĩa. Nó trả về một danh sách các chuỗi đã sắp xếp:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; import fibo, sys
+&gt;&gt;&gt; dir(fibo)
+['__name__', 'fib', 'fib2']
+&gt;&gt;&gt; dir(sys)
+['__displayhook__', '__doc__', '__excepthook__', '__name__', '__stderr__',
+ '__stdin__', '__stdout__', '_getframe', 'api_version', 'argv', 
+ 'builtin_module_names', 'byteorder', 'callstats', 'copyright',
+ 'displayhook', 'exc_clear', 'exc_info', 'exc_type', 'excepthook',
+ 'exec_prefix', 'executable', 'exit', 'getdefaultencoding', 'getdlopenflags',
+ 'getrecursionlimit', 'getrefcount', 'hexversion', 'maxint', 'maxunicode',
+ 'meta_path', 'modules', 'path', 'path_hooks', 'path_importer_cache',
+ 'platform', 'prefix', 'ps1', 'ps2', 'setcheckinterval', 'setdlopenflags',
+ 'setprofile', 'setrecursionlimit', 'settrace', 'stderr', 'stdin', 'stdout',
+ 'version', 'version_info', 'warnoptions']
+</pre></div>
+
+</p><p>
+Không có thông số, <tt class="function">dir()</tt> liệt kê các tên bạn đã định nghĩa:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; a = [1, 2, 3, 4, 5]
+&gt;&gt;&gt; import fibo
+&gt;&gt;&gt; fib = fibo.fib
+&gt;&gt;&gt; dir()
+['__builtins__', '__doc__', '__file__', '__name__', 'a', 'fib', 'fibo', 'sys']
+</pre></div>
+
+</p><p>
+Lưu ý rằng nó liệt kê mọi loại tên: biến, mô-đun, hàm, v.v...
+
+</p><p>
+
+<tt class="function">dir()</tt> không liệt kê tên của các hàm và biến có sẵn. Nếu bạn muốn có danh sách của chúng, thì chúng được định nghĩa trong mô-đun chuẩn <tt class="module">__builtin__</tt><a id="l2h-27" xml:id="l2h-27"></a>:
+
+</p><p>
+
+<div class="verbatim"><pre>
+&gt;&gt;&gt; import __builtin__
+&gt;&gt;&gt; dir(__builtin__)
+['ArithmeticError', 'AssertionError', 'AttributeError', 'DeprecationWarning',
+ 'EOFError', 'Ellipsis', 'EnvironmentError', 'Exception', 'False',
+ 'FloatingPointError', 'FutureWarning', 'IOError', 'ImportError',
+ 'IndentationError', 'IndexError', 'KeyError', 'KeyboardInterrupt',
+ 'LookupError', 'MemoryError', 'NameError', 'None', 'NotImplemented',
+ 'NotImplementedError', 'OSError', 'OverflowError', 
+ 'PendingDeprecationWarning', 'ReferenceError', 'RuntimeError',
+ 'RuntimeWarning', 'StandardError', 'StopIteration', 'SyntaxError',
+ 'SyntaxWarning', 'SystemError', 'SystemExit', 'TabError', 'True',
+ 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError',
+ 'UnicodeEncodeError', 'UnicodeError', 'UnicodeTranslateError',
+ 'UserWarning', 'ValueError', 'Warning', 'WindowsError',
+ 'ZeroDivisionError', '_', '__debug__', '__doc__', '__import__',
+ '__name__', 'abs', 'apply', 'basestring', 'bool', 'buffer',
+ 'callable', 'chr', 'classmethod', 'cmp', 'coerce', 'compile',
+ 'complex', 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod',
+ 'enumerate', 'eval', 'execfile', 'exit', 'file', 'filter', 'float',
+ 'frozenset', 'getattr', 'globals', 'hasattr', 'hash', 'help', 'hex',
+ 'id', 'input', 'int', 'intern', 'isinstance', 'issubclass', 'iter',
+ 'len', 'license', 'list', 'locals', 'long', 'map', 'max', 'min',
+ 'object', 'oct', 'open', 'ord', 'pow', 'property', 'quit', 'range',
+ 'raw_input', 'reduce', 'reload', 'repr', 'reversed', 'round', 'set',
+ 'setattr', 'slice', 'sorted', 'staticmethod', 'str', 'sum', 'super',
+ 'tuple', 'type', 'unichr', 'unicode', 'vars', 'xrange', 'zip']
+</pre></div>
+
+</p><p>
+
+<h1><a name="SECTION008400000000000000000"></a><a name="packages"></a>
+
+<br />
+6.4 Gói 
+</h1>
+
+</p><p>
+Gói (package) là một cách để cấu trúc vùng tên mô-đun của Python bằng cách dùng ``tên mô-đun có chấm''. Ví dụ, tên mô-đun
+<tt class="module">A.B</tt> chỉ ra mô-đun con tên "<tt class="samp">B</tt>" trong một gói tên "<tt class="samp">A</tt>". Cũng như việc sử dụng mô-đun giúp tác giả của các mô-đun khác nhau không phải lo lắng về các biến toàn cục của nhau, việc sử dụng tên mô-đun có chấm giúp tác giả của các gói đa mô-đun như NumPy hay Python Imaging Library không phải lo lắng về tên mô-đun của họ.
+
+</p><p>
+Giả sử bạn muốn thiết kế một tập hợp các mô-đun (một ``gói'') nhằm vào việc xử lý các tập tin và dữ liệu âm thanh. Có nhiều định dạng tập tin âm thanh (thường được nhận dạng dựa vào phần mở rộng, ví dụ: <span class="file">.wav</span>, <span class="file">.aiff</span>, <span class="file">.au</span>), do đó bạn sẽ cần tạo và duy trì một tập hợp luôn tăng của các mô-đun cho việc chuyển đổi giữa các định dạng khác nhau. Cũng có nhiều tác vụ khác nhau bạn muốn thực hiện với dữ liệu âm thanh (ví dụ như tổng hợp, thêm tiếng vang, áp dụng chức năng làm bằng, tạo ra hiệu ứng nổi), do đó bạn sẽ không ngừng viết một loạt các mô-đun để thực hiện các tác vụ này. Sau đây là một cấu trúc minh họa cho gói của bạn (được trình bày theo cách của một hệ tập tin phân cấp)
+
+</p><p>
+
+<div class="verbatim"><pre>
+Sound/                          Top-level package
+      __init__.py               Initialize the sound package
+      Formats/                  Subpackage for file format conversions
+              __init__.py
+              wavread.py
+              wavwrite.py
+              aiffread.py
+              aiffwrite.py
+              auread.py
+              auwrite.py
+              ...
+      Effects/                  Subpackage for sound effects
+              __init__.py
+              echo.py
+              surround.py
+              reverse.py
+              ...
+      Filters/                  Subpackage for filters
+              __init__.py
+              equalizer.py
+              vocoder.py
+              karaoke.py
+              ...
+</pre></div>
+
+</p><p>
+Khi nhập một gói, Python tìm trong các thư mục từ <code>sys.path</code> để tìm thư mục con của gói.
+
+</p><p>
+Các tập tin <span class="file">__init__.py</span> là cần thiết để cho Python biết các thư mục chứa các gói; việc này được đặt ra để tránh các thư mục với tên chung, ví dụ như "<tt class="samp">string</tt>", vô tình che mất mô-đun hợp lệ xuất hiện sau trong đường dẫn tìm kiếm. Trong trường hợp đơn giản nhất, <span class="file">__init__.py</span> có thể chỉ là một tập tin rỗng, nhưng nó cũng có thể thực thi các mã thiết lập của gói hoặc thiết lập biến <code>__all__</code> , sẽ được nhắc đến sau.
+
+</p><p>
+Người dùng gói này có thể nhập từng mô-đun riêng lẻ từ gói, ví dụ:
+
+</p><p>
+
+<div class="verbatim"><pre>
+import Sound.Effects.echo
+</pre></div>
+
+</p><p>
+Nó sẽ nạp mô-đun con <tt class="module">Sound.Effects.echo</tt>. Nó phải được tham chiếu bằng tên đầy đủ.
+
+</p><p>
+
+<div class="verbatim"><pre>
+Sound.Effects.echo.echofilter(input, output, delay=0.7, atten=4)
+</pre></div>
+
+</p><p>
+Cách nhập mô-đun con khác là:
+
+</p><p>
+
+<div class="verbatim"><pre>
+from Sound.Effects import echo
+</pre></div>
+
+</p><p>
+Nó cũng nạp luôn mô-đun con <tt class="module">echo</tt>, và làm cho nó có thể được truy cập mà không cần phần tên gói, do đó nó có thể được dùng như sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+echo.echofilter(input, output, delay=0.7, atten=4)
+</pre></div>
+
+</p><p>
+Một biến thể khác là nhập hàm hoặc biến mình muốn một cách trực tiếp:
+
+</p><p>
+
+<div class="verbatim"><pre>
+from Sound.Effects.echo import echofilter
+</pre></div>
+
+</p><p>
+Một lần nữa, lệnh này nạp mô-đun con <tt class="module">echo</tt>, nhưng nó làm hàm
+<tt class="function">echofilter()</tt> có thể được sử dụng trực tiếp:
+
+</p><p>
+
+<div class="verbatim"><pre>
+echofilter(input, output, delay=0.7, atten=4)
+</pre></div>
+
+</p><p>
+Lưu ý rằng khi sử dụng <code>from <var>package</var> import <var>item</var></code>, <var>item</var> có thể hoặc là mô-đun con (hoặc gói con) của gói, hoặc là một tên nào khác được định nghĩa trong gói, chẳng hạn như một hàm, lớp, hoặc biến. Câu lệnh <code>import</code> trước hết kiểm tra xem <var>item</var> có được định nghĩa trong gói; nếu không, nó giả định rằng đó là mô-đun và thử nạp nó. Nếu không thể tìm thấy mô-đun, biệt lệ
+<tt class="exception">ImportError</tt> sẽ được nâng.
+
+</p><p>
+Ngược lại, khi dùng cú pháp như <code>import
+<var>item.subitem.subsubitem</var></code>, mỗi tiểu mục trừ tiểu mục cuối phải là một gói; tiểu mục cuối có thể là một mô-đun hoặc một gói nhưng không thể là một lớp, hay hàm, hay biến được định nghĩa trong tiểu mục trước.
+
+</p><p>
+
+<h2><a name="SECTION008410000000000000000"></a><a name="pkg-import-star"></a>
+
+<br />
+6.4.1 Nhập * từ một gói 
+</h2>
+
+</p><p>
+
+<a id="l2h-28" xml:id="l2h-28"></a>
+Bây giờ chuyện gì xảy ra khi bạn viết <code>from Sound.Effects import
+*</code>? Tốt nhất, bạn sẽ hy vọng mã này sẽ tìm các mô-đun có trong gói và nhập tất cả chúng vào. Đáng tiếc là tác vụ này không chạy ổn định lắm trên hệ Mac và Windows vì hệ thống tập tin không luôn chứa thông tin chính xác về phân biệt hoa/thường trong tên tập tin. Trên các hệ này, không có cách nào bảo đảm để biết được nếu một tập tin
+<span class="file">ECHO.PY</span> cần được nhập vào như là một mô-đun <tt class="module">echo</tt>,
+<tt class="module">Echo</tt> hay <tt class="module">ECHO</tt>. (Ví dụ, Windows 95 có một thói quen là hiện mọi tên tập tin với ký tự đầu tiên viết hoa.) Hạn chế tên 8+3 của DOS cũng tạo ra thêm một vấn đề thú vị với các tên mô-đun dài.
+
+</p><p>
+Giải pháp duy nhất là để tác giả gói chỉ định rõ chỉ mục của gói. Câu lệnh <code>import</code> dùng cách thức sau: nếu mã <span class="file">__init__.py</span> của gói có định nghĩa một danh sách tên <code>__all__</code>, nó sẽ được dùng làm danh sách của các tên mô-đun cần được nhập khi gặp <code>from <var>package</var> import *</code> . Tác giả gói sẽ phải tự cập nhật danh sách này mỗi khi phiên bản mới của gói được phát hành. Tác giả gói cũng có thể không hỗ trợ nó, nếu họ không thấy cách dùng <code>importing *</code> là hữu dụng đối với gói của họ. Ví dụ, tập tin
+<span class="file">Sounds/Effects/__init__.py</span> có thể chứa đoạn mã sau:
+
+</p><p>
+
+<div class="verbatim"><pre>
+__all__ = ["echo", "surround", "reverse"]
+</pre></div>
+
+</p><p>
+Điều này có nghĩa là <code>from Sound.Effects import *</code> sẽ nhập ba mô-đun được chỉ định từ gói <tt class="module">Sound</tt> .
+
+</p><p>
+Nếu <code>__all__</code> không được định nghĩa, câu lệnh <code>from Sound.Effects
+import *</code> does <em>không</em> nhập mọi mô-đun con từ gói
+<tt class="module">Sound.Effects</tt> vào vùng tên hiện tại; nó chỉ đảm bảo rằng gói <tt class="module">Sound.Effects</tt> đã được nhập (có thể chạy các mã khởi tạo trong <span class="file">__init__.py</span>) và sau đó nhập các tên được định nghĩa trong gói. Nó bao gồm các tên (và mô-đun con đã được nạp) được định nghĩa bởi <span class="file">__init__.py</span>. Nó cũng gồm các mô-đun con của gói đã được nạp bởi câu lệnh <code>import</code> trước. Xem đoạn mã này:
+
+</p><p>
+
+<div class="verbatim"><pre>
+import Sound.Effects.echo
+import Sound.Effects.surround
+from Sound.Effects import *
+</pre></div>
+
+</p><p>
+Trong ví dụ này, các mô-đun <code>echo</code> và <code>surround</code> được nhập vào vùng tên hiện tại vì chúng được định nghĩa trong gói
+<tt class="module">Sound.Effects</tt> khi câu lệnh <code>from...import</code> được thực thi. (Cũng sẽ có cùng kết quả khi <code>__all__</code> được định nghĩa.)
+
+</p><p>
+Lưu ý là bình thường việc nhập <code>*</code> từ một mô-đun hay gói được coi là xấu, vì nó hay dẫn tới các mã khó đọc. Tuy nhiên, khi dùng trong một phiên làm việc tương tác thì nó giúp tiết kiệm công nhập phím, và một vài mô-đun được thiết kế để chỉ xuất các tên theo một vài mẫu cụ thể.
+
+</p><p>
+Nhớ rằng, không có gì sai trái với việc dùng <code>from Package
+import specific_submodule</code>! Đúng ra, đây là cách viết được khuyến khích trừ khi mô-đun nhập (importing module) cần dùng mô-đun con có cùng tên ở một gói khác.
+
+</p><p>
+
+<h2><a name="SECTION008420000000000000000">
+6.4.2 Tham chiếu nội trong gói</a>
+
+</h2>
+
+</p><p>
+Các mô-đun con thường cần tham chiếu lẫn nhau. Ví dụ, Mô-đun
+<tt class="module">surround</tt> có thể sử dụng mô-đun <tt class="module">echo</tt> . Trong thực tế, những tham chiếu này quá phổ biến đễn nỗi câu lệnh <tt class="keyword">import</tt> đầu tiên sẽ tìm trong gói chứa (containing package) trước khi tìm trong đường dẫn tìm kiếm mô-đun chuẩn. Do đó, mô-đun <tt class="module">surround</tt> có thể đơn giản dùng
+<code>import echo</code> hay <code>from echo import echofilter</code>. Nếu mô-đun được nhập (imported module) không thể tìm ra trong gói chứa (là gói mà mô-đun hiện tại là một mô-đun con), câu lệnh <tt class="keyword">import</tt>
+tìm một mô-đun cấp cao nhất có cùng tên.
+
+</p><p>
+Khi các gói được cấu trúc thành các gói con (như gói
+<tt class="module">Sound</tt> trong ví dụ), không có đường tắt để tham chiếu tới các mô-đun con của các gói kế cận - tên đầy đủ của gói con phải được chỉ định. Ví dụ, nếu mô-đun
+<tt class="module">Sound.Filters.vocoder</tt> cần dùng mô-đun <tt class="module">echo</tt> trong gói <tt class="module">Sound.Effects</tt> , nó có thể dùng <code>from
+Sound.Effects import echo</code>.
+
+</p><p>
+Bắt đầu từ Python 2.5, ngoài việc nhập tương đối hiểu ngầm (implicit relative import) đã nói, bạn có thể viết lệnh nhập tương đối xác định (explicit relative import) với kiểu
+<code>from module import name</code> của câu lệnh nhập. Các lệnh nhập tương đối xác định dùng chấm ở đầu để chỉ định các gói hiện tại và gói cha có mặt trong câu lệnh nhập. Ví dụ từ mô-đun <tt class="module">surround</tt>
+, bạn sẽ dùng:
+
+</p><p>
+
+<div class="verbatim"><pre>
+from . import echo
+from .. import Formats
+from ..Filters import equalizer
+</pre></div>
+
+</p><p>
+Lưu ý cả hai lệnh nhập tương đối xác định và hiểu ngầm đều dựa vào tên của mô-đun hiện tại. Vì tên của mô-đun chính luôn luôn là
+<code>"__main__"</code>, mô-đun được nhằm dể dùng như mô-đun chính của một chương trình Python nên luôn luôn cùng câu lệnh nhập tuyệt đối.
+
+</p><p>
+
+<h2><a name="SECTION008430000000000000000">
+6.4.3 Gói trong nhiều thư mục</a>
+
+</h2>
+
+</p><p>
+Gói còn có thêm một thuộc tính đặc biệt khác, <tt class="member">__path__</tt>. Nó được khởi tạo là danh sách chứa tên của thư mục chứa tập tin <span class="file">__init__.py</span> của gói trước khi mã trong tập tin đó được thực thi. Biến này có thể được thay đổi; làm như vậy sẽ ảnh hưởng các tìm kiếm mô-đun và gói con chứa trong gói này trong tương lai.
+
+</p><p>
+Mặc dù tính năng này không thường được dùng, nó có thể được tận dụng để mở rộng tập hợp các mô-đun tìm thấy trong một gói.
+
+</p><p>
+
+<br /><hr /><h4>Ghi chú</h4>
+
+<dl>
+
+<dt><a name="foot764">... đâu đó.</a><a href="node8.html#tex2html4"><sup>6.1</sup></a></dt>
+
+<dd>
+        Thật ra các định nghĩa hàm cũng là `các câu lệnh' được `thực thi'; việc thực thi câu lệnh này nhập tên hàm vào bảng ký hiệu toàn cục của mô-đun.
+
+
+</dd>
+
+</dl>
+
+<div class="navigation">
+
+<div class="online-navigation">
+
+<p></p><hr />
+
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+
+<tr>
+
+<td class="online-navigation"><a rel="prev" title="5. Cấu trúc dữ liệu" href="node7.html"><img src="../icons/previous.png" border="0" height="32" alt="Trang trước" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="parent" title="Bài chỉ dẫn Python" href="tut.html"><img src="../icons/up.png" border="0" height="32" alt="Lên một bậc" width="32" /></a></td>
+
+<td class="online-navigation"><a rel="next" title="7. Vào và ra" href="node9.html"><img src="../icons/next.png" border="0" height="32" alt="Trang sau" width="32" /></a></td>
+
+<td align="center" width="100%">Bài chỉ dẫn Python</td>
+
+<td class="online-navigation"><a rel="contents" title="Bảng mục lục" href="node2.html"><img src="../icons/contents.png" border="0" height="32" alt="Mục lục" width="32" /></a></td>
+
+<td class="online-navigation"><img src="../icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+
+<td class="online-navigation"><a rel="index" title="Chỉ mục" href="node19.html"><img src="../icons/index.png" border="0" height="32" alt="Chỉ mục" width="32" /></a></td>
+
+</tr></table>
+
+<div class="online-navigation">
+
+<b class="navlabel">Trước:</b>
+
+<a class="sectref" rel="prev" href="node7.html">5. Cấu trúc dữ liệu</a>
+
+<b class="navlabel">Lên:</b>
+
+<a class="sectref" rel="parent" href="tut.html">Bài chỉ dẫn Python</a>
+
+<b class="navlabel">Sau:</b>
+
+<a class="sectref" rel="next" href="node9.html">7. Vào và ra</a>
+
+</div>
+
+</div>
+
+<hr />
+
+<span class="release-info">Phiên bản 2.5, tài liệu được cập nhật ngày 19, tháng 09, năm 2006.</span>
+
+</div>
+
+<!--End of Navigation Panel-->
+
+<address>
+Xem <i><a href="about.html">Về tài liệu này...</a></i> về cách đề nghị thay đổi.
+</address>
+
+</p></body>
+
+</html>
+
