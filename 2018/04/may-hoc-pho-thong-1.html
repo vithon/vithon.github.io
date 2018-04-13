@@ -251,20 +251,21 @@
 <p>Gọi <span class="math">\(\vec{\theta} = (\theta_0, \theta_1)\)</span> là biểu diễn dạng véc tơ của hai giá trị <span class="math">\(\theta_1, \theta_0\)</span>. Hàm mất mát (loss function, cost function) của phương pháp hồi quy tuyến tính có dạng:</p>
 <div class="math">
 \begin{equation*}
-\mathcal{L}(\vec{\theta}) = \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right)^2
+\mathcal{L}(\vec{\theta}) = \sum_{i=0}^3 \left( \hat{y}^{(i)} - y^{(i)} \right)^2
 \end{equation*}
 </div>
-<p>Nhưng vì chúng ta chỉ quan tâm đến việc tìm giá trị cực tiểu của hàm mất mát, người ta thường dùng hàm mất mát ở dạng sau (lý do sẽ được làm rõ trong chốc lát):</p>
+<p>Nhưng vì chúng ta chỉ quan tâm đến việc tìm giá trị cực tiểu của hàm mất mát, người ta thường nhân với <span class="math">\(\frac{1}{2}\)</span> để khi lấy đạo hàm thì bình phương sẽ khử đi <span class="math">\(\frac{1}{2}\)</span> và công thức nhìn đẹp hơn:</p>
 <div class="math">
 \begin{equation*}
-\mathcal{L}(\vec{\theta}) = \frac{1}{2} \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right)^2
+\mathcal{L}(\vec{\theta}) = \frac{1}{2} \sum_{i=0}^3 \left( \hat{y}^{(i)} - y^{(i)} \right)^2
 \end{equation*}
 </div>
+<p>(Ngoài ra, nhiều tài liệu còn chia cho số dòng trong bảng đầu vào (tức là lấy trung bình cộng) để làm cho phép tính số thực trên máy tính được chính xác hơn.)</p>
 <p>Ta cần tìm một véc tơ <span class="math">\(\vec{\theta_{min}}\)</span> sao cho <span class="math">\(\mathcal{L}(\vec{\theta_{min}})\)</span> có giá trị cực tiểu.</p>
 <p>Sử dụng ký hiệu <span class="math">\(\mathop{\mathrm{arg\,min}}_x f(x)\)</span> để biểu diễn một hàm trả về giá trị <span class="math">\(x\)</span> mà tại đó giá trị của <span class="math">\(f(x)\)</span> là nhỏ nhất, chúng ta viết lại mục tiêu của chúng ta như sau:</p>
 <div class="math">
 \begin{equation*}
-\vec{\theta_{min}} = \mathop{\mathrm{arg\,min}}_{\vec{\theta}} \mathcal{L}(\vec{\theta}) = \mathop{\mathrm{arg\,min}}_{\vec{\theta}} \cfrac{1}{2} \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right)^2
+\vec{\theta_{min}} = \mathop{\mathrm{arg\,min}}_{\vec{\theta}} \mathcal{L}(\vec{\theta}) = \mathop{\mathrm{arg\,min}}_{\vec{\theta}} \cfrac{1}{2} \sum_{i=0}^3 \left( \hat{y}^{(i)} - y^{(i)} \right)^2
 \end{equation*}
 </div>
 <p>Một trong những cách để tìm <span class="math">\(\vec{\theta_{min}}\)</span> là tính đạo hàm bậc nhất của <span class="math">\(\mathcal{L}(\vec{\theta})\)</span> theo <span class="math">\(\vec{\theta}\)</span> và giải phương trình để đạo hàm đó đạt giá trị 0. Tuy nhiên, cách làm này nằm ngoài phạm vi Toán phổ thông, và cần phải đến chương trình đại học đại cương về Đại số tuyến tính (Linear Algebra) và Giải tích ma trận (Matrix Calculus) chúng ta mới có thể làm.</p>
@@ -279,16 +280,16 @@
 <p>Đạo hàm riêng của <span class="math">\(\mathcal{L}(\vec{\theta})\)</span> theo <span class="math">\(\theta_j\)</span>:</p>
 <div class="math">
 \begin{align*}
-\cfrac{\partial}{\partial \theta_j} \mathcal{L}(\vec{\theta}) &amp;= \cfrac{1}{2} \cfrac{\partial}{\partial \theta_j} \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right)^2 \\
-  &amp;= \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right) \cfrac{\partial}{\partial \theta_j} \left( \hat{y}^{(i)} - y^{(i)} \right) \\
-  &amp;= \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right) \cfrac{\partial}{\partial \theta_j} \hat{y}^{(i)} \\
-  &amp;= \sum_{i=1}^4 \left( \hat{y}^{(i)} - y^{(i)} \right) x_j^{(i)}
+\cfrac{\partial}{\partial \theta_j} \mathcal{L}(\vec{\theta}) &amp;= \cfrac{1}{2} \cfrac{\partial}{\partial \theta_j} \sum_{i=0}^3 \left( \hat{y}^{(i)} - y^{(i)} \right)^2 \\
+  &amp;= \sum_{i=0}^3 \left( \hat{y}^{(i)} - y^{(i)} \right) \cfrac{\partial}{\partial \theta_j} \left( \hat{y}^{(i)} - y^{(i)} \right) \\
+  &amp;= \sum_{i=0}^3 \left( \hat{y}^{(i)} - y^{(i)} \right) \cfrac{\partial}{\partial \theta_j} \hat{y}^{(i)} \\
+  &amp;= \sum_{i=0}^3 \left( \hat{y}^{(i)} - y^{(i)} \right) x_j^{(i)}
 \end{align*}
 </div>
 <p>Ráp vào công thức cập nhật <span class="math">\(\theta_j\)</span>:</p>
 <div class="math">
 \begin{equation*}
-\theta_j^{(t+1)} = \theta_j^{(t)} + \alpha \times \sum_{i=1}^4 \left( y^{(i)} - \hat{y}^{(i)} \right) x_j^{(i)}
+\theta_j^{(t+1)} = \theta_j^{(t)} + \alpha \times \sum_{i=0}^3 \left( y^{(i)} - \hat{y}^{(i)} \right) x_j^{(i)}
 \end{equation*}
 </div>
 <p>Như vậy, toàn bộ việc giải ra <span class="math">\(\vec{\theta}\)</span> được tóm lại ở hai bước:</p>
@@ -453,7 +454,7 @@
 <pre class="literal-block">
 [-3.999999999999987, -4.7184218854317494e-15, 0.9999999999999933]
 </pre>
-<p>Hay viết cách khác <span class="math">\(\hat{y} = 1.0 \times x_2 - 0.0 \times x_1 - 4.0\)</span>. Vì <span class="math">\(x_2 = x_1^2\)</span>, quan hệ này là <span class="math">\(\hat{y} = x_1^2 - 4.0\)</span>, rõ ràng là một đường pa-ra-bôn nhị thức.</p>
+<p>Hay viết cách khác <span class="math">\(\hat{y} = 1.0 \times x_2 - 0.0 \times x_1 - 4.0\)</span>. Vì <span class="math">\(x_2 = x_1^2\)</span>, quan hệ này là <span class="math">\(\hat{y} = x_1^2 - 4.0\)</span>, rõ ràng là một đường pa-ra-bôn nhị thức bậc hai.</p>
 <div class="figure">
 <img alt="" src="/static/machine-learning/linear-reg-4.png" />
 <p class="caption">Đường pa-ra-bôn đi qua bốn điểm, cũng chính là mối quan hệ thực giữa <span class="math">\(y\)</span> và <span class="math">\(x_1\)</span>.</p>
@@ -477,6 +478,14 @@
 <div class="section" id="tom-tat">
 <h2>Tóm tắt</h2>
 <p>Bài viết này giới thiệu tổng quát về máy học, và xây dựng nên kỹ thuật hồi quy tuyến tính từ nền tảng. Thông qua kỹ thuật đơn giản nhưng rất phổ dụng này, chúng ta biết đến khái niệm hàm mất mát và bài toán máy học được chuyển về bài toán tối ưu hàm mất mát. Ở bài viết kế tiếp, chúng ta sẽ nói kỹ hơn về kỹ thuật xuống dốc đã được sử dụng trong việc tìm điểm cực tiểu này.</p>
+</div>
+<div class="section" id="tai-lieu-doc-them">
+<h2>Tài liệu đọc thêm</h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://cs229.stanford.edu/notes/cs229-notes1.pdf">Tài liệu giảng</a> trong môn <a class="reference external" href="http://cs229.stanford.edu">CS229 Machine Learning</a> do Dan Boneh và Andrew Ng dạy ở đại học Stanford.</li>
+<li><a class="reference external" href="https://machinelearningcoban.com/2016/12/28/linearregression/">Bài 3: Linear Regression</a> ở trang mạng <a class="reference external" href="https://machinelearningcoban.com">Machine Learning cơ bản</a> của Vũ Hữu Tiệp ở Đại học bang Pennsylvania (Pennsylvania State University), Hoa Kỳ.</li>
+<li><a class="reference external" href="https://ongxuanhong.wordpress.com/2015/07/28/scikit-learn-linear-regression/">Scikit-learn: Linear regression</a> ở trang mạng của <a class="reference external" href="https://ongxuanhong.wordpress.com">Ông Xuân Hồng</a>.</li>
+</ol>
 </div>
 <script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
